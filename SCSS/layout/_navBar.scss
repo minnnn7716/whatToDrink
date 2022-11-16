@@ -1,0 +1,43 @@
+.navBar,
+.navBar-link,
+.navBar-funcBtn {
+    display: flex;
+    align-items: center;
+}
+
+.navBar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: flex-end;
+    padding: 4px 48px 4px 0;
+
+    .logo,
+    .logo-outline {
+        position: absolute;
+        top: 0;
+        left: 48px;
+    }
+}
+
+.navBar-link li {
+    padding: 0 16px;
+}
+
+.navBar-hide {
+    .navBar-link {
+        display: none;
+    }
+}
+
+.navBar-show {
+    box-shadow: 0 4px 8px #00000015;
+    background-color: $white;
+    border-bottom: 1px solid $gray_900;
+
+    .navBar-link {
+        display: flex;
+    }
+}

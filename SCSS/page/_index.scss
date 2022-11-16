@@ -1,0 +1,68 @@
+.index-header {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    background-image: url(../../IMAGES/indexBanner.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+// 標題
+.index-title {
+    position: relative;
+    letter-spacing: 1.5;
+}
+
+.index-title .title-text {
+    position: relative;
+    z-index: 5;
+    font-size: $h2;
+    font-weight: 700;
+    color: $accent;
+    margin-left: .4em;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -.2em;
+        left: -.3em;
+        width: 1.7em;
+        height: 1.7em;
+        border-radius: 50%;
+        background-color: $white;
+        box-shadow: 0 0 0 6px $accent;
+    }
+}
+
+.index-title-inside {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .title-text.bg::after {
+        box-shadow: 0 0 0 1px $white;
+    }
+}
+
+// 副標題
+.subtitleSection {
+    font-size: $h5;
+    font-weight: 700;
+
+    h3 {
+        padding: 8px 24px;
+        border-radius: 30px;
+        border: 2px solid $gray_900;
+    }
+
+    h3:first-child {
+        background-color: $primary;
+    }
+
+    h3:last-child {
+        background-color: $secondary;
+        margin-left: -.5em;
+    }
+}

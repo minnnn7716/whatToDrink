@@ -1,0 +1,11 @@
+{
+  "name": "whattodrink",
+  "version": "1.0.0",
+  "description": "JS 直播班專案",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "m_m",
+  "license": "ISC"
+}

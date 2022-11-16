@@ -1,0 +1,111 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "小明",
+        "mail": "ming22783@gmail.com",
+        "password": "123jkqwewp",
+        "photoUrl": "https://picsum.photos/200",
+        "favorite": [
+          2,
+          3,
+          10,
+          22
+        ],
+        "inforBox": [
+          {
+            "inforId": 1,
+            "isread": true
+          },
+          {
+            "inforId": 2,
+            "isread": false
+          }
+        ]
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "userId": 1,
+        "drinkId": 1,
+        "shopId": 1,
+        "rate": 4,
+        "sugar": "半糖",
+        "ice": "少冰",
+        "content": "依照評論點比例，讚讚讚，這樣點真的剛好！覺得味道很清爽，不過我比較喜歡茶味重一點，所以給四顆星"
+      }
+    ],
+    "like": [
+      {
+        "userId": 1,
+        "shopId": 1,
+        "drinkId": 1
+      }
+    ],
+    "shops": [
+      {
+        "id": 1,
+        "name": "五十嵐",
+        "size": {
+          "M": "500ml",
+          "L": "700ml"
+        }
+      }
+    ],
+    "drinks": [
+      {
+        "id": 1,
+        "shopId": 1,
+        "name": "珍波椰奶茶",
+        "photoUrl": "https//...",
+        "price": {
+          "m": "$50",
+          "l": "$60"
+        },
+        "special": [
+          "店家推薦",
+          "期間限定"
+        ],
+        "calorie": "565 大卡",
+        "caffeine": "19mg",
+        "menuType": "奶系列",
+        "type": "料多多",
+        "ingredient": {
+          "base": "紅茶",
+          "mix": "奶精",
+          "material": [
+            "大珍珠",
+            "小珍珠",
+            "椰果"
+          ]
+        }
+      },
+      {
+        "shopId": 2,
+        "name": "紅茶瑪其朵",
+        "price": {
+          "m": "$50",
+          "l": "$60"
+        },
+        "special": [],
+        "calorie": "560 大卡",
+        "caffeine": "20mg",
+        "menuType": "奶系列",
+        "type": "特調",
+        "ingredient": {
+          "base": "紅茶",
+          "mix": "鮮奶油",
+          "material": []
+        },
+        "id": 2
+      }
+    ],
+    "infors": [
+      {
+        "id": 1,
+        "title": "喜歡五十嵐的朋友們！暖冬新品上市！",
+        "content": "冷冷的冬季絕對不能錯過，一邊喝飲料一邊溫補，跟媽媽說你也是有在注意身體健康的！薑汁桂圓紅茶不只暖你的手還暖你的心，打通你的血管，暖流直達你心！現在起至 12/20 給你最甘心的甜蜜，買一送一！走過路過不要放過喲！大杯原價 50 元，中杯原價 40 元，帶著親朋好友爸爸媽媽阿公阿嬤樓上樓下一起來！"
+      }
+    ]
+  }

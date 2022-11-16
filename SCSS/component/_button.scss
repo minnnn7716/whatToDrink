@@ -1,0 +1,46 @@
+.btn {
+    padding: 8px 16px 6px 16px;
+    border-radius: 40px;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $primary;
+    }
+}
+
+.heartBtn,
+.bellBtn,
+.userBtn {
+    font-size: $h4;
+    padding: 8px 12px;
+}
+
+.heartBtn {
+    color: $accent;
+}
+
+.bellBtn {
+    color: $secondary_600;
+}
+
+.userBtn {
+    color: $primary_600;
+
+    &:hover {
+        color: $gray_900;
+    }
+}
+
+.funcBtn-hover {
+    .funcBtn-solid {
+        display: none;
+    }
+
+    &:hover .funcBtn-outline {
+        display: none;
+    }
+
+    &:hover .funcBtn-solid {
+        display: inline-block;
+    }
+}
