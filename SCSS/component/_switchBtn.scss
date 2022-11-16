@@ -1,0 +1,17 @@
+.switchBar {
+    padding: 8px 12px;
+    border-radius: 50px;
+    background-color: $white;
+}
+
+.switchBar-text a {
+    font-size: $body1;
+    padding: 20px 30px;
+    border-radius: 50px;
+}
+
+.switchBar-text a:hover,
+.switch-active {
+    background-color: $primary;
+    font-weight: 700;
+}

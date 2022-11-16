@@ -565,6 +565,24 @@ table {
   display: inline-block;
 }
 
+.switchBar {
+  padding: 8px 12px;
+  border-radius: 50px;
+  background-color: #ffffff;
+}
+
+.switchBar-text a {
+  font-size: 1rem;
+  padding: 20px 30px;
+  border-radius: 50px;
+}
+
+.switchBar-text a:hover,
+.switch-active {
+  background-color: #FFF066;
+  font-weight: 700;
+}
+
 *,
 *::before,
 *::after {
