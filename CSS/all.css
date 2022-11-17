@@ -48,6 +48,13 @@ table {
   border-spacing: 0;
 }
 
+input {
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -508,6 +515,14 @@ table {
   margin-bottom: 40px;
 }
 
+.mb-8 {
+  margin-bottom: 64px;
+}
+
+.ml-2 {
+  margin-left: 16px;
+}
+
 .flex {
   display: flex;
 }
@@ -522,6 +537,10 @@ table {
 
 .align-center {
   align-items: center;
+}
+
+.position-a {
+  position: absolute;
 }
 
 .btn {
@@ -566,6 +585,8 @@ table {
 }
 
 .switchBar {
+  position: static;
+  z-index: 1;
   padding: 8px 12px;
   border-radius: 50px;
   background-color: #ffffff;
@@ -581,6 +602,35 @@ table {
 .switch-active {
   background-color: #FFF066;
   font-weight: 700;
+}
+
+.searchBar {
+  position: relative;
+  z-index: 1;
+}
+.searchBar .searchBar-input {
+  width: 600px;
+  height: 100%;
+  padding: 0 32px;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  font-size: 1rem;
+  transition: all ease 0.5s;
+}
+.searchBar .searchBar-input:focus, .searchBar .searchBar-input:hover {
+  border: 3px solid #FFF066;
+  transition: all ease 0.5s;
+}
+.searchBar .searchBar-input:focus + .searchBar-icon, .searchBar .searchBar-input:hover + .searchBar-icon {
+  color: #FFCD1A;
+}
+.searchBar .searchBar-icon {
+  position: absolute;
+  top: 50%;
+  right: 1.5em;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  transition: all ease 0.5s;
 }
 
 *,
@@ -788,7 +838,7 @@ textarea {
 
 .index-header {
   position: relative;
-  height: 500px;
+  height: 100vh;
   overflow: hidden;
   background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/main/IMAGES/indexBanner.webp);
   background-size: cover;
@@ -798,6 +848,7 @@ textarea {
 
 .index-title {
   position: relative;
+  z-index: 1;
   letter-spacing: 1.5;
 }
 
@@ -846,4 +897,16 @@ textarea {
 .subtitleSection h3:last-child {
   background-color: #99E4EE;
   margin-left: -0.5em;
+}
+
+.header-deco-right {
+  width: 25%;
+  top: 0;
+  right: 10%;
+}
+
+.header-deco-left {
+  width: 35%;
+  bottom: 10%;
+  left: 0;
 }/*# sourceMappingURL=all.css.map */

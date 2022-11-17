@@ -1,6 +1,6 @@
 .index-header {
     position: relative;
-    height: 500px;
+    height: 100vh;
     overflow: hidden;
     background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/main/IMAGES/indexBanner.webp);
     background-size: cover;
@@ -11,6 +11,7 @@
 // 標題
 .index-title {
     position: relative;
+    z-index: 1;
     letter-spacing: 1.5;
 }
 
@@ -65,4 +66,16 @@
         background-color: $secondary;
         margin-left: -.5em;
     }
+}
+
+.header-deco-right{
+    width: 25%;
+    top: 0;
+    right: 10%;
+}
+
+.header-deco-left{
+    width: 35%;
+    bottom: 10%;
+    left: 0;
 }
