@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header id="header" class="index-header flex flex-column justify-center align-center">
+    <header id="header" class="index-header flex flex-column justify-center align-center mb-20">
         <div class="navBar navBar-hide">
             <a class="logo">
                 <h1 class="logo-text">What <br> to Drink</h1>
@@ -115,47 +115,81 @@
                 <i class="searchBar-icon fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
-        <img class="header-deco-left position-a" src="./IMAGES/header-deco-left.svg" alt="banner 裝飾圖">
-        <img class="header-deco-right position-a" src="./IMAGES/header-deco-right.svg" alt="banner 裝飾圖">
+        <img class="header-deco-left position-a" src="./IMAGES/header_deco_left.svg" alt="banner 裝飾圖">
+        <img class="header-deco-right position-a" src="./IMAGES/header_deco_right.svg" alt="banner 裝飾圖">
     </header>
 
-    <section class="inedx-shops">
-        <div class="subtitleSection">
-            <h4 class="subtitle">還是沒有想法嗎？</h4>
-            <p>通通給你，慢慢挑～慢慢選～</p>
+    <section class="inedx-shops container">
+        <div class="row align-center mb-20">
+            <div class="content-subtitleSection col-3">
+                <h4 class="subtitle">還是沒有想法嗎？</h4>
+                <p class="subdiscrip">通通給你，<br>慢慢挑～慢慢選～</p>
+            </div>
+            <ul class="imgBtnSection flex col-9">
+                <li class="pr-4">
+                    <a class="imgBtn" href="#">
+                        <img src="./IMAGES/shopBtn_all.webp" alt="全部店面">
+                        <span>全部店面</span>
+                    </a>
+                </li>
+                <li class="pr-4">
+                    <a class="imgBtn" href="#">
+                        <img src="./IMAGES/shopBtn_tea.webp" alt="純茶飲料">
+                        <span>純茶飲料</span>
+                    </a>
+                </li>
+                <li class="pr-4">
+                    <a class="imgBtn" href="#">
+                        <img src="./IMAGES/shopBtn_special.webp" alt="特調飲料">
+                        <span>特調飲料</span>
+                    </a>
+                </li>
+                <li class="pr-4">
+                    <a class="imgBtn" href="#">
+                        <img src="./IMAGES/shopBtn_milk.webp" alt="奶奶飲料">
+                        <span>奶奶飲料</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="imgBtnSection">
-            <li>
-                <a class="imgBtn" href="#">
-                    <img src="" alt="全部店面">
-                    <p>全部店面</p>
-                </a>
-            </li>
-            <li>
-                <a class="imgBtn" href="#">
-                    <img src="" alt="純茶飲料">
-                    <p>純茶飲料</p>
-                </a>
-            </li>
-            <li>
-                <a class="imgBtn" href="#">
-                    <img src="" alt="特調飲料">
-                    <p>特調飲料</p>
-                </a>
-            </li>
-            <li>
-                <a class="imgBtn" href="#">
-                    <img src="" alt="奶奶飲料">
-                    <p>奶奶飲料</p>
-                </a>
-            </li>
-        </ul>
     </section>
-    <section class="inedx-wheel">
-
+    <section class="inedx-wheel pt-12 pb-12 mb-20">
+        <div class="inedx-wheel-text">
+            <h3 class="mb-4">阿姨，我不想努力了...<br>沒關係！</h3>
+            <p class="mb-4">轉盤啊～轉盤～<br>世界上最適合我的飲料是哪一杯？</p>
+            <a href="#" class="btn-shadow">請賜與我飲料</a>
+        </div>
+        <img class="inedx-wheel-img inedx-wheel-pc-person" src="./IMAGES/wheel_pc_person.svg" alt="心累的人">
+        <img class="inedx-wheel-img inedx-wheel-pc-drink" src="./IMAGES/wheel_pc_drink.svg" alt="彩虹可愛飲料杯">
+        <img class="inedx-wheel-img inedx-wheel-pc-wheel" src="./IMAGES/wheel_pc_wheel.svg" alt="轉盤">
     </section>
-    <section class="inedx-recommend">
-
+    <section class="inedx-recommend container">
+        <div class="row mb-20">
+            <div class="col-12">
+                <div class="content-subtitleSection flex">
+                    <h4 class="subtitle">好評飲品推薦</h4>
+                    <div class="carousel flex col-9">
+                        <div class="carouel-num">
+                            <span class="prev">03</span>
+                            <span>｜</span>
+                            <span class="next">05</span>
+                        </div>
+                        <div class="carouel-dot">
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                        </div>
+                        <div class="carouel-divider"></div>
+                        <div class="carouel-arrow">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <footer id="footer">
         <div class="footer-container">

@@ -68,14 +68,60 @@
     }
 }
 
-.header-deco-right{
+// header 裝飾圖樣位置
+.header-deco-right {
     width: 25%;
     top: 0;
     right: 10%;
 }
 
-.header-deco-left{
+.header-deco-left {
     width: 35%;
     bottom: 10%;
     left: 0;
+}
+
+// 
+.inedx-wheel {
+    position: relative;
+    width: 100%;
+    background-color: #6D6FC9;
+    text-align: center;
+}
+
+.inedx-wheel-text {
+    h3 {
+        font-size: $h3;
+        font-weight: 700;
+        color: $white;
+    }
+
+    p {
+        font-size: $h5;
+        color: $white;
+    }
+}
+
+.inedx-wheel-img {
+    position: absolute;
+}
+
+.inedx-wheel-pc-person {
+    z-index: 3;
+    bottom: -24px;
+    width: 32vw;
+}
+
+.inedx-wheel-pc-drink {
+    z-index: 2;
+    right: 12vw;
+    bottom: -32px;
+    width: 53vw;
+}
+
+.inedx-wheel-pc-wheel {
+    z-index: 1;
+    right: -6vw;
+    top: -72px;
+    width: 25vw;
 }
