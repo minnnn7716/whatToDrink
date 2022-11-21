@@ -1,0 +1,44 @@
+.carouel-num {
+    font-size: $h4;
+    font-weight: 700;
+}
+
+.carouel-dot {
+    font-size: $body2;
+    color: $gray;
+    
+    i{
+        transition: all ease .5s;
+        padding: 2px;
+    }
+
+    i:hover,
+    .active {
+        color: $accent;
+    }
+}
+
+.carouel-divider {
+    height: 1px;
+    border-bottom: 1px dashed $gray_900;
+}
+
+.carouel-arrow{
+    display: flex;
+}
+
+.carouel-arrow-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: $h5;
+    border-radius: 50%;
+    border: 1px solid $black;
+    background-color: $accent;
+
+    &:hover{
+        background-color: $secondary;
+    }
+}

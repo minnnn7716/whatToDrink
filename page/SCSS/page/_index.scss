@@ -82,7 +82,12 @@
 }
 
 // 
-.inedx-wheel {
+.inedx-wheel{
+    padding: 160px 0;
+    overflow: hidden;
+}
+
+.inedx-wheel-block {
     position: relative;
     width: 100%;
     background-color: #6D6FC9;
@@ -90,6 +95,8 @@
 }
 
 .inedx-wheel-text {
+    position: relative;
+    z-index: 5;
     h3 {
         font-size: $h3;
         font-weight: 700;
