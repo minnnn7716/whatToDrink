@@ -1,0 +1,43 @@
+.message{
+    position: relative;
+    padding: 0 24px 16px 80px;
+    font-family: $chiFont;
+    border: 1px solid $black;
+    border-radius: 16px;
+}
+
+.message-header{
+    margin-top: -12px;
+}
+
+.message-photo{
+    position: absolute;
+    top: -24px;
+    left: -24px;
+}
+
+.message-title,
+.message-rate{
+    padding: 0 4px;
+    background-color: $white;
+}
+
+.message-name{
+    font-size: $h5;
+}
+
+.message-allNum{
+    font-size: $body2;
+}
+
+.message-rate{
+    .star{
+        width: 19.5px;
+        height: 19px;
+    }
+}
+
+.message-infor{
+    font-size: $body2;
+    text-align: right;
+}

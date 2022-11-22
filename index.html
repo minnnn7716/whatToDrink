@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
     <!-- google fonts cdn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,37 +15,13 @@
 
     <!-- main css -->
     <link rel="stylesheet" href="./CSS/all.css">
+
+    <title>What to Drink</title>
 </head>
 
-<body>
+<body id="index">
     <header id="header" class="index-header flex flex-column justify-center align-center mb-20">
-        <div class="navBar navBar-hide">
-            <a class="logo">
-                <h1 class="logo-text">What <br> to Drink</h1>
-            </a>
-            <ul class="navBar-link">
-                <li><a href="#" class="btn">全部店家</a>
-                <li><a href="#" class="btn">四大類類</a>
-                <li><a href="#" class="btn">轉吧轉吧</a>
-            </ul>
-            <ul class="navBar-funcBtn">
-                <li>
-                    <a href="#" class="heartBtn funcBtn-hover">
-                        <i class="fa-regular fa-heart funcBtn-outline"></i>
-                        <i class="fa-sharp fa-solid fa-heart funcBtn-solid"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="bellBtn funcBtn-hover">
-                        <i class="fa-regular fa-bell funcBtn-outline"></i>
-                        <i class="fa-solid fa-bell funcBtn-solid"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="userBtn"><i class="fa-solid fa-circle-user"></i></a>
-                </li>
-            </ul>
-        </div>
+        <div id="navBarSection"></div>
         <h2 class="index-title mb-4">
             <div>
                 <span class="title-text">
@@ -158,7 +133,7 @@
             <div class="inedx-wheel-text">
                 <h3 class="mb-4">阿姨，我不想努力了...<br>沒關係！</h3>
                 <p class="mb-4">轉盤啊～轉盤～<br>世界上最適合我的飲料是哪一杯？</p>
-                <a href="#" class="btn-shadow">請賜與我飲料</a>
+                <a href="#" class="btn-shadow">請賜與我飲料吧！</a>
             </div>
             <img class="inedx-wheel-img inedx-wheel-pc-person" src="./IMAGES/wheel_pc_person.svg" alt="心累的人">
             <img class="inedx-wheel-img inedx-wheel-pc-drink" src="./IMAGES/wheel_pc_drink.svg" alt="彩虹可愛飲料杯">
@@ -185,6 +160,7 @@
                     <div class="carouel-divider flex-stretch mr-2"></div>
                     <div class="carouel-arrow">
                         <a href="#" class="carouel-arrow-btn carouel-arrow-left mr-1">
+                            <!-- disable 加在這邊 -->
                             <i class="fa-solid fa-chevron-left"></i>
                         </a>
                         <a href="#" class="carouel-arrow-btn carouel-arrow-right">
@@ -200,10 +176,10 @@
                     <h4 class="recommend-title">鮮柚葡萄綠</h4>
                     <span class="recommend-shopTag">五十嵐</span>
                 </div>
-                <div class="recommend-inforSection">
-                    <p>M $40 ｜ L $60</p>
+                <div class="recommend-inforSection flex align-center justify-between">
+                    <p>M $ 40 ｜ L $ 60</p>
                     <div class="rateSection">
-                        <p class="score">4.9</p>
+                        <p class="score mr-2">4.9</p>
                         <div class="starSection">
                             <span class="star"></span>
                             <span class="star"></span>
@@ -216,54 +192,91 @@
                 <img src="./IMAGES/recommend_03.webp" alt="鮮柚葡萄綠">
             </div>
             <div class="col-6 inedx-recommend-textSection">
-                <div class="message">
-                    <img src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                    <div class="message-header">
-                        <div class="message-title">
-                            <h6 class="message-name">漢堡神偷愛喝飲料</h6>
-                            <p class="message-allNum">18 則評論</p>
-                        </div>
-                        <div class="message-rate">
-                            <div class="starSection">
-                                <span class="star"></span>
-                                <span class="star"></span>
-                                <span class="star"></span>
-                                <span class="star"></span>
-                                <span class="star"></span>
+                <div class="messageGroup">
+                    <div class="message ml-4 mt-3 mb-8">
+                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
+                        <div class="message-header flex justify-between">
+                            <div class="message-title mb-3">
+                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
+                                <p class="message-allNum">18 則評論</p>
                             </div>
-                            <p>3 分糖 / 去冰</p>
+                            <div class="message-rate">
+                                <div class="starSection mb-half-1">
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                </div>
+                                <p class="message-infor">3 分糖 / 去冰</p>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <p>茶與葡萄柚果汁的調配完全恰到好處！<br>
+                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
+                                如果點多冰的話半糖應該滿不錯的～</p>
                         </div>
                     </div>
-                    <div class="message-content">
-                        <p>茶與葡萄柚果汁的調配完全恰到好處！<br>
-                            根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                            如果點多冰的話半糖應該滿不錯的～</p>
+                    <div class="message ml-4 mt-3 mb-8">
+                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
+                        <div class="message-header flex justify-between">
+                            <div class="message-title mb-3">
+                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
+                                <p class="message-allNum">18 則評論</p>
+                            </div>
+                            <div class="message-rate">
+                                <div class="starSection mb-half-1">
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                </div>
+                                <p class="message-infor">3 分糖 / 去冰</p>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <p>茶與葡萄柚果汁的調配完全恰到好處！<br>
+                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
+                                如果點多冰的話半糖應該滿不錯的～</p>
+                        </div>
+                    </div>
+                    <div class="message ml-4 mt-3 mb-8">
+                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
+                        <div class="message-header flex justify-between">
+                            <div class="message-title mb-3">
+                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
+                                <p class="message-allNum">18 則評論</p>
+                            </div>
+                            <div class="message-rate">
+                                <div class="starSection mb-half-1">
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                </div>
+                                <p class="message-infor">3 分糖 / 去冰</p>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <p>茶與葡萄柚果汁的調配完全恰到好處！<br>
+                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
+                                如果點多冰的話半糖應該滿不錯的～</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <footer id="footer">
-        <div class="footer-container">
-            <a href="#" class="topBtn">TOP</a>
-            <ul class="footer-list">
-                <li><a href="#">首頁搜尋</a></li>
-                <li><a href="#">全部店家</a></li>
-                <li><a href="#">四大飲類</a></li>
-                <li><a href="#">轉吧轉吧</a></li>
-            </ul>
-            <h2 class="logo-text">
-                <a href="#">What <br> to Drink
-            </h2></a>
-            <p class="footer-infor">資料、圖片來源皆來自網路，僅用來做為學習用途</p>
-        </div>
-    </footer>
+    <footer id="footerSecrion"></footer>
 
     <!-- fontawesome cdn -->
     <script src="https://kit.fontawesome.com/d52bba7b7b.js" crossorigin="anonymous"></script>
     <!-- axios cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
     <!-- main js -->
+    <script src="./JS/init.js"></script>
     <script src="./JS/main.js"></script>
 </body>
 

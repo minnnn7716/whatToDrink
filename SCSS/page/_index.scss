@@ -1,3 +1,4 @@
+// banner
 .index-header {
     position: relative;
     height: 100vh;
@@ -81,8 +82,8 @@
     left: 0;
 }
 
-// 
-.inedx-wheel{
+// 轉盤區塊
+.inedx-wheel {
     padding: 160px 0;
     overflow: hidden;
 }
@@ -97,6 +98,7 @@
 .inedx-wheel-text {
     position: relative;
     z-index: 5;
+
     h3 {
         font-size: $h3;
         font-weight: 700;
@@ -131,4 +133,78 @@
     right: -6vw;
     top: -72px;
     width: 25vw;
+}
+
+// 推薦區塊
+.inedx-recommend-imgSection {
+    position: relative;
+}
+
+.recommend-titleSection {
+    position: absolute;
+    top: -.5em;
+    left: -1em;
+    display: flex;
+    writing-mode: vertical-lr;
+    letter-spacing: .5em;
+}
+
+.recommend-title {
+    position: relative;
+    margin-bottom: 4px;
+    padding-right: 4px;
+    font-size: $h3;
+    font-weight: 500;
+    letter-spacing: .5em;
+    text-shadow: -2px 2px 0 $white,
+        2px 2px 0 $white,
+        2px -2px 0 $white,
+        -2px -2px 0 $white;
+}
+
+.recommend-shopTag {
+    font-size: $h5;
+    padding: 12px 6px 12px 8px;
+    border: 1px solid $gray_900;
+    border-radius: 40px;
+    background-color: $white;
+}
+
+.recommend-inforSection {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -24px;
+    font-size: $h4;
+    font-weight: 900;
+    letter-spacing: .1em;
+}
+
+.inedx-recommend-textSection {
+    position: relative;
+    overflow-y: scroll;
+
+    .messageGroup {
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 0 16px;
+    }
+}
+
+.inedx-recommend-textSection::-webkit-scrollbar-track {
+    padding: 1px 0;
+    background-color: $secondary_100;
+    border: 1px solid $secondary;
+    border-radius: 10px;
+}
+
+.inedx-recommend-textSection::-webkit-scrollbar {
+    width: 10px;
+}
+
+.inedx-recommend-textSection::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $secondary;
+    border: 1px solid $gray_600;
 }

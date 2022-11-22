@@ -9,6 +9,10 @@ Noto L 300
 Oleo R 400
      B 700
 
+【navBar】
+登出的 icon
+<i class="fa-solid fa-right-from-bracket"></i>
+
 【JS】
 - json-serve
 監聽資料夾中的 db.json

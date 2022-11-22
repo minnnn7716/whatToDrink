@@ -6,8 +6,8 @@
 .carouel-dot {
     font-size: $body2;
     color: $gray;
-    
-    i{
+
+    i {
         transition: all ease .5s;
         padding: 2px;
     }
@@ -23,7 +23,7 @@
     border-bottom: 1px dashed $gray_900;
 }
 
-.carouel-arrow{
+.carouel-arrow {
     display: flex;
 }
 
@@ -38,7 +38,14 @@
     border: 1px solid $black;
     background-color: $accent;
 
-    &:hover{
+    &:hover {
         background-color: $secondary;
     }
+}
+
+.carouel-arrow-btn.disable {
+    background-color: $gray_300;
+    color: $gray_500;
+    border: 1px solid $gray_500;
+    cursor: not-allowed;
 }

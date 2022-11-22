@@ -508,6 +508,10 @@ input:focus {
   }
 }
 
+.mt-3 {
+  margin-top: 24px;
+}
+
 .mr-half-1 {
   margin-right: 4px;
 }
@@ -518,6 +522,10 @@ input:focus {
 
 .mr-2 {
   margin-right: 16px;
+}
+
+.mb-half-1 {
+  margin-bottom: 4px;
 }
 
 .mb-3 {
@@ -544,6 +552,14 @@ input:focus {
   margin-left: 16px;
 }
 
+.ml-3 {
+  margin-left: 24px;
+}
+
+.ml-4 {
+  margin-left: 32px;
+}
+
 .pt-12 {
   padding-top: 96px;
 }
@@ -554,6 +570,10 @@ input:focus {
 
 .pb-12 {
   padding-bottom: 96px;
+}
+
+.pl-3 {
+  padding-left: 24px;
 }
 
 .flex {
@@ -572,8 +592,16 @@ input:focus {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .align-center {
   align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
 }
 
 .position-a {
@@ -797,6 +825,85 @@ input:focus {
 }
 .carouel-arrow-btn:hover {
   background-color: #99E4EE;
+}
+
+.carouel-arrow-btn.disable {
+  background-color: #F3F2F2;
+  color: #BDBDBD;
+  border: 1px solid #BDBDBD;
+  cursor: not-allowed;
+}
+
+.rateSection {
+  display: flex;
+  align-items: center;
+}
+
+.score {
+  font-size: 2.25rem;
+  font-weight: 900;
+}
+
+.starBtn .star:hover {
+  background-image: url(../../IMAGES/star_empty.svg);
+}
+
+.star {
+  display: inline-block;
+  width: 38px;
+  height: 36px;
+  background-image: url(../../IMAGES/star_full.svg);
+  background-size: cover;
+}
+
+.userPhoto-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  box-shadow: 4px 8px 0 #FFF066;
+}
+
+.message {
+  position: relative;
+  padding: 0 24px 16px 80px;
+  font-family: "Noto Sans TC";
+  border: 1px solid #000000;
+  border-radius: 16px;
+}
+
+.message-header {
+  margin-top: -12px;
+}
+
+.message-photo {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+}
+
+.message-title,
+.message-rate {
+  padding: 0 4px;
+  background-color: #ffffff;
+}
+
+.message-name {
+  font-size: 1.25rem;
+}
+
+.message-allNum {
+  font-size: 0.875rem;
+}
+
+.message-rate .star {
+  width: 19.5px;
+  height: 19px;
+}
+
+.message-infor {
+  font-size: 0.875rem;
+  text-align: right;
 }
 
 *,
@@ -1130,4 +1237,77 @@ textarea {
   right: -6vw;
   top: -72px;
   width: 25vw;
+}
+
+.inedx-recommend-imgSection {
+  position: relative;
+}
+
+.recommend-titleSection {
+  position: absolute;
+  top: -0.5em;
+  left: -1em;
+  display: flex;
+  writing-mode: vertical-lr;
+  letter-spacing: 0.5em;
+}
+
+.recommend-title {
+  position: relative;
+  margin-bottom: 4px;
+  padding-right: 4px;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-shadow: -2px 2px 0 #ffffff, 2px 2px 0 #ffffff, 2px -2px 0 #ffffff, -2px -2px 0 #ffffff;
+}
+
+.recommend-shopTag {
+  font-size: 1.25rem;
+  padding: 12px 6px 12px 8px;
+  border: 1px solid #3C3C3C;
+  border-radius: 40px;
+  background-color: #ffffff;
+}
+
+.recommend-inforSection {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -24px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.inedx-recommend-textSection {
+  position: relative;
+  overflow-y: scroll;
+}
+.inedx-recommend-textSection .messageGroup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+}
+
+.inedx-recommend-textSection::-webkit-scrollbar-track {
+  padding: 1px 0;
+  background-color: #EFFDFF;
+  border: 1px solid #99E4EE;
+  border-radius: 10px;
+}
+
+.inedx-recommend-textSection::-webkit-scrollbar {
+  width: 10px;
+}
+
+.inedx-recommend-textSection::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #99E4EE;
+  border: 1px solid #7C7C7C;
+}
+
+#searchPage .container {
+  padding: 160px;
 }/*# sourceMappingURL=all.css.map */
