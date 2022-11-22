@@ -1,5 +1,6 @@
-.mt-3{
-    margin-top: 3 * $space;;
+.mt-3 {
+    margin-top: 3 * $space;
+    ;
 }
 
 .mr-half-1 {
@@ -34,6 +35,10 @@
     margin-bottom: 8 * $space;
 }
 
+.mb-15 {
+    margin-bottom: 15 * $space;
+}
+
 .mb-20 {
     margin-bottom: 20 * $space;
 }
@@ -50,18 +55,20 @@
     margin-left: 4 * $space;
 }
 
-.pt-12{
+.pt-12 {
     padding-top: 12 * $space;
 }
 
 .pr-4 {
-    padding-right: 4 * $space;;
+    padding-right: 4 * $space;
+    ;
 }
 
-.pb-12{
-    padding-bottom: 12 * $space;;
+.pb-12 {
+    padding-bottom: 12 * $space;
+    ;
 }
 
-.pl-3{
+.pl-3 {
     padding-left: 3 * $space;
 }

@@ -1,11 +1,11 @@
-.navBar,
-.navBar-link,
-.navBar-funcBtn {
+.navbar,
+.navbar-link,
+.navbar-funcBtn {
     display: flex;
     align-items: center;
 }
 
-.navBar {
+.navbar {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -22,22 +22,22 @@
     }
 }
 
-.navBar-link li {
+.navbar-link li {
     padding: 0 16px;
 }
 
-.navBar-hide {
-    .navBar-link {
+.navbar-hide {
+    .navbar-link {
         display: none;
     }
 }
 
-.navBar-show {
+.navbar-show {
     box-shadow: 0 4px 8px #00000015;
     background-color: $white;
     border-bottom: 1px solid $gray_900;
 
-    .navBar-link {
+    .navbar-link {
         display: flex;
     }
 }

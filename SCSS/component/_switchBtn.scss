@@ -6,6 +6,13 @@
     background-color: $white;
 }
 
+.switchBar-border {
+    align-items: center;
+    display: flex;
+    border: 1px solid $gray_900;
+    background-color: $primary;
+}
+
 .switchBar-text a {
     font-size: $body1;
     padding: 20px 30px;
@@ -13,7 +20,19 @@
 }
 
 .switchBar-text a:hover,
-.switch-active {
+.switchBar .switch-active {
     background-color: $primary;
     font-weight: 700;
+}
+
+.switchBar-icon a {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+
+.switchBar-border a:hover,
+.switchBar-border .switch-active {
+    background-color: $white;
+    border: 1px solid $gray_900;
 }

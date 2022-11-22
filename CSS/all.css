@@ -544,6 +544,10 @@ input:focus {
   margin-bottom: 64px;
 }
 
+.mb-15 {
+  margin-bottom: 120px;
+}
+
 .mb-20 {
   margin-bottom: 160px;
 }
@@ -696,12 +700,28 @@ input:focus {
   margin-bottom: -8px;
 }
 
+.fileerBtn {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 50%;
+  border: 1px solid #3C3C3C;
+  background-color: #FFF066;
+}
+
 .switchBar {
   position: static;
   z-index: 1;
   padding: 8px 12px;
   border-radius: 50px;
   background-color: #ffffff;
+}
+
+.switchBar-border {
+  align-items: center;
+  display: flex;
+  border: 1px solid #3C3C3C;
+  background-color: #FFF066;
 }
 
 .switchBar-text a {
@@ -711,9 +731,21 @@ input:focus {
 }
 
 .switchBar-text a:hover,
-.switch-active {
+.switchBar .switch-active {
   background-color: #FFF066;
   font-weight: 700;
+}
+
+.switchBar-icon a {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
+
+.switchBar-border a:hover,
+.switchBar-border .switch-active {
+  background-color: #ffffff;
+  border: 1px solid #3C3C3C;
 }
 
 .searchBar {
@@ -721,7 +753,7 @@ input:focus {
   z-index: 1;
 }
 .searchBar .searchBar-input {
-  width: 600px;
+  width: 100%;
   height: 100%;
   padding: 0 32px;
   border-radius: 50px;
@@ -739,10 +771,17 @@ input:focus {
 .searchBar .searchBar-icon {
   position: absolute;
   top: 50%;
-  right: 1.5em;
+  right: 32px;
   transform: translateY(-50%);
   font-size: 1.5rem;
   transition: all ease 0.5s;
+}
+
+.searchBar-border .searchBar-input {
+  border: 1px solid #3C3C3C;
+}
+.searchBar-border .searchBar-input:focus, .searchBar-border .searchBar-input:hover {
+  border: 3px solid #FFCD1A;
 }
 
 .subtitle {
@@ -950,6 +989,10 @@ textarea {
   cursor: pointer;
 }
 
+.pushSpace {
+  padding-top: 60px;
+}
+
 .logo,
 .logo-outline {
   position: relative;
@@ -998,14 +1041,14 @@ textarea {
   font-weight: 700;
 }
 
-.navBar,
-.navBar-link,
-.navBar-funcBtn {
+.navbar,
+.navbar-link,
+.navbar-funcBtn {
   display: flex;
   align-items: center;
 }
 
-.navBar {
+.navbar {
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -1014,33 +1057,34 @@ textarea {
   justify-content: flex-end;
   padding: 4px 48px 4px 0;
 }
-.navBar .logo,
-.navBar .logo-outline {
+.navbar .logo,
+.navbar .logo-outline {
   position: absolute;
   top: 0;
   left: 48px;
 }
 
-.navBar-link li {
+.navbar-link li {
   padding: 0 16px;
 }
 
-.navBar-hide .navBar-link {
+.navbar-hide .navbar-link {
   display: none;
 }
 
-.navBar-show {
+.navbar-show {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0823529412);
   background-color: #ffffff;
   border-bottom: 1px solid #3C3C3C;
 }
-.navBar-show .navBar-link {
+.navbar-show .navbar-link {
   display: flex;
 }
 
 #footer {
   position: relative;
   width: 100%;
+  margin-top: 20px;
   background-color: #FFF066;
 }
 #footer::after, #footer::before {
@@ -1177,6 +1221,10 @@ textarea {
   margin-left: -0.5em;
 }
 
+#index .searchBar-input {
+  width: 600px;
+}
+
 .header-deco-right {
   width: 25%;
   top: 0;
@@ -1306,8 +1354,4 @@ textarea {
   border-radius: 10px;
   background-color: #99E4EE;
   border: 1px solid #7C7C7C;
-}
-
-#searchPage .container {
-  padding: 160px;
 }/*# sourceMappingURL=all.css.map */

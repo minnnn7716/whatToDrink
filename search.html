@@ -21,20 +21,211 @@
 
 <body id="searchPage">
     <header>
-        <div id="navBarSection"></div>
+        <div id="navbarSection" class="mb-15"></div>
     </header>
 
-    <section class="conatiner">
+    <section class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mb-20">
                 <div class="searchSection flex">
-                    <div class="switchBar switchBar-text">
-                        <a href="#" class="switch-left switch-active">飲料</a>
-                        <a href="#" class="switch-right">店家</a>
-                    </div>
-                    <div class="searchBar">
-                        <input class="ml-2 searchBar-input" type="text" placeholder="想喝什麼告訴我吧！">
+                    <div class="searchBar searchBar-border flex-stretch mr-2">
+                        <input class="searchBar-input" type="text" placeholder="想喝什麼告訴我吧！" value="珍珠">
                         <i class="searchBar-icon fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="switchBar switchBar-border switchBar-icon mr-2">
+                        <a href="#" class="switch-left mr-1">
+                            <img src="./IMAGES/icon_list.svg" alt="列表模式按鈕">
+                        </a>
+                        <a href="#" class="switch-right switch-active">
+                            <img src="./IMAGES/icon_compact.svg" alt="圖表模式按鈕">
+                        </a>
+                    </div>
+                    <a href="#" class="fileerBtn">
+                        <img src="./IMAGES/icon_filter.svg" alt="篩選按鈕">
+                    </a>
+                </div>
+                <div class="searchResult">
+                    <p class="searchResult-text">找到 30 個符合「珍珠」的飲料</p>
+                    <div class="searchResult-filter">
+                        <span class="searchResult-filter-text">目前依照「熱量」升冪排序</span>
+                        <a href="#" class="searchResult-filter-close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="searchList">
+                    <div class="searchList-comapct row">
+                        <div class="product-img col-4">
+                            <div class="imgSection">
+                                <span class="shopName">五十嵐</span>
+                                <img src="./IMAGES/drink.webp" alt="珍珠紅茶">
+                            </div>
+                            <div class="textSection">
+                                <div class="firstRow">
+                                    <h6>珍珠紅茶</h6>
+                                    <div class="rateSection">
+                                        <p class="score mr-2">4.9</p>
+                                        <div class="starSection">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="secondRow">
+                                    <div class="specialPoint">
+                                        <span class="specialPoint-recommend">店長推薦</span>
+                                        <span class="specialPoint-period">期間限定</span>
+                                    </div>
+                                    <p class="priceInfor">M $ 40 ｜ L $ 60</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-img col-4">
+                            <div class="imgSection">
+                                <span class="shopName">五十嵐</span>
+                                <img src="./IMAGES/drink.webp" alt="珍珠紅茶">
+                            </div>
+                            <div class="textSection">
+                                <div class="firstRow">
+                                    <h6>珍珠紅茶</h6>
+                                    <div class="rateSection">
+                                        <p class="score mr-2">4.9</p>
+                                        <div class="starSection">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="secondRow">
+                                    <div class="specialPoint">
+                                        <span class="specialPoint-recommend">店長推薦</span>
+                                        <span class="specialPoint-period">期間限定</span>
+                                    </div>
+                                    <p class="priceInfor">M $ 40 ｜ L $ 60</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-img col-4">
+                            <div class="imgSection">
+                                <span class="shopName">五十嵐</span>
+                                <img src="./IMAGES/drink.webp" alt="珍珠紅茶">
+                            </div>
+                            <div class="textSection">
+                                <div class="firstRow">
+                                    <h6>珍珠紅茶</h6>
+                                    <div class="rateSection">
+                                        <p class="score mr-2">4.9</p>
+                                        <div class="starSection">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="secondRow">
+                                    <div class="specialPoint">
+                                        <span class="specialPoint-recommend">店長推薦</span>
+                                        <span class="specialPoint-period">期間限定</span>
+                                    </div>
+                                    <p class="priceInfor">M $ 40 ｜ L $ 60</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-img col-4">
+                            <div class="imgSection">
+                                <span class="shopName">五十嵐</span>
+                                <img src="./IMAGES/drink.webp" alt="珍珠紅茶">
+                            </div>
+                            <div class="textSection">
+                                <div class="firstRow">
+                                    <h6>珍珠紅茶</h6>
+                                    <div class="rateSection">
+                                        <p class="score mr-2">4.9</p>
+                                        <div class="starSection">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="secondRow">
+                                    <div class="specialPoint">
+                                        <span class="specialPoint-recommend">店長推薦</span>
+                                        <span class="specialPoint-period">期間限定</span>
+                                    </div>
+                                    <p class="priceInfor">M $ 40 ｜ L $ 60</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-img col-4">
+                            <div class="imgSection">
+                                <span class="shopName">五十嵐</span>
+                                <img src="./IMAGES/drink.webp" alt="珍珠紅茶">
+                            </div>
+                            <div class="textSection">
+                                <div class="firstRow">
+                                    <h6>珍珠紅茶</h6>
+                                    <div class="rateSection">
+                                        <p class="score mr-2">4.9</p>
+                                        <div class="starSection">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="secondRow">
+                                    <div class="specialPoint">
+                                        <span class="specialPoint-recommend">店長推薦</span>
+                                        <span class="specialPoint-period">期間限定</span>
+                                    </div>
+                                    <p class="priceInfor">M $ 40 ｜ L $ 60</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-img col-4">
+                            <div class="imgSection">
+                                <span class="shopName">五十嵐</span>
+                                <img src="./IMAGES/drink.webp" alt="珍珠紅茶">
+                            </div>
+                            <div class="textSection">
+                                <div class="firstRow">
+                                    <h6>珍珠紅茶</h6>
+                                    <div class="rateSection">
+                                        <p class="score mr-2">4.9</p>
+                                        <div class="starSection">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="secondRow">
+                                    <div class="specialPoint">
+                                        <span class="specialPoint-recommend">店長推薦</span>
+                                        <span class="specialPoint-period">期間限定</span>
+                                    </div>
+                                    <p class="priceInfor">M $ 40 ｜ L $ 60</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searchList-row">
+
                     </div>
                 </div>
             </div>
