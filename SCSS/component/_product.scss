@@ -1,0 +1,49 @@
+.product-img {
+    .imgSection {
+        position: relative;
+        max-height: 340px;
+        margin-bottom: 12px;
+        padding: 12px 0 0 12px;
+        overflow: hidden;
+    }
+
+    .shopName {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 24px 8px 24px;
+        border: 1px solid $black;
+        border-radius: 40px;
+        font-size: $h5;
+        background-color: $white;
+    }
+
+    .textSection {
+        padding-left: 12px;
+        color: $black;
+
+        h6 {
+            font-size: $h4;
+            font-weight: 700;
+
+        }
+
+        .firstRow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        // component - rate
+        .score {
+            margin-right: 8px;
+            font-size: $h4;
+            font-weight: 900;
+        }
+
+        .star {
+            width: 22px;
+            height: 21.5px;
+        }
+    }
+}

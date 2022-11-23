@@ -1,4 +1,4 @@
-.rateSection{
+.rateSection {
   display: flex;
   align-items: center;
 }
@@ -6,6 +6,11 @@
 .score {
   font-size: $h2;
   font-weight: 900;
+}
+
+.starSection {
+  display: flex;
+  align-items: center;
 }
 
 .starBtn {
@@ -16,8 +21,9 @@
 
 .star {
   display: inline-block;
-    width: 38px;
-    height: 36px;
-    background-image: url(../../IMAGES/star_full.svg);
-    background-size: cover;
+  width: 38px;
+  height: 36px;
+  margin-left: 4px;
+  background-image: url(../../IMAGES/star_full.svg);
+  background-size: cover;
 }

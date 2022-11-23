@@ -19,6 +19,10 @@
     margin-bottom: 1 * $min-space;
 }
 
+.mb-1 {
+    margin-bottom: 1 * $space;
+}
+
 .mb-3 {
     margin-bottom: 3 * $space;
 }
@@ -31,6 +35,10 @@
     margin-bottom: 5 * $space;
 }
 
+.mb-7 {
+    margin-bottom: 7 * $space;
+}
+
 .mb-8 {
     margin-bottom: 8 * $space;
 }
@@ -41,6 +49,10 @@
 
 .mb-20 {
     margin-bottom: 20 * $space;
+}
+
+.ml-half-1 {
+    margin-left: 1 * $min-space;
 }
 
 .ml-2 {
