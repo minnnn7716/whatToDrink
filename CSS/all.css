@@ -1590,4 +1590,38 @@ textarea {
   border: 2px solid #ffffff;
   background-color: #F095FF;
   color: #ffffff;
+}
+
+.shopsList {
+  display: flex;
+  height: 100vh;
+}
+.shopsList li {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shopsList li img {
+  width: 60%;
+}
+
+.shopsList-kebuke {
+  background-color: #003C4F;
+}
+
+.shopsList-50 {
+  background-color: #F5E702;
+}
+
+.shopsList-tptea {
+  background-color: #F2EBE2;
+}
+
+.shopsList-chingshin {
+  background-color: #005743;
+}
+
+.shopsList-john {
+  background-color: #183263;
 }/*# sourceMappingURL=all.css.map */

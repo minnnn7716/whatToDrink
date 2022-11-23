@@ -1,0 +1,35 @@
+.shopsList {
+    display: flex;
+    height: 100vh;
+
+    li {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 60%;
+        }
+    }
+}
+
+.shopsList-kebuke {
+    background-color: #003C4F;
+}
+
+.shopsList-50 {
+    background-color: #F5E702;
+}
+
+.shopsList-tptea {
+    background-color: #F2EBE2;
+}
+
+.shopsList-chingshin {
+    background-color: #005743;
+}
+
+.shopsList-john {
+    background-color: #183263;
+}

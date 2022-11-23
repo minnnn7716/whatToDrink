@@ -25,6 +25,9 @@ function innerNavbar() {
     if (pageName === "index") {
         navbarStatus = `navbar navbar-hide`;
         logoStatus = `logo`;
+    } else if (pageName === "shops-all") {
+        navbarStatus = `navbar navbar-show`;
+        logoStatus = `logo-outline`;
     } else {
         navbarStatus = `navbar navbar-show`;
         logoStatus = `logo-outline`;
