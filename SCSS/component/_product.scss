@@ -30,20 +30,143 @@
 
         .firstRow {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
+            margin-bottom: 12px;
         }
 
         // component - rate
+        .rateSection {
+            padding-top: 4px;
+        }
+
         .score {
-            margin-right: 8px;
-            font-size: $h4;
+            margin-right: 4px;
+            font-size: $h5;
             font-weight: 900;
         }
 
-        .star {
-            width: 22px;
-            height: 21.5px;
+        .starSection {
+            padding-bottom: 4px;
         }
+
+        .star {
+            width: 20px;
+            height: 19.5px;
+        }
+
+        .secondRow {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .specialPoint-item {
+            display: inline-block;
+            font-size: $body2;
+            padding: 8px 16px 6px 16px;
+            border-radius: 40px;
+        }
+
+        .specialPoint-recommend {
+            background-color: $secondary_300;
+        }
+
+        .specialPoint-period {
+            background-color: $accent_300;
+        }
+
+        .priceInfor {
+            font-size: $h5;
+        }
+    }
+}
+
+.product-table {
+    .hide {
+        visibility: hidden;
+    }
+
+    thead th {
+        padding: 16px 0 14px 0;
+        font-size: $h5;
+        font-weight: 500;
+        background-color: $primary;
+
+        &:first-child {
+            padding-left: 30px;
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+        }
+
+        &:last-child {
+            padding-right: 30px;
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+    }
+
+    .reteColumn {
+        width: 140px;
+    }
+
+    .caffeineColumn {
+        width: 100px;
+    }
+
+    .facoriteColumn {
+        width: 60px;
+    }
+
+    .itemSection td {
+        display: table-cell;
+        text-align: center;
+        font-family: $chiFont;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $gray_900;
+
+        &:first-child {
+            padding-left: 16px;
+            text-align: left;
+        }
+
+        &:last-child {
+            padding-right: 30px;
+        }
+    }
+
+    .table-name {
+        font-weight: 500;
+        color: $secondary_600;
+    }
+
+    .table-shop {
+        font-weight: 500;
+        color: $accent_600;
+    }
+
+    .score {
+        margin-right: 4px;
+        font-size: $body1;
+        font-weight: 500;
+    }
+
+    .star {
+        width: 17.5px;
+        height: 17px;
+    }
+
+    .table-special i:first-child {
+        margin-right: 8px;
+    }
+
+    .fa-snowflake {
+        font-size: $h5;
+        color: $secondary_600;
+    }
+
+    .fa-thumbs-up {
+        font-size: $h5;
+        color: $accent;
     }
 }

@@ -13,23 +13,27 @@
 
 */
 
-let navbarSection = document.querySelector("#navbarSection");
-let footer = document.querySelector("#footerSecrion");
+
 let pageName = document.querySelector("body").getAttribute("id");
 
+
 function innerNavbar() {
-    let navbarStatus = "";
+    let navbarSection = document.querySelector("#navbarSection");
+    let navbarStatus;
+    let logoStatus;
 
     if (pageName === "index") {
         navbarStatus = `navbar navbar-hide`;
+        logoStatus = `logo`;
     } else {
         navbarStatus = `navbar navbar-show`;
-        document.querySelector("body").classList.add("pushSpace")
+        logoStatus = `logo-outline`;
+        document.querySelector("body").classList.add("pushSpace");
     }
 
     let content = `
     <div id="navbar" class="${navbarStatus}">
-    <a class="logo"  href="./index.html">
+    <a id="logo" class="${logoStatus}"  href="./index.html">
         <h1 class="logo-text">What <br> to Drink</h1>
     </a>
     <ul class="navbar-link">
@@ -61,6 +65,8 @@ function innerNavbar() {
 }
 
 function innerFooter() {
+    let footer = document.querySelector("#footerSecrion");
+
     footer.innerHTML = `
     <div id="footer">
     <div class="footer-container">
@@ -83,19 +89,25 @@ function innerFooter() {
 function scrollChangeNavbar() {
     if (pageName === "index") {
         let navbar = document.querySelector("#navbar");
+        let logo = document.querySelector("#logo");
 
         window.addEventListener("scroll", e => {
             if (window.scrollY > 450) {
                 navbar.classList.remove("navbar-hide");
                 navbar.classList.add("navbar-show");
+                logo.classList.remove("logo");
+                logo.classList.add("logo-outline");
             } else {
                 navbar.classList.remove("navbar-show");
                 navbar.classList.add("navbar-hide");
+                logo.classList.remove("logo-outline");
+                logo.classList.add("logo");
             }
         })
     }
 }
 
+
 innerNavbar();
 innerFooter();
-scrollChangeNavbar()
+scrollChangeNavbar();
