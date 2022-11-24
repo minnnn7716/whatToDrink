@@ -161,10 +161,7 @@
     font-size: $h3;
     font-weight: 500;
     letter-spacing: .5em;
-    text-shadow: -2px 2px 0 $white,
-        2px 2px 0 $white,
-        2px -2px 0 $white,
-        -2px -2px 0 $white;
+    @include stroke($white, 2px);
 }
 
 .recommend-shopTag {

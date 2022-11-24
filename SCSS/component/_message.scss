@@ -1,4 +1,4 @@
-.message{
+.message {
     position: relative;
     padding: 0 24px 16px 80px;
     font-family: $chiFont;
@@ -6,38 +6,51 @@
     border-radius: 16px;
 }
 
-.message-header{
+.message-header {
     margin-top: -12px;
 }
 
-.message-photo{
+.message-photo {
     position: absolute;
     top: -24px;
     left: -24px;
 }
 
 .message-title,
-.message-rate{
+.message-rate {
     padding: 0 4px;
     background-color: $white;
 }
 
-.message-name{
+.message-name {
     font-size: $h5;
 }
 
-.message-allNum{
+.message-allNum {
     font-size: $body2;
 }
 
-.message-rate{
-    .star{
+.message-rate {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .star {
         width: 19.5px;
         height: 19px;
     }
 }
 
-.message-infor{
+.message-infor {
     font-size: $body2;
     text-align: right;
+    margin-bottom: 4px;
+}
+
+.message-date {
+    display: inline-block;
+    padding: 2px 12px;
+    font-size: $body2;
+    border-radius: 20px;
+    background-color: $primary_300;
 }

@@ -14,21 +14,21 @@
 */
 
 
-let pageName = document.querySelector("body").getAttribute("id");
-
+let pageType = document.querySelector("body").getAttribute("data-pageType");
+console.log(pageType)
 
 function innerNavbar() {
     let navbarSection = document.querySelector("#navbarSection");
     let navbarStatus;
     let logoStatus;
 
-    if (pageName === "index") {
+    if (pageType === "index") {
         navbarStatus = `navbar navbar-hide`;
         logoStatus = `logo`;
-    } else if (pageName === "shops-all") {
+    } else if (pageType === "noGutterPage") {
         navbarStatus = `navbar navbar-show`;
         logoStatus = `logo-outline`;
-    } else {
+    } else if ((pageType === "normalPage")) {
         navbarStatus = `navbar navbar-show`;
         logoStatus = `logo-outline`;
         document.querySelector("body").classList.add("pushSpace");
@@ -90,7 +90,7 @@ function innerFooter() {
 }
 
 function scrollChangeNavbar() {
-    if (pageName === "index") {
+    if (pageType === "index") {
         let navbar = document.querySelector("#navbar");
         let logo = document.querySelector("#logo");
 

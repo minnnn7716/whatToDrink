@@ -6,7 +6,11 @@
     flex-direction: column;
 }
 
-.flex-stretch{
+.flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-stretch {
     flex: 1 1 0;
 }
 
@@ -14,7 +18,7 @@
     justify-content: center;
 }
 
-.justify-between{
+.justify-between {
     justify-content: space-between;
 }
 
@@ -22,10 +26,10 @@
     align-items: center;
 }
 
-.align-start{
+.align-start {
     align-items: flex-start;
 }
 
-.position-a{
+.position-a {
     position: absolute;
 }

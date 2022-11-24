@@ -14,16 +14,24 @@
 }
 
 .starBtn {
-  .star:hover {
-    background-image: url(../../IMAGES/star_empty.svg);
+  .starEmpty:hover {
+    background-image: url(../../IMAGES/star_full.svg);
   }
 }
 
-.star {
+.star,
+.starEmpty {
   display: inline-block;
   width: 38px;
   height: 36px;
   margin-left: 4px;
-  background-image: url(../../IMAGES/star_full.svg);
   background-size: cover;
+}
+
+.star {
+  background-image: url(../../IMAGES/star_full.svg);
+}
+
+.starEmpty {
+  background-image: url(../../IMAGES/star_empty.svg);
 }
