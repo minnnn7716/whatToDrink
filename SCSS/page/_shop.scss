@@ -6,6 +6,7 @@
     li {
         width: 20%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         transform: skew(-5deg, 0deg);
@@ -15,6 +16,29 @@
             transform: skew(5deg, 0deg);
         }
     }
+}
+
+.shopsList-Btn-dark,
+.shopsList-Btn-light {
+    transform: skew(5deg, 0deg);
+    width: 45%;
+    padding: 8px 0;
+    margin-top: 5%;
+    margin-left: 10%;
+    border: 1px solid;
+    border-radius: 40px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.shopsList-Btn-dark {
+    border-color: $gray_900;
+    color: $gray_900;
+}
+
+.shopsList-Btn-light {
+    border-color: $white;
+    color: $white;
 }
 
 .shopsList-kebuke {
