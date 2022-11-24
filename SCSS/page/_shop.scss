@@ -1,21 +1,35 @@
 .shopsList {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 
     li {
         width: 20%;
         display: flex;
         justify-content: center;
         align-items: center;
+        transform: skew(-5deg, 0deg);
 
         img {
             width: 60%;
+            transform: skew(5deg, 0deg);
         }
     }
 }
 
 .shopsList-kebuke {
+    position: relative;
     background-color: #003C4F;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        transform: skew(5deg, 0deg);
+        background-color: #003C4F;
+    }
 }
 
 .shopsList-50 {
@@ -31,5 +45,16 @@
 }
 
 .shopsList-john {
+    position: relative;
     background-color: #183263;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        width: 115%;
+        height: 100%;
+        background-color: #183263;
+    }
 }
