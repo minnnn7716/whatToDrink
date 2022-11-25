@@ -520,6 +520,10 @@ input:focus {
   margin-right: 4px;
 }
 
+.mr-half-3 {
+  margin-right: 12px;
+}
+
 .mr-1 {
   margin-right: 8px;
 }
@@ -528,12 +532,20 @@ input:focus {
   margin-right: 16px;
 }
 
+.mr-3 {
+  margin-right: 24px;
+}
+
 .mb-half-1 {
   margin-bottom: 4px;
 }
 
 .mb-1 {
   margin-bottom: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 16px;
 }
 
 .mb-3 {
@@ -546,6 +558,10 @@ input:focus {
 
 .mb-5 {
   margin-bottom: 40px;
+}
+
+.mb-6 {
+  margin-bottom: 48px;
 }
 
 .mb-7 {
@@ -620,12 +636,20 @@ input:focus {
   justify-content: space-between;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .align-center {
   align-items: center;
 }
 
 .align-start {
   align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
 }
 
 .position-a {
@@ -718,6 +742,7 @@ input:focus {
   margin-left: 4px;
   margin-top: 8px;
   margin-bottom: -8px;
+  margin-right: 0;
 }
 
 .filterBtnSection {
@@ -779,6 +804,30 @@ input:focus {
   max-height: 400px;
   padding: 12px;
   border: 1px solid #3C3C3C;
+}
+
+.filterSection {
+  display: inline-block;
+  position: relative;
+}
+.filterSection .selector {
+  width: 180px;
+  font-size: 1rem;
+  border: 1px solid #000000;
+  border-radius: 40px;
+  padding: 12px 24px 12px 24px;
+  appearance: none;
+}
+.filterSection .selector:focus-visible {
+  border-color: #66C5D2;
+  outline: 1px solid #66C5D2;
+}
+.filterSection .fa-caret-down {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .switchBar {
@@ -981,6 +1030,77 @@ input:focus {
   background-image: url(../../IMAGES/star_empty.svg);
 }
 
+.wholeRateSection {
+  display: flex;
+  align-items: center;
+}
+.wholeRateSection .scoreSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wholeRateSection .scoreSection .num {
+  font-size: 6rem;
+}
+.wholeRateSection .scoreSection .star {
+  width: 22.5px;
+  height: 22px;
+}
+.wholeRateSection .scoreSection .rateNum {
+  font-family: "Noto Sans TC";
+}
+.wholeRateSection .eachStarSection .starComponent {
+  display: flex;
+  align-items: center;
+}
+.wholeRateSection .eachStarSection .starComponent div,
+.wholeRateSection .eachStarSection .starComponent p {
+  margin-right: 24px;
+}
+.wholeRateSection .eachStarSection .star,
+.wholeRateSection .eachStarSection .starEmpty {
+  width: 17.5px;
+  height: 17px;
+}
+.wholeRateSection .eachStarSection .numBar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  box-sizing: content-box;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+.wholeRateSection .eachStarSection .numBar-content {
+  position: absolute;
+  width: 60%;
+  height: 16px;
+  top: -1px;
+  left: -1px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  background-color: #FFF066;
+}
+.wholeRateSection .eachStarSection .numText {
+  font-family: "Noto Sans TC";
+}
+.wholeRateSection .eachStarSection .pinIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  transition: all ease 0.3s;
+}
+.wholeRateSection .eachStarSection .pinIcon:hover,
+.wholeRateSection .eachStarSection .pinIcon .pinIcon.active {
+  color: #92409F;
+  border-color: #F7C7FF;
+  background-color: #F7C7FF;
+}
+
 .userPhoto-circle {
   width: 90px;
   height: 90px;
@@ -1043,6 +1163,76 @@ input:focus {
   font-size: 0.875rem;
   border-radius: 20px;
   background-color: #FFF490;
+}
+
+.message-hasPhoto .photoGroup-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.message-hasPhoto .photoGroup-text .title {
+  font-size: 1.25rem;
+}
+.message-hasPhoto .photoGroup-text .star {
+  width: 16.5px;
+  height: 16px;
+  margin-left: 0;
+}
+.message-hasPhoto .photoGroup-text .score {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.message-hasPhoto .photoGroup-text .size {
+  display: inline-block;
+  width: 20%;
+}
+
+.message-content {
+  display: flex;
+  align-items: flex-end;
+}
+
+.message-likeThis {
+  position: relative;
+  padding-right: 33px;
+}
+.message-likeThis:hover .fa-thumbs-up {
+  color: #D271E2;
+  border-color: #D271E2;
+}
+.message-likeThis:hover .likeThis-num {
+  background-color: #F7C7FF;
+}
+.message-likeThis .fa-thumbs-up {
+  position: relative;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all ease 0.5s;
+}
+.message-likeThis .likeThis-num {
+  position: absolute;
+  top: 50%;
+  left: 28px;
+  transform: translateY(-50%);
+  padding: 0 8px 4px 20px;
+  border-radius: 20px;
+  background-color: #FFF490;
+  transition: all ease 0.3s;
+}
+
+.message-divider {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #D1D1D1;
+  margin: 32px 0;
 }
 
 .product-img .imgSection {
@@ -1181,6 +1371,43 @@ input:focus {
 .product-table .fa-thumbs-up {
   font-size: 1.25rem;
   color: #F095FF;
+}
+
+.popup {
+  position: absolute;
+  height: 80vh;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  padding: 16px;
+  border-radius: 16px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  overflow-y: scroll;
+}
+.popup::-webkit-scrollbar-track {
+  padding: 1px 0;
+  background-color: #EFFDFF;
+  border: 1px solid #99E4EE;
+  border-radius: 10px;
+}
+.popup::-webkit-scrollbar {
+  width: 10px;
+  height: 90%;
+}
+.popup::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #99E4EE;
+  border: 1px solid #7C7C7C;
+}
+
+.popupBG {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4392156863);
 }
 
 *,

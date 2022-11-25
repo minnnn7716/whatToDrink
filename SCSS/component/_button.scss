@@ -99,6 +99,7 @@
         margin-left: 4px;
         margin-top: 8px;
         margin-bottom: -8px;
+        margin-right: 0;
     }
 }
 
@@ -167,4 +168,33 @@
     max-height: 400px;
     padding: 12px;
     border: 1px solid $gray_900;
+}
+
+
+// 下拉選單
+.filterSection {
+    display: inline-block;
+    position: relative;
+
+    .selector {
+        width: 180px;
+        font-size: $body1;
+        border: 1px solid $black;
+        border-radius: 40px;
+        padding: 12px 24px 12px 24px;
+        appearance: none;
+
+        &:focus-visible {
+            border-color: $secondary_600;
+            outline: 1px solid $secondary_600;
+        }
+    }
+
+    .fa-caret-down {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
 }

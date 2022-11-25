@@ -54,3 +54,83 @@
     border-radius: 20px;
     background-color: $primary_300;
 }
+
+.message-hasPhoto {
+    .photoGroup-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            font-size: $h5;
+        }
+
+        .star {
+            width: 16.5px;
+            height: 16px;
+            margin-left: 0;
+        }
+
+        .score {
+            font-size: $body1;
+            font-weight: 500;
+        }
+
+        .size {
+            display: inline-block;
+            width: 20%;
+        }
+    }
+}
+
+.message-content {
+    display: flex;
+    align-items: flex-end;
+}
+
+.message-likeThis {
+    position: relative;
+    padding-right: 33px;
+
+    &:hover .fa-thumbs-up {
+        color: $accent_600;
+        border-color: $accent_600;
+    }
+
+    &:hover .likeThis-num {
+        background-color: $accent_300;
+    }
+
+    .fa-thumbs-up {
+        position: relative;
+        z-index: 2;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $h4;
+        border: 2px solid $black;
+        border-radius: 50%;
+        background-color: $white;
+        transition: all ease .5s;
+    }
+
+    .likeThis-num {
+        position: absolute;
+        top: 50%;
+        left: 28px;
+        transform: translateY(-50%);
+        padding: 0 8px 4px 20px;
+        border-radius: 20px;
+        background-color: $primary_300;
+        transition: all ease .3s;
+    }
+}
+
+.message-divider {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed $gray;
+    margin: 32px 0;
+}
