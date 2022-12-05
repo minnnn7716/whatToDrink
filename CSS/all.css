@@ -516,6 +516,10 @@ input:focus {
   margin-top: 24px;
 }
 
+.mt-5 {
+  margin-top: 40px;
+}
+
 .mr-half-1 {
   margin-right: 4px;
 }
@@ -600,16 +604,32 @@ input:focus {
   padding-top: 96px;
 }
 
+.pr-2 {
+  padding-right: 16px;
+}
+
 .pr-4 {
   padding-right: 32px;
+}
+
+.pb-8 {
+  padding-bottom: 64px;
 }
 
 .pb-12 {
   padding-bottom: 96px;
 }
 
+.pl-2 {
+  padding-left: 16px;
+}
+
 .pl-3 {
   padding-left: 24px;
+}
+
+.pl-4 {
+  padding-left: 32px;
 }
 
 .flex {
@@ -654,6 +674,10 @@ input:focus {
 
 .position-a {
   position: absolute;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 .btn {
@@ -828,6 +852,29 @@ input:focus {
   right: 12px;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.shopTag {
+  font-size: 1.25rem;
+  padding: 12px 6px 12px 8px;
+  border: 1px solid #3C3C3C;
+  border-radius: 40px;
+  background-color: #ffffff;
+}
+
+.specialPoint-item {
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 8px 16px 6px 16px;
+  border-radius: 40px;
+}
+
+.specialPoint-recommend {
+  background-color: #C3F8FF;
+}
+
+.specialPoint-period {
+  background-color: #F7C7FF;
 }
 
 .switchBar {
@@ -1285,18 +1332,6 @@ input:focus {
   display: flex;
   justify-content: space-between;
 }
-.product-img .textSection .specialPoint-item {
-  display: inline-block;
-  font-size: 0.875rem;
-  padding: 8px 16px 6px 16px;
-  border-radius: 40px;
-}
-.product-img .textSection .specialPoint-recommend {
-  background-color: #C3F8FF;
-}
-.product-img .textSection .specialPoint-period {
-  background-color: #F7C7FF;
-}
 .product-img .textSection .priceInfor {
   font-size: 1.25rem;
 }
@@ -1376,29 +1411,35 @@ input:focus {
 .popup {
   position: absolute;
   height: 80vh;
-  width: 80%;
+  width: 70%;
   top: 50%;
   left: 50%;
-  padding: 16px;
+  padding: 16px 26px 0 16px;
   border-radius: 16px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -45%);
   background-color: #ffffff;
-  overflow-y: scroll;
 }
-.popup::-webkit-scrollbar-track {
-  padding: 1px 0;
+.popup::after {
+  content: "";
+  position: absolute;
+  right: 26px;
+  height: calc(100% - 86px);
+  top: 64px;
+  width: 12px;
+  border-radius: 10px;
   background-color: #EFFDFF;
   border: 1px solid #99E4EE;
-  border-radius: 10px;
 }
-.popup::-webkit-scrollbar {
-  width: 10px;
-  height: 90%;
-}
-.popup::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #99E4EE;
-  border: 1px solid #7C7C7C;
+.popup .shopTag {
+  position: absolute;
+  top: 32px;
+  left: -24px;
+  padding: 20px 12px 20px 8px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  writing-mode: vertical-lr;
+  background-color: #ffffff;
 }
 
 .popupBG {
@@ -1408,6 +1449,45 @@ input:focus {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.4392156863);
+}
+
+.popScroll {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.popScroll::-webkit-scrollbar {
+  display: block;
+  width: 12px;
+}
+.popScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.popScroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #99E4EE;
+  border: 1px solid #7C7C7C;
+}
+.popScroll::-webkit-scrollbar-track-piece:end {
+  margin-bottom: 8px;
+}
+.popScroll::-webkit-scrollbar-track-piece:start {
+  margin-top: 48px;
+}
+
+.popup-close {
+  z-index: 5;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 2rem;
+  color: #F095FF;
+}
+.popup-close:hover {
+  color: #FFCD1A;
 }
 
 *,
@@ -1775,14 +1855,6 @@ textarea {
   text-shadow: -2px -2px 0 #ffffff, 0 -2px 0 #ffffff, 2px -2px 0 #ffffff, 2px 0 0 #ffffff, 2px 2px 0 #ffffff, 0 2px 0 #ffffff, -2px 2px 0 #ffffff, -2px 0 0 #ffffff;
 }
 
-.recommend-shopTag {
-  font-size: 1.25rem;
-  padding: 12px 6px 12px 8px;
-  border: 1px solid #3C3C3C;
-  border-radius: 40px;
-  background-color: #ffffff;
-}
-
 .recommend-inforSection {
   position: absolute;
   left: 0;
@@ -2092,10 +2164,15 @@ textarea {
 .menu-kind td {
   text-align: center;
   border-bottom: 1px solid #BDBDBD;
-  padding: 8px;
 }
 .menu-kind .menu-kind-name {
   text-align: left;
+}
+.menu-kind .menu-kind-link {
+  padding: 16px 8px;
+}
+.menu-kind .menu-kind-link:hover {
+  color: #AE7D00;
 }
 .menu-kind .menu-kind-price {
   text-align: right;
@@ -2131,4 +2208,70 @@ textarea {
 
 .menu-kind-favorite {
   width: 50px;
+}
+
+#shops-menu .popupBG {
+  display: none;
+}
+
+.drink-infor-title {
+  font-family: "Noto Sans TC";
+}
+.drink-infor-title .shopTag {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 8px 24px 6px 24px;
+}
+.drink-infor-title .drinkName {
+  font-size: 2rem;
+}
+.drink-infor-title .size {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.drink-infor-title .capacity {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #7C7C7C;
+}
+.drink-infor-title .priceInfor-divider {
+  width: 1px;
+  margin: 4px 32px;
+  background-color: #000000;
+}
+
+.drink-infor-func {
+  text-align: right;
+}
+.drink-infor-func .star {
+  width: 31px;
+  height: 30px;
+}
+.drink-infor-func .score {
+  font-size: 2rem;
+}
+.drink-infor-func .heartBtn {
+  padding-right: 0;
+}
+
+#wheel .container {
+  height: calc(100vh - 64px);
+}
+
+.wheelBtnImg img {
+  position: relative;
+}
+.wheelBtnImg img::before {
+  content: "tsehu";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+
+.wheelBtnImg img:hover::before {
+  top: 8px;
+  left: 8px;
 }/*# sourceMappingURL=all.css.map */

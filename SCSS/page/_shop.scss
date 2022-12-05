@@ -263,11 +263,18 @@
     td {
         text-align: center;
         border-bottom: 1px solid $gray_500;
-        padding: 8px;
     }
 
     .menu-kind-name {
         text-align: left;
+    }
+
+    .menu-kind-link {
+        padding: 16px 8px;
+
+        &:hover {
+            color: $primary_900;
+        }
     }
 
     .menu-kind-price {
@@ -312,4 +319,70 @@
 
 .menu-kind-favorite {
     width: 50px;
+}
+
+#shops-menu .popupBG {
+    display: none;
+}
+
+// .drink-infor-imgOuter {
+//     position: relative;
+//     overflow: hidden;
+//     width: 100%;
+
+//     img {
+//         position: absolute;
+//         height: 100%;
+//         width: auto;
+//         right: 50%;
+//         transform: translateX(50%);
+//     }
+// }
+
+.drink-infor-title {
+    font-family: $chiFont;
+
+    .shopTag {
+        display: inline-block;
+        font-size: $body1;
+        padding: 8px 24px 6px 24px;
+    }
+
+    .drinkName {
+        font-size: $h3;
+    }
+
+    .size {
+        font-size: $h5;
+        font-weight: 500;
+    }
+
+    .capacity {
+        font-size: $body2;
+        font-weight: 400;
+        color: $gray_600;
+    }
+
+    .priceInfor-divider {
+        width: 1px;
+        margin: 4px 32px;
+        background-color: $black;
+    }
+}
+
+.drink-infor-func {
+    text-align: right;
+
+    .star {
+        width: 31px;
+        height: 30px;
+    }
+
+    .score {
+        font-size: $h3;
+    }
+
+    .heartBtn {
+        padding-right: 0;
+    }
 }

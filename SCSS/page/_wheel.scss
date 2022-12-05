@@ -1,0 +1,26 @@
+#wheel {
+    .container {
+        height: calc(100vh - 64px);
+    }
+}
+
+.wheelBtnImg {
+    img {
+        position: relative;
+
+        &::before {
+            content: "tsehu";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 100%;
+            height: 100%;
+            background-color: $black;
+        }
+    }
+}
+
+.wheelBtnImg img:hover::before {
+    top: 8px;
+    left: 8px;
+}

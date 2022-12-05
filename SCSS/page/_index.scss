@@ -164,14 +164,6 @@
     @include stroke($white, 2px);
 }
 
-.recommend-shopTag {
-    font-size: $h5;
-    padding: 12px 6px 12px 8px;
-    border: 1px solid $gray_900;
-    border-radius: 40px;
-    background-color: $white;
-}
-
 .recommend-inforSection {
     position: absolute;
     left: 0;
