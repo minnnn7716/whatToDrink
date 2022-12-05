@@ -2257,18 +2257,17 @@ textarea {
 #wheel .container {
   height: calc(100vh - 64px);
 }
+#wheel .subtitle {
+  background-color: #3C3C3C;
+  color: #ffffff;
+  font-weight: 500;
+}
 
 .wheelBtnImg img {
-  position: relative;
+  transition: all ease 0.5s;
 }
-.wheelBtnImg img::before {
-  content: "tsehu";
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 100%;
-  height: 100%;
-  background-color: #000000;
+.wheelBtnImg img:hover {
+  filter: saturate(150%);
 }
 
 .wheelBtnImg img:hover::before {
