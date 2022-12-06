@@ -9,19 +9,7 @@
     transform: translate(-50%, -45%);
     background-color: $white;
 
-    &::after{
-        content: "";
-        position: absolute;
-        right: 26px;
-        height: calc(100% - 86px);
-        top: 64px;
-        width: 12px;
-        border-radius: 10px;
-        background-color: $secondary_100;
-        border: 1px solid $secondary;
-    }
-    
-    .shopTag{
+    .shopTag {
         position: absolute;
         top: 32px;
         left: -24px;
@@ -32,6 +20,18 @@
         writing-mode: vertical-lr;
         background-color: $white;
     }
+}
+
+.popup.scroll::after {
+    content: "";
+    position: absolute;
+    right: 26px;
+    height: calc(100% - 86px);
+    top: 64px;
+    width: 12px;
+    border-radius: 10px;
+    background-color: $secondary_100;
+    border: 1px solid $secondary;
 }
 
 .popupBG {
@@ -55,26 +55,27 @@
         display: block;
         width: 12px;
     }
+
     &::-webkit-scrollbar-track {
         background: transparent;
     }
-        
+
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background-color: $secondary;
         border: 1px solid $gray_600;
     }
-    
+
     &::-webkit-scrollbar-track-piece:end {
-        margin-bottom: 8px; 
+        margin-bottom: 8px;
     }
-    
+
     &::-webkit-scrollbar-track-piece:start {
         margin-top: 48px;
     }
 }
 
-.popup-close{
+.popup-close {
     z-index: 5;
     position: absolute;
     top: 16px;
@@ -82,7 +83,7 @@
     font-size: $h3;
     color: $accent;
 
-    &:hover{
+    &:hover {
         color: $primary_600;
     }
 }

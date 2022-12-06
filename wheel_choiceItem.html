@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google fonts cdn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Oleo+Script:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- main css -->
+    <link rel="stylesheet" href="./CSS/all.css">
+
+    <title>What to Drink - 轉盤</title>
+</head>
+
+<body id="wheel-choice" data-pageType="normalPage">
+    <header>
+        <div id="navbarSection" class="mb-8"></div>
+    </header>
+
+    <div class="container flex flex-column justify-center">
+        <div class="row">
+            <div class="content-subtitleSection mb-5 col-12 flex justify-between align-center">
+                <h4 class="subtitle">轉轉轉，飲料跟著一起來～</h4>
+                <a href="./wheel.html" class="btn-shadow">返回</a>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <a href="./wheel_choiceItem.html" class="col-6 pr-2 wheelBtnImg">
+                <img src="./IMAGES/wheel_drinkBtn.webp" alt="">
+            </a>
+            <form class="col-6 wheelForm flex flex-column justify-between">
+                <div class="wheelForm-selectroup">
+                    <div class="wheelForm-select">
+                        <label for="drinkKind">飲料種類</label>
+                        <div class="filterSection flex-stretch">
+                            <i class="fa-solid fa-caret-down"></i>
+                            <select name="drinkKind" id="drinkKind" class="selector">
+                                <i class="fa-solid fa-caret-down"></i>
+                                <option value="請選擇" disabled selected>請選擇</option>
+                                <option value="隨機">隨機</option>
+                                <option value="純茶">純茶</option>
+                                <option value="特調">特調</option>
+                                <option value="奶奶">奶奶</option>
+                                <option value="料多多">料多多</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="wheelForm-select">
+                        <label for="drinkBase">基底飲料</label>
+                        <div class="filterSection flex-stretch">
+                            <i class="fa-solid fa-caret-down"></i>
+                            <select name="drinkBase" id="drinkBase" class="selector">
+                                <option value="請選擇" disabled selected>請選擇</option>
+                                <option value="隨機">隨機</option>
+                                <option value="紅茶">紅茶</option>
+                                <option value="綠茶">綠茶</option>
+                                <option value="清茶">清茶</option>
+                                <option value="烏龍茶">烏龍茶</option>
+                                <option value="冬瓜茶">普洱茶</option>
+                                <option value="冬瓜茶">鐵觀音</option>
+                                <option value="冬瓜茶">冬瓜茶</option>
+                                <option value="無咖啡因茶">無咖啡因茶</option>
+                                <option value="果汁">果汁</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="wheelForm-select">
+                        <label for="drinkMix">調和飲品</label>
+                        <div class="filterSection flex-stretch">
+                            <i class="fa-solid fa-caret-down"></i>
+                            <select name="drinkMix" id="drinkMix" class="selector">
+                                <option value="請選擇" disabled selected>請選擇</option>
+                                <option value="隨機">隨機</option>
+                                <option value="不添加">不添加</option>
+                                <option value="果汁">果汁</option>
+                                <option value="甘蔗汁">甘蔗汁</option>
+                                <option value="梅子汁">梅子汁</option>
+                                <option value="養樂多">養樂多</option>
+                                <option value="蜂蜜">蜂蜜</option>
+                                <option value="豆漿">豆漿</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="wheelForm-select">
+                        <label for="drinkMaterial">各種好料</label>
+                        <div class="filterSection flex-stretch">
+                            <i class="fa-solid fa-caret-down"></i>
+                            <select name="drinkMaterial" id="drinkMaterial" class="selector">
+                                <option value="請選擇" disabled selected>請選擇</option>
+                                <option value="隨機">隨機</option>
+                                <option value="不添加">不添加</option>
+                                <option value="大珍珠 a.k.a 波霸">大珍珠a.k.a波霸</option>
+                                <option value="小珍珠">小珍珠</option>
+                                <option value="粉粿">粉粿</option>
+                                <option value="芋圓">芋圓</option>
+                                <option value="布丁">布丁</option>
+                                <option value="燕麥">燕麥</option>
+                                <option value="寒天">寒天</option>
+                                <option value="椰果">椰果</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="wheelForm-buttonGroup">
+                    <!-- <a href="#" class="btn-shadow circle default"><span>常用<br>選擇</span></a> -->
+                    <a href="#" class="btn-shadow circle default"><span>全部<br>隨機</span></a>
+                    <a href="./wheel_result.html" class="btn-shadow circle submit"><span>轉吧</span></a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="footerSecrion"></footer>
+
+    <!-- fontawesome cdn -->
+    <script src="https://kit.fontawesome.com/d52bba7b7b.js" crossorigin="anonymous"></script>
+    <!-- axios cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <!-- main js -->
+    <script src="./JS/init.js"></script>
+    <script src="./JS/main.js"></script>
+</body>
+
+</html>

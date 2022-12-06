@@ -386,3 +386,30 @@
         padding-right: 0;
     }
 }
+
+#drink .popup {
+    height: auto;
+}
+
+.drinkCommentRate {
+    display: flex;
+
+    p {
+        font-size: $h4;
+        font-weight: 500;
+    }
+
+    .starEmpty {
+        width: 30px;
+        height: 29.5px;
+    }
+}
+
+.drinkCommentText {
+    width: 100%;
+    min-height: 200px;
+    padding: 16px;
+    border: 1px solid $gray_900;
+    border-radius: 16px;
+    font-size: $body1;
+}

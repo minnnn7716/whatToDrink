@@ -103,6 +103,22 @@
     }
 }
 
+.btn-shadow.circle {
+    position: relative;
+    padding: 0;
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 50%;
+
+    span {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        font-weight: 500;
+    }
+}
+
 // 篩選按鈕
 .filterBtnSection {
     position: relative;

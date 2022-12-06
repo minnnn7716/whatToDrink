@@ -1,8 +1,5 @@
-#wheel {
-    .container {
-        height: calc(100vh - 64px);
-    }
-
+#wheel,
+#wheel-choice {
     .subtitle {
         background-color: $gray_900;
         color: $white;
@@ -10,7 +7,7 @@
     }
 }
 
-.wheelBtnImg {
+#wheel .wheelBtnImg {
     img {
         transition: all ease .5s;
 
@@ -21,7 +18,89 @@
 
 }
 
-.wheelBtnImg img:hover::before {
+#wheel .wheelBtnImg img:hover::before {
     top: 8px;
     left: 8px;
+}
+
+#wheel-choice {
+    .btn-shadow {
+        padding: 12px 40px;
+    }
+}
+
+.wheelForm-select {
+    display: flex;
+    align-items: center;
+    font-size: $h5;
+    font-weight: 500;
+    margin-bottom: 16px;
+
+    label {
+        padding-right: 16px;
+    }
+
+    .selector {
+        width: 100%;
+        padding: 16px 24px;
+    }
+
+    .fa-caret-down {
+        right: 24px;
+    }
+}
+
+.wheelForm-buttonGroup {
+    text-align: right;
+
+    .default {
+        margin-right: 16px;
+
+        &:hover {
+            margin-left: 0;
+            margin-right: 16px;
+        }
+    }
+
+    .submit {
+        background-color: $pink;
+    }
+}
+
+#wheel-result {
+    background: linear-gradient(160deg,
+            $primary_100 2%,
+            $primary_100 42%,
+            $secondary_100 42%,
+            $secondary_100 2%);
+
+    .row {
+        height: 100vh;
+    }
+}
+
+.wheelResult-content {
+    position: relative;
+}
+
+.wheelResult-buttonGroup {
+    position: absolute;
+    bottom: 0;
+    right: -112px;
+    display: flex;
+    flex-direction: column;
+
+    .default {
+        margin-right: 0;
+        margin-bottom: 24px;
+
+        &:hover {
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
+    }
+
+    .submit {
+        background-color: $pink;
+    }
 }
