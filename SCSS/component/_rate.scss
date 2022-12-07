@@ -15,7 +15,7 @@
 
 .starBtn {
   .starEmpty:hover {
-    background-image: url(../../IMAGES/star_full.svg);
+    background-image: url(../../IMAGES/star_full.svg?raw=true);
   }
 }
 
@@ -29,11 +29,11 @@
 }
 
 .star {
-  background-image: url(../../IMAGES/star_full.svg);
+  background-image: url(../../IMAGES/star_full.svg?raw=true);
 }
 
 .starEmpty {
-  background-image: url(../../IMAGES/star_empty.svg);
+  background-image: url(../../IMAGES/star_empty.svg?raw=true);
 }
 
 // 巨大評分版型
