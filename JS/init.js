@@ -46,7 +46,7 @@ function innerNavbar() {
     </ul>
     <ul class="navbar-funcBtn">
         <li>
-            <a href="#" class="heartBtn funcBtn-hover">
+            <a href="./favorite.html" class="heartBtn funcBtn-hover">
                 <i class="fa-regular fa-heart funcBtn-outline"></i>
                 <i class="fa-sharp fa-solid fa-heart funcBtn-solid"></i>
             </a>

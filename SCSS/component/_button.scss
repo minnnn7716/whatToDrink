@@ -47,6 +47,20 @@
     }
 }
 
+.funcBtn-active {
+    .funcBtn-outline {
+        display: none;
+    }
+
+    &:hover .funcBtn-solid {
+        display: none;
+    }
+
+    &:hover .funcBtn-outline {
+        display: inline-block;
+    }
+}
+
 // 含圖片的按鈕
 .imgBtn {
     display: flex;

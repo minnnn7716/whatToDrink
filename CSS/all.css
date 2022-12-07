@@ -725,6 +725,16 @@ input:focus {
   display: inline-block;
 }
 
+.funcBtn-active .funcBtn-outline {
+  display: none;
+}
+.funcBtn-active:hover .funcBtn-solid {
+  display: none;
+}
+.funcBtn-active:hover .funcBtn-outline {
+  display: inline-block;
+}
+
 .imgBtn {
   display: flex;
   flex-direction: column;
@@ -1076,7 +1086,7 @@ input:focus {
 }
 
 .starBtn .starEmpty:hover {
-  background-image: url(../../IMAGES/star_full.svg);
+  background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/486dbbfedad3b447bcb87b3eeaf8b196251bf776/IMAGES/star_full.svg);
 }
 
 .star,
@@ -1089,11 +1099,11 @@ input:focus {
 }
 
 .star {
-  background-image: url(../../IMAGES/star_full.svg);
+  background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/486dbbfedad3b447bcb87b3eeaf8b196251bf776/IMAGES/star_full.svg);
 }
 
 .starEmpty {
-  background-image: url(../../IMAGES/star_empty.svg);
+  background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/486dbbfedad3b447bcb87b3eeaf8b196251bf776/IMAGES/star_empty.svg);
 }
 
 .wholeRateSection {
@@ -1438,7 +1448,7 @@ input:focus {
   transform: translate(-50%, -45%);
   background-color: #ffffff;
 }
-.popup .shopTag {
+.popup .shopTag.sideTitle {
   position: absolute;
   top: 32px;
   left: -24px;
@@ -2113,6 +2123,7 @@ textarea {
 
 .muen-conetent {
   position: relative;
+  min-height: 550px;
   padding-top: 64px;
   border-radius: 24px;
   border: 3px solid #66C5D2;
@@ -2272,6 +2283,11 @@ textarea {
 
 #drink .popup {
   height: auto;
+  padding: 80px 0;
+}
+
+#drink .popupBG {
+  display: none;
 }
 
 .drinkCommentRate {
@@ -2293,6 +2309,29 @@ textarea {
   border: 1px solid #3C3C3C;
   border-radius: 16px;
   font-size: 1rem;
+}
+
+.drinkCommentImg {
+  width: 80%;
+}
+
+.drinkCommentBtn {
+  text-align: right;
+}
+.drinkCommentBtn .btn-shadow {
+  font-size: 1rem;
+  padding: 12px 32px;
+}
+.drinkCommentBtn .send:hover {
+  margin-left: 0;
+  margin-right: 0;
+}
+.drinkCommentBtn .cancle {
+  background-color: #ffffff;
+  margin-right: 16px;
+}
+.drinkCommentBtn .cancle:hover {
+  margin-right: 8px;
 }
 
 #wheel .subtitle,
@@ -2344,7 +2383,7 @@ textarea {
 }
 .wheelForm-buttonGroup .default:hover {
   margin-left: 0;
-  margin-right: 16px;
+  margin-right: -16px;
 }
 .wheelForm-buttonGroup .submit {
   background-color: #EB8A7D;
@@ -2378,4 +2417,17 @@ textarea {
 }
 .wheelResult-buttonGroup .submit {
   background-color: #EB8A7D;
+}
+
+#favorite .muen-conetent {
+  padding-bottom: 64px;
+}
+
+.favoriteTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #F095FF;
+}
+.favoriteTitle h2 {
+  padding-top: 4px;
 }/*# sourceMappingURL=all.css.map */
