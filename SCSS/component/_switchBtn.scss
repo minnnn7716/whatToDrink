@@ -11,6 +11,10 @@
     display: flex;
     border: 1px solid $gray_900;
     background-color: $primary;
+
+    img {
+        pointer-events: none;
+    }
 }
 
 .switchBar-text a {

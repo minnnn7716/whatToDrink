@@ -652,6 +652,10 @@ input:focus {
   flex: 1 1 0;
 }
 
+.justufy-start {
+  justify-content: start;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -921,6 +925,9 @@ input:focus {
   display: flex;
   border: 1px solid #3C3C3C;
   background-color: #FFF066;
+}
+.switchBar-border img {
+  pointer-events: none;
 }
 
 .switchBar-text a {
@@ -1315,14 +1322,14 @@ input:focus {
 
 .product-img .imgSection {
   position: relative;
-  max-height: 340px;
+  max-height: 300px;
   margin-bottom: 12px;
   padding: 12px 0 0 12px;
   overflow: hidden;
 }
 .product-img .shopName {
   position: absolute;
-  top: 0;
+  top: 12px;
   left: 0;
   padding: 10px 24px 8px 24px;
   border: 1px solid #000000;
@@ -1331,6 +1338,7 @@ input:focus {
   background-color: #ffffff;
 }
 .product-img .textSection {
+  display: block;
   padding-left: 12px;
   color: #000000;
 }
@@ -1410,11 +1418,13 @@ input:focus {
 .product-table .itemSection td:last-child {
   padding-right: 30px;
 }
-.product-table .table-name {
+.product-table .table-name a {
+  padding: 16px;
   font-weight: 500;
   color: #1ba1b3;
 }
-.product-table .table-shop {
+.product-table .table-shop a {
+  padding: 16px;
   font-weight: 500;
   color: #D271E2;
 }

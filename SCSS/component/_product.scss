@@ -1,7 +1,7 @@
 .product-img {
     .imgSection {
         position: relative;
-        max-height: 340px;
+        max-height: 300px;
         margin-bottom: 12px;
         padding: 12px 0 0 12px;
         overflow: hidden;
@@ -9,7 +9,7 @@
 
     .shopName {
         position: absolute;
-        top: 0;
+        top: 12px;
         left: 0;
         padding: 10px 24px 8px 24px;
         border: 1px solid $black;
@@ -19,6 +19,7 @@
     }
 
     .textSection {
+        display: block;
         padding-left: 12px;
         color: $black;
 
@@ -120,12 +121,14 @@
         }
     }
 
-    .table-name {
+    .table-name a {
+        padding: 16px;
         font-weight: 500;
         color: $secondary_700;
     }
 
-    .table-shop {
+    .table-shop a {
+        padding: 16px;
         font-weight: 500;
         color: $accent_600;
     }
