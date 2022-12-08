@@ -16,4 +16,4 @@ Oleo R 400
 【JS】
 - json-serve
 監聽資料夾中的 db.json
-json-server --watch ./data/db.json
+json-server --watch ../DATA/db.json

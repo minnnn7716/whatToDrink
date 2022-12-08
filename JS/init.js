@@ -15,7 +15,6 @@
 
 
 let pageType = document.querySelector("body").getAttribute("data-pageType");
-console.log(pageType)
 
 function innerNavbar() {
     let navbarSection = document.querySelector("#navbarSection");

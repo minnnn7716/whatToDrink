@@ -757,12 +757,14 @@ input:focus {
   border: 2px solid #3C3C3C;
   box-shadow: 4px 8px 0 0 #FFF066;
   transition: all ease 0.2s;
+  pointer-events: none;
 }
 .imgBtn span {
   padding: 8px 24px 6px 24px;
   border-radius: 40px;
   font-size: 1.25rem;
   transition: all ease 0.5s;
+  pointer-events: none;
 }
 
 .btn-shadow {
@@ -1410,7 +1412,7 @@ input:focus {
 }
 .product-table .table-name {
   font-weight: 500;
-  color: #66C5D2;
+  color: #1ba1b3;
 }
 .product-table .table-shop {
   font-weight: 500;

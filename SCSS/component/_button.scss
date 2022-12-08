@@ -86,6 +86,7 @@
         border: 2px solid $gray_900;
         box-shadow: 4px 8px 0 0 $primary;
         transition: all ease .2s;
+        pointer-events: none;
     }
 
     span {
@@ -93,6 +94,7 @@
         border-radius: 40px;
         font-size: $h5;
         transition: all ease .5s;
+        pointer-events: none;
     }
 }
 
