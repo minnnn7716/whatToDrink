@@ -15,10 +15,11 @@ function searchfunc() {
 function searchKeyword(e) {
     e.preventDefault();
     let keyword;
+    let inputKind = document.querySelector(".switch-active").dataset.input;
 
     if (searchbarInput.value.trim() !== "") {
         keyword = searchbarInput.value.trim();
-        window.location.assign(`./search.html?word=${keyword}`);
+        window.location.assign(`./search.html?${inputKind}=${keyword}&table`);
     } else {
         alert("你沒有說要喝什麼捏～");
     }

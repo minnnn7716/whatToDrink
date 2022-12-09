@@ -3,17 +3,44 @@ const apiPath = "drinks?_expand=shop";
 const apiUrl = `${baseUrl}${apiPath}`;
 
 const url = location.href;
-const keyword = decodeURIComponent(url.split("=")[1]);
+let keyword = decodeURIComponent(url.split("=")[1].split("&")[0]);
 
-const inforStatus = document.querySelector(".switch-active").dataset.type;
+let inforStatus = url.split("=")[1].split("&")[1];
 const comapctList = document.querySelector(".searchList-comapct");
 const tableList = document.querySelector(".searchList-table");
+const searchbarInput = document.querySelector(".searchBar-input");
 let drinksData;
 let newData;
 
 getDrinks();
 getInforType(inforStatus);
-changeList(inforStatus);
+searchfunc();
+
+// ------------------------
+
+function searchfunc() {
+    const searchbarBtn = document.querySelector(".searchbarBtn");
+
+    searchbarBtn.addEventListener("click", searchKeyword);
+
+    searchbarInput.addEventListener("keydown", e => {
+        if (e.key === "Enter") { searchKeyword(e) };
+    })
+}
+
+function searchKeyword(e) {
+    e.preventDefault();
+
+    if (searchbarInput.value.trim() !== "") {
+        keyword = searchbarInput.value.trim();
+        inforStatus = document.querySelector(".switch-active").dataset.type;
+        window.location.assign(`./search.html?drink=${keyword}&${inforStatus}`);
+    } else {
+        alert("你沒有說要喝什麼捏～");
+    }
+}
+
+// ------------------------
 
 function getDrinks() {
     axios.get(apiUrl)
@@ -134,10 +161,11 @@ function renderData(data, inforStatus) {
 function filterInputData(data) {
     if (url.includes("kind")) {
         newData = data.filter(item => item.type === keyword);
-    } else if (url.includes("word")) {
-        newData = data.filter(item => item.name.match(keyword));
+    } else if (url.includes("drink") || url.includes("shop")) {
+        newData = data.filter(item => item.name.match(keyword) || item.shop.name.match(keyword));
     }
 
+    changeList(inforStatus);
     renderData(newData, inforStatus);
 }
 
@@ -160,7 +188,9 @@ function getInforType(inforStatus) {
     switchBar.addEventListener("click", e => {
         e.preventDefault();
 
-        if (e.target.nodeName === "A") { inforStatus = e.target.dataset.type; }
-        changeList(inforStatus)
+        if (e.target.nodeName === "A") {
+            inforStatus = e.target.dataset.type;
+        }
+        changeList(inforStatus);
     })
 }

@@ -15,5 +15,5 @@ function searchKind(e) {
         keyword = e.target.dataset.kind;
     }
 
-    window.location.assign(`./search.html?kind=${keyword}`);
+    window.location.assign(`./search.html?kind=${keyword}&table`);
 }
