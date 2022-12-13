@@ -12,6 +12,8 @@
     font-size: $body1;
     font-weight: 500;
     background-color: $secondary;
+    opacity: 0;
+    transition: all ease .5s;
 }
 
 .searchResult-filter-close i {

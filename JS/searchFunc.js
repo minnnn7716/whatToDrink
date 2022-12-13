@@ -19,7 +19,7 @@ function searchKeyword(e) {
 
     if (searchbarInput.value.trim() !== "") {
         keyword = searchbarInput.value.trim();
-        window.location.assign(`./search.html?${inputKind}=${keyword}&table`);
+        window.location.assign(`./search.html?${inputKind}=${keyword}`);
     } else {
         alert("你沒有說要喝什麼捏～");
     }

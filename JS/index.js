@@ -15,5 +15,6 @@ function searchKind(e) {
         keyword = e.target.dataset.kind;
     }
 
-    window.location.assign(`./search.html?kind=${keyword}&table`);
+    window.location.assign(`./search.html?kind=${keyword}`);
+    localStorage.setItem("listType", "table");
 }

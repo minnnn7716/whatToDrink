@@ -33,7 +33,7 @@
                         <a class="searchbarBtn" href="#"><i class="searchBar-icon fa-solid fa-magnifying-glass"></i></a>
                     </div>
                     <div id="switchBtn" class="switchBar switchBar-border switchBar-icon mr-2">
-                        <a href="#" class="switch-left mr-1 switch-active" data-type="table">
+                        <a href="#" class="switch-left mr-1" data-type="table">
                             <img src="./IMAGES/icon_list.svg" alt="列表模式按鈕">
                         </a>
                         <a href="#" class="switch-right" data-type="comapct">
@@ -41,30 +41,24 @@
                         </a>
                     </div>
                     <div class="filterBtnSection">
-                        <a href="#" class="filterBtn">
+                        <a class="filterBtn">
                             <img src="./IMAGES/icon_filter.svg" alt="篩選按鈕">
                         </a>
                         <ul class="filterBtnList">
                             <li>
-                                <a href="#" class="item">店家</a>
+                                <a href="#" class="item" data-sort="price">價錢</a>
                             </li>
                             <li>
-                                <a href="#" class="item">價錢</a>
+                                <a href="#" class="item" data-sort="rate">總評價</a>
                             </li>
                             <li>
-                                <a href="#" class="item">總評價</a>
+                                <a href="#" class="item" data-sort="calorie">熱量</a>
                             </li>
-                            <li>
-                                <a href="#" class="item active">熱量</a>
-                            </li>
-                            <!-- <li>
-                                <a href="#" class="item">咖啡因</a>
-                            </li> -->
-                            <li class="switchBar switchBar-border switchBar-icon mr-2">
-                                <a href="#" class="switch-left mr-1">
+                            <li class="switchBar fliter-switchBar switchBar-border switchBar-icon mr-2">
+                                <a href="#" class="switch-left mr-1" data-status="down">
                                     <img src="./IMAGES/icon_sort-down.svg" alt="遞減排列按鈕">
                                 </a>
-                                <a href="#" class="switch-right switch-active">
+                                <a href="#" class="switch-right switch-active" data-status="up">
                                     <img src="./IMAGES/icon_sort-up.svg" alt="遞增排列按鈕">
                                 </a>
                             </li>
@@ -118,7 +112,6 @@
     <!-- main js -->
     <script src="./JS/init.js"></script>
     <script src="./JS/switchFunc.js"></script>
-    <!-- <script src="./JS/searchFunc.js"></script> -->
     <script src="./JS/search.js"></script>
 </body>
 
