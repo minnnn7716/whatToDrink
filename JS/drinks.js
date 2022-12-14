@@ -75,7 +75,7 @@ function renderData() {
   <div class="col-6 drink-infor-text flex justify-between">
     <div class="drink-infor-title flex flex-column justify-between">
       <div class="firstRow">
-        <span class="shopTag mb-3">${drinksData.shop.name}</span>
+        <a href="./shops_menu.html?shop=${drinksData.shop.name}" class="shopTag mb-3">${drinksData.shop.name}</a>
         <h3 class="drinkName mb-3">${drinksData.name}</h3>
         <div class="priceSection flex mb-3">
           <div class="priceInfor">
