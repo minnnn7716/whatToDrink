@@ -20,7 +20,8 @@
 }
 
 .star,
-.starEmpty {
+.starEmpty,
+.starHalf {
   display: inline-block;
   width: 38px;
   height: 36px;
@@ -30,6 +31,10 @@
 
 .star {
   background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/486dbbfedad3b447bcb87b3eeaf8b196251bf776/IMAGES/star_full.svg);
+}
+
+.starHalf {
+  background-image: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/26dc03ac846cd70f444111d9ae8d2d0cbfe17a3f/IMAGES/star_half.svg);
 }
 
 .starEmpty {

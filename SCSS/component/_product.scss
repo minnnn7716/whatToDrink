@@ -51,7 +51,9 @@
             padding-bottom: 4px;
         }
 
-        .star {
+        .star,
+        .starEmpty,
+        .starHalf {
             width: 20px;
             height: 19.5px;
         }
@@ -139,7 +141,9 @@
         font-weight: 500;
     }
 
-    .star {
+    .star,
+    .starEmpty,
+    .starHalf {
         width: 17.5px;
         height: 17px;
     }

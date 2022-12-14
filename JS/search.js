@@ -1,4 +1,3 @@
-const baseUrl = "http://localhost:3000/";
 const apiPath = "drinks?_expand=shop";
 const apiUrl = `${baseUrl}${apiPath}`;
 
@@ -71,21 +70,17 @@ function renderData(data, inforStatus) {
                 });
             }
 
+            let rateStr = renderStar(item.rate);
+
             listStr += `
             <tr class="itemSection">  
-              <td class="table-name"><a href="./drink.html?name=${item.name}">${item.name}</a></td>
+              <td class="table-name"><a href="./drink.html?id=${item.id}">${item.name}</a></td>
               <td class="table-shop"><a href="./shops_menu.html?name=${item.shop.name}">${item.shop.name}</a></td>
               <td>M $ ${item.price.m} ｜ L $ ${item.price.l}</td>
               <td>
                 <div class="rateSection">
                   <p class="score">${item.rate}</p>
-                  <div class="starSection">
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                  </div>
+                  <div class="starSection">${rateStr}</div>
                 </div>
                </td>
                <td>M ${item.calorie.m} 大卡 ｜ L ${item.calorie.l} 大卡</td>
@@ -115,28 +110,24 @@ function renderData(data, inforStatus) {
                 });
             }
 
+            let rateStr = renderStar(item.rate);
+
             listStr += `
             <div class="product-img col-4 mb-8">
                 <div class="imgSection">
                     <a href="./shops_menu.html?name=$${item.shop.name}">
                     <span class="shopName">${item.shop.name}</span>
                     </a>
-                    <a href="./drink.html?name=${item.name}">
+                    <a href="./drink.html?id=${item.id}">
                     <img src="${item.photoUrl}" alt="${item.name}">
                     </a>
                 </div>
-                <a class="textSection" href="./drink.html?name=${item.name}">
+                <a class="textSection" href="./drink.html?id=${item.id}">
                     <div class="firstRow">
                         <h6>${item.name}</h6>
                         <div class="rateSection">
                             <p class="score">${item.rate}</p>
-                            <div class="starSection">
-                                <span class="star"></span>
-                                <span class="star"></span>
-                                <span class="star"></span>
-                                <span class="star"></span>
-                                <span class="star"></span>
-                            </div>
+                            <div class="starSection">${rateStr}</div>
                         </div>
                     </div>
                     <div class="secondRow">
@@ -203,22 +194,23 @@ function getInforType(inforStatus) {
 
 function renderStar(rate) {
     let score = `${rate}`.split(".");
-    let total = "";
+    let total = [];
+    let l = total.length;
 
-    for (let i = 1; i++; i <= 5) {
-        if (score[0] > i) {
-            total += "*";
-        } else if (score[1] > 5 && score[0] === i) {
-            total += "@";
+    while (total.length < 5) {
+        if (score[0] > l) {
+            total.push(`<span class="star"></span>`);
+        } else if (score[0] == l && score[1] > 5) {
+            total.push(`<span class="starHalf"></span>`);
         } else {
-            total += "_";
+            total.push(`<span class="starEmpty"></span>`);
         }
+
+        l++;
     }
 
-    return total;
+    return total.join("");
 }
-
-console.log(renderStar(4.9));
 
 // ------------------------
 

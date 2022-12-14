@@ -11,6 +11,8 @@
 - innerFooter()
   寫入 footer
 
+- baseUrl 宣告 api 的根網址
+
 */
 
 
@@ -113,3 +115,5 @@ function scrollChangeNavbar() {
 innerNavbar();
 innerFooter();
 scrollChangeNavbar();
+
+const baseUrl = "http://localhost:3000/";
