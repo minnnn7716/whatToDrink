@@ -692,6 +692,10 @@ input:focus {
   pointer-events: none;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .btn {
   padding: 8px 16px 6px 16px;
   border-radius: 40px;

@@ -135,13 +135,13 @@ function getComment() {
 }
 
 function renderCommet() {
-  const messageGrop = document.querySelector(".messageGrop");
+  const messageGrop = document.querySelector(".menu-messageSection");
   let str = "";
   let addClass = "";
   totalRate = 0;
 
   if (!commentsData.length) {
-    messageGrop.innerHTML = `<p class="noComment">尚無評論</p>`;
+    messageGrop.innerHTML = `<p class="w-100 text-center">尚無評論</p>`;
   } else {
     commentsData.forEach((item, index) => {
       if (item.content.includes(`<br>`)) {
