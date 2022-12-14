@@ -326,19 +326,20 @@
     display: none;
 }
 
-// .drink-infor-imgOuter {
-//     position: relative;
-//     overflow: hidden;
-//     width: 100%;
+.drink-infor-imgOuter {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    width: 100%;
 
-//     img {
-//         position: absolute;
-//         height: 100%;
-//         width: auto;
-//         right: 50%;
-//         transform: translateX(50%);
-//     }
-// }
+    img {
+        position: absolute;
+        height: 100%;
+        width: auto;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
 
 .drink-infor-title {
     font-family: $chiFont;
@@ -371,10 +372,16 @@
     }
 }
 
+.drink-infor-text {
+    padding-left: 24px;
+}
+
 .drink-infor-func {
     text-align: right;
 
-    .star {
+    .star,
+    .starHalf,
+    .starEmpty {
         width: 31px;
         height: 30px;
     }
@@ -405,7 +412,9 @@
         font-weight: 500;
     }
 
-    .starEmpty {
+    .starEmpty,
+    .star,
+    .starHalf {
         width: 30px;
         height: 29.5px;
     }
@@ -420,8 +429,9 @@
     font-size: $body1;
 }
 
-.drinkCommentImg {
-    width: 80%;
+.drinkCommentImgOuter {
+    height: 300px;
+    overflow: hidden;
 }
 
 .drinkCommentBtn {

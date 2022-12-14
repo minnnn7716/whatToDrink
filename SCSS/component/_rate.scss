@@ -55,7 +55,9 @@
       font-size: $display;
     }
 
-    .star {
+    .star,
+    .starHalf,
+    .starEmpty {
       width: 22.5px;
       height: 22px;
     }

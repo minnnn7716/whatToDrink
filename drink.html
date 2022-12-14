@@ -29,17 +29,7 @@
         <div class="row">
             <div class="col-10">
                 <div class="wholeRateSection mb-8 mt-5">
-                    <div class="scoreSection mr-3">
-                        <h2 class="num">4.9</h2>
-                        <div class="starSection mb-1">
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                        </div>
-                        <p class="rateNum">14,23 則評論</p>
-                    </div>
+                    <div class="scoreSection mr-3"></div>
                     <div class="eachStarSection flex-stretch mr-3">
                         <div class="five starComponent mb-1">
                             <div class="starSection starBtn">
@@ -50,9 +40,9 @@
                                 <span class="star"></span>
                             </div>
                             <div class="numBar">
-                                <div class="numBar-content"></div>
+                                <div class="numBar-content" id="fivebar"></div>
                             </div>
-                            <p class="numText">1,000</p>
+                            <p class="numText" id="fiveNum">1,000</p>
                             <a href="#">
                                 <i class="pinIcon fa-solid fa-thumbtack"></i>
                             </a>
@@ -66,9 +56,9 @@
                                 <span class="starEmpty"></span>
                             </div>
                             <div class="numBar">
-                                <div class="numBar-content"></div>
+                                <div class="numBar-content" id="fourbar"></div>
                             </div>
-                            <p class="numText">1,000</p>
+                            <p class="numText" id="fourNum">1,000</p>
                             <a href="#">
                                 <i class="pinIcon fa-solid fa-thumbtack"></i>
                             </a>
@@ -82,9 +72,9 @@
                                 <span class="starEmpty"></span>
                             </div>
                             <div class="numBar">
-                                <div class="numBar-content"></div>
+                                <div class="numBar-content" id="threebar"></div>
                             </div>
-                            <p class="numText">1,000</p>
+                            <p class="numText" id="threeNum">1,000</p>
                             <a href="#">
                                 <i class="pinIcon fa-solid fa-thumbtack"></i>
                             </a>
@@ -98,9 +88,9 @@
                                 <span class="starEmpty"></span>
                             </div>
                             <div class="numBar">
-                                <div class="numBar-content"></div>
+                                <div class="numBar-content" id="twobar"></div>
                             </div>
-                            <p class="numText">1,000</p>
+                            <p class="numText" id="twoNum">1,000</p>
                             <a href="#">
                                 <i class="pinIcon fa-solid fa-thumbtack"></i>
                             </a>
@@ -114,16 +104,16 @@
                                 <span class="starEmpty"></span>
                             </div>
                             <div class="numBar">
-                                <div class="numBar-content"></div>
+                                <div class="numBar-content" id="onebar"></div>
                             </div>
-                            <p class="numText">1,000</p>
+                            <p class="numText" id="oneNum">1,000</p>
                             <a href="#">
                                 <i class="pinIcon fa-solid fa-thumbtack"></i>
                             </a>
                         </div>
                     </div>
                     <div class="btnSection">
-                        <a href="#" class="btn-shadow">撰寫評論</a>
+                        <a href="#" class="btn-shadow" id="commentBtn">撰寫評論</a>
                     </div>
                 </div>
             </div>
@@ -131,7 +121,7 @@
         <div class="row mb-20">
             <div class="col-10">
                 <div class="menu-messageSection flex flex-column align-end">
-                    <div class="filterSection mb-2">
+                    <div class="filterSection mb-4">
                         <i class="fa-solid fa-caret-down"></i>
                         <select name="messageFilter" id="messageFilter" class="selector">
                             <option value="排序篩選" disabled selected>排序篩選</option>
@@ -141,229 +131,30 @@
                             <option value="依最新日期排序">最多人推薦</option>
                         </select>
                     </div>
-                    <div class="message mt-3 w-100">
-                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                        <div class="message-header flex justify-between">
-                            <div class="message-title mb-3">
-                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
-                                <p class="message-allNum">18 則評論</p>
-                            </div>
-                            <div class="message-rate">
-                                <div class="starSection mb-half-1">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                </div>
-                                <p class="message-infor">3 分糖 / 去冰</p>
-                                <p class="message-date">6 週前</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p class="flex-stretch">茶與葡萄柚果汁的調配完全恰到好處！<br>
-                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                                如果點多冰的話半糖應該滿不錯的～
-                            </p>
-                            <a href="#" class="message-likeThis">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <span class="likeThis-num">10</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="message-divider"></div>
-                    <div class="message mt-3 w-100">
-                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                        <div class="message-header flex justify-between">
-                            <div class="message-title mb-3">
-                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
-                                <p class="message-allNum">18 則評論</p>
-                            </div>
-                            <div class="message-rate">
-                                <div class="starSection mb-half-1">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                </div>
-                                <p class="message-infor">3 分糖 / 去冰</p>
-                                <p class="message-date">6 週前</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p class="flex-stretch">茶與葡萄柚果汁的調配完全恰到好處！<br>
-                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                                如果點多冰的話半糖應該滿不錯的～
-                            </p>
-                            <a href="#" class="message-likeThis">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <span class="likeThis-num">10</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="message-divider"></div>
-                    <div class="message mt-3 w-100">
-                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                        <div class="message-header flex justify-between">
-                            <div class="message-title mb-3">
-                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
-                                <p class="message-allNum">18 則評論</p>
-                            </div>
-                            <div class="message-rate">
-                                <div class="starSection mb-half-1">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                </div>
-                                <p class="message-infor">3 分糖 / 去冰</p>
-                                <p class="message-date">6 週前</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p class="flex-stretch">茶與葡萄柚果汁的調配完全恰到好處！<br>
-                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                                如果點多冰的話半糖應該滿不錯的～
-                            </p>
-                            <a href="#" class="message-likeThis">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <span class="likeThis-num">10</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="message-divider"></div>
-                    <div class="message mt-3 w-100">
-                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                        <div class="message-header flex justify-between">
-                            <div class="message-title mb-3">
-                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
-                                <p class="message-allNum">18 則評論</p>
-                            </div>
-                            <div class="message-rate">
-                                <div class="starSection mb-half-1">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                </div>
-                                <p class="message-infor">3 分糖 / 去冰</p>
-                                <p class="message-date">6 週前</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p class="flex-stretch">茶與葡萄柚果汁的調配完全恰到好處！<br>
-                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                                如果點多冰的話半糖應該滿不錯的～
-                            </p>
-                            <a href="#" class="message-likeThis">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <span class="likeThis-num">10</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="message-divider"></div>
-                    <div class="message mt-3 w-100">
-                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                        <div class="message-header flex justify-between">
-                            <div class="message-title mb-3">
-                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
-                                <p class="message-allNum">18 則評論</p>
-                            </div>
-                            <div class="message-rate">
-                                <div class="starSection mb-half-1">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                </div>
-                                <p class="message-infor">3 分糖 / 去冰</p>
-                                <p class="message-date">6 週前</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p class="flex-stretch">茶與葡萄柚果汁的調配完全恰到好處！<br>
-                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                                如果點多冰的話半糖應該滿不錯的～
-                            </p>
-                            <a href="#" class="message-likeThis">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <span class="likeThis-num">10</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="message-divider"></div>
-                    <div class="message mt-3 w-100">
-                        <img class="message-photo userPhoto-circle" src="./IMAGES/userPhoto_hambuger.webp" alt="使用者頭像">
-                        <div class="message-header flex justify-between">
-                            <div class="message-title mb-3">
-                                <h6 class="message-name mb-half-1">漢堡神偷愛喝飲料</h6>
-                                <p class="message-allNum">18 則評論</p>
-                            </div>
-                            <div class="message-rate">
-                                <div class="starSection mb-half-1">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                </div>
-                                <p class="message-infor">3 分糖 / 去冰</p>
-                                <p class="message-date">6 週前</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p class="flex-stretch">茶與葡萄柚果汁的調配完全恰到好處！<br>
-                                根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br>
-                                如果點多冰的話半糖應該滿不錯的～
-                            </p>
-                            <a href="#" class="message-likeThis">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <span class="likeThis-num">10</span>
-                            </a>
-                        </div>
-                    </div>
+                    <div class="messageGrop w-100"></div>
                 </div>
             </div>
         </div>
-        <div class="popupBG">
+        <div class="popupBG" data-func="close">
             <div class="popup">
-                <a href="#" class="popup-close"><i class="fa-solid fa-xmark"></i></a>
+                <a href="#" class="popup-close" data-func="close"><i class="fa-solid fa-xmark pointer-none"></i></a>
                 <div class="row">
-                    <div class="col-4">
-                        <img class="mb-2 drinkCommentImg" src="./IMAGES/drink.webp" alt="">
-                        <div class="drink-infor-title flex flex-column justify-between align-start">
-                            <p class="shopTag mb-1">清心福全</p>
-                            <h3 class="drinkName mb-1">珍珠多多綠</h3>
-                            <div class="priceSection flex mb-3">
-                                <div class="priceInfor">
-                                    <p class="size">M<span class="pl-4">$50</span></p>
-                                </div>
-                                <span class="priceInfor-divider"></span>
-                                <div class="priceInfor">
-                                    <p class="size">L<span class="pl-4">$60</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-4 commentFuncInfor"></div>
                     <div class="col-6">
                         <div class="drinkCommentRate mb-2">
                             <p class="pr-2">評價星等</p>
-                            <div class="starSection starBtn mb-half-1">
-                                <span class="starEmpty"></span>
-                                <span class="starEmpty"></span>
-                                <span class="starEmpty"></span>
-                                <span class="starEmpty"></span>
-                                <span class="starEmpty"></span>
+                            <div class="starSection starBtn mb-half-1" id="popStarSection">
+                                <span class="starEmpty" data-num="1"></span>
+                                <span class="starEmpty" data-num="2"></span>
+                                <span class="starEmpty" data-num="3"></span>
+                                <span class="starEmpty" data-num="4"></span>
+                                <span class="starEmpty" data-num="5"></span>
                             </div>
                         </div>
                         <div class="drinkCommentSelect mb-2">
                             <div class="filterSection mb-2 mr-2">
                                 <i class="fa-solid fa-caret-down"></i>
-                                <select name="messageFilter" id="messageFilter" class="selector">
+                                <select name="messageFilter" id="sugarFilter" class="selector">
                                     <option value="甜度" disabled selected>甜度</option>
                                     <option value="1 分糖">1 分糖</option>
                                     <option value="2 分糖">2 分糖</option>
@@ -382,8 +173,8 @@
                             </div>
                             <div class="filterSection mb-2">
                                 <i class="fa-solid fa-caret-down"></i>
-                                <select name="messageFilter" id="messageFilter" class="selector">
-                                    <option value="溫度 / 冰塊" disabled selected>冰塊</option>
+                                <select name="messageFilter" id="iceFilter" class="selector">
+                                    <option value="溫度 / 冰塊" disabled selected>溫度 / 冰塊</option>
                                     <option value="熱">熱</option>
                                     <option value="常溫">常溫</option>
                                     <option value="去冰">去冰</option>
@@ -399,12 +190,13 @@
                         </div>
                         <textarea class="drinkCommentText mb-2" placeholder="你覺得這杯飲料怎麼樣呢～？"></textarea>
                         <div class="drinkCommentBtn">
-                            <a href="#" class="btn-shadow cancle">取消評論</a>
-                            <a href="#" class="btn-shadow send">確定送出</a>
+                            <a href="#" class="btn-shadow cancle" data-func="close">取消評論</a>
+                            <a href="#" class="btn-shadow send" id="popSubmit">確定送出</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <footer id="footerSecrion"></footer>

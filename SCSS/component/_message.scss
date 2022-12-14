@@ -35,7 +35,9 @@
     flex-direction: column;
     align-items: flex-end;
 
-    .star {
+    .star,
+    .starHalf,
+    .starEmpty {
         width: 19.5px;
         height: 19px;
     }
@@ -85,7 +87,6 @@
 
 .message-content {
     display: flex;
-    align-items: flex-end;
 }
 
 .message-likeThis {
@@ -132,5 +133,5 @@
     width: 100%;
     height: 1px;
     border-bottom: 1px dashed $gray;
-    margin: 32px 0;
+    margin: 32px 0 48px 0;
 }
