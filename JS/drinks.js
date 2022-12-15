@@ -404,6 +404,9 @@ function commentFunc() {
 
     if (!localUserToken) {
       alert("請先登入");
+      let href = location.href;
+      localStorage.setItem("loginStatus", "back");
+      localStorage.setItem("backHref", href);
       location.href = "./login.html";
     } else {
       renderCommetFunc();

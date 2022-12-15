@@ -4,6 +4,9 @@ const apiUrl = `${baseUrl}${apiPath}`;
 const loginFrom = document.querySelector(`[name="loginFrom"]`);
 let loginData;
 
+let loginStatus = localStorage.getItem("loginStatus");
+let herf = localStorage.getItem("backHref");
+
 getInfor();
 
 function loginPost(obj) {
@@ -16,12 +19,16 @@ function loginPost(obj) {
             localStorage.setItem("name", loginData.user.name);
             localStorage.setItem("id", loginData.user.id);
 
-            alert("註冊成功！將保持登入狀態 2 秒後跳轉回首頁");
-            setTimeout(goIndex, 2000);
-
-            function goIndex() {
-                location.href = './index.html';
+            if (loginStatus) {
+                alert("登入成功！將於 2 秒後跳轉回前頁");
+                setTimeout(goPage, 2000);
+            } else {
+                alert("登入成功！將於 2 秒後跳轉回首頁");
+                setTimeout(goIndex, 2000);
             }
+
+            localStorage.setItem("loginStatus", "");
+            localStorage.setItem("backHref", "");
         })
         .catch(function (error) {
             console.log(error)
@@ -43,4 +50,12 @@ function getInfor() {
         loginPost(obj);
         loginFrom.reset();
     })
+}
+
+function goPage() {
+    location.href = './index.html';
+}
+
+function goIndex() {
+    location.href = herf;
 }
