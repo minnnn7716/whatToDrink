@@ -12,7 +12,8 @@
 // 功能按鈕：收藏、通知、會員
 .heartBtn,
 .bellBtn,
-.userBtn {
+.userBtn,
+.outBtn {
     font-size: $h4;
     padding: 8px 12px;
 }
@@ -26,6 +27,14 @@
 }
 
 .userBtn {
+    color: $primary_600;
+
+    &:hover {
+        color: $gray_900;
+    }
+}
+
+.outBtn {
     color: $primary_600;
 
     &:hover {

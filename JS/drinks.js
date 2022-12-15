@@ -7,9 +7,12 @@ let totalRate;
 let finalRate;
 let popNum;
 let userComment;
+let pinNum;
 
 const popupBG = document.querySelector(".popupBG");
 const body = document.querySelector("#drink");
+const localUserId = localStorage.getItem("id");
+const localUserToken = localStorage.getItem("token");
 
 
 // ------------------------
@@ -126,24 +129,25 @@ function getComment() {
   axios.get(apiUrl)
     .then(function (response) {
       commentsData = response.data;
-      renderCommet();
+      renderCommet(commentsData);
       renderRate();
+      rateFilter();
     })
     .catch(function (error) {
       console.log(error);
     });
 }
 
-function renderCommet() {
+function renderPinCommet(data) {
   const messageGrop = document.querySelector(".menu-messageSection");
   let str = "";
   let addClass = "";
   totalRate = 0;
 
-  if (!commentsData.length) {
+  if (!data.length) {
     messageGrop.innerHTML = `<p class="w-100 text-center">尚無評論</p>`;
   } else {
-    commentsData.forEach((item, index) => {
+    data.forEach((item, index) => {
       if (item.content.includes(`<br>`)) {
         addClass = "align-end";
       };
@@ -177,16 +181,67 @@ function renderCommet() {
         </div>
       </div>
       `;
-      if (index !== commentsData.length - 1) {
+      if (index !== data.length - 1) {
         str += `<div class="message-divider"></div>`;
       }
     })
 
-    finalRate = (totalRate / commentsData.length).toFixed(1);
+    messageGrop.innerHTML = str;
+  }
+}
+
+function renderCommet(data) {
+  const messageGrop = document.querySelector(".menu-messageSection");
+  let str = "";
+  let addClass = "";
+  totalRate = 0;
+
+  if (!data.length) {
+    messageGrop.innerHTML = `<p class="w-100 text-center">尚無評論</p>`;
+  } else {
+    data.forEach((item, index) => {
+      if (item.content.includes(`<br>`)) {
+        addClass = "align-end";
+      };
+
+      totalRate += + item.rate;
+
+      let rateStr = renderStar(item.rate);
+
+      str += `
+      <div class="message w-100">
+        <img class="message-photo userPhoto-circle" src="${item.user.photoUrl}" alt="${item.user.name}使用者頭像">
+        <div class="message-header flex justify-between">
+          <div class="message-title mb-3">
+            <h6 class="message-name mb-half-1">${item.user.name}</h6>
+            <p class="message-allNum">${item.user.comments.length}則評論</p>
+          </div>
+          <div class="message-rate mb-2">
+            <div class="starSection mb-half-1">${rateStr}</div>
+            <p class="message-infor">${item.sugar} / ${item.ice}</p>
+            <p class="message-date">6 週前</p>
+          </div>
+        </div>
+        <div class="message-content ${addClass}">
+          <p class="flex-stretch">
+            <span>${item.content}</span>
+          </p>
+          <a href="#" class="message-likeThis">
+            <i class="fa-regular fa-thumbs-up"></i>
+            <span class="likeThis-num">10</span>
+          </a>
+        </div>
+      </div>
+      `;
+      if (index !== data.length - 1) {
+        str += `<div class="message-divider"></div>`;
+      }
+    })
+
+    finalRate = (totalRate / data.length).toFixed(1);
     updateDrinkRate(finalRate);
     messageGrop.innerHTML = str;
   }
-
 }
 
 function renderRate() {
@@ -249,26 +304,58 @@ function renderRate() {
     two = commentsData.filter(item => item.rate == 2);
     one = commentsData.filter(item => item.rate == 1);
 
-    fiveNum.textContent = five.length;
-    fourNum.textContent = four.length;
-    threeNum.textContent = three.length;
-    twoNum.textContent = two.length;
-    oneNum.textContent = one.length;
+    fiveNum.textContent = `${five.length} 則`;
+    fourNum.textContent = `${four.length} 則`;
+    threeNum.textContent = `${three.length} 則`;
+    twoNum.textContent = `${two.length} 則`;
+    oneNum.textContent = `${one.length} 則`;
     fivebar.style.width = `${(five.length / total * 100).toFixed(0)}%`;
     fourbar.style.width = `${(four.length / total * 100).toFixed(0)}%`;
     threebar.style.width = `${(three.length / total * 100).toFixed(0)}%`;
     twobar.style.width = `${(two.length / total * 100).toFixed(0)}%`;
     onebar.style.width = `${(one.length / total * 100).toFixed(0)}%`;
-    console.log(total)
-    console.log(five.length)
-    console.log(five.length)
   }
 
   scoreSection.innerHTML = leftStr;
 }
 
 function rateFilter() {
+  const pinBtn = document.querySelectorAll("[data-pin]");
+  const pinBar = document.querySelectorAll("[data-bar]");
+  const eachStarSection = document.querySelector(".eachStarSection");
+  let filterData;
 
+  eachStarSection.addEventListener("click", e => {
+    e.preventDefault();
+
+    if (e.target.nodeName === "I" && !e.target.getAttribute("class").includes("active")) {
+      pinBtn.forEach(item => {
+        item.classList.remove("active");
+        pinNum = e.target.dataset.pin;
+        e.target.classList.add("active");
+      })
+
+      pinBar.forEach(item => {
+        if (item.dataset.bar == pinNum) {
+          item.style.background = "#F7C7FF";
+        } else {
+          item.style.background = "#FFF066";
+        }
+      })
+
+      filterData = commentsData.filter(item => item.rate == pinNum);
+      renderPinCommet(filterData);
+    } else {
+      pinBtn.forEach(item => {
+        item.classList.remove("active");
+      })
+
+      pinBar.forEach(item => {
+        item.style.background = "#FFF066";
+      })
+      renderCommet(commentsData);
+    }
+  })
 }
 
 function itemFilter() {
@@ -278,10 +365,15 @@ function itemFilter() {
 // ------------------------
 
 function postComment(obj) {
-  const apiPath = `drinks/${keyword}/comments`;
+  const apiPath = `600/drinks/${keyword}/comments`;
   const apiUrl = `${baseUrl}${apiPath}`;
+  const token = {
+    headers: {
+      "authorization": `Bearer ${localUserToken}`
+    }
+  }
 
-  axios.post(apiUrl, obj)
+  axios.post(apiUrl, obj, token)
     .then(function (response) {
       console.log(response);
       patchUserComment();
@@ -297,13 +389,14 @@ function updateDrinkRate(finalRate) {
   const apiPath = `drinks/${keyword}`;
   const apiUrl = `${baseUrl}${apiPath}`;
   const drinkInforRate = document.querySelector("#drinkInforRate");
+  const starSection = document.querySelector(".starSection");
 
   axios.patch(apiUrl, {
     "rate": finalRate
   })
     .then(function (response) {
-      console.log(response);
       drinkInforRate.textContent = finalRate;
+      starSection.innerHTML = renderStar(finalRate);
     })
     .catch(function (error) {
       console.log(error);
@@ -316,10 +409,16 @@ function commentFunc() {
   commentBtn.addEventListener("click", e => {
     e.preventDefault();
 
-    renderCommetFunc()
+    if (!localUserToken) {
+      alert("請先登入");
+      location.href = "./login.html";
+    } else {
+      renderCommetFunc();
 
-    popupBG.style.display = "block";
-    body.style.overflow = "hidden";
+      popupBG.style.display = "block";
+      body.style.overflow = "hidden";
+    }
+
   });
 
   popupBG.addEventListener("click", e => {
@@ -346,7 +445,7 @@ function getCommentPopup() {
 
   popSubmit.addEventListener("click", e => {
     e.preventDefault();
-    commentObj.userId = 1;
+    commentObj.userId = localUserId;
     commentObj.rate = popNum;
     commentObj.sugar = sugarFilter.value;
     commentObj.ice = iceFilter.value;
@@ -394,7 +493,7 @@ function renderCommetFunc() {
 }
 
 function getUserData() {
-  const apiPath = `users/1/`;
+  const apiPath = `users/${localUserId}/`;
   const apiUrl = `${baseUrl}${apiPath}`;
 
   axios.get(apiUrl,)
@@ -407,7 +506,7 @@ function getUserData() {
 }
 
 function patchUserComment() {
-  const apiPath = `users/1/`;
+  const apiPath = `users/${localUserId}/`;
   const apiUrl = `${baseUrl}${apiPath}`;
 
   userComment.push(commentsData.length + 1);

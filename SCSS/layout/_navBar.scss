@@ -30,6 +30,14 @@
     .navbar-link {
         display: none;
     }
+
+    .logSection {
+        span {
+            font-family: $chiFont;
+            padding: 0 0 4px 16px;
+            color: $primary_600;
+        }
+    }
 }
 
 .navbar-show {
@@ -39,5 +47,21 @@
 
     .navbar-link {
         display: flex;
+    }
+
+    .logSection {
+        span {
+            font-family: $chiFont;
+            padding: 0 0 4px 16px;
+            color: $gray_900;
+        }
+    }
+
+    .outBtn {
+        color: $gray_900;
+
+        &:hover {
+            color: $primary_900;
+        }
     }
 }

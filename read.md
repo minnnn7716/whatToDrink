@@ -17,3 +17,5 @@ Oleo R 400
 - json-serve
 監聽資料夾中的 db.json
 json-server --watch ../DATA/db.json
+json-server ../DATA/db.json -m ./node_modules/json-server-auth
+json-server-auth db.json (installed globally)

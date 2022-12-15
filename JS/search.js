@@ -288,6 +288,7 @@ function removeSort() {
         if (e.target.nodeName === "I") {
             searchResultOuter.style.opacity = "0";
             filterBtn.classList.remove("active");
+
             filterInputData(drinksData, inforStatus);
         }
     })

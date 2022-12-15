@@ -707,7 +707,8 @@ input:focus {
 
 .heartBtn,
 .bellBtn,
-.userBtn {
+.userBtn,
+.outBtn {
   font-size: 1.5rem;
   padding: 8px 12px;
 }
@@ -724,6 +725,13 @@ input:focus {
   color: #FFCD1A;
 }
 .userBtn:hover {
+  color: #3C3C3C;
+}
+
+.outBtn {
+  color: #FFCD1A;
+}
+.outBtn:hover {
   color: #3C3C3C;
 }
 
@@ -1163,8 +1171,8 @@ input:focus {
   height: 17px;
 }
 .wholeRateSection .eachStarSection .numBar {
+  flex: 1 1 0;
   position: relative;
-  width: 100%;
   height: 14px;
   box-sizing: content-box;
   border: 1px solid #000000;
@@ -1195,7 +1203,7 @@ input:focus {
   transition: all ease 0.3s;
 }
 .wholeRateSection .eachStarSection .pinIcon:hover,
-.wholeRateSection .eachStarSection .pinIcon .pinIcon.active {
+.wholeRateSection .eachStarSection .pinIcon.active {
   color: #92409F;
   border-color: #F7C7FF;
   background-color: #F7C7FF;
@@ -1679,6 +1687,11 @@ textarea {
 .navbar-hide .navbar-link {
   display: none;
 }
+.navbar-hide .logSection span {
+  font-family: "Noto Sans TC";
+  padding: 0 0 4px 16px;
+  color: #FFCD1A;
+}
 
 .navbar-show {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0823529412);
@@ -1687,6 +1700,17 @@ textarea {
 }
 .navbar-show .navbar-link {
   display: flex;
+}
+.navbar-show .logSection span {
+  font-family: "Noto Sans TC";
+  padding: 0 0 4px 16px;
+  color: #3C3C3C;
+}
+.navbar-show .outBtn {
+  color: #3C3C3C;
+}
+.navbar-show .outBtn:hover {
+  color: #AE7D00;
 }
 
 #footer {
@@ -2488,4 +2512,12 @@ textarea {
 }
 .favoriteTitle h2 {
   padding-top: 4px;
+}
+
+#login .container {
+  height: calc(100vh - 462px);
+}
+
+#signup .container {
+  height: calc(100vh - 462px);
 }/*# sourceMappingURL=all.css.map */

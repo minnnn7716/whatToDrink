@@ -15,8 +15,17 @@
 
 */
 
-
 let pageType = document.querySelector("body").getAttribute("data-pageType");
+const baseUrl = "http://localhost:3000/";
+
+// ----------------------
+
+innerNavbar();
+innerFooter();
+scrollChangeNavbar();
+setlogStatus();
+
+// ----------------------
 
 function innerNavbar() {
     let navbarSection = document.querySelector("#navbarSection");
@@ -58,8 +67,8 @@ function innerNavbar() {
                 <i class="fa-solid fa-bell funcBtn-solid"></i>
             </a>
         </li>
-        <li>
-            <a href="#" class="userBtn"><i class="fa-solid fa-circle-user"></i></a>
+        <li class="logSection">
+            <a href="./login.html" class="userBtn"><i class="fa-solid fa-circle-user"></i></a>
         </li>
     </ul>
     </div>
@@ -111,9 +120,44 @@ function scrollChangeNavbar() {
     }
 }
 
+function setlogStatus() {
+    const logSection = document.querySelector(".logSection");
+    let localName = localStorage.getItem("name");
 
-innerNavbar();
-innerFooter();
-scrollChangeNavbar();
+    if (localName) {
+        logSection.innerHTML = `
+        <li class="logSection flex align-center">
+            <span>嗨，${localName}</span>
+            <a href="./login.html" class="outBtn"><i class="fa-solid fa-person-through-window"></i></a>
+        </li>
+        `;
 
-const baseUrl = "http://localhost:3000/";
+        logoutAction();
+    } else {
+        logSection.innerHTML = `
+        <li class="logSection">
+            <a href="./login.html" class="userBtn"><i class="fa-solid fa-circle-user"></i></a>
+        </li>`;
+    }
+}
+
+function logoutAction() {
+    const outBtn = document.querySelector(".outBtn");
+
+    outBtn.addEventListener("click", e => {
+        e.preventDefault();
+
+        const logout = confirm('確定要登出嗎？');
+
+        if (logout) {
+            localStorage.setItem("token", "");
+            localStorage.setItem("name", "");
+            localStorage.setItem("id", "");
+
+            setlogStatus();
+            alert("登出成功！");
+        }
+
+        setlogStatus();
+    })
+}
