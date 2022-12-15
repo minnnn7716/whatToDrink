@@ -11,8 +11,6 @@ let pinNum;
 
 const popupBG = document.querySelector(".popupBG");
 const body = document.querySelector("#drink");
-const localUserId = localStorage.getItem("id");
-const localUserToken = localStorage.getItem("token");
 
 
 // ------------------------
@@ -367,11 +365,6 @@ function itemFilter() {
 function postComment(obj) {
   const apiPath = `600/drinks/${keyword}/comments`;
   const apiUrl = `${baseUrl}${apiPath}`;
-  const token = {
-    headers: {
-      "authorization": `Bearer ${localUserToken}`
-    }
-  }
 
   axios.post(apiUrl, obj, token)
     .then(function (response) {

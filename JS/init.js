@@ -17,6 +17,15 @@
 
 let pageType = document.querySelector("body").getAttribute("data-pageType");
 const baseUrl = "http://localhost:3000/";
+const localUserId = localStorage.getItem("id");
+const localUserToken = localStorage.getItem("token");
+const localUserName = localStorage.getItem("name");
+const token = {
+    headers: {
+        "authorization": `Bearer ${localUserToken}`
+    }
+}
+
 
 // ----------------------
 

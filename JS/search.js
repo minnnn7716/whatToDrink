@@ -44,6 +44,7 @@ function getDrinks() {
         .then(function (response) {
             drinksData = response.data;
             filterInputData(drinksData, inforStatus);
+            getUserFavotite();
         })
         .catch(function (error) {
             console.log(error);
@@ -54,11 +55,13 @@ function renderData(data, inforStatus) {
     const searchListTable = document.querySelector(".searchListTable");
     const searchListComapct = document.querySelector(".searchList-comapct");
     const searchResultText = document.querySelector(".searchResult-text");
+    const favoriteList = localStorage.getItem("favorite");
     let listStr = "";
 
     if (inforStatus === "table") {
         data.forEach(item => {
             let specialStr = "";
+            let favoriteStr = "";
 
             if (item.special.length) {
                 item.special.forEach(each => {
@@ -68,6 +71,20 @@ function renderData(data, inforStatus) {
                         specialStr += `<i class="fa-solid fa-thumbs-up"></i>`;
                     }
                 });
+            }
+
+            if (favoriteList.includes(item.id)) {
+                favoriteStr = `
+                <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
+                  <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                  <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                </a>`;
+            } else {
+                favoriteStr = `
+                <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
+                  <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                  <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                </a>`;
             }
 
             let rateStr = renderStar(item.rate);
@@ -85,12 +102,7 @@ function renderData(data, inforStatus) {
                </td>
                <td>M ${item.calorie.m} 大卡 ｜ L ${item.calorie.l} 大卡</td>
                <td class="table-special">${specialStr}</td>
-               <td>
-                  <a href="#" class="heartBtn funcBtn-hover">
-                    <i class="fa-regular fa-heart funcBtn-outline"></i>
-                    <i class="fa-sharp fa-solid fa-heart funcBtn-solid"></i>
-                  </a>
-               </td>
+               <td>${favoriteStr}</td>
             </tr>
             `;
         })
@@ -117,6 +129,10 @@ function renderData(data, inforStatus) {
                 <div class="imgSection">
                     <a href="./shops_menu.html?name=$${item.shop.name}">
                     <span class="shopName">${item.shop.name}</span>
+                    </a>
+                    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn"data-favorite="none" data-id="${item.id}">
+                        <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                        <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
                     </a>
                     <a href="./drink.html?id=${item.id}">
                     <img src="${item.photoUrl}" alt="${item.name}">
@@ -167,6 +183,7 @@ function changeList(inforStatus) {
     } else if (inforStatus === "comapct") {
         comapctList.style.display = "flex";
         tableList.style.display = "none";
+        getUserFavotite();
     }
 
     renderData(newData, inforStatus);
@@ -293,3 +310,4 @@ function removeSort() {
         }
     })
 }
+
