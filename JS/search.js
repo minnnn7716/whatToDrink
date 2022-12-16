@@ -10,7 +10,7 @@ let drinksData;
 let newData;
 
 getDrinks();
-getInforType(inforStatus);
+getInforType();
 searchfunc();
 
 // ------------------------
@@ -43,7 +43,7 @@ function getDrinks() {
     axios.get(apiUrl)
         .then(function (response) {
             drinksData = response.data;
-            filterInputData(drinksData, inforStatus);
+            filterInputData(drinksData);
             getUserFavotite();
         })
         .catch(function (error) {
@@ -51,9 +51,8 @@ function getDrinks() {
         });
 }
 
-function renderData(data, inforStatus) {
+function renderListData(data, inforStatus) {
     const searchListTable = document.querySelector(".searchListTable");
-    const searchListComapct = document.querySelector(".searchList-comapct");
     const searchResultText = document.querySelector(".searchResult-text");
     const favoriteList = localStorage.getItem("favorite");
     let listStr = "";
@@ -108,7 +107,18 @@ function renderData(data, inforStatus) {
         })
 
         searchListTable.innerHTML = listStr;
-    } else if (inforStatus === "comapct") {
+    }
+
+    searchResultText.textContent = `找到 ${data.length} 個符合「${keyword}」的飲料`;
+}
+
+function renderCompactData(data, inforStatus) {
+    const searchListComapct = document.querySelector(".searchList-comapct");
+    const searchResultText = document.querySelector(".searchResult-text");
+    const favoriteList = localStorage.getItem("favorite");
+    let listStr = "";
+
+    if (inforStatus === "comapct") {
         data.forEach(item => {
             let specialStr = "";
 
@@ -122,6 +132,20 @@ function renderData(data, inforStatus) {
                 });
             }
 
+            if (favoriteList.includes(item.id)) {
+                favoriteStr = `
+                <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
+                  <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                  <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                </a>`;
+            } else {
+                favoriteStr = `
+                <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
+                  <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                  <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                </a>`;
+            }
+
             let rateStr = renderStar(item.rate);
 
             listStr += `
@@ -130,10 +154,7 @@ function renderData(data, inforStatus) {
                     <a href="./shops_menu.html?name=$${item.shop.name}">
                     <span class="shopName">${item.shop.name}</span>
                     </a>
-                    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn"data-favorite="none" data-id="${item.id}">
-                        <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
-                        <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
-                    </a>
+                    ${favoriteStr}
                     <a href="./drink.html?id=${item.id}">
                     <img src="${item.photoUrl}" alt="${item.name}">
                     </a>
@@ -161,7 +182,8 @@ function renderData(data, inforStatus) {
     searchResultText.textContent = `找到 ${data.length} 個符合「${keyword}」的飲料`;
 }
 
-function filterInputData(data, inforStatus) {
+
+function filterInputData(data) {
     if (url.includes("kind")) {
         newData = data.filter(item => item.type === keyword);
     } else if (url.includes("drink") || url.includes("shop")) {
@@ -169,8 +191,7 @@ function filterInputData(data, inforStatus) {
     }
 
     changeList(inforStatus);
-    renderData(newData, inforStatus);
-    sortInputData(newData, inforStatus);
+    sortInputData(newData);
 }
 
 function changeList(inforStatus) {
@@ -180,16 +201,15 @@ function changeList(inforStatus) {
     if (inforStatus === "table") {
         comapctList.style.display = "none";
         tableList.style.display = "flex";
+        renderListData(newData, inforStatus);
     } else if (inforStatus === "comapct") {
         comapctList.style.display = "flex";
         tableList.style.display = "none";
-        getUserFavotite();
+        renderCompactData(newData, inforStatus)
     }
-
-    renderData(newData, inforStatus);
 }
 
-function getInforType(inforStatus) {
+function getInforType() {
     const switchBar = document.querySelector("#switchBtn");
     if (inforStatus === "table") {
         document.querySelector(`[data-type="table"]`).classList.add("switch-active");
@@ -205,7 +225,7 @@ function getInforType(inforStatus) {
             localStorage.setItem("listType", inforStatus);
         }
         changeList(inforStatus);
-        sortInputData(newData, inforStatus);
+        sortInputData(newData);
     });
 }
 
@@ -231,7 +251,7 @@ function renderStar(rate) {
 
 // ------------------------
 
-function sortInputData(data, inforStatus) {
+function sortInputData(data) {
     const filterBtnList = document.querySelector(".filterBtnList");
     const filterBtn = document.querySelector(".filterBtn");
     const searchResult = document.querySelector(".searchResult-filter-text");
@@ -265,7 +285,7 @@ function sortInputData(data, inforStatus) {
             filterBtn.classList.add("active");
             searchResultOuter.style.opacity = "1";
             searchResult.textContent = `依照「${e.target.textContent}」${sortStatusText}排序`;
-            renderData(data, inforStatus);
+            changeList(inforStatus);
         }
     });
 
@@ -306,7 +326,7 @@ function removeSort() {
             searchResultOuter.style.opacity = "0";
             filterBtn.classList.remove("active");
 
-            filterInputData(drinksData, inforStatus);
+            filterInputData(drinksData);
         }
     })
 }

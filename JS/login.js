@@ -52,10 +52,10 @@ function getInfor() {
     })
 }
 
-function goPage() {
+function goIndex() {
     location.href = './index.html';
 }
 
-function goIndex() {
+function goPage() {
     location.href = herf;
 }

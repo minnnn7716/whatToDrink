@@ -1,5 +1,11 @@
 /*
+【變數】
+- pageType 抓取預設的頁面類型，以判定需不需在 nav 跟內容間先推出 spacing
+- baseUrl 宣告 api 的根網址
+- local 系列宣告使用者登入的資訊
+- token 將 axios 需要的使用者憑證先行帶入
 
+【函式】
 - innerNavbar()
   寫入 navbar
   判斷非 index 寫入 navbar-show 有白底的樣式，
@@ -11,8 +17,17 @@
 - innerFooter()
   寫入 footer
 
-- baseUrl 宣告 api 的根網址
+- setlogStatus()
+  內含 logoutAction() 為了可以監聽登出按鈕
+  判斷登入狀態，更改 nav 上的姓名與按鈕
 
+- logoutAction()
+  內含 setlogStatus() 為了在登出時改變狀態
+  監聽登出按鈕，點擊時跳出確認視窗，確認登出後清除 local 的資訊
+
+- clickNavbtn()
+  點擊「收藏列表」、「通知列表」按鈕時，判斷是否登入
+  登入才能取得個人列表
 */
 
 let pageType = document.querySelector("body").getAttribute("data-pageType");
@@ -26,13 +41,13 @@ const token = {
     }
 }
 
-
 // ----------------------
 
 innerNavbar();
 innerFooter();
 scrollChangeNavbar();
 setlogStatus();
+clickNavbtn();
 
 // ----------------------
 
@@ -65,15 +80,15 @@ function innerNavbar() {
     </ul>
     <ul class="navbar-funcBtn">
         <li>
-            <a href="./favorite.html" class="heartBtn funcBtn-hover">
-                <i class="fa-regular fa-heart funcBtn-outline"></i>
-                <i class="fa-sharp fa-solid fa-heart funcBtn-solid"></i>
+            <a href="./favorite.html" class="heartBtn funcBtn-hover" data-nav="funcBtn" data-href="favorite">
+                <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
             </a>
         </li>
         <li>
-            <a href="#" class="bellBtn funcBtn-hover">
-                <i class="fa-regular fa-bell funcBtn-outline"></i>
-                <i class="fa-solid fa-bell funcBtn-solid"></i>
+            <a href="#" class="bellBtn funcBtn-hover" data-nav="funcBtn" data-href="bell">
+                <i class="fa-regular fa-bell funcBtn-outline pointer-none"></i>
+                <i class="fa-solid fa-bell funcBtn-solid pointer-none"></i>
             </a>
         </li>
         <li class="logSection">
@@ -162,11 +177,36 @@ function logoutAction() {
             localStorage.setItem("token", "");
             localStorage.setItem("name", "");
             localStorage.setItem("id", "");
+            localStorage.setItem("favorite", "");
 
             setlogStatus();
             alert("登出成功！");
         }
 
         setlogStatus();
+    })
+}
+
+function clickNavbtn() {
+    const navFuncBtn = document.querySelectorAll("[data-nav]");
+    let hrefKeyword;
+    let href;
+
+    navFuncBtn.forEach(item => {
+        item.addEventListener("click", e => {
+            e.preventDefault();
+            hrefKeyword = e.target.dataset.href;
+            href = `./${hrefKeyword}.html`;
+
+            if (!localUserToken) {
+                alert("請先登入");
+
+                localStorage.setItem("loginStatus", "back");
+                localStorage.setItem("backHref", href);
+                location.href = "./login.html";
+            } else {
+                location.href = href;
+            }
+        })
     })
 }

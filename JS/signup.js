@@ -30,6 +30,7 @@ function signupPost(obj) {
 
 function getInfor() {
     let obj = {};
+    let randomNum = Math.floor(Math.random() * 400);
 
     singupFrom.addEventListener("submit", e => {
         e.preventDefault();
@@ -38,7 +39,7 @@ function getInfor() {
             "email": singupFrom["信箱"].value,
             "password": singupFrom["密碼"].value,
             "name": singupFrom["姓名"].value,
-            "photoUrl": "https://picsum.photos/200",
+            "photoUrl": `https://picsum.photos/${randomNum}/200`,
             "favorite": [],
             "comments": []
         }
