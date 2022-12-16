@@ -670,28 +670,19 @@
             </div>
         </div>
         <!-- 彈出視窗區塊 -->
-        <div class="popupBG">
+        <div class="popupBG" data-func="close">
             <div class="popup scroll">
-                <a href="#" class="popup-close"><i class="fa-solid fa-xmark"></i></a>
-                <h3 class="shopTag sideTitle">清心福全</h3>
+                <a href="#" class="popup-close" data-func="close"><i class="fa-solid fa-xmark"
+                        data-func="close"></i></a>
+                <h3 class="shopTag sideTitle" id="popSideTitle">清心福全</h3>
                 <div class="popScroll">
                     <div class="row">
                         <div class="col-10 content pb-8">
                             <div class="wholeRateSection mb-8 mt-5">
-                                <div class="scoreSection mr-3">
-                                    <h2 class="num">4.9</h2>
-                                    <div class="starSection mb-1">
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                    </div>
-                                    <p class="rateNum">14,23 則評論</p>
-                                </div>
+                                <div class="scoreSection mr-3"></div>
                                 <div class="eachStarSection flex-stretch mr-3">
                                     <div class="five starComponent mb-1">
-                                        <div class="starSection starBtn">
+                                        <div class="starSection">
                                             <span class="star"></span>
                                             <span class="star"></span>
                                             <span class="star"></span>
@@ -707,7 +698,7 @@
                                         </a>
                                     </div>
                                     <div class="four starComponent mb-1">
-                                        <div class="starSection starBtn">
+                                        <div class="starSection">
                                             <span class="star"></span>
                                             <span class="star"></span>
                                             <span class="star"></span>
@@ -723,7 +714,7 @@
                                         </a>
                                     </div>
                                     <div class="three starComponent mb-1">
-                                        <div class="starSection starBtn">
+                                        <div class="starSection">
                                             <span class="star"></span>
                                             <span class="star"></span>
                                             <span class="star"></span>
@@ -739,7 +730,7 @@
                                         </a>
                                     </div>
                                     <div class="two starComponent mb-1">
-                                        <div class="starSection starBtn">
+                                        <div class="starSection">
                                             <span class="star"></span>
                                             <span class="star"></span>
                                             <span class="starEmpty"></span>
@@ -755,7 +746,7 @@
                                         </a>
                                     </div>
                                     <div class="one starComponent">
-                                        <div class="starSection starBtn">
+                                        <div class="starSection">
                                             <span class="star"></span>
                                             <span class="starEmpty"></span>
                                             <span class="starEmpty"></span>
@@ -1078,6 +1069,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
     <!-- main js -->
     <script src="./JS/init.js"></script>
+    <!-- <script src="./JS/favorite.js"></script> -->
     <script src="./JS/shopMenu.js"></script>
 </body>
 

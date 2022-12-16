@@ -8,6 +8,8 @@ let finalRate;
 let popNum;
 let userComment;
 let pinNum;
+let shopId;
+let rateNum;
 
 const popupBG = document.querySelector(".popupBG");
 const body = document.querySelector("#drink");
@@ -29,6 +31,8 @@ function getDrink() {
   axios.get(apiUrl)
     .then(function (response) {
       drinksData = response.data;
+      shopId = drinksData.shopId
+      rateNum = drinksData.shop.rateNum;
       renderData();
       getUserFavotite();
     })
@@ -254,6 +258,7 @@ function renderCommet(data) {
 
     finalRate = (totalRate / data.length).toFixed(1);
     updateDrinkRate(finalRate);
+    updateShopRateNum();
     messageGrop.innerHTML = str;
   }
 }
@@ -406,6 +411,23 @@ function updateDrinkRate(finalRate) {
     .then(function (response) {
       drinkInforRate.textContent = finalRate;
       starSection.innerHTML = renderStar(finalRate);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+function updateShopRateNum() {
+  const apiPath = `shops/${shopId}`;
+  const apiUrl = `${baseUrl}${apiPath}`;
+  rateNum += 1;
+  console.log(rateNum)
+
+  axios.patch(apiUrl, {
+    "rateNum": rateNum
+  })
+    .then(function (response) {
+      console.log(response)
     })
     .catch(function (error) {
       console.log(error);

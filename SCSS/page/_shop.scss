@@ -162,10 +162,12 @@
 
 // page | shops-menu ------------------------
 .shops-menu-banner {
-    background-color: #005743;
+    // background-color: #005743;
 
     img {
         height: 13vw;
+        width: auto;
+        margin: 0 auto;
     }
 }
 

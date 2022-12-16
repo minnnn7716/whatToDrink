@@ -2176,11 +2176,10 @@ textarea {
   transform: rotate(90deg);
 }
 
-.shops-menu-banner {
-  background-color: #005743;
-}
 .shops-menu-banner img {
   height: 13vw;
+  width: auto;
+  margin: 0 auto;
 }
 
 .menu-title {

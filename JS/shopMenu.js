@@ -4,6 +4,8 @@ let keyword = decodeURIComponent(url.split("=")[1].split("&")[0]);
 let shopsData;
 let singleShopsData;
 let shopId;
+let commentData;
+let shopRate = 0;
 
 getShops();
 
@@ -15,7 +17,7 @@ function getShops() {
         .then(function (response) {
             shopsData = response.data;
             getShopId();
-            renderHeader();
+            getComments();
         })
         .catch(function (error) {
             console.log(error);
@@ -29,7 +31,7 @@ function getShopId() {
 
 function renderHeader() {
     const headerInfor = document.querySelector("#menuBanner");
-    const headerImg = document.querySelector(".shops-menu-banner ");
+    const headerImg = document.querySelector(".shops-menu-banner");
 
     let imgStr = `<img src="${singleShopsData.photoUrl}" alt="${singleShopsData.name}">`
 
@@ -38,36 +40,103 @@ function renderHeader() {
     <h2 class="menu-title-text">${singleShopsData.name}</h2>
     <a href="#" class="menu-title-rate">
         <div class="rateSection">
-        <p class="score mr-1">4.9</p>
+        <p class="score mr-1">${shopRate}</p>
         <div class="starSection mb-1">
-            <span class="star"></span>
-            <span class="star"></span>
-            <span class="star"></span>
-            <span class="star"></span>
-            <span class="star"></span>
+            ${renderStar(shopRate)}
         </div>
         </div>
-        <p class="rate-num">1,423 則評論</p>
+        <p class="rate-num">${singleShopsData.rateNum} 則評論</p>
     </a>
     </div>
     `;
 
+    headerImg.style.background = `${singleShopsData.background}`
     headerInfor.innerHTML = inforStr;
     headerImg.innerHTML = imgStr;
+    popupEvent();
 }
 
 function renderMenu() {
 
 }
 
-// {
-//     "id": 3,
-//     "name": "茶湯會",
-//     "size": {
-//       "m": "480ml",
-//       "l": "660ml"
-//     },
-//     "photoUrl": "https://raw.githubusercontent.com/minnnn7716/whatToDrink/c08e625b274802bda3a7a89f74414c812e911f57/IMAGES/logo_%E8%8C%B6%E6%B9%AF%E6%9C%83.svg",
-//     "rate": ,
-//     "rateNum": 
-//   }
+function popupEvent() {
+    const shopRateSection = document.querySelector(".menu-title-rate");
+    const popupBG = document.querySelector(".popupBG");
+
+    shopRateSection.addEventListener("click", e => {
+        e.preventDefault();
+
+        popupBG.style.display = "block";
+
+        renderPopupRate();
+    })
+
+    popupBG.addEventListener("click", e => {
+        e.preventDefault();
+
+        if (e.target.dataset.func === "close") {
+            popupBG.style.display = "none";
+        }
+    })
+}
+
+function getComments() {
+    const apiPath = `shops/${shopId}/comments`;
+    const apiUrl = `${baseUrl}${apiPath}`;
+
+    axios.get(apiUrl)
+        .then(function (response) {
+            commentData = response.data;
+            getShopRate();
+            renderHeader();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function getShopRate() {
+    commentData.forEach(item => {
+        shopRate += + item.rate;
+    });
+    shopRate = (shopRate / commentData.length).toFixed(1);
+}
+
+function renderPopupRate() {
+    const popSideTitle = document.querySelector("#popSideTitle");
+    const scoreSection = document.querySelector(".scoreSection");
+
+    popSideTitle.textContent = singleShopsData.name;
+
+    let totalStr = `
+    <h2 class="num">${shopRate}</h2>
+    <div class="starSection mb-1">${renderStar(shopRate)}</div>
+    <p class="rateNum">${singleShopsData.rateNum} 則評論</p>`;
+
+    scoreSection.innerHTML = totalStr;
+}
+
+function renderPopupComment() {
+
+}
+
+function renderStar(rate) {
+    let score = `${rate}`.split(".");
+    let total = [];
+    let l = total.length;
+
+    while (total.length < 5) {
+        if (score[0] > l) {
+            total.push(`<span class="star"></span>`);
+        } else if (score[0] == l && score[1] > 5) {
+            total.push(`<span class="starHalf"></span>`);
+        } else {
+            total.push(`<span class="starEmpty"></span>`);
+        }
+
+        l++;
+    }
+
+    return total.join("");
+}
