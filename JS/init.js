@@ -75,7 +75,7 @@ function innerNavbar() {
     </a>
     <ul class="navbar-link">
         <li><a href="./shops_all.html" class="btn">全部店家</a>
-        <li><a href="./index.html#inedx-shops" class="btn">四大類類</a>
+        <li><a href="./index.html#inedx-shops-anchor" class="btn">四大類類</a>
         <li><a href="./wheel.html" class="btn">轉吧轉吧</a>
     </ul>
     <ul class="navbar-funcBtn">
@@ -180,7 +180,8 @@ function logoutAction() {
             localStorage.setItem("favorite", "");
 
             setlogStatus();
-            alert("登出成功！");
+            alert("登出成功！將轉跳回首頁");
+            location.href = "./index.html"
         }
 
         setlogStatus();

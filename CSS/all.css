@@ -935,6 +935,10 @@ input:focus {
   background-color: #F7C7FF;
 }
 
+.specialPoint-noCaffeing {
+  background-color: #FFF490;
+}
+
 .switchBar {
   position: static;
   z-index: 1;
@@ -1423,12 +1427,10 @@ input:focus {
   background-color: #FFF066;
 }
 .product-table thead th:first-child {
-  padding-left: 30px;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
 }
 .product-table thead th:last-child {
-  padding-right: 30px;
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }
@@ -1487,6 +1489,10 @@ input:focus {
 .product-table .fa-thumbs-up {
   font-size: 1.25rem;
   color: #F095FF;
+}
+.product-table .fa-noCaffeing {
+  width: 20px;
+  display: inline-block;
 }
 
 .popup {
@@ -1931,6 +1937,11 @@ textarea {
   width: 25vw;
 }
 
+#inedx-shops-anchor {
+  height: 200px;
+  margin-top: -200px;
+}
+
 .recommend-titleSection {
   position: absolute;
   top: -0.5em;
@@ -2231,6 +2242,7 @@ textarea {
   font-weight: 700;
   color: #66C5D2;
   background-color: #ffffff;
+  padding: 13px 12px 11px 11px;
 }
 .menu-content-filterBtn.active::after {
   content: "";
@@ -2524,6 +2536,11 @@ textarea {
 }
 .favoriteTitle h2 {
   padding-top: 4px;
+}
+
+.noDrink {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 #login .container {

@@ -87,13 +87,11 @@
         background-color: $primary;
 
         &:first-child {
-            padding-left: 30px;
             border-top-left-radius: 40px;
             border-bottom-left-radius: 40px;
         }
 
         &:last-child {
-            padding-right: 30px;
             border-top-right-radius: 40px;
             border-bottom-right-radius: 40px;
         }
@@ -166,5 +164,10 @@
     .fa-thumbs-up {
         font-size: $h5;
         color: $accent;
+    }
+
+    .fa-noCaffeing {
+        width: 20px;
+        display: inline-block;
     }
 }

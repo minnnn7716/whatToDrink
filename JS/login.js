@@ -18,13 +18,14 @@ function loginPost(obj) {
             localStorage.setItem("token", loginData.accessToken);
             localStorage.setItem("name", loginData.user.name);
             localStorage.setItem("id", loginData.user.id);
+            localStorage.setItem("favorite", loginData.user.favorite);
 
             if (loginStatus) {
-                alert("登入成功！將於 2 秒後跳轉回前頁");
-                setTimeout(goPage, 2000);
+                alert("登入成功！將跳轉回前頁");
+                location.href = herf;
             } else {
-                alert("登入成功！將於 2 秒後跳轉回首頁");
-                setTimeout(goIndex, 2000);
+                alert("登入成功！將跳轉回首頁");
+                location.href = './index.html';
             }
 
             localStorage.setItem("loginStatus", "");
@@ -50,12 +51,4 @@ function getInfor() {
         loginPost(obj);
         loginFrom.reset();
     })
-}
-
-function goIndex() {
-    location.href = './index.html';
-}
-
-function goPage() {
-    location.href = herf;
 }

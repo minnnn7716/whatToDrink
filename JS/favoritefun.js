@@ -28,6 +28,7 @@ function clickFavotite() {
                     item.dataset.favorite = "none";
                     item.classList.remove("active");
                     drinkId = item.dataset.id;
+
                     let index = favoriteAry.indexOf(drinkId);
                     favoriteAry.splice(index, 1);
                     localStorage.setItem("favorite", favoriteAry)

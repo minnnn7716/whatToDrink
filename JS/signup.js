@@ -15,12 +15,8 @@ function signupPost(obj) {
             localStorage.setItem("name", signupData.user.name);
             localStorage.setItem("id", signupData.user.id);
 
-            alert("註冊成功！將保持登入狀態 2 秒後跳轉回首頁");
-            setTimeout(goIndex, 2000);
-
-            function goIndex() {
-                location.href = './index.html';
-            }
+            alert("註冊成功！將保持登入狀態跳轉回首頁");
+            location.href = "./index.html";
         })
         .catch(function (error) {
             console.log(error)

@@ -44,7 +44,6 @@ function getDrinks() {
         .then(function (response) {
             drinksData = response.data;
             filterInputData(drinksData);
-            getUserFavotite();
         })
         .catch(function (error) {
             console.log(error);
@@ -68,6 +67,8 @@ function renderListData(data, inforStatus) {
                         specialStr += `<i class="fa-regular fa-snowflake"></i>`;
                     } else if (each === "店家推薦") {
                         specialStr += `<i class="fa-solid fa-thumbs-up"></i>`;
+                    } else if (each === "無咖啡因") {
+                        specialStr += `<img class="fa-noCaffeing" src="./IMAGES/noCaffeine.svg" alt="無咖啡因">`
                     }
                 });
             }
@@ -107,6 +108,7 @@ function renderListData(data, inforStatus) {
         })
 
         searchListTable.innerHTML = listStr;
+        getUserFavotite();
     }
 
     searchResultText.textContent = `找到 ${data.length} 個符合「${keyword}」的飲料`;
@@ -127,7 +129,9 @@ function renderCompactData(data, inforStatus) {
                     if (each === "僅限冷飲") {
                         specialStr += `<span class="specialPoint-item specialPoint-recommend mr-half-1">${each}</span>`;
                     } else if (each === "店家推薦") {
-                        specialStr += `<span class="specialPoint-item specialPoint-period">${each}</span>`;
+                        specialStr += `<span class="specialPoint-item specialPoint-period mr-half-1">${each}</span>`;
+                    } else if (each === "無咖啡因") {
+                        specialStr += `<span class="specialPoint-item specialPoint-noCaffeing">${each}</span>`;
                     }
                 });
             }
@@ -177,6 +181,7 @@ function renderCompactData(data, inforStatus) {
         })
 
         searchListComapct.innerHTML = listStr;
+        getUserFavotite();
     }
 
     searchResultText.textContent = `找到 ${data.length} 個符合「${keyword}」的飲料`;

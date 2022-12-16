@@ -30,6 +30,7 @@ function getDrink() {
     .then(function (response) {
       drinksData = response.data;
       renderData();
+      getUserFavotite();
     })
     .catch(function (error) {
       console.log(error);
@@ -44,13 +45,16 @@ function renderData() {
   let material = "";
   let str;
   let rateStr = renderStar(drinksData.rate);
+  const favoriteList = localStorage.getItem("favorite");
 
   if (drinksData.special.length) {
     drinksData.special.forEach(each => {
       if (each === "僅限冷飲") {
         specialStr += `<span class="specialPoint-item specialPoint-recommend mr-half-1">${each}</span>`;
       } else if (each === "店家推薦") {
-        specialStr += `<span class="specialPoint-item specialPoint-period">${each}</span>`;
+        specialStr += `<span class="specialPoint-item specialPoint-period mr-half-1">${each}</span>`;
+      } else if (each === "無咖啡因") {
+        specialStr += `<span class="specialPoint-item specialPoint-noCaffeing">${each}</span>`;
       }
     });
   }
@@ -66,6 +70,21 @@ function renderData() {
       material += `、${item}`;
     })
   }
+
+  if (favoriteList.includes(drinksData.id)) {
+    favoriteStr = `
+    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${drinksData.id}">
+      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+    </a>`;
+  } else {
+    favoriteStr = `
+    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${drinksData.id}">
+      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+    </a>`;
+  }
+
 
   ingredient = `${drinksData.ingredient.base}${mix}${material}`;
 
@@ -107,10 +126,7 @@ function renderData() {
         <p class="score mr-1" id="drinkInforRate">${drinksData.rate}</p>
         <div class="starSection mb-half-1">${rateStr}</div>
       </div>
-      <a href="#" class="heartBtn funcBtn-hover">
-        <i class="fa-regular fa-heart funcBtn-outline"></i>
-        <i class="fa-sharp fa-solid fa-heart funcBtn-solid"></i>
-      </a>
+      ${favoriteStr}
     </div>
   </div>
   `;
