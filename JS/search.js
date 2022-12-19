@@ -73,18 +73,26 @@ function renderListData(data, inforStatus) {
                 });
             }
 
-            if (favoriteList.includes(item.id)) {
+            if(localUserToken && favoriteList){
+                if (favoriteList.includes(item.id)) {
+                    favoriteStr = `
+                    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
+                      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                    </a>`;
+                } else {
+                    favoriteStr = `
+                    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
+                      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                    </a>`;
+                }
+            }else{
                 favoriteStr = `
-                <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
-                  <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
-                  <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
-                </a>`;
-            } else {
-                favoriteStr = `
-                <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
-                  <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
-                  <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
-                </a>`;
+                    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
+                      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                    </a>`;
             }
 
             let rateStr = renderStar(item.rate);

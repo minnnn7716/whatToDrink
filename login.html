@@ -24,21 +24,23 @@
     <div id="navbarSection" class="mb-15"></div>
   </header>
 
-  <section class="container">
+ <section class="container">
     <div class="row">
-      <form class="col-5" name="loginFrom">
-        <div>
-          <label for="email">信箱</label>
-          <input id="email" type="text" name="信箱">
+      <form class="col-4 singupForm" name="loginFrom">
+        <div class="flex align-center mb-2">
+          <label for="email" class="singup-label">信箱</label>
+          <input id="email" class="singup-input" type="text" name="信箱">
         </div>
-        <div>
-          <label for="password">密碼</label>
-          <input id="password" type="password" name="密碼">
-          <i class="fa-sharp fa-solid fa-eye"></i>
-          <i class="fa-solid fa-eye-slash"></i>
+        <div class="flex align-center mb-2">
+          <label for="password" class="singup-label">密碼</label>
+          <input id="password" class="singup-input" type="password" name="密碼">
+          <!-- <i class="fa-sharp fa-solid fa-eye"></i>
+          <i class="fa-solid fa-eye-slash"></i> -->
         </div>
-        <input type="submit" value="登入">
-        <a href="./signup.html">註冊</a>
+        <div class="flex">
+          <a class="singup-btn singup-back flex-stretch mr-1" href="./signup.html">註冊</a>
+          <input class="singup-btn singup-submit flex-stretch ml-1" type="submit" value="登入">
+        </div>
       </form>
     </div>
   </section>

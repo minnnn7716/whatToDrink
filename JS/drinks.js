@@ -75,19 +75,28 @@ function renderData() {
     })
   }
 
-  if (favoriteList.includes(drinksData.id)) {
+  if(localUserToken && favoriteList){
+    if (favoriteList.includes(drinksData.id)) {
+      favoriteStr = `
+      <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${drinksData.id}">
+        <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+        <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+      </a>`;
+    } else {
+      favoriteStr = `
+      <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${drinksData.id}">
+        <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+        <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+      </a>`;
+    }
+  }else{
     favoriteStr = `
-    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${drinksData.id}">
-      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
-      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
-    </a>`;
-  } else {
-    favoriteStr = `
-    <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${drinksData.id}">
-      <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
-      <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
-    </a>`;
+      <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${drinksData.id}">
+        <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+        <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+      </a>`;
   }
+  
 
 
   ingredient = `${drinksData.ingredient.base}${mix}${material}`;
@@ -421,7 +430,6 @@ function updateShopRateNum() {
   const apiPath = `shops/${shopId}`;
   const apiUrl = `${baseUrl}${apiPath}`;
   rateNum += 1;
-  console.log(rateNum)
 
   axios.patch(apiUrl, {
     "rateNum": rateNum

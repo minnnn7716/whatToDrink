@@ -4,6 +4,9 @@ const apiUrl = `${baseUrl}${apiPath}`;
 const singupFrom = document.querySelector(`[name="singupForm"]`);
 let signupData;
 
+let loginStatus = localStorage.getItem("loginStatus");
+let herf = localStorage.getItem("backHref");
+
 getInfor();
 
 function signupPost(obj) {
@@ -15,8 +18,16 @@ function signupPost(obj) {
             localStorage.setItem("name", signupData.user.name);
             localStorage.setItem("id", signupData.user.id);
 
-            alert("註冊成功！將保持登入狀態跳轉回首頁");
-            location.href = "./index.html";
+            if (loginStatus) {
+                alert("註冊成功！將跳轉回前頁");
+                location.href = herf;
+            } else {
+                alert("註冊成功！將跳轉回首頁");
+                location.href = './index.html';
+            }
+
+            localStorage.setItem("loginStatus", "");
+            localStorage.setItem("backHref", "");
         })
         .catch(function (error) {
             console.log(error)

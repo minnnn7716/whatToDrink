@@ -6,6 +6,8 @@ let singleShopsData;
 let shopId;
 let commentData;
 let shopRate = 0;
+let drinksData;
+let drinkMenu = {};
 
 getShops();
 
@@ -18,6 +20,7 @@ function getShops() {
             shopsData = response.data;
             getShopId();
             getComments();
+            getDrinkData();
         })
         .catch(function (error) {
             console.log(error);
@@ -97,10 +100,14 @@ function getComments() {
 }
 
 function getShopRate() {
-    commentData.forEach(item => {
-        shopRate += + item.rate;
-    });
-    shopRate = (shopRate / commentData.length).toFixed(1);
+    if (!commentData.length) {
+        shopRate = 0;
+    } else {
+        commentData.forEach(item => {
+            shopRate += + item.rate;
+        });
+        shopRate = (shopRate / commentData.length).toFixed(1);
+    }
 }
 
 function renderPopupRate() {
@@ -139,4 +146,132 @@ function renderStar(rate) {
     }
 
     return total.join("");
+}
+
+function getDrinkData() {
+    const apiPath = `shops/${shopId}/drinks`;
+    const apiUrl = `${baseUrl}${apiPath}`;
+
+    axios.get(apiUrl)
+        .then(function (response) {
+            drinksData = response.data;
+            setDrinkDate();
+            renderMenu();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function setDrinkDate() {
+    drinksData.forEach(item => {
+        if (drinkMenu[item.menuType] === undefined) {
+            drinkMenu[item.menuType] = [];
+        }
+
+        if (item.menuType === "純茶") {
+            drinkMenu[item.menuType].push(item.id);
+        } else if (item.menuType === "特調") {
+            drinkMenu[item.menuType].push(item.id);
+        } else if (item.menuType === "奶 / 鮮奶茶") {
+            drinkMenu[item.menuType].push(item.id);
+        }
+    })
+}
+
+function renderMenu() {
+    const menuSection = document.querySelector(".menu-kind-section");
+    let str = "";
+    let count = 0;
+
+    for (const [menuKey, menuValue] of Object.entries(drinkMenu)) {
+        let item = renderMenuItem(menuKey);
+        
+        str += `
+        <div class="menu-kind col-5">
+            <h3 class="menu-kind-title">${menuKey}</h3>
+            <table class="full-container">${item}</table>
+        </div>
+        `
+
+        count++
+    };
+
+    if(count % 2){
+        str += `<div class="menu-kind col-5"></div>`;
+    }
+
+    menuSection.innerHTML = str;
+}
+
+function renderMenuItem(type){
+    let str = "";
+    const favoriteList = localStorage.getItem("favorite");
+
+    for (const [key, value] of Object.entries(drinkMenu)) {
+        if(key === type){
+            drinksData.forEach(item => {
+                let specialStr = "";
+                let favoriteStr = "";
+
+                if(value.indexOf(item.id) !== -1){
+
+                    if (item.special.length) {
+                        item.special.forEach(each => {
+                            if (each === "僅限冷飲") {
+                                specialStr += `<i class="fa-regular fa-snowflake"></i>`;
+                            } else if (each === "店家推薦") {
+                                specialStr += `<i class="fa-solid fa-thumbs-up"></i>`;
+                            } else if (each === "無咖啡因") {
+                                specialStr += `<img class="fa-noCaffeing" src="./IMAGES/noCaffeine.svg" alt="無咖啡因">`
+                            }
+                        });
+                    }
+
+                    if(localUserToken && favoriteList){
+                        if (favoriteList.includes(item.id)) {
+                            favoriteStr = `
+                            <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
+                              <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                              <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                            </a>`;
+                        } else {
+                            favoriteStr = `
+                            <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
+                              <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                              <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                            </a>`;
+                        }
+                    }else{
+                        favoriteStr = `
+                            <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
+                              <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
+                              <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
+                            </a>`;
+                    }
+
+                    str += `
+                    <tr>
+                        <td class="menu-kind-name">
+                            <a href="./drink.html?id=${item.id}" class="menu-kind-link">${item.name}</a>
+                        </td>
+                        <td class="menu-kind-rate">
+                            <div class="rateSection flex-row-reverse">
+                            <p class="score">${item.rate}</p>
+                            <div class="starSection mr-1">
+                                <span class="star"></span>
+                            </div>
+                            </div>
+                        </td>
+                        <td class="menu-kind-special"><div class="flex pl-1 pt-1">${specialStr}</div></td>
+                        <td class="menu-kind-price">M $ ${item.price.m} ｜ L $ ${item.price.m}</td>
+                        <td class="menu-kind-favorite">${favoriteStr}</td>
+                    </tr>
+                    `;   
+                }
+            })
+        }
+    }
+
+    return str;
 }

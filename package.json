@@ -11,5 +11,10 @@
   "devDependencies": {
     "json-server": "^0.17.1",
     "json-server-auth": "^2.1.0"
-  }
+  },
+  "dependencies": {
+    "json-serve": "^0.1.0",
+    "npm-check": "^6.0.1"
+  },
+  "keywords": []
 }

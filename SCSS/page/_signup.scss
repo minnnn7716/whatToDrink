@@ -3,3 +3,39 @@
     height: calc(100vh - 462px);
   }
 }
+
+.singup-input {
+  border: 1px solid $gray_900;
+  border-radius: 16px;
+  padding: 8px;
+  flex: 1 1 0;
+}
+
+.singup-label{
+  margin-right: 16px;
+}
+
+.singup-btn{
+  text-align: center;
+  font-size: $body1;
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 40px;
+}
+
+.singup-submit{
+  background-color: $secondary_600;
+  transition: all ease .3s;
+  &:hover{
+    background-color: $accent_300;
+  }
+}
+
+.singup-back{
+  border-color: $secondary_900;
+  color: $secondary_900;
+  &:hover{
+    border-color: $accent_900;
+  color: $accent_900;
+  }
+}

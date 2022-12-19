@@ -600,10 +600,6 @@ input:focus {
   margin-left: 32px;
 }
 
-.pt-1 {
-  padding-top: 8px;
-}
-
 .pt-12 {
   padding-top: 96px;
 }
@@ -626,10 +622,6 @@ input:focus {
 
 .pb-12 {
   padding-bottom: 96px;
-}
-
-.pl-1 {
-  padding-left: 8px;
 }
 
 .pl-2 {
@@ -2328,9 +2320,6 @@ textarea {
 .menu-kind-special .fa-thumbs-up {
   color: #F095FF;
 }
-.menu-kind-special .fa-noCaffeing {
-  width: 20px;
-}
 
 .menu-kind-favorite {
   width: 50px;
@@ -2567,38 +2556,8 @@ textarea {
   height: calc(100vh - 462px);
 }
 
-.singup-input {
+singup-email {
   border: 1px solid #3C3C3C;
   border-radius: 16px;
   padding: 8px;
-  flex: 1 1 0;
-}
-
-.singup-label {
-  margin-right: 16px;
-}
-
-.singup-btn {
-  text-align: center;
-  font-size: 1rem;
-  padding: 8px;
-  border: 1px solid #000;
-  border-radius: 40px;
-}
-
-.singup-submit {
-  background-color: #66C5D2;
-  transition: all ease 0.3s;
-}
-.singup-submit:hover {
-  background-color: #F7C7FF;
-}
-
-.singup-back {
-  border-color: #1D7B88;
-  color: #1D7B88;
-}
-.singup-back:hover {
-  border-color: #92409F;
-  color: #92409F;
 }/*# sourceMappingURL=all.css.map */
