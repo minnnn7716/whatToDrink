@@ -73,7 +73,7 @@ function renderListData(data, inforStatus) {
                 });
             }
 
-            if(localUserToken && favoriteList){
+            if (localUserToken && favoriteList) {
                 if (favoriteList.includes(item.id)) {
                     favoriteStr = `
                     <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
@@ -87,7 +87,7 @@ function renderListData(data, inforStatus) {
                       <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
                     </a>`;
                 }
-            }else{
+            } else {
                 favoriteStr = `
                     <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
                       <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>

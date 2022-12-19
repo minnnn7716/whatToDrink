@@ -164,19 +164,23 @@ function getDrinkData() {
 }
 
 function setDrinkDate() {
+    let menuTypeAry = []
+
     drinksData.forEach(item => {
         if (drinkMenu[item.menuType] === undefined) {
             drinkMenu[item.menuType] = [];
+            menuTypeAry.push(item.menuType);
         }
 
-        if (item.menuType === "純茶") {
-            drinkMenu[item.menuType].push(item.id);
-        } else if (item.menuType === "特調") {
-            drinkMenu[item.menuType].push(item.id);
-        } else if (item.menuType === "奶 / 鮮奶茶") {
-            drinkMenu[item.menuType].push(item.id);
-        }
+        menuTypeAry.forEach(typeItem => {
+            if (item.menuType === typeItem) {
+                drinkMenu[item.menuType].push(item.id);
+            }
+        })
     })
+
+    console.log(menuTypeAry)
+    console.log(drinkMenu)
 }
 
 function renderMenu() {
@@ -186,7 +190,7 @@ function renderMenu() {
 
     for (const [menuKey, menuValue] of Object.entries(drinkMenu)) {
         let item = renderMenuItem(menuKey);
-        
+
         str += `
         <div class="menu-kind col-5">
             <h3 class="menu-kind-title">${menuKey}</h3>
@@ -197,24 +201,24 @@ function renderMenu() {
         count++
     };
 
-    if(count % 2){
+    if (count % 2) {
         str += `<div class="menu-kind col-5"></div>`;
     }
 
     menuSection.innerHTML = str;
 }
 
-function renderMenuItem(type){
+function renderMenuItem(type) {
     let str = "";
     const favoriteList = localStorage.getItem("favorite");
 
     for (const [key, value] of Object.entries(drinkMenu)) {
-        if(key === type){
+        if (key === type) {
             drinksData.forEach(item => {
                 let specialStr = "";
                 let favoriteStr = "";
 
-                if(value.indexOf(item.id) !== -1){
+                if (value.indexOf(item.id) !== -1) {
 
                     if (item.special.length) {
                         item.special.forEach(each => {
@@ -228,7 +232,7 @@ function renderMenuItem(type){
                         });
                     }
 
-                    if(localUserToken && favoriteList){
+                    if (localUserToken && favoriteList) {
                         if (favoriteList.includes(item.id)) {
                             favoriteStr = `
                             <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${item.id}">
@@ -242,7 +246,7 @@ function renderMenuItem(type){
                               <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
                             </a>`;
                         }
-                    }else{
+                    } else {
                         favoriteStr = `
                             <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${item.id}">
                               <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
@@ -267,7 +271,7 @@ function renderMenuItem(type){
                         <td class="menu-kind-price">M $ ${item.price.m} ｜ L $ ${item.price.m}</td>
                         <td class="menu-kind-favorite">${favoriteStr}</td>
                     </tr>
-                    `;   
+                    `;
                 }
             })
         }
