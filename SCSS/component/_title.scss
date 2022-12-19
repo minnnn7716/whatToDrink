@@ -1,4 +1,4 @@
-.subtitle{
+.subtitle {
     position: relative;
     display: inline-block;
     padding: 8px 24px 6px 24px;
@@ -8,8 +8,8 @@
     font-size: $h4;
     font-weight: 700;
 
-    &::after{
-        content: url(../../IMAGES/deco_manyAngleStar.svg);
+    &::after {
+        content: url(https://raw.githubusercontent.com/minnnn7716/whatToDrink/2a8886cf4ab84fbe0667038f97cbd46456cd4a45/IMAGES/deco_manyAngleStar.svg);
         position: absolute;
         z-index: -1;
         bottom: -.5em;
@@ -18,13 +18,13 @@
     }
 }
 
-.subdiscrip{
+.subdiscrip {
     position: relative;
     margin-top: 16px;
     padding-left: 50px;
     font-size: $h5;
 
-    &::before{
+    &::before {
         content: "";
         position: absolute;
         left: 25px;
@@ -33,7 +33,7 @@
         border-left: 1px solid $gray_900;
     }
 
-    &::after{
+    &::after {
         content: "✦";
         position: absolute;
         left: 17px;
