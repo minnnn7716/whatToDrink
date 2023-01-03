@@ -28,10 +28,24 @@ a {
     margin: 0 auto;
     padding-right: $gutterWidth / 2;
     padding-left: $gutterWidth / 2;
+
+    @include pc {
+        max-width: 1000px;
+    }
+
+    @include pad {
+        max-width: 680px;
+    }
 }
 
 .full-container {
     width: 100%;
+}
+
+.vh-100 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 button,

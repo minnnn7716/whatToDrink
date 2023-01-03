@@ -105,23 +105,33 @@ function innerNavbar() {
 function innerFooter() {
     let footer = document.querySelector("#footerSecrion");
 
-    footer.innerHTML = `
-    <div id="footer">
-    <div class="footer-container">
-        <a href="#" class="topBtn">TOP</a>
-        <ul class="footer-list">
-            <li><a href="#">首頁搜尋</a></li>
-            <li><a href="#">全部店家</a></li>
-            <li><a href="#">四大飲類</a></li>
-            <li><a href="#">轉吧轉吧</a></li>
-        </ul>
-        <h2 class="logo-text">
-            <a href="#">What <br> to Drink
-        </h2></a>
-        <p class="footer-infor">資料、圖片來源皆來自網路，僅用來做為學習用途</p>
-    </div>
-    </div>
-    `;
+    if (footer.dataset.footer === "nonInfor") {
+        footer.innerHTML = `
+        <div id="footer">
+            <div class="footer-container nonInfor"></div>
+        </div>
+        `;
+    } else {
+        footer.innerHTML = `
+        <div id="footer">
+        <div class="footer-container">
+            <a href="#" class="topBtn">TOP</a>
+            <ul class="footer-list">
+                <li><a href="#">首頁搜尋</a></li>
+                <li><a href="#">全部店家</a></li>
+                <li><a href="#">四大飲類</a></li>
+                <li><a href="#">轉吧轉吧</a></li>
+            </ul>
+            <h2 class="logo-text">
+                <a href="#">What <br> to Drink
+            </h2></a>
+            <p class="footer-infor">資料、圖片來源皆來自網路，僅用來做為學習用途</p>
+        </div>
+        </div>
+        `;
+    }
+
+
 }
 
 function scrollChangeNavbar() {

@@ -1,11 +1,17 @@
+@mixin largePc {
+    @media(max-width: 1500px) {
+        @content;
+    }
+}
+
 @mixin pc {
-    @media(max-width: 1140px) {
+    @media(max-width: 1330px) {
         @content;
     }
 }
 
 @mixin pad {
-    @media(max-width: 720px) {
+    @media(max-width: 850px) {
         @content;
     }
 }
@@ -17,13 +23,12 @@
 }
 
 @mixin stroke($color: #000, $size: 1px) {
-    text-shadow:
-      -#{$size} -#{$size} 0 $color,
-       0        -#{$size} 0 $color,
-       #{$size} -#{$size} 0 $color,
-       #{$size}  0        0 $color,
-       #{$size}  #{$size} 0 $color,
-       0         #{$size} 0 $color,
-      -#{$size}  #{$size} 0 $color,
-      -#{$size}  0        0 $color;
-  }
+    text-shadow: -#{$size} -#{$size} 0 $color,
+    0 -#{$size} 0 $color,
+    #{$size} -#{$size} 0 $color,
+    #{$size} 0 0 $color,
+    #{$size} #{$size} 0 $color,
+    0 #{$size} 0 $color,
+    -#{$size} #{$size} 0 $color,
+    -#{$size} 0 0 $color;
+}

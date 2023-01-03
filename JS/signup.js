@@ -1,7 +1,7 @@
 const apiPath = "register";
 const apiUrl = `${baseUrl}${apiPath}`;
 
-const singupFrom = document.querySelector(`[name="singupForm"]`);
+const singupFrom = document.querySelector(`[name="signupFrom"]`);
 let signupData;
 
 let loginStatus = localStorage.getItem("loginStatus");

@@ -1,7 +1,7 @@
 const apiPath = "login";
 const apiUrl = `${baseUrl}${apiPath}`;
 
-const loginFrom = document.querySelector(`[name="loginFrom"]`);
+const loginFrom = document.querySelector(`[name="logFrom"]`);
 let loginData;
 
 let loginStatus = localStorage.getItem("loginStatus");

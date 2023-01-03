@@ -7,6 +7,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
+
+    @include pad {
+        background-image: url(../../IMAGES/indexBanner_mobile.webp);
+    }
 }
 
 // 標題
@@ -70,8 +74,12 @@
 }
 
 // 搜尋框
-#index .searchBar-input {
+#index .searchSection {
     width: 600px;
+
+    @include pad {
+        width: 80%;
+    }
 }
 
 // header 裝飾圖樣位置
@@ -79,12 +87,23 @@
     width: 25%;
     top: 0;
     right: 10%;
+
+    @include pad {
+        width: 60%;
+        right: -35%;
+    }
 }
 
 .header-deco-left {
     width: 35%;
     bottom: 10%;
     left: 0;
+
+    @include pad {
+        width: 60%;
+        bottom: -10%;
+        left: -30%;
+    }
 }
 
 // 轉盤區塊

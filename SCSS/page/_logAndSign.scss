@@ -1,0 +1,162 @@
+.logForm {
+    padding: 40px 56px;
+    background-color: $gray_100;
+    border: 3px solid;
+    border-radius: 16px;
+}
+
+.log-title {
+    font-size: $h4;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.primary {
+    .logForm {
+        border-color: $primary_600;
+    }
+
+    .log-submit {
+        background-color: $primary_600;
+    }
+}
+
+.secondary {
+    .logForm {
+        border-color: $secondary_600;
+    }
+
+    .log-submit {
+        background-color: $secondary_600;
+        color: $white;
+    }
+}
+
+.accent {
+    .logForm {
+        border-color: $accent_600;
+    }
+
+    .log-submit {
+        background-color: $accent_600;
+        color: $white;
+    }
+}
+
+.log-item {
+    position: relative;
+    margin-bottom: 12px;
+
+    label {
+        margin-right: 8px;
+        position: absolute;
+        z-index: 1;
+        top: 14.5px;
+        left: 12px;
+        color: $gray_600;
+    }
+
+    input {
+        width: 100%;
+        padding: 16px 16px 16px 56px;
+        margin-bottom: 8px;
+        font-size: $body1;
+        border: 1px solid $gray_600;
+        border-radius: 12px;
+
+        &::placeholder {
+            color: #c5c5c5;
+        }
+    }
+}
+
+.log-item-password input {
+    padding-right: 48px;
+}
+
+.eyeIcon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+
+    .show {
+        display: none;
+    }
+}
+
+.alertText {
+    color: $accent_600;
+    visibility: hidden;
+}
+
+.log-submit {
+    font-size: 17px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+
+    &:hover {
+        filter: contrast(1.1);
+        transition: all ease .5s;
+    }
+}
+
+.log-submit.back {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.linkSection {
+    text-align: center;
+
+    a:hover {
+        font-weight: 500;
+        color: $secondary_600;
+    }
+}
+
+.progressBar {
+    display: flex;
+    font-family: $chiFont;
+    margin-bottom: 32px;
+    justify-content: space-between;
+
+    p {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        background-color: $gray_500;
+        border-radius: 50%;
+        color: white;
+    }
+
+    p.active {
+        background-color: $accent_600;
+    }
+
+    span {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    .step::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        height: 2px;
+        width: 100%;
+        background-color: $gray_500;
+    }
+}
+
+.illustrate {
+    margin-bottom: 32px;
+    text-align: center;
+    color: $accent_900;
+}

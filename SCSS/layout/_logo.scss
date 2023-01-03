@@ -54,4 +54,8 @@
 .logo-text {
     font-size: 1.75vw;
     font-weight: 700;
+
+    @include pad {
+        font-size: 4vw;
+    }
 }

@@ -16,6 +16,10 @@
 .outBtn {
     font-size: $h4;
     padding: 8px 12px;
+
+    @include pad {
+        font-size: $h2;
+    }
 }
 
 .heartBtn {
