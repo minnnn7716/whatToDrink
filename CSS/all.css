@@ -508,6 +508,10 @@ input:focus {
   }
 }
 
+.mt-half-3 {
+  margin-top: 12px;
+}
+
 .mt-1 {
   margin-top: 8px;
 }
@@ -542,6 +546,10 @@ input:focus {
 
 .mb-half-1 {
   margin-bottom: 4px;
+}
+
+.mb-half-3 {
+  margin-bottom: 12px;
 }
 
 .mb-1 {
@@ -704,6 +712,10 @@ input:focus {
   text-align: center;
 }
 
+.h-50 {
+  height: 50%;
+}
+
 .btn {
   padding: 8px 16px 6px 16px;
   border-radius: 40px;
@@ -807,6 +819,14 @@ input:focus {
   border-radius: 40px;
   font-size: 1.25rem;
   transition: all ease 0.5s;
+  pointer-events: none;
+}
+
+.userImg {
+  margin-bottom: 24px;
+  border-radius: 50%;
+  border: 2px solid #3C3C3C;
+  box-shadow: 4px 8px 0 0 #FFF066;
   pointer-events: none;
 }
 
@@ -1514,7 +1534,6 @@ input:focus {
 .popup {
   position: fixed;
   height: 80vh;
-  width: 70%;
   top: 50%;
   left: 50%;
   padding: 16px 26px 0 16px;
@@ -2607,6 +2626,114 @@ textarea {
 .noDrink {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.userInfor {
+  padding: 72px;
+  border: 4px solid #66C5D2;
+  background-color: #F3F2F2;
+  text-align: center;
+  border-radius: 16px;
+}
+.userInfor .imgContainer {
+  padding: 0 24px 24px 24px;
+}
+.userInfor h4 {
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+.userInfor p {
+  font-family: "Noto Sans TC";
+  font-size: 1.25rem;
+  padding-bottom: 16px;
+}
+.userInfor a {
+  display: block;
+  font-size: 1.25rem;
+  padding: 8px 0;
+  border: 1px solid #3C3C3C;
+  border-radius: 12px;
+  background-color: #FFF066;
+}
+.userInfor a:hover {
+  background-color: #FFCD1A;
+}
+
+.userInforContaoner {
+  padding-right: 24px;
+}
+
+.funcList img {
+  width: 45px;
+  margin-bottom: 12px;
+}
+.funcList a {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 3px solid;
+  border-radius: 16px;
+}
+.funcList p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.funcList .row {
+  height: 100%;
+}
+.funcList .funcList-favorite {
+  border-color: #F095FF;
+}
+.funcList .funcList-favorite:hover {
+  background-color: #FEFAFF;
+}
+.funcList .funcList-wheel {
+  border-color: #7C7C7C;
+}
+.funcList .funcList-wheel:hover {
+  background-color: #F9F9F9;
+}
+.funcList .funcList-comment {
+  border-color: #FFCD1A;
+}
+.funcList .funcList-comment:hover {
+  background-color: #FFFEF6;
+}
+.funcList .funcList-message {
+  border-color: #66C5D2;
+}
+.funcList .funcList-message:hover {
+  background-color: #F8FEFF;
+}
+
+#user .popup {
+  height: auto;
+  width: 600px;
+  padding: 32px 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.changePwsForm {
+  width: 70%;
+}
+.changePwsForm h3 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #D271E2;
+  font-weight: 500;
+}
+.changePwsForm .illustrate {
+  margin-bottom: 32px;
+  color: #92409F;
+}
+.changePwsForm .cancel {
+  background-color: #ffffff;
+  margin-right: 16px;
 }
 
 .logForm {

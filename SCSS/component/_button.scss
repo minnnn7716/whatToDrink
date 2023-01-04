@@ -121,6 +121,14 @@
     }
 }
 
+.userImg {
+    margin-bottom: 24px;
+    border-radius: 50%;
+    border: 2px solid $gray_900;
+    box-shadow: 4px 8px 0 0 $primary;
+    pointer-events: none;
+}
+
 // 有陰影的按鈕
 .btn-shadow {
     padding: 16px 40px;

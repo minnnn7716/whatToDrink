@@ -27,35 +27,86 @@
     <div class="flex-stretch flex align-center">
         <section class="container flex-stretch">
             <div class="row">
-                <div class="col-5 userInfor">
-                    <img src="https://picsum.photos/100/200" alt="">
-                    <h4 class="userInfor-name">王小明</h4>
-                    <p class="userInfor-mail">mmm123@gmail.com</p>
-                    <a href="#">更改密碼</a>
+                <div class="col-5 userInforContaoner">
+                    <div class="userInfor">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="imgContainer">
+                                    <img class="userImg" src="https://picsum.photos/id/100/200/200" alt="使用者頭像">
+                                </div>
+                                <h4>王小明</h4>
+                                <p>mmm123@gmail.com</p>
+                                <a href="#">更改密碼</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-7 funcList">
+                <div class="col-6 funcList">
                     <div class="row">
-                        <a class="col-6 funcList-favorite">
-                            <img src="./IMAGES/user_favorite.svg" alt="">
-                            <p>收藏清單</p>
-                        </a>
-                        <a class="col-6 funcList-wheel">
-                            <img src="./IMAGES/user_wheel.svg" alt="">
-                            <p>轉盤清單</p>
-                        </a>
-                        <a class="col-6 funcList-comment">
-                            <img src="./IMAGES/user_comment.svg" alt="">
-                            <p>過往評論</p>
-                        </a>
-                        <a class="col-6 funcList-message">
-                            <img src="./IMAGES/user_message.svg" alt="">
-                            <p>消息通知</p>
-                        </a>
+                        <div class="col-6 mb-half-3">
+                            <a class="funcList-favorite">
+                                <img src="./IMAGES/user_favorite.svg" alt="">
+                                <p>收藏清單</p>
+                            </a>
+                        </div>
+                        <div class="col-6 mb-half-3">
+                            <a class="funcList-wheel">
+                                <img src="./IMAGES/user_wheel.svg" alt="">
+                                <p>轉盤清單</p>
+                            </a>
+                        </div>
+                        <div class="col-6 mt-half-3">
+                            <a class="funcList-comment">
+                                <img src="./IMAGES/user_comment.svg" alt="">
+                                <p>過往評論</p>
+                            </a>
+                        </div>
+                        <div class="col-6 mt-half-3">
+                            <a class="funcList-message">
+                                <img src="./IMAGES/user_message.svg" alt="">
+                                <p>消息通知</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
+    <!-- <div class="popupBG" data-func="close">
+        <div class="popup">
+            <a href="#" class="popup-close" data-func="close">
+                <i class="fa-solid fa-xmark" data-func="close"></i>
+            </a>
+            <form class="changePwsForm" name="changePwsForm">
+                <h3>更改密碼</h3>
+                <p class="illustrate">請輸入新密碼，將為您重置密碼</p>
+                <div class="log-item log-item-password">
+                    <label for="password">密碼</label>
+                    <input id="password" type="password" name="密碼" placeholder="請輸入新密碼">
+                    <div class="eyeIcon">
+                        <i class="fa-sharp fa-solid fa-eye show"></i>
+                        <i class="fa-solid fa-eye-slash hide"></i>
+                    </div>
+                    <p class="alertText">請填寫正確格式</p>
+                </div>
+                <div class="log-item log-item-password">
+                    <label for="passwordAgain">密碼</label>
+                    <input id="passwordAgain" type="password" name="密碼" placeholder="請再次輸入新密碼">
+                    <div class="eyeIcon">
+                        <i class="fa-sharp fa-solid fa-eye show"></i>
+                        <i class="fa-solid fa-eye-slash hide"></i>
+                    </div>
+                    <p class="alertText">請填寫正確格式</p>
+                </div>
+                <div class="btnSection">
+                    <a class="btn-shadow cancel" href="#" data-func="close">取消</a>
+                    <input class="btn-shadow" type="submit" value="確定">
+                </div>
+            </form>
+        </div>
+
+    </div> -->
 
     <footer id="footerSecrion" data-footer="nonInfor"></footer>
 
