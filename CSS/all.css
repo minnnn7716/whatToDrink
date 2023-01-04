@@ -612,6 +612,10 @@ input:focus {
   padding-top: 8px;
 }
 
+.pt-8 {
+  padding-top: 64px;
+}
+
 .pt-12 {
   padding-top: 96px;
 }
@@ -973,6 +977,10 @@ input:focus {
 
 .specialPoint-noCaffeing {
   background-color: #FFF490;
+}
+
+.specialPoint-none {
+  background-color: #F3F2F2;
 }
 
 .switchBar {
@@ -1375,7 +1383,7 @@ input:focus {
 }
 .message-likeThis .likeThis-num {
   position: absolute;
-  top: 50%;
+  top: 24px;
   left: 28px;
   transform: translateY(-50%);
   padding: 0 8px 4px 20px;
@@ -2709,13 +2717,18 @@ textarea {
   background-color: #F8FEFF;
 }
 
-#user .popup {
+#user .popup,
+#user-list .popup {
   height: auto;
   width: 600px;
   padding: 32px 0;
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+#user-list .popup {
+  width: 800px;
 }
 
 .changePwsForm {
@@ -2732,6 +2745,145 @@ textarea {
   color: #92409F;
 }
 .changePwsForm .cancel {
+  background-color: #ffffff;
+  margin-right: 16px;
+}
+
+.userList-titleSection {
+  display: flex;
+  font-family: "Noto Sans TC";
+  font-size: 2rem;
+  font-weight: 600;
+}
+.userList-titleSection .img {
+  width: 45px;
+  height: 45px;
+  margin-right: 8px;
+  background-size: cover;
+}
+.userList-titleSection .divider {
+  flex: 1 1 0;
+  border-bottom: 1px dashed;
+  margin: 0 16px;
+}
+
+.userList-titleSection.comment {
+  color: #AE7D00;
+}
+.userList-titleSection.comment .img {
+  background-image: url(../../IMAGES/user_comment.svg);
+  filter: invert(46%) sepia(96%) saturate(2336%) hue-rotate(26deg) brightness(94%) contrast(101%);
+}
+.userList-titleSection.comment .divider {
+  flex: 1 1 0;
+  border-color: #AE7D00;
+}
+
+.userList-titleSection.wheel {
+  color: #7C7C7C;
+}
+.userList-titleSection.wheel .img {
+  background-image: url(../../IMAGES/user_wheel.svg);
+}
+.userList-titleSection.wheel .divider {
+  flex: 1 1 0;
+  border-color: #7C7C7C;
+}
+
+.userList-titleSection.favorite {
+  color: #F095FF;
+}
+.userList-titleSection.favorite .img {
+  background-image: url(../../IMAGES/user_favorite.svg);
+}
+.userList-titleSection.favorite .divider {
+  flex: 1 1 0;
+  border-color: #F095FF;
+}
+
+.userList-titleSection.list-message {
+  color: #66C5D2;
+}
+.userList-titleSection.list-message .img {
+  background-image: url(../../IMAGES/user_message.svg);
+}
+.userList-titleSection.list-message .divider {
+  flex: 1 1 0;
+  border-color: #66C5D2;
+}
+
+.contentSection {
+  min-height: 200px;
+  border: 3px solid #66C5D2;
+  border-radius: 24px;
+}
+
+.eachMessage-img {
+  max-height: 260px;
+  overflow: hidden;
+}
+
+.eachMessage-haeder h5 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.eachMessage-haeder p {
+  font-family: "Noto Sans TC";
+}
+.eachMessage-haeder i {
+  font-size: 1.5rem;
+  transition: all ease 0.3s;
+}
+.eachMessage-haeder i:hover {
+  color: #D271E2;
+}
+
+.addList {
+  font-size: 1.25rem;
+  font-weight: 400;
+  border: 1px solid #7C7C7C;
+  padding: 8px 24px;
+  border-radius: 8px;
+  color: #7C7C7C;
+}
+.addList:hover {
+  color: #000000;
+  background-color: #F3F2F2;
+  border-color: #000000;
+}
+
+.eachWheelList h6 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.eachWheelList i {
+  font-size: 1.5rem;
+  transition: all ease 0.3s;
+}
+.eachWheelList i:hover {
+  color: #F095FF;
+}
+.eachWheelList .col-6 {
+  padding: 0 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+.eachWheelList .col-6 p {
+  margin-right: 24px;
+}
+
+.editWheelList {
+  padding: 40px 0;
+  width: 70%;
+}
+.editWheelList h3 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #D271E2;
+  font-weight: 500;
+}
+.editWheelList .cancel {
   background-color: #ffffff;
   margin-right: 16px;
 }

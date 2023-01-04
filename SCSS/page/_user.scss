@@ -98,7 +98,8 @@
     }
 }
 
-#user {
+#user,
+#user-list {
     .popup {
         height: auto;
         width: 600px;
@@ -107,6 +108,10 @@
         justify-content: center;
         text-align: center;
     }
+}
+
+#user-list .popup {
+    width: 800px;
 }
 
 .changePwsForm {
@@ -122,6 +127,169 @@
     .illustrate {
         margin-bottom: 32px;
         color: $accent_900;
+    }
+
+    .cancel {
+        background-color: $white;
+        margin-right: 16px;
+    }
+}
+
+.userList-titleSection {
+    display: flex;
+    font-family: $chiFont;
+    font-size: $h3;
+    font-weight: 600;
+
+    .img {
+        width: 45px;
+        height: 45px;
+        margin-right: 8px;
+        background-size: cover;
+    }
+
+    .divider {
+        flex: 1 1 0;
+        border-bottom: 1px dashed;
+        margin: 0 16px;
+    }
+}
+
+.userList-titleSection.comment {
+    color: $primary_900;
+
+    .img {
+        background-image: url(../../IMAGES/user_comment.svg);
+        filter: invert(46%) sepia(96%) saturate(2336%) hue-rotate(26deg) brightness(94%) contrast(101%);
+    }
+
+    .divider {
+        flex: 1 1 0;
+        border-color: $primary_900;
+    }
+}
+
+.userList-titleSection.wheel {
+    color: $gray_600;
+
+    .img {
+        background-image: url(../../IMAGES/user_wheel.svg);
+    }
+
+    .divider {
+        flex: 1 1 0;
+        border-color: $gray_600;
+    }
+}
+
+.userList-titleSection.favorite {
+    color: $accent;
+
+    .img {
+        background-image: url(../../IMAGES/user_favorite.svg);
+    }
+
+    .divider {
+        flex: 1 1 0;
+        border-color: $accent;
+    }
+}
+
+.userList-titleSection.list-message {
+    color: $secondary_600;
+
+    .img {
+        background-image: url(../../IMAGES/user_message.svg);
+    }
+
+    .divider {
+        flex: 1 1 0;
+        border-color: $secondary_600;
+    }
+}
+
+.contentSection {
+    min-height: 200px;
+    border: 3px solid $secondary_600;
+    border-radius: 24px;
+}
+
+.eachMessage-img {
+    max-height: 260px;
+    overflow: hidden;
+}
+
+.eachMessage-haeder {
+    h5 {
+        font-size: $h4;
+        font-weight: 500;
+    }
+
+    p {
+        font-family: $chiFont;
+    }
+
+    i {
+        font-size: $h4;
+        transition: all ease .3s;
+
+        &:hover {
+            color: $accent_600;
+        }
+    }
+}
+
+.addList {
+    font-size: $h5;
+    font-weight: 400;
+    border: 1px solid $gray_600;
+    padding: 8px 24px;
+    border-radius: 8px;
+    color: $gray_600;
+
+    &:hover {
+        color: $black;
+        background-color: $gray_300;
+        border-color: $black;
+    }
+}
+
+.eachWheelList {
+    h6 {
+        font-size: $h4;
+        font-weight: 500;
+    }
+
+    i {
+        font-size: $h4;
+        transition: all ease .3s;
+
+        &:hover {
+            color: $accent;
+        }
+    }
+
+    .col-6 {
+        padding: 0 24px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-right: 24px;
+        }
+    }
+}
+
+.editWheelList {
+    padding: 40px 0;
+    width: 70%;
+
+    h3 {
+        font-size: $h3;
+        margin-bottom: 40px;
+        color: $accent_600;
+        font-weight: 500;
     }
 
     .cancel {
