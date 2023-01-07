@@ -17,6 +17,9 @@
 - innerFooter()
   寫入 footer
 
+- topBtnEvent()
+  監聽 footer 上的 top 按鈕，點擊可以滾動至網頁頂部
+
 - setlogStatus()
   內含 logoutAction() 為了可以監聽登出按鈕
   判斷登入狀態，更改 nav 上的姓名與按鈕
@@ -46,6 +49,7 @@ const token = {
 
 innerNavbar();
 innerFooter();
+topBtnEvent();
 scrollChangeNavbar();
 setlogStatus();
 clickNavbtn();
@@ -132,6 +136,32 @@ function innerFooter() {
     }
 
 
+}
+
+function topBtnEvent() {
+    // const topBtn = document.querySelector(".topBtn");
+
+    // topBtn.addEventListener("click", e => {
+    //     e.preventDefault();
+    //     if (window.scrollTo) {
+    //         window.scrollTo({ 'behavior': 'smooth', 'top': document.documentElement.scrollTop = 0 })
+    //     }
+    // })
+
+    //-------
+
+    // document.addEventListener("scroll", e => {
+    //     console.log(document.documentElement.scrollTop)
+    // });
+
+    // var anchor = document.querySelector('a[href="#dest"]')
+    // var target = document.getElementById('dest')
+    // anchor.addEventListener('click', function (e) {
+    //     if (window.scrollTo) {
+    //         e.preventDefault()
+    //         window.scrollTo({ 'behavior': 'smooth', 'top': target.offsetTop })
+    //     }
+    // })
 }
 
 function scrollChangeNavbar() {
