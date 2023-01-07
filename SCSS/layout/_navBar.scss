@@ -35,7 +35,9 @@
         span {
             font-family: $chiFont;
             padding: 0 0 4px 16px;
-            color: $primary_600;
+            color: $primary_700;
+            font-weight: 500;
+            text-shadow: -1px -1px 0 $gray_900, 0 -1px 0 $gray_900, 1px -1px 0 $gray_900, 1px 0 0 $gray_900, 1px 1px 0 $gray_900, 0 1px 0 $gray_900, -1px 1px 0 $gray_900, -1px 0 0 $gray_900;
         }
     }
 }
@@ -53,11 +55,14 @@
         span {
             font-family: $chiFont;
             padding: 0 0 4px 16px;
-            color: $gray_900;
+            color: $primary_700;
+            font-weight: 500;
         }
     }
 
     .outBtn {
+        display: flex;
+        align-items: center;
         color: $gray_900;
 
         &:hover {

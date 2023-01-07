@@ -195,6 +195,13 @@
     letter-spacing: .1em;
 }
 
+.recommend-img {
+    height: 510px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
 .inedx-recommend-textSection {
     position: relative;
     overflow-y: scroll;

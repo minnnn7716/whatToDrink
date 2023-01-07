@@ -8,11 +8,13 @@ let loginStatus = localStorage.getItem("loginStatus");
 let herf = localStorage.getItem("backHref");
 
 getInfor();
+switchEye();
 
 function signupPost(obj) {
     axios.post(apiUrl, obj)
         .then(function (response) {
             signupData = response.data;
+            singupFrom.reset();
 
             localStorage.setItem("token", signupData.accessToken);
             localStorage.setItem("name", signupData.user.name);
@@ -30,8 +32,8 @@ function signupPost(obj) {
             localStorage.setItem("backHref", "");
         })
         .catch(function (error) {
-            console.log(error)
-            alert("註冊失敗");
+            console.log(error.response)
+            alert(error.response.data);
         });
 }
 
@@ -41,17 +43,43 @@ function getInfor() {
 
     singupFrom.addEventListener("submit", e => {
         e.preventDefault();
+        if (singupFrom["密碼"].value === singupFrom["再次輸入密碼"].value) {
+            obj = {
+                "email": singupFrom["信箱"].value,
+                "password": singupFrom["密碼"].value,
+                "name": singupFrom["姓名"].value,
+                "photoUrl": `https://picsum.photos/${randomNum}/200`,
+                "favorite": [],
+                "comments": []
+            }
 
-        obj = {
-            "email": singupFrom["信箱"].value,
-            "password": singupFrom["密碼"].value,
-            "name": singupFrom["姓名"].value,
-            "photoUrl": `https://picsum.photos/${randomNum}/200`,
-            "favorite": [],
-            "comments": []
+            signupPost(obj);
+        } else {
+            alert("密碼不相符")
         }
+    })
+}
 
-        signupPost(obj);
-        singupFrom.reset();
+function switchEye() {
+    const eyeIcon = document.querySelectorAll(".eyeIcon i");
+
+    eyeIcon.forEach(item => {
+        item.addEventListener("click", e => {
+            let input = e.target.parentElement.previousElementSibling;
+
+            e.target.classList.add("display-none");
+
+            if (e.target.dataset.order === "first") {
+                e.target.nextElementSibling.classList.remove("display-none");
+            } else {
+                e.target.previousElementSibling.classList.remove("display-none");
+            }
+
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        });
     })
 }

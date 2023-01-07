@@ -720,6 +720,10 @@ input:focus {
   height: 50%;
 }
 
+.white-border {
+  text-shadow: -2px -2px 0 #ffffff, 0 -2px 0 #ffffff, 2px -2px 0 #ffffff, 2px 0 0 #ffffff, 2px 2px 0 #ffffff, 0 2px 0 #ffffff, -2px 2px 0 #ffffff, -2px 0 0 #ffffff;
+}
+
 .btn {
   padding: 8px 16px 6px 16px;
   border-radius: 40px;
@@ -758,6 +762,13 @@ input:focus {
 }
 .userBtn:hover {
   color: #3C3C3C;
+}
+
+.login .userBtn {
+  color: #EA9A00;
+}
+.login .userBtn:hover {
+  color: #AE7D00;
 }
 
 .outBtn {
@@ -929,8 +940,9 @@ input:focus {
 }
 
 .filterSection {
-  display: inline-block;
+  display: block;
   position: relative;
+  text-align: right;
 }
 .filterSection .selector {
   width: 180px;
@@ -1542,6 +1554,7 @@ input:focus {
 .popup {
   position: fixed;
   height: 80vh;
+  width: 70%;
   top: 50%;
   left: 50%;
   padding: 16px 26px 0 16px;
@@ -1772,7 +1785,9 @@ textarea {
 .navbar-hide .logSection span {
   font-family: "Noto Sans TC";
   padding: 0 0 4px 16px;
-  color: #FFCD1A;
+  color: #EA9A00;
+  font-weight: 500;
+  text-shadow: -1px -1px 0 #3C3C3C, 0 -1px 0 #3C3C3C, 1px -1px 0 #3C3C3C, 1px 0 0 #3C3C3C, 1px 1px 0 #3C3C3C, 0 1px 0 #3C3C3C, -1px 1px 0 #3C3C3C, -1px 0 0 #3C3C3C;
 }
 
 .navbar-show {
@@ -1786,9 +1801,12 @@ textarea {
 .navbar-show .logSection span {
   font-family: "Noto Sans TC";
   padding: 0 0 4px 16px;
-  color: #3C3C3C;
+  color: #EA9A00;
+  font-weight: 500;
 }
 .navbar-show .outBtn {
+  display: flex;
+  align-items: center;
   color: #3C3C3C;
 }
 .navbar-show .outBtn:hover {
@@ -2060,6 +2078,13 @@ textarea {
   font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 0.1em;
+}
+
+.recommend-img {
+  height: 510px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .inedx-recommend-textSection {
@@ -2954,12 +2979,19 @@ textarea {
 
 .eyeIcon {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
-.eyeIcon .show {
+.eyeIcon .display-none {
   display: none;
+}
+.eyeIcon .fa-eye {
+  padding: 8px;
+  padding-right: 9px;
+}
+.eyeIcon .fa-eye-slash {
+  padding: 8px;
 }
 
 .alertText {

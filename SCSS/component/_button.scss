@@ -38,6 +38,14 @@
     }
 }
 
+.login .userBtn {
+    color: $primary_700;
+
+    &:hover {
+        color: $primary_900;
+    }
+}
+
 .outBtn {
     color: $primary_600;
 
@@ -236,8 +244,9 @@
 
 // 下拉選單
 .filterSection {
-    display: inline-block;
+    display: block;
     position: relative;
+    text-align: right;
 
     .selector {
         width: 180px;

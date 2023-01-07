@@ -77,12 +77,21 @@
 
 .eyeIcon {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
 
-    .show {
+    .display-none {
         display: none;
+    }
+
+    .fa-eye {
+        padding: 8px;
+        padding-right: 9px;
+    }
+
+    .fa-eye-slash {
+        padding: 8px;
     }
 }
 

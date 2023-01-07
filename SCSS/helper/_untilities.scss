@@ -61,3 +61,7 @@
 .h-50 {
     height: 50%;
 }
+
+.white-border {
+    text-shadow: -2px -2px 0 #ffffff, 0 -2px 0 #ffffff, 2px -2px 0 #ffffff, 2px 0 0 #ffffff, 2px 2px 0 #ffffff, 0 2px 0 #ffffff, -2px 2px 0 #ffffff, -2px 0 0 #ffffff;
+}

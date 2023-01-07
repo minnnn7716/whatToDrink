@@ -191,8 +191,9 @@ function setlogStatus() {
 
     if (localName) {
         logSection.innerHTML = `
-        <li class="logSection flex align-center">
+        <li class="logSection flex align-center login">
             <span>嗨，${localName}</span>
+            <a href="./user.html" class="userBtn"><i class="fa-solid fa-circle-user"></i></a>
             <a href="./login.html" class="outBtn"><i class="fa-solid fa-person-through-window"></i></a>
         </li>
         `;
