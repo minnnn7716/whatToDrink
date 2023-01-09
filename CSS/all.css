@@ -724,6 +724,10 @@ input:focus {
   text-shadow: -2px -2px 0 #ffffff, 0 -2px 0 #ffffff, 2px -2px 0 #ffffff, 2px 0 0 #ffffff, 2px 2px 0 #ffffff, 0 2px 0 #ffffff, -2px 2px 0 #ffffff, -2px 0 0 #ffffff;
 }
 
+.display-block {
+  display: block;
+}
+
 .btn {
   padding: 8px 16px 6px 16px;
   border-radius: 40px;
@@ -1159,7 +1163,7 @@ input:focus {
   background-color: #F3F2F2;
   color: #BDBDBD;
   border: 1px solid #BDBDBD;
-  cursor: not-allowed;
+  cursor: auto;
 }
 
 .rateSection {
@@ -2081,10 +2085,10 @@ textarea {
 }
 
 .recommend-img {
-  height: 510px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  background-position-y: center;
 }
 
 .inedx-recommend-textSection {
@@ -3023,6 +3027,10 @@ textarea {
   font-weight: 500;
   color: #66C5D2;
 }
+.linkSection .log-submit {
+  margin-bottom: 0;
+  margin-left: 8px;
+}
 
 .progressBar {
   display: flex;
@@ -3057,8 +3065,13 @@ textarea {
   background-color: #BDBDBD;
 }
 
+.progressBar .line-active::after {
+  background-color: #D271E2;
+}
+
 .illustrate {
   margin-bottom: 32px;
   text-align: center;
   color: #92409F;
+  font-family: "Noto Sans TC";
 }/*# sourceMappingURL=all.css.map */

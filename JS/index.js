@@ -55,6 +55,18 @@ function carouelBtnAction() {
             carouelNum -= 1;
         }
 
+        if (carouelNum === 5) {
+            document.querySelector(".carouel-arrow-right").classList.add("disable");
+        } else {
+            document.querySelector(".carouel-arrow-right").classList.remove("disable");
+        }
+
+        if (carouelNum === 1) {
+            document.querySelector(".carouel-arrow-left").classList.add("disable");
+        } else {
+            document.querySelector(".carouel-arrow-left").classList.remove("disable");
+        }
+
         carouelDot.forEach(item => {
             item.classList.remove("active");
         })
@@ -77,7 +89,7 @@ function renderRecomment() {
         <h4 class="recommend-title">${drink.name}</h4>
         <span class="shopTag">${drink.shop.name}</span>
     </div>
-    <a href="./drink.html?id=${recommendDrinkId}">
+    <a href="./drink.html?id=${recommendDrinkId}" class="display-block">
     <div class="recommend-inforSection flex align-center justify-between">
         <p class="white-border">M $ ${drink.price.m} ｜ L $ ${drink.price.l}</p>
         <div class="rateSection">
@@ -85,9 +97,7 @@ function renderRecomment() {
             <div class="starSection mb-1">${renderStar(drink.rate)}</div>
         </div>
     </div>
-    <div class="recommend-img">
-        <img src="${drink.photoUrl}" alt="${drink.name}">
-    </div>
+    <div class="recommend-img" style="background-image:url('${drink.photoUrl}')"></div>
     </a>
     `;
 

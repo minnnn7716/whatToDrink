@@ -125,6 +125,11 @@
         font-weight: 500;
         color: $secondary_600;
     }
+
+    .log-submit {
+        margin-bottom: 0;
+        margin-left: 8px;
+    }
 }
 
 .progressBar {
@@ -164,8 +169,13 @@
     }
 }
 
+.progressBar .line-active::after {
+    background-color: $accent_600;
+}
+
 .illustrate {
     margin-bottom: 32px;
     text-align: center;
     color: $accent_900;
+    font-family: $chiFont;
 }

@@ -8,12 +8,14 @@ let loginStatus = localStorage.getItem("loginStatus");
 let herf = localStorage.getItem("backHref");
 
 getInfor();
+switchEye();
 
 function loginPost(obj) {
     axios.post(apiUrl, obj)
         .then(function (response) {
             console.log(response)
             loginData = response.data;
+            loginFrom.reset();
 
             localStorage.setItem("token", loginData.accessToken);
             localStorage.setItem("name", loginData.user.name);
@@ -32,8 +34,8 @@ function loginPost(obj) {
             localStorage.setItem("backHref", "");
         })
         .catch(function (error) {
-            console.log(error)
-            alert("登入失敗");
+            console.log(error.response)
+            alert(error.response.data);
         });
 }
 
@@ -49,6 +51,29 @@ function getInfor() {
         }
 
         loginPost(obj);
-        loginFrom.reset();
+    })
+}
+
+function switchEye() {
+    const eyeIcon = document.querySelectorAll(".eyeIcon i");
+
+    eyeIcon.forEach(item => {
+        item.addEventListener("click", e => {
+            let input = e.target.parentElement.previousElementSibling;
+
+            e.target.classList.add("display-none");
+
+            if (e.target.dataset.order === "first") {
+                e.target.nextElementSibling.classList.remove("display-none");
+            } else {
+                e.target.previousElementSibling.classList.remove("display-none");
+            }
+
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        });
     })
 }
