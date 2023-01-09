@@ -50,7 +50,12 @@ function getInfor() {
                 "name": singupFrom["姓名"].value,
                 "photoUrl": `https://picsum.photos/${randomNum}/200`,
                 "favorite": [],
-                "comments": []
+                "comments": [],
+                "messages": {
+                    "loginTime": null,
+                    "list": []
+                },
+                "wheelList": []
             }
 
             signupPost(obj);

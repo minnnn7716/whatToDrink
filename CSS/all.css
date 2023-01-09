@@ -1399,10 +1399,10 @@ input:focus {
 }
 .message-likeThis .likeThis-num {
   position: absolute;
-  top: 24px;
-  left: 28px;
+  top: 22px;
+  left: 20px;
   transform: translateY(-50%);
-  padding: 0 8px 4px 20px;
+  padding: 2px 8px 4px 28px;
   border-radius: 20px;
   background-color: #FFF490;
   transition: all ease 0.3s;
@@ -2665,6 +2665,7 @@ textarea {
 }
 
 .userInfor {
+  font-family: "Noto Sans TC";
   padding: 72px;
   border: 4px solid #66C5D2;
   background-color: #F3F2F2;
@@ -2703,6 +2704,7 @@ textarea {
 .funcList img {
   width: 45px;
   margin-bottom: 12px;
+  pointer-events: none;
 }
 .funcList a {
   height: 100%;
@@ -2716,6 +2718,7 @@ textarea {
 .funcList p {
   font-size: 1.5rem;
   font-weight: 500;
+  pointer-events: none;
 }
 .funcList .row {
   height: 100%;
@@ -2753,6 +2756,10 @@ textarea {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+#user .popupBG {
+  display: none;
 }
 
 #user-list .popup {

@@ -44,9 +44,9 @@
                                 <div class="imgContainer">
                                     <img class="userImg" src="https://picsum.photos/id/100/200/200" alt="使用者頭像">
                                 </div>
-                                <h4>王小明</h4>
-                                <p>mmm123@gmail.com</p>
-                                <a href="#">更改密碼</a>
+                                <h4 class="name">王小明</h4>
+                                <p class="mail">mmm123@gmail.com</p>
+                                <a href="#" class="changePwdBtn">更改密碼</a>
                             </div>
                         </div>
                     </div>
@@ -54,26 +54,26 @@
                 <div class="col-6 funcList">
                     <div class="row">
                         <div class="col-6 mb-half-3">
-                            <a class="funcList-favorite">
-                                <img src="./IMAGES/user_favorite.svg" alt="">
+                            <a href="#" class="funcList-favorite" data-name="favorite">
+                                <img src="./IMAGES/user_favorite.svg" alt="收藏清單 Icon">
                                 <p>收藏清單</p>
                             </a>
                         </div>
                         <div class="col-6 mb-half-3">
-                            <a class="funcList-wheel">
-                                <img src="./IMAGES/user_wheel.svg" alt="">
+                            <a href="#" class="funcList-wheel" data-name="wheel">
+                                <img src="./IMAGES/user_wheel.svg" alt="轉盤清單 Icon">
                                 <p>轉盤清單</p>
                             </a>
                         </div>
                         <div class="col-6 mt-half-3">
-                            <a class="funcList-comment">
-                                <img src="./IMAGES/user_comment.svg" alt="">
+                            <a href="#" class="funcList-comment" data-name="comment">
+                                <img src="./IMAGES/user_comment.svg" alt="過往評論 Icon">
                                 <p>過往評論</p>
                             </a>
                         </div>
                         <div class="col-6 mt-half-3">
-                            <a class="funcList-message">
-                                <img src="./IMAGES/user_message.svg" alt="">
+                            <a href="#" class="funcList-message" data-name="list-message">
+                                <img src="./IMAGES/user_message.svg" alt="消息通知 Icon">
                                 <p>消息通知</p>
                             </a>
                         </div>
@@ -83,7 +83,7 @@
         </section>
     </div>
 
-    <!-- <div class="popupBG" data-func="close">
+    <div class="popupBG" data-func="close">
         <div class="popup">
             <a href="#" class="popup-close" data-func="close">
                 <i class="fa-solid fa-xmark" data-func="close"></i>
@@ -93,19 +93,19 @@
                 <p class="illustrate">請輸入新密碼，將為您重置密碼</p>
                 <div class="log-item log-item-password">
                     <label for="password">密碼</label>
-                    <input id="password" type="password" name="密碼" placeholder="請輸入新密碼">
+                    <input id="password" type="password" name="密碼">
                     <div class="eyeIcon">
-                        <i class="fa-sharp fa-solid fa-eye show"></i>
-                        <i class="fa-solid fa-eye-slash hide"></i>
+                        <i class="fa-sharp fa-solid fa-eye display-none" data-order="first"></i>
+                        <i class="fa-solid fa-eye-slash" data-order="last"></i>
                     </div>
                     <p class="alertText">請填寫正確格式</p>
                 </div>
                 <div class="log-item log-item-password">
                     <label for="passwordAgain">密碼</label>
-                    <input id="passwordAgain" type="password" name="密碼" placeholder="請再次輸入新密碼">
+                    <input id="passwordAgain" type="password" name="再次輸入密碼" placeholder="請再次輸入密碼">
                     <div class="eyeIcon">
-                        <i class="fa-sharp fa-solid fa-eye show"></i>
-                        <i class="fa-solid fa-eye-slash hide"></i>
+                        <i class="fa-sharp fa-solid fa-eye display-none" data-order="first"></i>
+                        <i class="fa-solid fa-eye-slash" data-order="last"></i>
                     </div>
                     <p class="alertText">請填寫正確格式</p>
                 </div>
@@ -116,7 +116,7 @@
             </form>
         </div>
 
-    </div> -->
+    </div>
 
     <footer id="footerSecrion" data-footer="nonInfor"></footer>
 
@@ -126,7 +126,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
     <!-- main js -->
     <script src="./JS/init.js"></script>
-    <script src="./JS/signup.js"></script>
+    <script src="./JS/user.js"></script>
 </body>
 
 </html>

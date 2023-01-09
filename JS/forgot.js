@@ -11,7 +11,6 @@ function getUserInfor() {
 
     axios.get(apiUrl)
         .then(function (response) {
-            console.log(response)
             usersData = response.data;
             renderStep();
         })
@@ -21,8 +20,10 @@ function getUserInfor() {
 }
 
 function btnAction() {
+    const logSubmit = document.querySelector(".log-submit");
+
     if (step === 1) {
-        forgotFrom.addEventListener("submit", e => {
+        logSubmit.addEventListener("click", e => {
             e.preventDefault();
             let emailVaild = false;
             let userIndex = null;
@@ -52,11 +53,13 @@ function btnAction() {
             }
         })
     } else if (step === 2) {
-        forgotFrom.addEventListener("submit", e => {
+        logSubmit.addEventListener("click", e => {
             e.preventDefault();
 
             if (forgotFrom["密碼"].value === forgotFrom["再次輸入密碼"].value) {
-                patchPassword(forgotFrom["密碼"].value)
+                patchPassword(forgotFrom["密碼"].value);
+                step += 1;
+                renderStep();
             } else {
                 alert("兩次密碼不相符")
             }
@@ -115,6 +118,19 @@ function renderStep() {
             <a href="./login.html">返回會員登入</a>
         </div>
         `;
+    } else if (step === 3) {
+        document.querySelector(".step2").classList.add("active");
+        document.querySelector(".step3").classList.add("active");
+        document.querySelector(".step1").classList.add("line-active");
+        document.querySelector(".step2").classList.add("line-active");
+
+        str = `
+        <p class="illustrate">已為您重新設定密碼！<br>
+            請使用新密碼再次登入，4 秒後將為您轉至登入頁</p>
+        <a class="log-submit back" href="./login.html">立刻返回登入頁</a>
+        `;
+
+        setTimeout(() => location.href = "./login.html", 4000);
     }
 
     forgotContent.innerHTML = str;
@@ -154,7 +170,7 @@ function patchPassword(password) {
         password
     })
         .then(function (response) {
-            console.log(response)
+            console.log("更改成功")
         })
         .catch(function (error) {
             console.log(error.response)

@@ -1,4 +1,5 @@
 .userInfor {
+    font-family: $chiFont;
     padding: 72px;
     border: 4px solid $secondary_600;
     background-color: $gray_300;
@@ -43,6 +44,7 @@
     img {
         width: 45px;
         margin-bottom: 12px;
+        pointer-events: none;
     }
 
     a {
@@ -59,6 +61,7 @@
     p {
         font-size: $h4;
         font-weight: 500;
+        pointer-events: none;
     }
 
     .row {
@@ -107,6 +110,12 @@
         display: flex;
         justify-content: center;
         text-align: center;
+    }
+}
+
+#user {
+    .popupBG {
+        display: none;
     }
 }
 

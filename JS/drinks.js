@@ -75,7 +75,7 @@ function renderData() {
     })
   }
 
-  if(localUserToken && favoriteList){
+  if (localUserToken && favoriteList) {
     if (favoriteList.includes(drinksData.id)) {
       favoriteStr = `
       <a href="#" class="heartBtn funcBtn-hover heartFuncBtn active" data-favorite="add" data-id="${drinksData.id}">
@@ -89,14 +89,14 @@ function renderData() {
         <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
       </a>`;
     }
-  }else{
+  } else {
     favoriteStr = `
       <a href="#" class="heartBtn funcBtn-hover heartFuncBtn" data-favorite="none" data-id="${drinksData.id}">
         <i class="fa-regular fa-heart funcBtn-outline pointer-none"></i>
         <i class="fa-sharp fa-solid fa-heart funcBtn-solid pointer-none"></i>
       </a>`;
   }
-  
+
 
 
   ingredient = `${drinksData.ingredient.base}${mix}${material}`;
@@ -175,9 +175,6 @@ function renderPinCommet(data) {
     messageGrop.innerHTML = `<p class="w-100 text-center">尚無評論</p>`;
   } else {
     data.forEach((item, index) => {
-      if (item.content.includes(`<br>`)) {
-        addClass = "align-end";
-      };
 
       totalRate += + item.rate;
 
@@ -197,7 +194,7 @@ function renderPinCommet(data) {
             <p class="message-date">6 週前</p>
           </div>
         </div>
-        <div class="message-content ${addClass}">
+        <div class="message-content">
           <p class="flex-stretch">
             <span>${item.content}</span>
           </p>

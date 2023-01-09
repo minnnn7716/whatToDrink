@@ -13,7 +13,6 @@ switchEye();
 function loginPost(obj) {
     axios.post(apiUrl, obj)
         .then(function (response) {
-            console.log(response)
             loginData = response.data;
             loginFrom.reset();
 
