@@ -89,7 +89,6 @@ function getUserInfor() {
     axios.get(apiUrl, token)
         .then(function (res) {
             userData = res.data;
-            console.log(userData)
             renderData();
         })
         .catch(function (error) {

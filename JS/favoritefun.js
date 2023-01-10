@@ -45,7 +45,7 @@ function getUserFavotite() {
 
     axios.get(apiUrl)
         .then(function (response) {
-            favoriteAry = response.data.favorite;
+            favoriteAry = response.data.favorites;
             clickFavotite();
         })
         .catch(function (error) {
@@ -58,7 +58,7 @@ function patchFavotite() {
     const apiUrl = `${baseUrl}${apiPath}`;
 
     axios.patch(apiUrl, {
-        "favorite": favoriteAry
+        "favorites": favoriteAry
     }, token)
         .then(function (response) {
             console.log(response);

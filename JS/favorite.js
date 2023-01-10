@@ -30,7 +30,6 @@ function renderData(data) {
         data.forEach(item => {
             if (favoriteList.indexOf(`${item.id}`) != -1) {
                 let specialStr = "";
-                let favoriteStr = "";
 
                 if (item.special.length) {
                     item.special.forEach(each => {
@@ -100,7 +99,7 @@ function getUserFavotiteList() {
 
     axios.get(apiUrl)
         .then(function (response) {
-            favoriteList = response.data.favorite;
+            favoriteList = response.data.favorites;
             renderData(drinksData);
         })
         .catch(function (error) {
@@ -154,7 +153,7 @@ function patchFavotite() {
     const apiUrl = `${baseUrl}${apiPath}`;
 
     axios.patch(apiUrl, {
-        "favorite": favoriteList
+        "favorites": favoriteList
     }, token)
         .then(function (response) {
             console.log(response);
