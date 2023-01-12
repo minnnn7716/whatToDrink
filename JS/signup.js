@@ -51,6 +51,7 @@ function getInfor() {
                 "photoUrl": `https://picsum.photos/${randomNum}/200`,
                 "favorite": [],
                 "comments": [],
+                "likeComments": [],
                 "messages": {
                     "loginTime": null,
                     "list": []

@@ -130,18 +130,17 @@
         </div>
         <div class="row mb-20">
             <div class="col-10">
+                <div class="filterSection mb-4">
+                    <i class="fa-solid fa-caret-down"></i>
+                    <select name="messageFilter" id="messageFilter" class="selector">
+                        <option value="排序篩選" disabled selected>排序篩選</option>
+                        <option value="依最新日期排序">最新日期</option>
+                        <option value="依最新日期排序">星級最高</option>
+                        <option value="依最新日期排序">星級最低</option>
+                        <option value="依最新日期排序">最多人推薦</option>
+                    </select>
+                </div>
                 <div class="menu-messageSection flex flex-column align-end">
-                    <div class="filterSection mb-4">
-                        <i class="fa-solid fa-caret-down"></i>
-                        <select name="messageFilter" id="messageFilter" class="selector">
-                            <option value="排序篩選" disabled selected>排序篩選</option>
-                            <option value="依最新日期排序">最新日期</option>
-                            <option value="依最新日期排序">星級最高</option>
-                            <option value="依最新日期排序">星級最低</option>
-                            <option value="依最新日期排序">最多人推薦</option>
-                        </select>
-                    </div>
-                    <div class="messageGrop w-100"></div>
                 </div>
             </div>
         </div>
@@ -161,7 +160,7 @@
                                 <span class="starEmpty" data-num="5"></span>
                             </div>
                         </div>
-                        <div class="drinkCommentSelect mb-2">
+                        <div class="drinkCommentSelect mb-2 flex">
                             <div class="filterSection mb-2 mr-2">
                                 <i class="fa-solid fa-caret-down"></i>
                                 <select name="messageFilter" id="sugarFilter" class="selector">

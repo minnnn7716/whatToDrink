@@ -216,10 +216,7 @@ function logoutAction() {
         const logout = confirm('確定要登出嗎？');
 
         if (logout) {
-            localStorage.setItem("token", "");
-            localStorage.setItem("name", "");
-            localStorage.setItem("id", "");
-            localStorage.setItem("favorite", "");
+            localStorage.clear();
 
             setlogStatus();
             alert("登出成功！將轉跳回首頁");

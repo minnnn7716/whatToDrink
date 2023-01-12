@@ -489,6 +489,7 @@ function getCommentPopup() {
     commentObj.sugar = sugarFilter.value;
     commentObj.ice = iceFilter.value;
     commentObj.content = textarea.value;
+    commentObj.createTime = timeNow();
 
     popupBG.style.display = "none";
     body.style.overflow = "auto";
@@ -538,6 +539,7 @@ function getUserData() {
   axios.get(apiUrl,)
     .then(function (response) {
       userComment = response.data.comments;
+      console.log(userComment)
     })
     .catch(function (error) {
       console.log(error);
@@ -604,4 +606,15 @@ function starHover() {
       popStarSection.innerHTML = str;
     }
   });
+}
+
+function timeNow() {
+  const timeSec = new Date();
+  const timeObj = {
+    year: timeSec.getFullYear(),
+    month: timeSec.getMonth() + 1,
+    date: timeSec.getDate()
+  }
+
+  return `${timeObj.year}/${timeObj.month}/${timeObj.date}`
 }
