@@ -115,6 +115,7 @@
         border-radius: 50%;
         background-color: $white;
         transition: all ease .5s;
+        pointer-events: none;
     }
 
     .likeThis-num {
@@ -126,6 +127,7 @@
         border-radius: 20px;
         background-color: #FFF490;
         transition: all ease 0.3s;
+        pointer-events: none;
     }
 }
 
@@ -134,4 +136,15 @@
     height: 1px;
     border-bottom: 1px dashed $gray;
     margin: 32px 0 48px 0;
+}
+
+.message-likeThis.active {
+    .fa-thumbs-up {
+        color: $accent_600;
+        border-color: $accent_600;
+    }
+
+    .likeThis-num {
+        background-color: $accent_300;
+    }
 }

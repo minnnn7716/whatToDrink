@@ -3,6 +3,7 @@ let keyword = decodeURIComponent(url.split("=")[1].split("&")[0]);
 
 let drinksData;
 let commentsData;
+let oldCommentsData;
 let totalRate;
 let finalRate;
 let popNum;
@@ -21,6 +22,7 @@ getDrink();
 getComment();
 getUserData()
 commentFunc();
+sortComment();
 
 // ------------------------
 
@@ -156,6 +158,7 @@ function getComment() {
   axios.get(apiUrl)
     .then(function (response) {
       commentsData = response.data;
+      oldCommentsData = commentsData.slice()
       renderCommet(commentsData);
       renderRate();
       rateFilter();
@@ -191,16 +194,16 @@ function renderPinCommet(data) {
           <div class="message-rate mb-2">
             <div class="starSection mb-half-1">${rateStr}</div>
             <p class="message-infor">${item.sugar} / ${item.ice}</p>
-            <p class="message-date">6 週前</p>
+            <p class="message-date">${renderCommentTime(item.createTime)}</p>
           </div>
         </div>
         <div class="message-content">
           <p class="flex-stretch">
             <span>${item.content}</span>
           </p>
-          <a href="#" class="message-likeThis">
+          <a href="#" class="message-likeThis" data-id="${item.id}">
             <i class="fa-regular fa-thumbs-up"></i>
-            <span class="likeThis-num">10</span>
+            <span class="likeThis-num">${item.like.length}</span>
           </a>
         </div>
       </div>
@@ -211,6 +214,7 @@ function renderPinCommet(data) {
     })
 
     messageGrop.innerHTML = str;
+    clickLike();
   }
 }
 
@@ -224,9 +228,15 @@ function renderCommet(data) {
     messageGrop.innerHTML = `<p class="w-100 text-center">尚無評論</p>`;
   } else {
     data.forEach((item, index) => {
+      let likeStatus = "";
+
       if (item.content.includes(`<br>`)) {
         addClass = "align-end";
       };
+
+      if (item.like.indexOf(+localUserId) != -1) {
+        likeStatus = "active";
+      }
 
       totalRate += + item.rate;
 
@@ -243,16 +253,16 @@ function renderCommet(data) {
           <div class="message-rate mb-2">
             <div class="starSection mb-half-1">${rateStr}</div>
             <p class="message-infor">${item.sugar} / ${item.ice}</p>
-            <p class="message-date">6 週前</p>
+            <p class="message-date">${renderCommentTime(item.createTime)}</p>
           </div>
         </div>
         <div class="message-content ${addClass}">
           <p class="flex-stretch">
             <span>${item.content}</span>
           </p>
-          <a href="#" class="message-likeThis">
+          <a href="#" class="message-likeThis ${likeStatus}" data-id="${item.id}">
             <i class="fa-regular fa-thumbs-up"></i>
-            <span class="likeThis-num">10</span>
+            <span class="likeThis-num">${item.like.length}</span>
           </a>
         </div>
       </div>
@@ -266,6 +276,7 @@ function renderCommet(data) {
     updateDrinkRate(finalRate);
     updateShopRateNum();
     messageGrop.innerHTML = str;
+    clickLike();
   }
 }
 
@@ -383,10 +394,6 @@ function rateFilter() {
   })
 }
 
-function itemFilter() {
-
-}
-
 // ------------------------
 
 function postComment(obj) {
@@ -490,6 +497,7 @@ function getCommentPopup() {
     commentObj.ice = iceFilter.value;
     commentObj.content = textarea.value;
     commentObj.createTime = timeNow();
+    commentObj.like = [];
 
     popupBG.style.display = "none";
     body.style.overflow = "auto";
@@ -617,4 +625,105 @@ function timeNow() {
   }
 
   return `${timeObj.year}/${timeObj.month}/${timeObj.date}`
+}
+
+function renderCommentTime(time) {
+  const now = new Date();
+  const commentTime = new Date(time);
+  const iDays = parseInt(Math.abs(now - commentTime) / 1000 / 60 / 60 / 24);
+
+  if (iDays > 7) {
+    return time;
+  } else if (iDays === 0) {
+    return `今天`;
+  } else {
+    return `${iDays} 天前`;
+  }
+}
+
+function clickLike() {
+  const likeThisBtn = document.querySelectorAll(".message-likeThis");
+  let commentId;
+  let likeAry;
+
+  likeThisBtn.forEach(item => {
+    item.addEventListener("click", e => {
+      e.preventDefault();
+      commentId = e.target.dataset.id;
+
+      for (let i = 0; i < commentsData.length; i++) {
+        if (commentsData[i].id === + commentId) {
+          likeAry = commentsData[i].like;
+        }
+      }
+
+      if (e.target.getAttribute("class").includes("active")) {
+        likeAry.splice(likeAry.indexOf(+ localUserId), 1);
+        e.target.classList.remove("active");
+        e.target.childNodes[3].textContent = likeAry.length;
+        patchlike();
+      } else {
+        likeAry.push(+ localUserId);
+        e.target.classList.add("active");
+        e.target.childNodes[3].textContent = likeAry.length;
+        patchlike();
+      }
+    })
+  })
+
+
+
+  function patchlike() {
+    const apiPath = `comments/${commentId}/`;
+    const apiUrl = `${baseUrl}${apiPath}`;
+
+    axios.patch(apiUrl, {
+      "like": likeAry
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
+
+function sortComment() {
+  const filterSelect = document.querySelector("#messageFilter");
+
+  filterSelect.addEventListener("change", e => {
+    const value = e.target.value;
+    let newData;
+
+    if (value && filterSelect.length === 5) {
+      const newOption = document.createElement("option");
+      const node = document.createTextNode("取消篩選");
+      newOption.appendChild(node);
+      newOption.value = "取消篩選";
+      newOption.setAttribute("class", "cancel");
+
+      const child = document.getElementById("child");
+      filterSelect.insertBefore(newOption, child.nextSibling);
+    }
+
+    if (value === "取消篩選") {
+      document.querySelector(".cancel").remove();
+      filterSelect.value = "排序篩選";
+      renderCommet(oldCommentsData);
+    } else if (value && value != "取消篩選") {
+
+      if (value === "星級最高") {
+        commentsData.sort((a, b) => b.rate - a.rate);
+      } else if (value === "星級最低") {
+        commentsData.sort((a, b) => a.rate - b.rate);
+      } else if (value === "最新日期") {
+        commentsData.sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+      } else if (value === "最多人推薦") {
+        commentsData.sort((a, b) => b.like.length - a.like.length);
+      }
+
+      renderCommet(commentsData);
+    }
+  })
 }

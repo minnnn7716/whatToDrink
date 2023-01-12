@@ -1400,6 +1400,7 @@ input:focus {
   border-radius: 50%;
   background-color: #ffffff;
   transition: all ease 0.5s;
+  pointer-events: none;
 }
 .message-likeThis .likeThis-num {
   position: absolute;
@@ -1410,6 +1411,7 @@ input:focus {
   border-radius: 20px;
   background-color: #FFF490;
   transition: all ease 0.3s;
+  pointer-events: none;
 }
 
 .message-divider {
@@ -1417,6 +1419,14 @@ input:focus {
   height: 1px;
   border-bottom: 1px dashed #D1D1D1;
   margin: 32px 0 48px 0;
+}
+
+.message-likeThis.active .fa-thumbs-up {
+  color: #D271E2;
+  border-color: #D271E2;
+}
+.message-likeThis.active .likeThis-num {
+  background-color: #F7C7FF;
 }
 
 .product-img .imgSection {

@@ -20,6 +20,7 @@ function loginPost(obj) {
             localStorage.setItem("name", loginData.user.name);
             localStorage.setItem("id", loginData.user.id);
             localStorage.setItem("favorite", loginData.user.favorite);
+            sessionStorage.setItem("test", "123");
 
             if (loginStatus) {
                 alert("登入成功！將跳轉回前頁");
