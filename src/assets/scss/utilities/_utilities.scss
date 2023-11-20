@@ -1,0 +1,26 @@
+$custom-utilities: ();
+$custom-utilities: map-merge(
+  (
+    // "font-family": (
+    //   property: font-family,
+    //   class: font,
+    //   values: (
+    //     sans-en: $font-family-sans-en,
+    //     serif-en: $font-family-serif-en,
+    //     sans-tw: $font-family-sans-tw,
+    //     serif-tw: $font-family-serif-tw
+    //   )
+    // ),
+    "font-size":
+      (
+        rfs: false,
+        responsive: true,
+        property: font-size,
+        class: fs,
+        values: $font-sizes
+      )
+  ),
+  $custom-utilities
+);
+
+$utilities: map-merge($utilities, $custom-utilities);
