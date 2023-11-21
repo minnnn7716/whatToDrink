@@ -1,24 +1,33 @@
 $custom-utilities: ();
 $custom-utilities: map-merge(
   (
-    // "font-family": (
-    //   property: font-family,
-    //   class: font,
-    //   values: (
-    //     sans-en: $font-family-sans-en,
-    //     serif-en: $font-family-serif-en,
-    //     sans-tw: $font-family-sans-tw,
-    //     serif-tw: $font-family-serif-tw
-    //   )
-    // ),
-    "font-size":
-      (
-        rfs: false,
-        responsive: true,
-        property: font-size,
-        class: fs,
-        values: $font-sizes
+    "font-family": (
+      property: font-family,
+      class: font,
+      values: (
+        sans: $font-family-sans,
+        handwriting: $font-family-handwriting
       )
+    ),
+    "font-size": (
+      rfs: false,
+      responsive: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes
+    ),
+    "width": (
+      property: width,
+      class: w,
+      values: (
+        25: 25%,
+        40: 40%,
+        50: 50%,
+        75: 75%,
+        100: 100%,
+        auto: auto
+      )
+    )
   ),
   $custom-utilities
 );

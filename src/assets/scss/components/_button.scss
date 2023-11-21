@@ -1,0 +1,40 @@
+.btn {
+  &-custom {
+    display: inline-block;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  &-hoverSwitch {
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+    &-default,
+    &-active {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all ease 0.5s;
+    }
+
+    &-active {
+      opacity: 0;
+    }
+
+    &:hover {
+      .btn-hoverSwitch-active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-hoverScale {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

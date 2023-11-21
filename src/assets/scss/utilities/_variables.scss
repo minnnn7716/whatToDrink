@@ -342,6 +342,7 @@ $dark: $gray-900 !default;
 $primary: $yellow-custom-500;
 $secondary: $blue-custom-500;
 $accent: $pink-custom-500;
+$gray: $gray-custom-500;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -373,7 +374,16 @@ $theme-colors-custom: (
   "accent-50": $pink-custom-50,
   "accent-100": $pink-custom-100,
   "accent-300": $pink-custom-300,
-  "accent-900": $pink-custom-900
+  "accent-900": $pink-custom-900,
+  "gray": $gray,
+  "gray-50": $gray-custom-50,
+  "gray-100": $gray-custom-100,
+  "gray-300": $gray-custom-300,
+  "gray-600": $gray-custom-600,
+  "gray-700": $gray-custom-700,
+  "gray-900": $gray-custom-900,
+  "black": $black,
+  "white": $white
 );
 
 $theme-colors: map-merge($theme-colors, $theme-colors-custom);
@@ -552,6 +562,9 @@ $icon-link-icon-transform: translate3d(0.25em, 0, 0) !default;
 // Style p element.
 
 $paragraph-margin-bottom: 1rem !default;
+
+// custom * margin-bottom
+$paragraph-margin-bottom: 0;
 
 // Grid breakpoints
 //
@@ -785,6 +798,10 @@ $headings-font-style: null !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;
 $headings-color: inherit !default;
+
+// custom * margin-bottom
+$headings-margin-bottom: 0;
+
 // scss-docs-end headings-variables
 
 // scss-docs-start display-headings
