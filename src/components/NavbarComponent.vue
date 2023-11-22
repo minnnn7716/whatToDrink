@@ -1,10 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg scrollDown">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
       <h1>
-        <a
-          class="navbar-brand ms-12 pt-11 pb-4 px-6 bg-primary font-handwriting fs-3 fw-bold"
-          href="#"
+        <a class="navbar-brand fs-3" href="#"
           >What <br />
           to Drink</a
         >
@@ -56,13 +54,28 @@
 
 <style lang="scss" scoped>
 @import '../assets/scss/vendors/bootstrap';
-.navbar-brand {
-  position: absolute;
-  top: -5px;
-  left: 0;
+.navbar {
+  background: transparent;
+
+  &-brand {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    margin-left: 48px;
+    padding: 44px 24px 16px 24px;
+    background-color: $primary;
+    font-family: $font-family-handwriting;
+    font-weight: 600;
+
+    &:hover {
+      border: 1px solid #000;
+      box-shadow: 4px 4px 0 $gray-900;
+    }
+  }
 }
 
 .nav-link {
+  opacity: 0;
   letter-spacing: 3px;
   transition: all ease 0.3s;
   &:hover {
@@ -85,6 +98,10 @@
       top: -1px;
       box-shadow: 0 0 0 $gray-900;
     }
+  }
+
+  .nav-link {
+    opacity: 1;
   }
 }
 </style>
