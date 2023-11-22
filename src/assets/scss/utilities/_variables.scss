@@ -340,9 +340,30 @@ $dark: $gray-900 !default;
 
 // custom * color
 $primary: $yellow-custom-500;
+$primary-50: $yellow-custom-50;
+$primary-100: $yellow-custom-100;
+$primary-300: $yellow-custom-300;
+$primary-700: $yellow-custom-700;
+$primary-900: $yellow-custom-900;
 $secondary: $blue-custom-500;
+$secondary-50: $blue-custom-50;
+$secondary-100: $blue-custom-100;
+$secondary-300: $blue-custom-300;
+$secondary-600: $blue-custom-600;
+$secondary-900: $blue-custom-900;
 $accent: $pink-custom-500;
+$accent-50: $pink-custom-50;
+$accent-100: $pink-custom-100;
+$accent-300: $pink-custom-300;
+$accent-600: $pink-custom-600;
+$accent-900: $pink-custom-900;
 $gray: $gray-custom-500;
+$gray-50: $gray-custom-50;
+$gray-100: $gray-custom-100;
+$gray-300: $gray-custom-300;
+$gray-600: $gray-custom-600;
+$gray-700: $gray-custom-700;
+$gray-900: $gray-custom-900;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -360,28 +381,30 @@ $theme-colors: (
 // custom * color
 $theme-colors-custom: (
   "primary": $primary,
-  "primary-50": $yellow-custom-50,
-  "primary-100": $yellow-custom-100,
-  "primary-300": $yellow-custom-300,
-  "primary-700": $yellow-custom-700,
-  "primary-900": $yellow-custom-900,
+  "primary-50": $primary-50,
+  "primary-100": $primary-100,
+  "primary-300": $primary-300,
+  "primary-700": $primary-700,
+  "primary-900": $primary-900,
   "secondary": $secondary,
-  "secondary-50": $blue-custom-50,
-  "secondary-100": $blue-custom-100,
-  "secondary-300": $blue-custom-300,
-  "secondary-900": $blue-custom-900,
+  "secondary-50": $secondary-50,
+  "secondary-100": $secondary-100,
+  "secondary-300": $secondary-300,
+  "secondary-600": $secondary-600,
+  "secondary-900": $secondary-900,
   "accent": $accent,
-  "accent-50": $pink-custom-50,
-  "accent-100": $pink-custom-100,
-  "accent-300": $pink-custom-300,
-  "accent-900": $pink-custom-900,
+  "accent-50": $accent-50,
+  "accent-100": $accent-100,
+  "accent-300": $accent-300,
+  "accent-600": $accent-600,
+  "accent-900": $accent-900,
   "gray": $gray,
-  "gray-50": $gray-custom-50,
-  "gray-100": $gray-custom-100,
-  "gray-300": $gray-custom-300,
-  "gray-600": $gray-custom-600,
-  "gray-700": $gray-custom-700,
-  "gray-900": $gray-custom-900,
+  "gray-50": $gray-50,
+  "gray-100": $gray-100,
+  "gray-300": $gray-300,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-900": $gray-900,
   "black": $black,
   "white": $white
 );
@@ -502,8 +525,10 @@ $spacers: (
   18: $spacer * 4.5,
   19: $spacer * 4.75,
   20: $spacer * 5,
+  25: $spacer * 6.25,
   30: $spacer * 7.5,
-  40: $spacer * 10
+  40: $spacer * 10,
+  minus4: -$spacer
 );
 // scss-docs-end spacer-variables-maps
 
@@ -548,6 +573,10 @@ $link-hover-decoration: null !default;
 $stretched-link-pseudo-element: after !default;
 $stretched-link-z-index: 1 !default;
 
+// custom * link
+$link-color: $gray-900;
+$link-decoration: none;
+
 // Icon links
 // scss-docs-start icon-link-variables
 $icon-link-gap: 0.375rem !default;
@@ -580,6 +609,17 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px
 ) !default;
+
+// custom * grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  3xl: 1600px
+);
 // scss-docs-end grid-breakpoints
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
@@ -597,6 +637,16 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px
 ) !default;
+
+// custom * container
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  3xl: 1350px
+);
 // scss-docs-end container-max-widths
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");

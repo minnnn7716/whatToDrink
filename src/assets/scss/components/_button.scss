@@ -1,40 +1,126 @@
-.btn {
-  &-custom {
-    display: inline-block;
+.btn-custom {
+  display: inline-block;
+  cursor: pointer;
+
+  img {
+    max-width: 100%;
+    transition: all ease 0.5s;
+  }
+
+  &-primary {
+    padding: 0.8em 2em;
+    border: 0.1em solid $gray-900;
+    border-radius: 50px;
+    color: $gray-900;
+    background-color: $primary;
+    box-shadow: 0.2em 0.4em 0 $gray-900;
+
+    &:hover {
+      color: $gray-900;
+      margin: 0.4em 0 -0.4em 0.2em;
+      box-shadow: 0 0 0 $gray-900;
+    }
+  }
+}
+
+.btn-roundImgAndText {
+  text-align: center;
+  transition: all ease 0.5s;
+  cursor: pointer;
+
+  img,
+  p {
+    transition: all ease 0.5s;
   }
 
   img {
     max-width: 100%;
+    border: 2px solid #000;
+    border-radius: 50%;
+    box-shadow: 4px 8px 0 $primary;
   }
 
-  &-hoverSwitch {
-    position: relative;
-    width: 35px;
-    height: 35px;
-
-    &-default,
-    &-active {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: all ease 0.5s;
-    }
-
-    &-active {
-      opacity: 0;
-    }
-
-    &:hover {
-      .btn-hoverSwitch-active {
-        opacity: 1;
-      }
-    }
+  p {
+    display: inline-block;
+    padding: 0.3em 1.1em;
+    border-radius: 50px;
   }
 
-  &-hoverScale {
-    &:hover {
-      transform: scale(1.05);
+  &:hover {
+    transform: scale(0.98);
+
+    img {
+      box-shadow: 0 0 0 transparent;
     }
+
+    p {
+      background-color: $primary;
+    }
+  }
+}
+
+.btn-arrow {
+  display: inline-block;
+  background-color: $accent;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &.disabled {
+    opacity: 0.5;
+    background-color: $gray-600;
+    pointer-events: none;
+  }
+
+  &:not(.disable):hover {
+    background-color: $secondary;
+  }
+}
+
+.btn-carouselDot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: $gray;
+
+  &.active {
+    background-color: $accent;
+  }
+
+  &:hover:not(.active) {
+    background-color: $secondary;
+  }
+}
+
+.btn-hoverSwitch {
+  position: relative;
+  width: 35px;
+  height: 35px;
+
+  &-default,
+  &-active {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all ease 0.5s;
+  }
+
+  &-active {
+    opacity: 0;
+  }
+
+  &:hover {
+    .btn-hoverSwitch-active {
+      opacity: 1;
+    }
+  }
+}
+
+.btn-hoverScale {
+  &:hover,
+  &:hover > img {
+    transform: scale(1.05);
   }
 }

@@ -1,10 +1,11 @@
 // vendors
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Oleo+Script:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Oleo+Script:wght@400;700&display=swap");
 @import "./vendors/bootstrap";
 
 // custom
 // --components
 @import "./components/button";
 @import "./components/form";
+@import "./components/title";
 // --base
 @import "./base";

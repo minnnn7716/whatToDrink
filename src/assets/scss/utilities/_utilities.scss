@@ -21,6 +21,7 @@ $custom-utilities: map-merge(
       class: w,
       values: (
         25: 25%,
+        30: 30%,
         40: 40%,
         50: 50%,
         75: 75%,
@@ -33,3 +34,11 @@ $custom-utilities: map-merge(
 );
 
 $utilities: map-merge($utilities, $custom-utilities);
+
+.img {
+  &-full {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
