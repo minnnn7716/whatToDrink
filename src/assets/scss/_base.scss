@@ -1,5 +1,9 @@
 .view {
   min-height: calc(100vh - 233px);
+
+  &:not(.index) {
+    margin-top: 57px;
+  }
 }
 
 button,
