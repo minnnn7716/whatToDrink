@@ -11,22 +11,24 @@ export default {}
         >
           <ul class="list-unstyled w-40 d-flex align-items-end mb-0">
             <li class="footer-item">
-              <a class="footer-link" href="#">首頁搜尋</a>
+              <RouterLink :to="{ name: 'Home', hash: '#index-type' }" class="footer-link"
+                >四大種類</RouterLink
+              >
             </li>
             <li class="footer-item">
-              <a class="footer-link" href="#">全部店家</a>
+              <RouterLink class="footer-link">全部店家</RouterLink>
             </li>
             <li class="footer-item">
-              <a class="footer-link" href="#">轉吧轉吧</a>
+              <RouterLink to="/wheel" class="footer-link">轉吧轉吧</RouterLink>
             </li>
             <li class="footer-item">
-              <a class="footer-link" href="#">關於我們</a>
+              <RouterLink to="/about" class="footer-link">關於我們</RouterLink>
             </li>
           </ul>
-          <a class="footer-brand fs-3 btn-hoverScale" href="#">
+          <RouterLink to="/" class="footer-brand fs-3 btn-hoverScale">
             What <br />
             to Drink
-          </a>
+          </RouterLink>
           <p class="w-40 text-end fs-normal2">資料、圖片來源皆來自網路，僅用來做為學習用途</p>
           <button type="button" class="footer-toTop fs-6">TOP</button>
         </div>
@@ -39,6 +41,7 @@ export default {}
 @import '../assets/scss/vendors/bootstrap';
 .footer {
   position: relative;
+  margin-top: 54px;
   &::before,
   &::after {
     content: '';

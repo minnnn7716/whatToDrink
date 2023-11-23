@@ -17,12 +17,12 @@ const routes = [
           component: () => import('../views/front/SearchView.vue'),
         },
         {
-          path: '/shop',
+          path: '/shops',
           name: 'Shop',
           component: () => import('../views/front/ShopsList.vue'),
         },
         {
-          path: '/shop/:id',
+          path: '/shops/:id',
           component: () => import('../views/front/ShopView.vue'),
           props: (route) => {
             return {
@@ -45,7 +45,7 @@ const routes = [
           component: () => import('../views/front/AboutView.vue'),
         },
         {
-          path: '/favorite',
+          path: '/favorites',
           name: 'Favorite',
           component: () => import('../views/front/FavoriteView.vue'),
         },
@@ -61,8 +61,14 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        el: to.hash
+      }
+    } else {
     return { top: 0 };
+    }
   },
 });
 
