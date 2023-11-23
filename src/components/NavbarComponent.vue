@@ -2,9 +2,9 @@
   <nav class="navbar navbar-expand-lg fixed-top show">
     <div class="container-fluid">
       <h1>
-        <a class="navbar-brand fs-3" href="#"
+        <RouterLink to="/" class="navbar-brand fs-3"
           >What <br />
-          to Drink</a
+          to Drink</RouterLink
         >
       </h1>
       <button

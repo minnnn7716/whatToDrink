@@ -1,5 +1,11 @@
 <script>
-export default {}
+export default {
+  methods: {
+    ToTop() {
+      window.scrollTo(0, 0)
+    }
+  }
+}
 </script>
 
 <template>
@@ -16,7 +22,7 @@ export default {}
               >
             </li>
             <li class="footer-item">
-              <RouterLink class="footer-link">全部店家</RouterLink>
+              <RouterLink to="/shops" class="footer-link">全部店家</RouterLink>
             </li>
             <li class="footer-item">
               <RouterLink to="/wheel" class="footer-link">轉吧轉吧</RouterLink>
@@ -30,7 +36,7 @@ export default {}
             to Drink
           </RouterLink>
           <p class="w-40 text-end fs-normal2">資料、圖片來源皆來自網路，僅用來做為學習用途</p>
-          <button type="button" class="footer-toTop fs-6">TOP</button>
+          <button @click.prevent="ToTop" type="button" class="footer-toTop fs-6">TOP</button>
         </div>
       </div>
     </div>

@@ -68,7 +68,7 @@ export default {
     />
     <img class="position-absolute top-0 end-0" src="../../assets/images/index-bannerDeco-end.svg" /> -->
     </header>
-    <section class="py-25">
+    <section class="py-25" id="index-type">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-3">
