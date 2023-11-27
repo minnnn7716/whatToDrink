@@ -1,20 +1,20 @@
 <template>
   <div class="rateDisplay d-flex align-items-center">
-    <p class="me-3 font-handwriting fs-bold">4.9</p>
-    <ul class="mb-1 list-unstyled d-flex align-items-center">
-      <li>
+    <p class="lh-1">4.9</p>
+    <ul class="list-unstyled d-flex align-items-center">
+      <li class="d-flex align-items-center">
         <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />
       </li>
-      <li>
+      <li class="d-flex align-items-center">
         <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />
       </li>
-      <li>
+      <li class="d-flex align-items-center">
         <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />
       </li>
-      <li>
+      <li class="d-flex align-items-center">
         <img class="img-full" src="../assets/images/icon-start-empty.svg" alt="" />
       </li>
-      <li>
+      <li class="d-flex align-items-center">
         <img class="img-full" src="../assets/images/icon-start-half.svg" alt="" />
       </li>
     </ul>
@@ -34,27 +34,73 @@
   }
 
   &-sm {
+    p {
+      font-size: $h5-font-size;
+      margin-right: 8px;
+    }
+
+    ul {
+      margin-bottom: 4px;
+    }
+
     li {
       width: 20px;
       height: 20px;
+
+      @include media-breakpoint-up(3xl) {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    &.hasSansText {
+      ul {
+        margin-bottom: 0;
+      }
+
+      p {
+        font-size: $h6-font-size;
+      }
     }
   }
 
   &-lg {
     p {
       font-size: $h2-font-size;
+      margin-right: 12px;
+    }
+
+    ul {
+      margin-bottom: 8px;
     }
 
     li {
       width: 35px;
       height: 35px;
     }
+
+    &.hasSansText {
+      ul {
+        margin-bottom: 0;
+      }
+    }
   }
 
-  &.hasText {
+  &.hasSansText,
+  &.hasHandText {
     p {
       display: block;
     }
+  }
+
+  &.hasSansText {
+    font-family: $font-family-sans;
+    font-weight: 500;
+  }
+
+  &.hasHandText {
+    font-family: $font-family-handwriting;
+    font-weight: 600;
   }
 }
 </style>

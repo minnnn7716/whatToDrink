@@ -190,6 +190,7 @@ $blue-custom-100: #effdff;
 $blue-custom-300: #c3f8ff;
 $blue-custom-500: #99e4ee;
 $blue-custom-600: #66c5d2;
+$blue-custom-700: #38a3b1;
 $blue-custom-900: #1d7b88;
 
 $pink-custom-50: #fefaff;
@@ -197,11 +198,12 @@ $pink-custom-100: #fdf3ff;
 $pink-custom-300: #f7c7ff;
 $pink-custom-500: #f095ff;
 $pink-custom-600: #d271e2;
+$pink-custom-700: #c24dd4;
 $pink-custom-900: #92409f;
 
 $gray-custom-50: #f9f9f9;
 $gray-custom-100: #f3f2f2;
-$gray-custom-300: #f3f2f2;
+$gray-custom-300: #dadada;
 $gray-custom-500: #d1d1d1;
 $gray-custom-600: #bdbdbd;
 $gray-custom-700: #7c7c7c;
@@ -351,12 +353,14 @@ $secondary-50: $blue-custom-50;
 $secondary-100: $blue-custom-100;
 $secondary-300: $blue-custom-300;
 $secondary-600: $blue-custom-600;
+$secondary-700: $blue-custom-700;
 $secondary-900: $blue-custom-900;
 $accent: $pink-custom-500;
 $accent-50: $pink-custom-50;
 $accent-100: $pink-custom-100;
 $accent-300: $pink-custom-300;
 $accent-600: $pink-custom-600;
+$accent-700: $pink-custom-700;
 $accent-900: $pink-custom-900;
 $gray: $gray-custom-500;
 $gray-50: $gray-custom-50;
@@ -393,12 +397,14 @@ $theme-colors-custom: (
   "secondary-100": $secondary-100,
   "secondary-300": $secondary-300,
   "secondary-600": $secondary-600,
+  "secondary-700": $secondary-700,
   "secondary-900": $secondary-900,
   "accent": $accent,
   "accent-50": $accent-50,
   "accent-100": $accent-100,
   "accent-300": $accent-300,
   "accent-600": $accent-600,
+  "accent-700": $accent-700,
   "accent-900": $accent-900,
   "gray": $gray,
   "gray-50": $gray-50,
@@ -949,6 +955,9 @@ $table-active-bg: rgba(var(--#{$prefix}emphasis-color-rgb), $table-active-bg-fac
 $table-hover-color: $table-color !default;
 $table-hover-bg-factor: 0.075 !default;
 $table-hover-bg: rgba(var(--#{$prefix}emphasis-color-rgb), $table-hover-bg-factor) !default;
+
+// custom * table
+$table-hover-bg: $gray-custom-50;
 
 $table-border-factor: 0.2 !default;
 $table-border-width: var(--#{$prefix}border-width) !default;

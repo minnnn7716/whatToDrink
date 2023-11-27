@@ -119,6 +119,10 @@
 }
 
 .btn-hoverScale {
+  img {
+    transition: all ease 0.5s;
+  }
+
   &:hover,
   &:hover > img {
     transform: scale(1.05);

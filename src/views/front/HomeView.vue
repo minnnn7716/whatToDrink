@@ -2,14 +2,14 @@
 import CommentDisplay from '../../components/CommentDisplay.vue'
 import RateDisplay from '../../components/RateDisplay.vue'
 import SearchBar from '../../components/SearchBar.vue'
-import SwitchButtonGroup from '../../components/SwitchButtonGroup.vue'
+import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue'
 
 export default {
   components: {
     CommentDisplay,
     RateDisplay,
     SearchBar,
-    SwitchButtonGroup
+    SwitchBtnGroup
   }
 }
 </script>
@@ -53,10 +53,10 @@ export default {
               </p>
             </h3>
             <div class="d-flex w-100">
-              <SwitchButtonGroup class="me-4">
+              <SwitchBtnGroup class="switchBtnGroup-light switchBtnGroup-text me-4">
                 <template v-slot:start>飲料</template>
                 <template v-slot:end>店家</template>
-              </SwitchButtonGroup>
+              </SwitchBtnGroup>
               <SearchBar />
             </div>
           </div>
