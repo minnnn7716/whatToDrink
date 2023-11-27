@@ -47,7 +47,7 @@ export default {
 @import '../assets/scss/vendors/bootstrap';
 .footer {
   position: relative;
-  margin-top: 54px;
+
   &::before,
   &::after {
     content: '';

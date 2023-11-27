@@ -1,8 +1,12 @@
 .view {
-  min-height: calc(100vh - 288px);
+  min-height: calc(100vh - 231px);
 
   &:not(.index) {
     margin-top: 57px;
+  }
+
+  &.wheel {
+    min-height: calc(100vh - 54px);
   }
 }
 

@@ -116,7 +116,9 @@ export default {
             轉盤啊～轉盤～<br />
             世界上最適合我的飲料是哪一杯？
           </p>
-          <a class="btn-custom btn-custom-primary fs-4 fs-xxl-5 fw-bold">請賜與我飲料</a>
+          <RouterLink to="/wheel" class="btn-custom btn-custom-primary fs-4 fs-xxl-5 fw-bold"
+            >請賜與我飲料</RouterLink
+          >
         </div>
         <img class="index-wheel-img-person" src="../../assets/images/index-wheel-person.svg" />
         <img class="index-wheel-img-drink" src="../../assets/images/index-wheel-drink.svg" />
@@ -165,7 +167,7 @@ export default {
                 <p class="index-comment-start-info fs-4 font-handwriting fw-bold">
                   M $ 50 ｜ L $ 60
                 </p>
-                <RateDisplay class="index-comment-start-rate rateDisplay-lg hasText" />
+                <RateDisplay class="index-comment-start-rate rateDisplay-lg hasHandText" />
               </div>
               <div class="col-6 overflow-auto">
                 <CommentDisplay class="mb-12" />

@@ -29,6 +29,14 @@ $custom-utilities: map-merge(
         auto: auto,
         fit: fit-content
       )
+    ),
+    "flex": (
+      responsive: true,
+      property: flex,
+      values: (
+        fill: 1 1 auto,
+        fit: 1 1 fit-content
+      )
     )
   ),
   $custom-utilities

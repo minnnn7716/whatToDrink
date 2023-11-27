@@ -7,19 +7,51 @@
     transition: all ease 0.5s;
   }
 
-  &-primary {
-    padding: 0.8em 2em;
+  &-primary,
+  &-primary-sm {
     border: 0.1em solid $gray-900;
     border-radius: 50px;
     color: $gray-900;
     background-color: $primary;
-    box-shadow: 0.2em 0.4em 0 $gray-900;
 
     &:hover {
       color: $gray-900;
-      margin: 0.4em 0 -0.4em 0.2em;
+    }
+  }
+
+  &-primary {
+    padding: 0.8em 2em;
+    box-shadow: 0.2em 0.4em 0 $gray-900;
+
+    &:hover {
+      margin: 0.4em -0.2em -0.4em 0.2em;
       box-shadow: 0 0 0 $gray-900;
     }
+  }
+
+  &-primary-sm {
+    padding: 0.4em 1.5em;
+    box-shadow: 0.1em 0.2em 0 $gray-900;
+
+    &:hover {
+      margin: 0.2em -0.1em -0.2em 0;
+      box-shadow: 0 0 0 $gray-900;
+    }
+  }
+}
+
+.btn-circle {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border: 2px solid $gray-900;
+  border-radius: 50%;
+  box-shadow: 4px 4px 0 $gray-900;
+  cursor: pointer;
+
+  &:hover {
+    margin: 4px -4px -4px 4px;
+    box-shadow: 0 0 0 $gray-900;
   }
 }
 
