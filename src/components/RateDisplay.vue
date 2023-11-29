@@ -23,6 +23,7 @@
 
 <style lang="scss" scoped>
 @import '../assets/scss/vendors/bootstrap';
+@import '../assets/scss/utilities/mixin';
 
 .rateDisplay {
   p {
@@ -35,7 +36,7 @@
 
   &-sm {
     p {
-      font-size: $h5-font-size;
+      font-size: $h6-font-size;
       margin-right: 8px;
     }
 
@@ -57,9 +58,27 @@
       ul {
         margin-bottom: 0;
       }
+    }
+  }
 
-      p {
-        font-size: $h6-font-size;
+  &-md {
+    p {
+      font-size: $h3-font-size;
+      margin-right: 12px;
+    }
+
+    ul {
+      margin-bottom: 4px;
+    }
+
+    li {
+      width: 30px;
+      height: 30px;
+    }
+
+    &.hasSansText {
+      ul {
+        margin-bottom: 0;
       }
     }
   }
@@ -101,6 +120,10 @@
   &.hasHandText {
     font-family: $font-family-handwriting;
     font-weight: 600;
+  }
+
+  &.strokeTitle {
+    @include stroke($white, 2px);
   }
 }
 </style>

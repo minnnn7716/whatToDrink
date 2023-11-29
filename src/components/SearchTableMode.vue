@@ -64,7 +64,7 @@ export default {
               </li>
             </ul>
           </td>
-          <td class="py-6 text-end"><FavoriteBtn></FavoriteBtn></td>
+          <td class="py-6 text-end"><FavoriteBtn class="btn-favorite" /></td>
         </tr>
         <tr>
           <td class="ps-6 py-6">
@@ -105,7 +105,7 @@ export default {
               </li>
             </ul>
           </td>
-          <td class="py-6 text-end"><FavoriteBtn></FavoriteBtn></td>
+          <td class="py-6 text-end"><FavoriteBtn class="btn-favorite" /></td>
         </tr>
         <tr>
           <td class="ps-6 py-6">
@@ -146,7 +146,7 @@ export default {
               </li>
             </ul>
           </td>
-          <td class="py-6 text-end"><FavoriteBtn></FavoriteBtn></td>
+          <td class="py-6 text-end"><FavoriteBtn class="btn-favorite" /></td>
         </tr>
         <tr>
           <td class="ps-6 py-6">
@@ -187,7 +187,7 @@ export default {
               </li>
             </ul>
           </td>
-          <td class="py-6 text-end"><FavoriteBtn></FavoriteBtn></td>
+          <td class="py-6 text-end"><FavoriteBtn class="btn-favorite" /></td>
         </tr>
         <tr>
           <td class="ps-6 py-6">
@@ -228,7 +228,7 @@ export default {
               </li>
             </ul>
           </td>
-          <td class="py-6 text-end"><FavoriteBtn></FavoriteBtn></td>
+          <td class="py-6 text-end"><FavoriteBtn class="btn-favorite" /></td>
         </tr>
       </tbody>
     </table>

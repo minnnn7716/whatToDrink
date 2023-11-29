@@ -536,6 +536,7 @@ $spacers: (
   25: $spacer * 6.25,
   30: $spacer * 7.5,
   40: $spacer * 10,
+  minus1: -$spacer * 0.25,
   minus4: -$spacer
 );
 // scss-docs-end spacer-variables-maps
