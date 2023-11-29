@@ -36,7 +36,7 @@ export default {
 .commentDisplay {
   position: relative;
   padding: 0 20px 8px 64px;
-  margin: 16px 0 0 32px;
+  margin: 16px 0 12px 32px;
 
   &::after {
     content: '';

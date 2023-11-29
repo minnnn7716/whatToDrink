@@ -30,18 +30,30 @@
     display: none;
   }
 
+  ul {
+    margin-bottom: 0;
+  }
+
   li:not(:last-child) {
     margin-right: 4px;
+  }
+
+  &-xs {
+    li {
+      width: 18px;
+      height: 18px;
+
+      @include media-breakpoint-up(3xl) {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 
   &-sm {
     p {
       font-size: $h6-font-size;
       margin-right: 8px;
-    }
-
-    ul {
-      margin-bottom: 4px;
     }
 
     li {
@@ -54,9 +66,9 @@
       }
     }
 
-    &.hasSansText {
+    &.hasHandText {
       ul {
-        margin-bottom: 0;
+        margin-bottom: 4px;
       }
     }
   }
