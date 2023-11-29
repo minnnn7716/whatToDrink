@@ -3,6 +3,8 @@
 @import "./vendors/bootstrap";
 
 // custom
+// --utilities
+@import "./utilities/mixin";
 // --components
 @import "./components/button";
 @import "./components/form";

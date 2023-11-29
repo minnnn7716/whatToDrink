@@ -157,7 +157,7 @@ export default {
               <div class="col-6 index-comment-start">
                 <img class="img-full" src="../../assets/images/index-recommend.png" alt="" />
                 <div>
-                  <h5 class="index-comment-start-title fs-3">
+                  <h5 class="index-comment-start-title title-stroke-2 fs-3">
                     鮮柚葡萄綠
                     <span class="pt-3 pb-2 px-2 bg-white border border-gray-900 rounded-pill fs-5"
                       >五十嵐</span
@@ -299,15 +299,6 @@ export default {
       top: -0.5em;
       left: -0.2em;
       letter-spacing: 0.5em;
-      text-shadow:
-        -2px -2px 0 white,
-        0 -2px 0 white,
-        2px -2px 0 white,
-        2px 0 0 white,
-        2px 2px 0 white,
-        0 2px 0 white,
-        -2px 2px 0 white,
-        -2px 0 0 white;
       writing-mode: vertical-lr;
 
       span {
