@@ -1,11 +1,11 @@
 <script>
-import RateDisplay from './RateDisplay.vue'
+import RateDisplay from './RateDisplay.vue';
 
 export default {
   components: {
-    RateDisplay
-  }
-}
+    RateDisplay,
+  },
+};
 </script>
 
 <template>

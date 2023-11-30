@@ -1,11 +1,11 @@
 <script>
-import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue'
+import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue';
 
 export default {
   components: {
-    SwitchBtnGroup
-  }
-}
+    SwitchBtnGroup,
+  },
+};
 </script>
 <template>
   <div class="sortComponent">

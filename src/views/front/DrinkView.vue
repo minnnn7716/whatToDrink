@@ -1,10 +1,10 @@
 <script>
-import '../../../node_modules/bootstrap/js/src/modal'
-import FavoriteBtn from '../../components/FavoriteBtn.vue'
-import RateDisplay from '../../components/RateDisplay.vue'
-import RateGroup from '../../components/RateGroup.vue'
-import RateSelector from '../../components/RateSelector.vue'
-import CommentDisplay from '../../components/CommentDisplay.vue'
+import 'bootstrap/js/src/modal';
+import FavoriteBtn from '../../components/FavoriteBtn.vue';
+import RateDisplay from '../../components/RateDisplay.vue';
+import RateGroup from '../../components/RateGroup.vue';
+import RateSelector from '../../components/RateSelector.vue';
+import CommentDisplay from '../../components/CommentDisplay.vue';
 
 export default {
   components: {
@@ -12,9 +12,9 @@ export default {
     FavoriteBtn,
     RateGroup,
     RateSelector,
-    CommentDisplay
-  }
-}
+    CommentDisplay,
+  },
+};
 </script>
 <template>
   <div class="container pt-15 pb-25">
@@ -28,7 +28,8 @@ export default {
             <div class="d-flex justify-content-between mb-8">
               <div>
                 <h3
-                  class="py-2 px-5 mb-3 d-inline-block fs-normal1 fw-normal border border-gray-900 rounded-pill"
+                  class="py-2 px-5 mb-3 d-inline-block fs-normal1 fw-normal
+                  border border-gray-900 rounded-pill"
                 >
                   五十嵐
                 </h3>
@@ -124,7 +125,8 @@ export default {
                 <div class="col-4">
                   <img class="img-fluid mb-3" src="../../assets/images/drinkPhoto.png" alt="" />
                   <h3
-                    class="py-1 px-4 mb-3 d-inline-block fs-normal2 fw-normal border border-gray-900 rounded-pill"
+                    class="py-1 px-4 mb-3 d-inline-block fs-normal2 fw-normal
+                    border border-gray-900 rounded-pill"
                   >
                     五十嵐
                   </h3>

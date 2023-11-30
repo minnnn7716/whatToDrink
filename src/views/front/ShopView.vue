@@ -1,19 +1,20 @@
 <script>
-import FavoriteBtn from '../../components/FavoriteBtn.vue'
-import RateDisplay from '../../components/RateDisplay.vue'
+import FavoriteBtn from '../../components/FavoriteBtn.vue';
+import RateDisplay from '../../components/RateDisplay.vue';
 
 export default {
   components: {
     RateDisplay,
-    FavoriteBtn
-  }
-}
+    FavoriteBtn,
+  },
+};
 </script>
 
 <template>
   <div class="shopView pb-20">
     <header
-      class="shopView-header position-relative d-flex align-items-center justify-content-center mb-20"
+      class="shopView-header position-relative
+      d-flex align-items-center justify-content-center mb-20"
     >
       <img src="../../assets/images/logo_清心福全.svg" alt="" />
       <div class="shopView-header-content container position-absolute start-50 bottom-0">

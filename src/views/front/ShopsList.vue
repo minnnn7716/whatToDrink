@@ -2,9 +2,9 @@
 export default {
   data() {
     return {
-      list: []
-    }
-  }
+      list: [],
+    };
+  },
   // methods: {
   //   mouseenter(event) {
   //     let index = event.target.getAttribute('data-id')
@@ -20,7 +20,7 @@ export default {
   // mounted() {
   //   this.list = document.querySelectorAll('.allShop-item')
   // }
-}
+};
 </script>
 
 <template>

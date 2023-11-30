@@ -1,9 +1,9 @@
 <script>
-import SearchBar from '../../components/SearchBar.vue'
-import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue'
-import SortComponent from './SortComponent.vue'
-import SearchImageMode from '../../components/SearchImageMode.vue'
-import SearchTableMode from '../../components/SearchTableMode.vue'
+import SearchBar from '../../components/SearchBar.vue';
+import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue';
+import SortComponent from './SortComponent.vue';
+import SearchImageMode from '../../components/SearchImageMode.vue';
+import SearchTableMode from '../../components/SearchTableMode.vue';
 
 export default {
   components: {
@@ -11,9 +11,9 @@ export default {
     SwitchBtnGroup,
     SortComponent,
     SearchImageMode,
-    SearchTableMode
-  }
-}
+    SearchTableMode,
+  },
+};
 </script>
 
 <template>
@@ -35,7 +35,8 @@ export default {
         <div class="d-flex align-items-center justify-content-between mb-10">
           <p class="fs-5 fw-bold">找到 30 個符合「珍珠」的飲料</p>
           <div
-            class="w-fit d-flex align-items-center py-1 ps-6 pe-2 bg-accent-300 border border-black rounded-pill"
+            class="w-fit d-flex align-items-center py-1 ps-6 pe-2 bg-accent-300
+            border border-black rounded-pill"
           >
             <p class="fw-bold">目前依照「熱量」遞減排序</p>
             <button type="button" class="btn btn-hoverScale border-0 d-flex align-items-center">

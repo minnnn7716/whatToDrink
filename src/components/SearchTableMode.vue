@@ -1,13 +1,13 @@
 <script>
-import RateDisplay from './RateDisplay.vue'
-import FavoriteBtn from './FavoriteBtn.vue'
+import RateDisplay from './RateDisplay.vue';
+import FavoriteBtn from './FavoriteBtn.vue';
 
 export default {
   components: {
     RateDisplay,
-    FavoriteBtn
-  }
-}
+    FavoriteBtn,
+  },
+};
 </script>
 <template>
   <div class="table-responsive">

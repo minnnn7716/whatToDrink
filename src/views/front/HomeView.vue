@@ -1,17 +1,17 @@
 <script>
-import CommentDisplay from '../../components/CommentDisplay.vue'
-import RateDisplay from '../../components/RateDisplay.vue'
-import SearchBar from '../../components/SearchBar.vue'
-import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue'
+import CommentDisplay from '../../components/CommentDisplay.vue';
+import RateDisplay from '../../components/RateDisplay.vue';
+import SearchBar from '../../components/SearchBar.vue';
+import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue';
 
 export default {
   components: {
     CommentDisplay,
     RateDisplay,
     SearchBar,
-    SwitchBtnGroup
-  }
-}
+    SwitchBtnGroup,
+  },
+};
 </script>
 
 <template>
@@ -66,7 +66,8 @@ export default {
       class="position-absolute start-0 bottom-0"
       src="../../assets/images/index-bannerDeco-start.svg"
     />
-    <img class="position-absolute top-0 end-0" src="../../assets/images/index-bannerDeco-end.svg" /> -->
+    <img class="position-absolute top-0 end-0"
+    src="../../assets/images/index-bannerDeco-end.svg" /> -->
     </header>
     <section class="py-25" id="index-type">
       <div class="container">
