@@ -9,17 +9,29 @@
 
   &-primary,
   &-primary-sm {
+    background-color: $primary;
+  }
+
+  &-light,
+  &-light-sm {
+    background-color: #ffffff;
+  }
+
+  &-primary,
+  &-primary-sm,
+  &-light,
+  &-light-sm {
     border: 0.1em solid $gray-900;
     border-radius: 50px;
     color: $gray-900;
-    background-color: $primary;
 
     &:hover {
       color: $gray-900;
     }
   }
 
-  &-primary {
+  &-primary,
+  &-light {
     padding: 0.8em 2em;
     box-shadow: 0.2em 0.4em 0 $gray-900;
 
@@ -29,12 +41,13 @@
     }
   }
 
-  &-primary-sm {
+  &-primary-sm,
+  &-light-sm {
     padding: 0.4em 1.5em;
     box-shadow: 0.1em 0.2em 0 $gray-900;
 
     &:hover {
-      margin: 0.2em -0.1em -0.2em 0;
+      margin: 0.2em -0.1em -0.2em 0.1em;
       box-shadow: 0 0 0 $gray-900;
     }
   }

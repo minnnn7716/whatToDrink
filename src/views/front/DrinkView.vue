@@ -1,7 +1,9 @@
 <script>
+import '../../../node_modules/bootstrap/js/src/modal'
 import FavoriteBtn from '../../components/FavoriteBtn.vue'
 import RateDisplay from '../../components/RateDisplay.vue'
 import RateGroup from '../../components/RateGroup.vue'
+import RateSelector from '../../components/RateSelector.vue'
 import CommentDisplay from '../../components/CommentDisplay.vue'
 
 export default {
@@ -9,6 +11,7 @@ export default {
     RateDisplay,
     FavoriteBtn,
     RateGroup,
+    RateSelector,
     CommentDisplay
   }
 }
@@ -22,14 +25,14 @@ export default {
             <img class="img-full" src="../../assets/images/drinkPhoto.png" alt="" />
           </div>
           <div class="col-8 d-flex flex-column justify-content-between">
-            <div class="d-flex justify-content-between mb-5">
+            <div class="d-flex justify-content-between mb-8">
               <div>
                 <h3
                   class="py-2 px-5 mb-3 d-inline-block fs-normal1 fw-normal border border-gray-900 rounded-pill"
                 >
                   五十嵐
                 </h3>
-                <h2 class="fs-3 mb-8">黃金 JOJO 蕎麥茶</h2>
+                <h2 class="fs-3 mb-6">黃金 JOJO 蕎麥茶</h2>
                 <ul class="list-unstyled d-flex mb-5">
                   <li class="pe-6 border-end border-black">
                     <p class="mb-1 fs-6 fw-medium">M <span class="ms-4">$ 50</span></p>
@@ -66,7 +69,12 @@ export default {
             <RateGroup />
           </div>
           <div class="col-2 d-flex align-items-center justify-content-center">
-            <button type="button" class="btn-custom btn-custom-primary fs-6 fw-bold px-0 w-100">
+            <button
+              type="button"
+              class="btn-custom btn-custom-primary fs-6 fw-bold px-0 w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#addCommentModal"
+            >
               撰寫評論
             </button>
           </div>
@@ -94,6 +102,96 @@ export default {
           <CommentDisplay />
           <p>pagnation</p>
         </section>
+      </div>
+    </div>
+
+    <!-- addCommentModal -->
+    <div class="modal fade" id="addCommentModal">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content rounded-4">
+          <div class="modal-header border-bottom-0">
+            <h1 class="modal-title fs-5 invisible" id="addCommentModalLabel">撰寫評論</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body pt-0 pb-10">
+            <div class="container-fluid">
+              <div class="row gx-10 justify-content-center">
+                <div class="col-4">
+                  <img class="img-fluid mb-3" src="../../assets/images/drinkPhoto.png" alt="" />
+                  <h3
+                    class="py-1 px-4 mb-3 d-inline-block fs-normal2 fw-normal border border-gray-900 rounded-pill"
+                  >
+                    五十嵐
+                  </h3>
+                  <h2 class="fs-5 mb-3">黃金 JOJO 蕎麥茶</h2>
+                  <p class="fs-6 fw-medium">
+                    M <span class="ms-2">$ 50</span><span class="mx-3">｜</span>L
+                    <span class="ms-2">$ 60</span>
+                  </p>
+                </div>
+                <div class="col-8">
+                  <div class="d-flex align-items-center mb-6">
+                    <h4 class="fs-5 me-3">評價星等</h4>
+                    <RateSelector />
+                  </div>
+                  <div class="d-flex align-items-center mb-4">
+                    <select
+                      id="type"
+                      class="form-select py-2 px-4 border-black rounded-pill me-4"
+                      style="max-width: 150px"
+                    >
+                      <option selected disabled>甜度</option>
+                      <option value="無糖">無糖</option>
+                      <option value="1 分糖">1 分糖</option>
+                      <option value="微糖">微糖</option>
+                      <option value="半糖">半糖</option>
+                      <option value="少糖">少糖</option>
+                      <option value="全糖">全糖</option>
+                      <option value="多糖">多糖</option>
+                      <option value="不記得">不記得</option>
+                    </select>
+                    <select
+                      id="type"
+                      class="form-select py-2 px-4 border-black rounded-pill"
+                      style="max-width: 150px"
+                    >
+                      <option selected disabled>冰塊</option>
+                      <option value="完全去冰">完全去冰</option>
+                      <option value="去冰">去冰</option>
+                      <option value="微冰">微冰</option>
+                      <option value="半冰">半冰</option>
+                      <option value="多冰">多冰</option>
+                      <option value="溫">溫</option>
+                      <option value="熱">熱</option>
+                      <option value="不記得">不記得</option>
+                    </select>
+                  </div>
+                  <textarea
+                    rows="6"
+                    class="py-3 px-4 mb-4 w-100 border border-black rounded-4"
+                  ></textarea>
+                  <div class="d-flex align-items-center justify-content-end">
+                    <button
+                      type="button"
+                      class="btn-custom btn-custom-light-sm fw-medium me-3"
+                      data-bs-dismiss="modal"
+                    >
+                      取消評論
+                    </button>
+                    <button type="button" class="btn-custom btn-custom-primary-sm fw-medium">
+                      確定送出
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
