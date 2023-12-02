@@ -42,7 +42,7 @@ export default {
     <section class="container">
       <div class="row justify-content-center">
         <div class="col-10 col-3xl-12">
-          <div class="shopView-menu px-6 py-10 border border-3 border-secondary-600 rounded-4">
+          <div class="menu px-6 py-10 border border-3 border-secondary-600 rounded-4">
             <div class="row gy-10 gx-12">
               <div class="col-6">
                 <table class="table align-middle">
@@ -771,23 +771,33 @@ export default {
                 </table>
               </div>
             </div>
-            <ul class="shopView-menu-list list-unstyled">
-              <li>
-                <button type="button" class="btn shopView-menu-btn active">
-                  <span>全部飲品</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="btn shopView-menu-btn">
-                  <span>純茶</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="btn shopView-menu-btn">
-                  <span>特調茶</span>
-                </button>
-              </li>
-            </ul>
+            <ul class="menu-list list-unstyled mb-0">
+            <li>
+              <button type="button" class="menu-btn active">
+                <span>全部飲品</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="menu-btn">
+                <span>純茶</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="menu-btn">
+                <span>特調茶</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="menu-btn">
+                <span>奶系列</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="menu-btn">
+                <span>果汁</span>
+              </button>
+            </li>
+          </ul>
           </div>
         </div>
       </div>
@@ -850,7 +860,7 @@ export default {
                           <p class="fs-6 font-handwriting lh-lg">
                             M <span class="ms-1">$ 50</span>
                             <span class="mx-2">｜</span>
-                            L <span class="ms-1">$ 60</span>
+                            L $ 60 <span class="ms-1">$ 50</span>
                           </p>
                         </div>
                       </div>
@@ -930,8 +940,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/vendors/bootstrap';
-
 .shopView {
   &-header {
     background-color: #005743;
@@ -942,57 +950,6 @@ export default {
 
     &-content {
       transform: translate(-50%, 80%);
-    }
-  }
-
-  &-menu {
-    position: relative;
-    margin-right: 44px;
-    td {
-      padding: 12px 4px;
-    }
-
-    &-list {
-      position: absolute;
-      right: 0;
-      top: 32px;
-      transform: translateX(100%);
-      li:not(:last-child) {
-        margin-bottom: 12px;
-      }
-    }
-
-    &-btn {
-      padding: 8px 12px;
-      border-radius: 0 8px 8px 0;
-      background-color: $gray-100;
-      border: 1px solid #000;
-      border-left: 3px solid $secondary-600;
-      transition: all ease 0.3s;
-      span {
-        padding: 16px 0;
-        writing-mode: vertical-lr;
-        letter-spacing: 0.4em;
-        margin-bottom: -0.6em;
-        transition: all ease 0.3s;
-      }
-
-      &.active {
-        margin-left: -1px;
-        color: $secondary-700;
-        font-weight: 500;
-        background-color: #ffffff;
-        border: 3px solid $secondary-600;
-        border-left: 3px solid #ffffff;
-        pointer-events: none;
-      }
-
-      &:not(.active):hover {
-        background-color: $gray-100;
-        border: 1px solid #000;
-        border-left: 3px solid $secondary-600;
-        padding-left: 20px;
-      }
     }
   }
 }

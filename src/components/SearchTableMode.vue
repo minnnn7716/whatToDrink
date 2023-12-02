@@ -11,7 +11,7 @@ export default {
 </script>
 <template>
   <div class="table-responsive">
-    <table class="table align-middle table-hover">
+    <table class="table align-middle table-hover mb-0">
       <thead>
         <tr>
           <th class="ps-6 py-4 bg-primary">品名</th>
