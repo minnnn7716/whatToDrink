@@ -1,74 +1,44 @@
 <script>
+import { mapState, mapActions } from 'pinia';
+import shopStore from '@/stores/shopStore';
+
 export default {
-  data() {
-    return {
-      list: [],
-    };
+  methods: {
+    ...mapActions(shopStore, ['getShops']),
   },
-  // methods: {
-  //   mouseenter(event) {
-  //     let index = event.target.getAttribute('data-id')
-
-  //     for (let i = 0; i <= this.list.length; i++) {
-  //       this.list[i].classList.add('noHoverItem')
-  //     }
-
-  //     this.list[index].classList.remove('noHoverItem')
-  //     this.list[index].classList.add('extendHover')
-  //   }
-  // },
-  // mounted() {
-  //   this.list = document.querySelectorAll('.allShop-item')
-  // }
+  computed: {
+    ...mapState(shopStore, ['shops']),
+  },
+  created() {
+    this.getShops();
+  },
 };
 </script>
 
 <template>
   <div class="allShop d-flex flex-column overflow-hidden">
-    <ul class="allShop-list list-unstyled d-flex flex-grow-1">
-      <li class="allShop-item">
-        <RouterLink to="/shops/00" class="allShop-link allShop-link-keuke">
+    <ul class="allShop-list list-unstyled mb-0 d-flex flex-grow-1">
+      <li
+        class="allShop-item"
+        v-for="item in shops"
+        :key="`shop ${item.code}`"
+      >
+        <RouterLink
+          class="allShop-link"
+          :style="`background-color: ${item.bgColor}`"
+          :to="`/shops/${item.code}`"
+        >
           <img
             class="allShop-link-img"
-            src="../../assets/images/logo_可不可.svg"
-            alt="可不可熟成紅茶"
+            :src="item.imageUrl"
+            :alt="item.name"
           />
-          <span class="allShop-link-tag border-2 link-light border border-light"
-            >可不可熟成紅茶</span
-          >
+          <span
+            class="allShop-link-tag border-2 border"
+            :class="`link-${item.textColor} border-${item.textColor}`"
+          >{{ item.name }}
+          </span>
         </RouterLink>
-      </li>
-      <li class="allShop-item">
-        <a href="#" class="allShop-link allShop-link-50lan">
-          <img class="allShop-link-img" src="../../assets/images/logo_五十嵐.svg" alt="五十嵐" />
-          <span class="allShop-link-tag border-2 link-gray-900 border border-gray-900">五十嵐</span>
-        </a>
-      </li>
-      <li class="allShop-item">
-        <a href="#" class="allShop-link allShop-link-aNiceHoliday">
-          <img class="allShop-link-img" src="../../assets/images/logo_一沐日.svg" alt="一沐日" />
-          <span class="allShop-link-tag border-2 link-gray-700 border border-gray-700">一沐日</span>
-        </a>
-      </li>
-      <li class="allShop-item">
-        <a href="#" class="allShop-link allShop-link-chingshin">
-          <img
-            class="allShop-link-img"
-            src="../../assets/images/logo_清心福全.svg"
-            alt="清心福全"
-          />
-          <span class="allShop-link-tag border-2 link-light border border-light">清心福全</span>
-        </a>
-      </li>
-      <li class="allShop-item">
-        <a href="#" class="allShop-link allShop-link-johnTeaCompany">
-          <img
-            class="allShop-link-img"
-            src="../../assets/images/logo_約翰紅茶.svg"
-            alt="約翰紅茶"
-          />
-          <span class="allShop-link-tag border-2 link-light border border-light">約翰紅茶</span>
-        </a>
       </li>
     </ul>
   </div>
@@ -78,6 +48,26 @@ export default {
 .allShop-item {
   flex: 1 1 auto;
   margin: 0 -1px;
+
+  &:first-child a::after,
+  &:last-child a::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transform: skewX(-4deg);
+    background-color: inherit;
+  }
+
+  &:first-child a::after {
+    left: 0;
+  }
+
+  &:last-child a::after {
+    right: 0;
+  }
 }
 
 .allShop-link {
@@ -108,47 +98,6 @@ export default {
     letter-spacing: 0.1em;
     font-weight: 500;
     border-radius: 50px;
-  }
-
-  &-keuke::after,
-  &-johnTeaCompany::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    width: 50%;
-    height: 100%;
-    top: 0;
-    transform: skewX(-4deg);
-  }
-
-  &-keuke {
-    background-color: #003c4f;
-
-    &::after {
-      left: 0;
-      background-color: #003c4f;
-    }
-  }
-
-  &-50lan {
-    background-color: #f5e702;
-  }
-
-  &-aNiceHoliday {
-    background-color: #ffffff;
-  }
-
-  &-chingshin {
-    background-color: #005743;
-  }
-
-  &-johnTeaCompany {
-    background-color: #183263;
-
-    &::after {
-      right: 0;
-      background-color: #183263;
-    }
   }
 }
 

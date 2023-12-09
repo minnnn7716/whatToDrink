@@ -1,16 +1,47 @@
 <script>
 import 'bootstrap/js/src/modal';
+import { mapState, mapActions } from 'pinia';
+import shopStore from '../../stores/shopStore';
 import FavoriteBtn from '../../components/FavoriteBtn.vue';
 import RateDisplay from '../../components/RateDisplay.vue';
 import RateGroup from '../../components/RateGroup.vue';
 import CommentDisplay from '../../components/CommentDisplay.vue';
 
 export default {
+  data() {
+    return {
+      drinks: {},
+    };
+  },
   components: {
     RateDisplay,
     RateGroup,
     FavoriteBtn,
     CommentDisplay,
+  },
+  props: ['id'],
+  watch: {
+    id: 'init',
+  },
+  methods: {
+    ...mapActions(shopStore, ['getSingleShop', 'changeType']),
+    init() {
+      const listHeight = this.$refs.typeList.offsetHeight + 64;
+      console.log('listHeight', listHeight);
+      this.$refs.menu.style.minHeight = `${listHeight}px`;
+
+      this.changeType('全部飲品');
+    },
+  },
+  computed: {
+    ...mapState(shopStore, ['singleShop', 'selectType', 'filterCustomType', 'filterMenu', 'shopRateScore']),
+  },
+  created() {
+    this.getSingleShop(this.id);
+  },
+  mounted() {
+    this.init();
+    console.log('mounted');
   },
 };
 </script>
@@ -18,22 +49,26 @@ export default {
 <template>
   <div class="shopView pb-20">
     <header
-      class="shopView-header position-relative
-      d-flex align-items-center justify-content-center mb-20"
+      class="shopView-header mb-20 py-4"
+      :style="`background-color: ${singleShop.bgColor}`"
     >
-      <img src="../../assets/images/logo_清心福全.svg" alt="" />
+      <img :src="singleShop.imageUrl" :alt="singleShop.name" />
       <div class="shopView-header-content container position-absolute start-50 bottom-0">
         <div class="row justify-content-center">
           <div class="col-10 col-3xl-12 d-flex justify-content-between">
-            <h2 class="fs-3 fw-bold title-stroke-2">清心福全</h2>
+            <h2 class="fs-3 fw-bold title-stroke-2">{{ singleShop.name }}</h2>
             <button
               type="button"
               class="btn border-0 p-0"
               data-bs-toggle="modal"
               data-bs-target="#shopRateModal"
             >
-              <RateDisplay class="rateDisplay-md hasHandText strokeTitle mb-2" />
-              <p class="text-end">57 則評論</p>
+              <RateDisplay
+                :rate="shopRateScore"
+                class="rateDisplay-md hasHandText strokeTitle mb-2" />
+              <p class="text-end">
+                {{ singleShop.comments ? singleShop.comments.length : 0 }} 則評論
+                </p>
             </button>
           </div>
         </div>
@@ -42,410 +77,48 @@ export default {
     <section class="container">
       <div class="row justify-content-center">
         <div class="col-10 col-3xl-12">
-          <div class="menu px-6 py-10 border border-3 border-secondary-600 rounded-4">
-            <div class="row gy-10 gx-12">
-              <div class="col-6">
+          <div class="menu px-6 py-10 border border-3 border-secondary-600 rounded-4" ref="menu">
+            <div class="row gy-10 gx-10">
+              <div
+                :class="{
+                  'col-6': selectType === '全部飲品',
+                  'col-12': selectType !== '全部飲品',
+                }"
+                v-for="type in Object.keys(filterMenu)"
+                :key="`filterMenuType ${type}`"
+              >
                 <table class="table align-middle">
                   <thead>
                     <tr>
-                      <th scope="col" colspan="4" class="fs-5 border-0">純茶</th>
+                      <th scope="col" colspan="4" class="fs-5 border-0">{{ type }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">阿薩姆紅茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
+                    <tr
+                      v-for="item in filterMenu[type]"
+                      :key="`filterMenuItem ${item}`"
+                    >
                       <th scope="row" class="fw-normal" width="30%">
-                        <a class="link-black" href="#">黃金JOJO麥茶</a>
+                        <RouterLink :to="`/drink/${item.id}`">{{ item.name }}</RouterLink>
                       </th>
-                      <td>
+                      <td width="60">
                         <div class="d-flex align-items-center">
-                          <img
+                          <img v-if="item.rate"
                             width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
+                            class="me-2"
+                            src="@/assets/images/icon-start-full.svg"
+                            alt="star"
+                          />
+                          <img v-else
+                            width="20"
+                            class="me-2"
+                            src="@/assets/images/icon-start-empty.svg"
+                            alt="star"
                           />
 
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">喀什米爾羊毛茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">烏龍茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">綠茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-6">
-                <table class="table align-middle">
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="4" class="fs-5 border-0">特調茶</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">喀什米爾羊毛茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">烏龍茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">綠茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-6">
-                <table class="table align-middle">
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="4" class="fs-5 border-0">特調茶</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">喀什米爾羊毛茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">烏龍茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">綠茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-6">
-                <table class="table align-middle">
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="4" class="fs-5 border-0">純茶</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">阿薩姆紅茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
+                          <p class="fs-6 font-handwriting mb-minus1">
+                            {{ item.rate ? item.rate : '0' }}
+                          </p>
                         </div>
                       </td>
                       <td>
@@ -473,295 +146,12 @@ export default {
                           </li>
                         </ul>
                       </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">黃金JOJO麥茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">喀什米爾羊毛茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">烏龍茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">綠茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-6">
-                <table class="table align-middle">
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="4" class="fs-5 border-0">純茶</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">阿薩姆紅茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">黃金JOJO麥茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">喀什米爾羊毛茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">烏龍茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td></td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
-                      </td>
-                      <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="fw-normal" width="30%">綠茶</th>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            width="20"
-                            class="me-1"
-                            src="../../assets/images/icon-start-full.svg"
-                            alt="rate"
-                          />
-
-                          <p class="fs-6 font-handwriting mb-minus1">4.9</p>
-                        </div>
-                      </td>
-                      <td>
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                        </ul>
-                      </td>
-                      <td>
-                        <p class="font-handwriting mb-minus1">M $ 20 ｜ L $ 30</p>
+                      <td width="120">
+                        <p class="font-handwriting mb-minus1">
+                          <span v-if="item.price.m">M $ {{ item.price.m }}</span>
+                          <span v-if="item.price.m && item.price.l">｜</span>
+                          <span v-if="item.price.l">L $ {{ item.price.l }}</span>
+                          </p>
                       </td>
                       <td>
                         <FavoriteBtn class="btn-favorite-sm" />
@@ -771,33 +161,21 @@ export default {
                 </table>
               </div>
             </div>
-            <ul class="menu-list list-unstyled mb-0">
-            <li>
-              <button type="button" class="menu-btn active">
-                <span>全部飲品</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="menu-btn">
-                <span>純茶</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="menu-btn">
-                <span>特調茶</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="menu-btn">
-                <span>奶系列</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="menu-btn">
-                <span>果汁</span>
-              </button>
-            </li>
-          </ul>
+            <ul class="menu-list list-unstyled mb-0" ref="typeList">
+              <li
+                v-for="type in filterCustomType"
+                :key="`filterCustomType ${type}`"
+              >
+                <button
+                  type="button"
+                  class="menu-btn"
+                  :class="{ 'active': selectType === type }"
+                  @click="changeType(type)"
+                >
+                  <span>{{ type }}</span>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -942,7 +320,10 @@ export default {
 <style lang="scss" scoped>
 .shopView {
   &-header {
-    background-color: #005743;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
       width: 180px;

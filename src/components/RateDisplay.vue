@@ -1,6 +1,12 @@
+<script>
+export default {
+  props: ['rate'],
+};
+</script>
+
 <template>
   <div class="rateDisplay d-flex align-items-center">
-    <p class="lh-1">4.9</p>
+    <p class="lh-1">{{ rate }}</p>
     <ul class="list-unstyled d-flex align-items-center">
       <li class="d-flex align-items-center">
         <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />

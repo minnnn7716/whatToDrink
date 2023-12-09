@@ -2,7 +2,6 @@ import './assets/scss/main.scss';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import App from './App.vue';
