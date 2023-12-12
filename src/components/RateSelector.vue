@@ -1,23 +1,53 @@
+<script>
+export default {
+  props: ['rate'],
+  watch: {
+    rate() {
+      if (this.rate === '0.0') {
+        const radios = this.$refs.rateSelector;
+        for (let i = 0; i < radios.length; i += 1) {
+          radios[i].checked = false;
+        }
+      }
+    },
+  },
+  methods: {
+    selectRate($event) {
+      this.$emit('emit-rate', $event.target.value);
+    },
+  },
+};
+</script>
+
 <template>
   <ul class="rateSelector list-unstyled mb-0">
-    <li class="rateSelector-item me-1" v-for="item in 5" :key="`rate ${item}`">
+    <li
+      class="rateSelector-item me-1"
+      v-for="item in [5, 4, 3, 2 , 1]"
+      :key="`rate ${item}`"
+    >
       <input
         class="rateSelector-input"
         type="radio"
-        :id="`rating-${item}`"
         name="rating"
-        :value="item"
+        :id="`rating-${item}`"
+        :value="`${item}.0`"
+        @click="selectRate"
+        ref="rateSelector"
       />
-      <label class="rateSelector-label" :for="`rating-${item}`">
+      <label
+        class="rateSelector-label"
+        :for="`rating-${item}`"
+      >
         <img
           class="rateSelector-img rateSelector-img-empty"
-          src="../assets/images/icon-start-empty.svg"
-          alt=""
+          src="@/assets/images/icon-start-empty.svg"
+          :alt="`rating-empty-${item}`"
         />
         <img
           class="rateSelector-img rateSelector-img-full"
-          src="../assets/images/icon-start-full.svg"
-          alt=""
+          src="@/assets/images/icon-start-full.svg"
+          :alt="`rating-full-${item}`"
         />
       </label>
     </li>
@@ -33,7 +63,10 @@
     width: 25px;
     height: 25px;
     position: relative;
-    cursor: pointer;
+
+    label {
+      cursor: pointer;
+    }
 
     &:hover {
       .rateSelector-img-full {

@@ -5,6 +5,23 @@ export default {
   components: {
     RateDisplay,
   },
+  props: {
+    data: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+    commentNum: {
+      type: Number,
+      default: 0,
+    },
+  },
+  methods: {
+    getDate(date) {
+      return new Date(date).toLocaleDateString();
+    },
+  },
 };
 </script>
 
@@ -15,20 +32,20 @@ export default {
         <img class="img-fluid" src="../assets/images/userPhoto.png" alt="使用者頭像" />
       </div>
       <div class="commentDisplay-header mb-4 d-flex justify-content-between">
-        <div class="bg-white px-2">
-          <h5 class="mb-1">漢堡神偷愛喝飲料</h5>
-          <p class="fs-normal2">18 則評論</p>
+        <div>
+          <h5 class="d-inline-block px-2 mb-1 bg-white">{{ data.userName }}</h5>
+          <p class="px-2 fs-normal2">{{ commentNum }} 則評論</p>
+          <time class="px-2 fs-normal2">{{ getDate(data.date) }}</time>
         </div>
         <div class="bg-white px-2">
-          <RateDisplay class="rateDisplay-sm mb-1" />
-          <p class="fs-normal2 text-end">3 分糖 / 去冰</p>
+          <RateDisplay :rate="data.rate" class="rateDisplay-sm mb-1" />
+          <p class="fs-normal2 text-end">{{ data.sugar }} / {{ data.ice }}</p>
         </div>
       </div>
-      <p class="commentDisplay-content px-2">
-        茶與葡萄柚果汁的調配完全恰到好處！<br />
-        根本夏日聖品，清爽解膩，3 分糖去冰剛剛好<br />
-        如果點多冰的話半糖應該滿不錯的～
-      </p>
+      <p
+        class="commentDisplay-content px-2"
+        v-html="data.content"
+      />
     </div>
   </div>
 </template>

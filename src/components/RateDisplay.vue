@@ -1,6 +1,30 @@
 <script>
 export default {
+  data() {
+    return {
+      test: true,
+    };
+  },
   props: ['rate'],
+  computed: {
+    judgeStarImg() {
+      const imgStatus = [];
+      const rate = this.rate || '0.0';
+      const [first, second] = rate.split('.').map((item) => Number(item));
+
+      for (let i = 1; i <= 5; i += 1) {
+        if (i <= first) {
+          imgStatus.push('full');
+        } else if (i === first + 1 && second !== 0) {
+          imgStatus.push('half');
+        } else {
+          imgStatus.push('empty');
+        }
+      }
+
+      return imgStatus;
+    },
+  },
 };
 </script>
 
@@ -8,20 +32,15 @@ export default {
   <div class="rateDisplay d-flex align-items-center">
     <p class="lh-1">{{ rate }}</p>
     <ul class="list-unstyled d-flex align-items-center">
-      <li class="d-flex align-items-center">
-        <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />
-      </li>
-      <li class="d-flex align-items-center">
-        <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />
-      </li>
-      <li class="d-flex align-items-center">
-        <img class="img-full" src="../assets/images/icon-start-full.svg" alt="" />
-      </li>
-      <li class="d-flex align-items-center">
-        <img class="img-full" src="../assets/images/icon-start-empty.svg" alt="" />
-      </li>
-      <li class="d-flex align-items-center">
-        <img class="img-full" src="../assets/images/icon-start-half.svg" alt="" />
+      <li
+        class="d-flex align-items-center"
+        v-for="(item, index) in judgeStarImg"
+        :key="`rateDiaplay ${index}`"
+      >
+        <img
+        class="img-full"
+        :src="`/src/assets/images/icon-start-${item}.svg`"
+        :alt="`start ${index}`" />
       </li>
     </ul>
   </div>
