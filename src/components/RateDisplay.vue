@@ -39,7 +39,7 @@ export default {
       >
         <img
         class="img-full"
-        :src="`/src/assets/images/icon-start-${item}.svg`"
+        :src="`/src/assets/images/icon-star-${item}.svg`"
         :alt="`start ${index}`" />
       </li>
     </ul>

@@ -106,7 +106,7 @@ export default {
                           <img
                             width="20"
                             class="me-2"
-                            :src="`/src/assets/images/icon-start-${ item.rate ?
+                            :src="`/src/assets/images/icon-star-${ item.rate ?
                             'full' : 'empty' }.svg`"
                             alt="star"
                           />

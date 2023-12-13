@@ -131,7 +131,7 @@ export default {
                           <img
                             width="20"
                             class="me-1"
-                            src="@/assets/images/icon-start-full.svg"
+                            src="@/assets/images/icon-star-full.svg"
                             alt="rate"
                           />
                           <p

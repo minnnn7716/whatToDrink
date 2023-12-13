@@ -41,12 +41,12 @@ export default {
       >
         <img
           class="rateSelector-img rateSelector-img-empty"
-          src="@/assets/images/icon-start-empty.svg"
+          src="@/assets/images/icon-star-empty.svg"
           :alt="`rating-empty-${item}`"
         />
         <img
           class="rateSelector-img rateSelector-img-full"
-          src="@/assets/images/icon-start-full.svg"
+          src="@/assets/images/icon-star-full.svg"
           :alt="`rating-full-${item}`"
         />
       </label>
