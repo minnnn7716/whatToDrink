@@ -13,7 +13,9 @@ export default {
       const [first, second] = rate.split('.').map((item) => Number(item));
 
       for (let i = 1; i <= 5; i += 1) {
-        if (i <= first) {
+        if (first === 0) {
+          imgStatus.push('empty');
+        } else if (i <= first) {
           imgStatus.push('full');
         } else if (i === first + 1 && second !== 0) {
           imgStatus.push('half');
@@ -77,6 +79,8 @@ export default {
 
   &-sm {
     p {
+      width: 25px;
+      text-align: right;
       font-size: $h6-font-size;
       margin-right: 8px;
     }

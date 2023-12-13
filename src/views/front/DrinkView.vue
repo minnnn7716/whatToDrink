@@ -132,7 +132,10 @@ export default {
                   class="rateDisplay-md mb-3"
                   :rate="rateGroup.totalRateScore"
                 />
-                <FavoriteBtn class="btn-favorite" />
+                <FavoriteBtn
+                  class="btn-favorite"
+                  :id="singleDrink.id"
+                />
               </div>
             </div>
             <ul class="list-unstyled mb-0">

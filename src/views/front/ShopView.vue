@@ -149,7 +149,7 @@ export default {
                           </p>
                       </td>
                       <td>
-                        <FavoriteBtn class="btn-favorite-sm" />
+                        <FavoriteBtn class="btn-favorite-sm" :id="item.id"/>
                       </td>
                     </tr>
                   </tbody>

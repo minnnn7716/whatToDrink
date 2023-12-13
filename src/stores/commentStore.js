@@ -52,7 +52,7 @@ export default defineStore('commentStore', {
       return comments.filter((item) => +item.rate === rate).length;
     },
     totalRateScore(comments) {
-      let score = '0.0';
+      let score = '0';
 
       if (comments.length) {
         const rateAry = comments.map((item) => +item.rate);
