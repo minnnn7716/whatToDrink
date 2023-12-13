@@ -43,8 +43,8 @@ export default {
     <section class="col-9">
       <ul class="list-unstyled px-5 d-flex flex-column-reverse">
         <li
-          class="d-flex align-items-center"
-          :class="{ 'mb-3': index + 1 !== 1 }"
+          class="rateGroup-item d-flex align-items-center"
+          :class="{ 'mb-3': index + 1 !== 1, 'active': pin === index + 1 }"
           v-for="(item, index) in data.eachRateNum"
           :key="`rateGroup ${index + 1}`"
         >
@@ -62,7 +62,6 @@ export default {
           <button
             type="button"
             class="rateGroup-pinBtn btn p-0 border-black rounded-circle"
-            :class="{ 'active': pin === index + 1 }"
             :disabled="item === 0"
             @click="clickPin(index + 1)"
           >
@@ -77,6 +76,15 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/vendors/bootstrap';
 .rateGroup {
+  &-item {
+    &.active {
+      .rateGroup-bar-inside,
+      .rateGroup-pinBtn {
+        background-color: $accent;
+      }
+    }
+  }
+
   &-bar {
     position: relative;
     height: 12px;
@@ -92,6 +100,7 @@ export default {
       border: 1px solid #000;
       border-radius: 20px;
       background-color: $primary;
+      transition: all ease .3s;
     }
   }
 
@@ -109,10 +118,6 @@ export default {
 
     &:not(.active):hover {
       background-color: $accent-300;
-    }
-
-    &.active {
-      background-color: $accent;
     }
   }
 }

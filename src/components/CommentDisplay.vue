@@ -1,4 +1,6 @@
 <script>
+import { mapActions } from 'pinia';
+import commentStore from '../stores/commentStore';
 import RateDisplay from './RateDisplay.vue';
 
 export default {
@@ -18,6 +20,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions(commentStore, ['filterUserComment']),
     getDate(date) {
       return new Date(date).toLocaleDateString();
     },
@@ -34,7 +37,7 @@ export default {
       <div class="commentDisplay-header mb-4 d-flex justify-content-between">
         <div>
           <h5 class="d-inline-block px-2 mb-1 bg-white">{{ data.userName }}</h5>
-          <p class="px-2 fs-normal2">{{ commentNum }} 則評論</p>
+          <p class="px-2 fs-normal2">{{ filterUserComment(data.userName).length }} 則評論</p>
           <time class="px-2 fs-normal2">{{ getDate(data.date) }}</time>
         </div>
         <div class="bg-white px-2">

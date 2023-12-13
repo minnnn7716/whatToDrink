@@ -4,8 +4,10 @@ import axios from 'axios';
 export default defineStore('commentStore', {
   state: () => ({
     comments: [],
+    rateGroup: {},
     pinRate: false,
     pagination: {},
+    sortComments: [],
   }),
   actions: {
     getComments() {
@@ -29,9 +31,38 @@ export default defineStore('commentStore', {
 
       this.pinRate = rate;
     },
+    getRateGroupInfo(comments) {
+      if (comments) {
+        const commentsNum = comments.length;
+        const totalRateScore = this.totalRateScore(comments);
+        const eachRateNum = [];
+
+        for (let i = 1; i <= 5; i += 1) {
+          eachRateNum.push(this.eachRateLength(comments, i));
+        }
+
+        this.rateGroup = {
+          commentsNum,
+          totalRateScore,
+          eachRateNum,
+        };
+      }
+    },
+    eachRateLength(comments, rate) {
+      return comments.filter((item) => +item.rate === rate).length;
+    },
+    totalRateScore(comments) {
+      let score = '0.0';
+
+      if (comments.length) {
+        const rateAry = comments.map((item) => +item.rate);
+        score = (rateAry.reduce((a, b) => a + b, 0) / rateAry.length).toFixed(1);
+      }
+
+      return score;
+    },
     filterUserComment(name) {
       const comments = [...this.comments];
-
       return comments.filter((item) => item.userName === name);
     },
     sortFn(comments, method, sort) {
@@ -58,6 +89,43 @@ export default defineStore('commentStore', {
       sortAry = tempAry.reduce((a, b) => a.concat(b), []);
 
       return sortAry;
+    },
+    sortCommentsFn(comments, sort, page = 1) {
+      this.sort = sort;
+      this.currentCommentData = comments;
+      let sortAry = [];
+      let filterAry = [];
+      let sliceAry = [];
+
+      if (this.pinRate) {
+        filterAry = comments.filter((item) => +item.rate === this.pinRate);
+      } else {
+        filterAry = comments;
+      }
+
+      if (sort === '最新日期') {
+        sortAry = this.sortFn(filterAry, 'down', 'date');
+      }
+
+      if (sort === '評分最高') {
+        sortAry = this.sortFn(filterAry, 'down', 'rate');
+      }
+
+      if (sort === '最冰溫度') {
+        const iceAry = ['多冰', '少冰', '半冰', '微冰', '去冰', '完全去冰', '溫', '熱', '不記得'];
+
+        sortAry = this.sortSpecifyFn(filterAry, iceAry, 'ice');
+      }
+
+      if (sort === '最少甜度') {
+        const sugarAry = ['無糖', '1 分糖', '微糖', '半糖', '少糖', '全糖', '多糖', '不記得'];
+
+        sortAry = this.sortSpecifyFn(filterAry, sugarAry, 'sugar');
+      }
+
+      sliceAry = this.slicePage(sortAry, page);
+
+      this.sortComments = sliceAry;
     },
     postComment(data) {
       const api = `${import.meta.env.VITE_API}/comments`;

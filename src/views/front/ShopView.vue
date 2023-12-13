@@ -1,11 +1,11 @@
 <script>
 import 'bootstrap/js/src/modal';
 import { mapState, mapActions } from 'pinia';
-import shopStore from '../../stores/shopStore';
-import FavoriteBtn from '../../components/FavoriteBtn.vue';
-import RateDisplay from '../../components/RateDisplay.vue';
-import RateGroup from '../../components/RateGroup.vue';
-import CommentDisplay from '../../components/CommentDisplay.vue';
+import shopStore from '@/stores/shopStore';
+import commentStore from '@/stores/commentStore';
+import FavoriteBtn from '@/components/FavoriteBtn.vue';
+import RateDisplay from '@/components/RateDisplay.vue';
+import ShopCommentModal from '@/components/ShopCommentModal.vue';
 
 export default {
   data() {
@@ -15,9 +15,8 @@ export default {
   },
   components: {
     RateDisplay,
-    RateGroup,
     FavoriteBtn,
-    CommentDisplay,
+    ShopCommentModal,
   },
   props: ['id'],
   watch: {
@@ -25,6 +24,7 @@ export default {
   },
   methods: {
     ...mapActions(shopStore, ['getSingleShop', 'changeType']),
+    ...mapActions(commentStore, ['getComments', 'sortComments']),
     init() {
       const listHeight = this.$refs.typeList.offsetHeight + 64;
       console.log('listHeight', listHeight);
@@ -38,6 +38,7 @@ export default {
   },
   created() {
     this.getSingleShop(this.id);
+    this.getComments();
   },
   mounted() {
     this.init();
@@ -60,8 +61,7 @@ export default {
             <button
               type="button"
               class="btn border-0 p-0"
-              data-bs-toggle="modal"
-              data-bs-target="#shopRateModal"
+              @click="this.$refs.shopCommentModal.showModal"
             >
               <RateDisplay
                 :rate="shopRateScore"
@@ -103,16 +103,11 @@ export default {
                       </th>
                       <td width="60">
                         <div class="d-flex align-items-center">
-                          <img v-if="item.rate"
+                          <img
                             width="20"
                             class="me-2"
-                            src="@/assets/images/icon-start-full.svg"
-                            alt="star"
-                          />
-                          <img v-else
-                            width="20"
-                            class="me-2"
-                            src="@/assets/images/icon-start-empty.svg"
+                            :src="`/src/assets/images/icon-start-${ item.rate ?
+                            'full' : 'empty' }.svg`"
                             alt="star"
                           />
 
@@ -181,139 +176,10 @@ export default {
       </div>
     </section>
 
-    <!-- shopRateModal -->
-    <div class="modal fade" id="shopRateModal">
-      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4">
-          <div class="modal-header border-bottom-0">
-            <h1 class="modal-title fs-5 invisible" id="addCommentModalLabel">店家評價</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body pt-0 pb-10">
-            <div class="container-fluid">
-              <RateGroup class="mb-10" />
-              <div class="d-flex align-items-center justify-content-end mb-4">
-                <label for="type" class="me-4 fw-medium">排序</label>
-                <select
-                  id="type"
-                  class="form-select py-2 px-4 border-black rounded-pill"
-                  style="max-width: 180px"
-                >
-                  <option selected value="評分最高">評分最高</option>
-                  <option value="最新日期">最新日期</option>
-                  <option value="最冰溫度">最冰溫度</option>
-                  <option value="最少甜度">最少甜度</option>
-                </select>
-              </div>
-              <div class="px-5">
-                <div class="pb-10 mb-10 border-bottom border-gray">
-                  <div class="row">
-                    <div class="col-5">
-                      <div class="d-flex">
-                        <img
-                          width="170"
-                          height="170"
-                          class="me-3"
-                          src="../../assets/images/drinkPhoto.png"
-                          alt=""
-                        />
-                        <div class="d-flex flex-column justify-content-between">
-                          <div>
-                            <p class="fs-5 fw-medium mb-2">珍珠多多綠</p>
-                            <div class="d-flex align-items-center">
-                              <img
-                                width="20"
-                                class="me-1"
-                                src="../../assets/images/icon-start-full.svg"
-                                alt="rate"
-                              />
-                              <p class="fs-6 font-handwriting fw-bold mb-minus1">4.9</p>
-                            </div>
-                          </div>
-                          <p class="fs-6 font-handwriting lh-lg">
-                            M <span class="ms-1">$ 50</span>
-                            <span class="mx-2">｜</span>
-                            L $ 60 <span class="ms-1">$ 50</span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-7 d-flex">
-                      <CommentDisplay />
-                    </div>
-                  </div>
-                </div>
-                <div class="pb-10 mb-10 border-bottom border-gray">
-                  <div class="row">
-                    <div class="col-4 d-flex">
-                      <div class="w-55 me-3">
-                        <img class="img-full" src="../../assets/images/drinkPhoto.png" alt="" />
-                      </div>
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <p class="fs-5 fw-medium mb-2">珍珠多多綠</p>
-                          <div class="d-flex align-items-center">
-                            <img
-                              width="20"
-                              class="me-1"
-                              src="../../assets/images/icon-start-full.svg"
-                              alt="rate"
-                            />
-                            <p class="fs-6 font-handwriting fw-bold mb-minus1">4.9</p>
-                          </div>
-                        </div>
-                        <p class="fs-6 font-handwriting lh-lg">
-                          M $50 <br />
-                          L $60
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-8 d-flex">
-                      <CommentDisplay />
-                    </div>
-                  </div>
-                </div>
-                <div class="pb-10 mb-10 border-bottom border-gray">
-                  <div class="row">
-                    <div class="col-4 d-flex">
-                      <div class="w-55 me-3">
-                        <img class="img-full" src="../../assets/images/drinkPhoto.png" alt="" />
-                      </div>
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <p class="fs-5 fw-medium mb-2">珍珠多多綠</p>
-                          <div class="d-flex align-items-center">
-                            <img
-                              width="20"
-                              class="me-1"
-                              src="../../assets/images/icon-start-full.svg"
-                              alt="rate"
-                            />
-                            <p class="fs-6 font-handwriting fw-bold mb-minus1">4.9</p>
-                          </div>
-                        </div>
-                        <p class="fs-6 font-handwriting lh-lg">
-                          M $50 <br />
-                          L $60
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-8 d-flex">
-                      <CommentDisplay />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ShopCommentModal
+      ref="shopCommentModal"
+      :shopData="singleShop"
+    />
   </div>
 </template>
 
