@@ -13,6 +13,7 @@ import PaginationComponent from '@/components/PaginationComponent.vue';
 export default {
   data() {
     return {
+      drinkId: 0,
       sort: '最新日期',
     };
   },
@@ -25,53 +26,36 @@ export default {
     PaginationComponent,
   },
   props: ['id'],
+  watch: {
+    singleDrink() {
+      this.sortAction(1);
+      this.getRateGroupInfo(this.singleDrink.comments);
+    },
+    sort() {
+      this.sortAction(1);
+    },
+  },
   methods: {
     ...mapActions(drinkStore, ['getSingleDrink', 'joinIngredient']),
-    ...mapActions(commentStore, ['getComments', 'clickPin', 'filterUserComment', 'sortFn', 'sortSpecifyFn', 'slicePage', 'clickPage']),
-    clickAction(action) {
-      this.clickPage(action);
+    ...mapActions(commentStore, ['getComments', 'getRateGroupInfo', 'clickPin', 'filterUserComment', 'clickPage', 'sortCommentsFn']),
+    sortAction(page) {
+      const comments = [...this.singleDrink.comments];
+      this.sortCommentsFn(comments, this.sort, page);
+    },
+    clickPageAction(item) {
+      this.clickPage(item);
+      this.sortAction(this.pagination.current);
       this.$router.push(`${this.$route.path}#drink-comments`);
+    },
+    clickRateAction(item) {
+      this.clickPin(item);
+      this.sortAction(1);
+      this.$router.push(`${this.$route.path}#drink-rateGroup`);
     },
   },
   computed: {
-    ...mapState(drinkStore, ['singleDrink', 'rateGroup']),
-    ...mapState(commentStore, ['comments', 'pinRate', 'pagination']),
-    sortComments() {
-      const comments = [...this.singleDrink.comments];
-      let sortAry = [];
-      let filterAry = [];
-      let sliceAry = [];
-
-      if (this.pinRate) {
-        filterAry = comments.filter((item) => +item.rate === this.pinRate);
-      } else {
-        filterAry = comments;
-      }
-
-      if (this.sort === '最新日期') {
-        sortAry = this.sortFn(filterAry, 'down', 'date');
-      }
-
-      if (this.sort === '評分最高') {
-        sortAry = this.sortFn(filterAry, 'down', 'rate');
-      }
-
-      if (this.sort === '最冰溫度') {
-        const iceAry = ['多冰', '少冰', '半冰', '微冰', '去冰', '完全去冰', '溫', '熱', '不記得'];
-
-        sortAry = this.sortSpecifyFn(filterAry, iceAry, 'ice');
-      }
-
-      if (this.sort === '最少甜度') {
-        const sugarAry = ['無糖', '1 分糖', '微糖', '半糖', '少糖', '全糖', '多糖', '不記得'];
-
-        sortAry = this.sortSpecifyFn(filterAry, sugarAry, 'sugar');
-      }
-
-      sliceAry = this.slicePage(sortAry, this.pagination.current);
-
-      return sliceAry;
-    },
+    ...mapState(drinkStore, ['singleDrink']),
+    ...mapState(commentStore, ['comments', 'rateGroup', 'pagination', 'sortComments']),
   },
   created() {
     this.getSingleDrink(this.id);
@@ -83,7 +67,7 @@ export default {
   <div class="container pt-15 pb-25">
     <div class="row justify-content-center">
       <div class="col-9 col-3xl-10">
-        <section class="row mb-15">
+        <section class="row">
           <div class="col-4">
             <img
               class="img-full"
@@ -145,8 +129,9 @@ export default {
               </div>
               <div class="text-end">
                 <RateDisplay
+                  class="rateDisplay-md mb-3"
                   :rate="rateGroup.totalRateScore"
-                  class="rateDisplay-md mb-3" />
+                />
                 <FavoriteBtn class="btn-favorite" />
               </div>
             </div>
@@ -156,9 +141,12 @@ export default {
             </ul>
           </div>
         </section>
-        <section class="row justify-content-center">
+        <section class="row justify-content-center pt-15" id="drink-rateGroup">
           <div class="col-10">
-            <RateGroup :data="rateGroup" @emit-pin="clickPin" />
+            <RateGroup
+              :data="rateGroup"
+              @emit-pin="clickRateAction"
+            />
           </div>
           <div class="col-2 d-flex align-items-center justify-content-center">
             <button
@@ -191,12 +179,11 @@ export default {
             v-for="item in sortComments"
             :key="`comments ${item.id}`"
             :data="item"
-            :commentNum="filterUserComment(item.userName).length"
           />
           <PaginationComponent
             v-if="pagination.total > 1"
             :pagination="pagination"
-            @emit-page="clickAction"
+            @emit-page="clickPageAction"
           />
         </section>
       </div>
