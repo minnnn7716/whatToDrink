@@ -2,165 +2,128 @@
 import RateDisplay from './RateDisplay.vue';
 
 export default {
+  data() {
+    return {
+      imageModeData: [
+        {
+          id: 0,
+          shopId: 0,
+          name: '',
+          imageUrl: '',
+          price: {
+            m: 0,
+            l: 0,
+          },
+          special: [],
+          caffeine: '',
+          rate: '0.0',
+          shop: {
+            name: '',
+            code: '',
+          },
+        },
+      ],
+    };
+  },
   components: {
     RateDisplay,
+  },
+  props: {
+    propsData: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+  watch: {
+    propsData: {
+      handler() {
+        this.imageModeData = this.propsData;
+        console.log('資料變更');
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
+  methods: {
+    judgeSpecialImg(str) {
+      const obj = {
+        僅限冷飲: 'cold',
+        店家推薦: 'recommend',
+        無咖啡因: 'noCaffeine',
+        僅限熱飲: 'hot',
+        固定糖冰: 'fixed',
+      };
+
+      return obj[str];
+    },
   },
 };
 </script>
 
 <template>
-  <div class="row row-cols-3 gx-12 gy-15">
-    <div class="searchImage-item">
-      <div class="searchImage-item-imgContainer">
-        <img
-          class="searchImage-item-img img-full mb-3"
-          src="../assets/images/drinkPhoto.png"
-          alt=""
-        />
-        <span class="searchImage-item-tag">五十嵐</span>
-      </div>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <h2 class="fs-4 fw-bold">珍珠鮮奶茶</h2>
-        <RateDisplay class="rateDisplay-sm hasText" />
-      </div>
-      <div class="d-flex align-items-center justify-content-between">
-        <div>
-          <span
-            class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-secondary-300 me-2"
-            >店家推薦</span
-          >
-          <span class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-accent-300"
-            >期間限定</span
-          >
+  <ul class="row row-cols-3 gx-12 gy-15 list-unstyled">
+    <li
+      class="searchImage-item"
+      v-for="item in imageModeData"
+      :key="`imageMode ${item.id}`"
+    >
+      <RouterLink :to="`/drink/${item.id}`" >
+        <div class="searchImage-item-imgSection mb-3">
+          <div class="searchImage-item-imgContainer">
+            <img
+              class="searchImage-item-img img-full"
+              :src="item.imageUrl"
+              :alt="item.name"
+            />
+          </div>
+          <RouterLink :to="`/shops/${item.shop.code}`" class="searchImage-item-tagContainer">
+            <span class="searchImage-item-tag">{{ item.shop.name }}</span>
+          </RouterLink>
         </div>
-        <p class="font-handwriting fs-6 fs-3xl-5 fs-5 fw-bold">
-          M <span class="ms-1">$50</span> ｜ L <span class="ms-1">$60</span>
-        </p>
-      </div>
-    </div>
-    <div class="searchImage-item">
-      <div class="searchImage-item-imgContainer">
-        <img
-          class="searchImage-item-img img-full mb-3"
-          src="../assets/images/drinkPhoto.png"
-          alt=""
-        />
-        <span class="searchImage-item-tag">五十嵐</span>
-      </div>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <h2 class="fs-4 fw-bold">珍珠鮮奶茶</h2>
-        <RateDisplay class="rateDisplay-sm hasText" />
-      </div>
-      <div class="d-flex align-items-center justify-content-between">
-        <div>
-          <span
-            class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-secondary-300 me-2"
-            >店家推薦</span
-          >
-          <span class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-accent-300"
-            >期間限定</span
-          >
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h2 class="fs-4 fw-bold">{{ item.name }}</h2>
+          <RateDisplay class="rateDisplay-sm hasHandText" :rate="item.rate" />
         </div>
-        <p class="font-handwriting fs-6 fs-3xl-5 fs-5 fw-bold">
-          M <span class="ms-1">$50</span> ｜ L <span class="ms-1">$60</span>
-        </p>
-      </div>
-    </div>
-    <div class="searchImage-item">
-      <div class="searchImage-item-imgContainer">
-        <img
-          class="searchImage-item-img img-full mb-3"
-          src="../assets/images/drinkPhoto.png"
-          alt=""
-        />
-        <span class="searchImage-item-tag">五十嵐</span>
-      </div>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <h2 class="fs-4 fw-bold">珍珠鮮奶茶</h2>
-        <RateDisplay class="rateDisplay-sm hasText" />
-      </div>
-      <div class="d-flex align-items-center justify-content-between">
-        <div>
-          <span
-            class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-secondary-300 me-2"
-            >店家推薦</span
-          >
-          <span class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-accent-300"
-            >期間限定</span
-          >
+        <div class="d-flex align-items-center justify-content-between">
+          <ul class="list-unstyled mb-0 d-flex justify-content-center">
+                <li
+                  v-for="(special, index) in item.special"
+                  :key="`${item.id} ${special}`"
+                >
+                  <img
+                    :class="{ 'me-2': index != item.special.length}"
+                    :src="`/src/assets/images/icon-special-${judgeSpecialImg(special)}.svg`"
+                    :alt="special"
+                  />
+                </li>
+              </ul>
+          <p class="font-handwriting fs-6 fs-3xl-5 fs-5 fw-bold">
+            <span v-if="item.price.m">
+              M <span class="ms-2">$ {{ item.price.m }}</span>
+              </span>
+            <span v-if="item.price.m && item.price.l"> ｜ </span>
+            <span v-if="item.price.l">
+              L <span class="ms-2">$ {{ item.price.l }}</span>
+            </span>
+          </p>
         </div>
-        <p class="font-handwriting fs-6 fs-3xl-5 fs-5 fw-bold">
-          M <span class="ms-1">$50</span> ｜ L <span class="ms-1">$60</span>
-        </p>
-      </div>
-    </div>
-    <div class="searchImage-item">
-      <div class="searchImage-item-imgContainer">
-        <img
-          class="searchImage-item-img img-full mb-3"
-          src="../assets/images/drinkPhoto.png"
-          alt=""
-        />
-        <span class="searchImage-item-tag">五十嵐</span>
-      </div>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <h2 class="fs-4 fw-bold">珍珠鮮奶茶</h2>
-        <RateDisplay class="rateDisplay-sm hasText" />
-      </div>
-      <div class="d-flex align-items-center justify-content-between">
-        <div>
-          <span
-            class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-secondary-300 me-2"
-            >店家推薦</span
-          >
-          <span class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-accent-300"
-            >期間限定</span
-          >
-        </div>
-        <p class="font-handwriting fs-6 fs-3xl-5 fs-5 fw-bold">
-          M <span class="ms-1">$50</span> ｜ L <span class="ms-1">$60</span>
-        </p>
-      </div>
-    </div>
-    <div class="searchImage-item">
-      <div class="searchImage-item-imgContainer">
-        <img
-          class="searchImage-item-img img-full mb-3"
-          src="../assets/images/drinkPhoto.png"
-          alt=""
-        />
-        <span class="searchImage-item-tag">五十嵐</span>
-      </div>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <h2 class="fs-4 fw-bold">珍珠鮮奶茶</h2>
-        <RateDisplay class="rateDisplay-sm hasText" />
-      </div>
-      <div class="d-flex align-items-center justify-content-between">
-        <div>
-          <span
-            class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-secondary-300 me-2"
-            >店家推薦</span
-          >
-          <span class="d-inline-block fs-normal2 py-1 px-3 px-3xl-4 rounded-pill bg-accent-300"
-            >期間限定</span
-          >
-        </div>
-        <p class="font-handwriting fs-6 fs-3xl-5 fw-bold">
-          M <span class="ms-1">$50</span> ｜ L <span class="ms-1">$60</span>
-        </p>
-      </div>
-    </div>
-  </div>
+      </RouterLink>
+    </li>
+  </ul>
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
 .searchImage {
   &-item {
-    &-imgContainer {
+    &-imgSection {
       position: relative;
     }
-    &-img {
+
+    &-imgContainer {
+      overflow: hidden;
       height: 280px;
       border: 1px solid #000;
 
@@ -168,7 +131,6 @@ export default {
         height: 350px;
       }
     }
-
     &-tag {
       display: inline-block;
       position: absolute;
@@ -183,6 +145,22 @@ export default {
         font-size: $h6-font-size;
       }
     }
+
+    &-img,
+    &-tag {
+      transition: all ease .3s;
+    }
+
+    &:hover .searchImage-item-img {
+      transform: scale(1.05);
+    }
+
+    &-tagContainer:hover .searchImage-item-tag {
+      background-color: $primary-300;
+      color: #000;
+      font-weight: 500;
+    }
+
   }
 }
 </style>

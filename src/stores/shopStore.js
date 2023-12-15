@@ -31,6 +31,18 @@ export default defineStore('shopStore', {
           this.singleShop = shopData;
         });
     },
+    getSearchShops(keyword) {
+      const api = `${import.meta.env.VITE_API}/shops?name_like=${keyword}`;
+
+      axios.get(api)
+        .then((res) => {
+          console.log(res);
+          this.shops = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     changeType(type) {
       this.selectType = type;
     },

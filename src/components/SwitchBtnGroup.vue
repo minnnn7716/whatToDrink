@@ -1,9 +1,60 @@
+<script>
+export default {
+  data() {
+    return {
+      selectItem: '',
+      startBtn: '',
+      endBtn: '',
+    };
+  },
+  props: ['defaultSelect'],
+  emits: ['emit-btn'],
+  watch: {
+    defaultSelect() {
+      if (this.defaultSelect) {
+        this.selectItem = this.defaultSelect;
+      }
+    },
+  },
+  methods: {
+    clickItem(item) {
+      this.selectItem = item;
+      this.$emit('emit-btn', this.selectItem);
+    },
+  },
+  mounted() {
+    this.startBtn = this.$refs.startBtn.children[0].dataset.name;
+    this.endBtn = this.$refs.endBtn.children[0].dataset.name;
+
+    if (this.defaultSelect) {
+      this.selectItem = this.defaultSelect;
+    } else {
+      this.selectItem = this.startBtn;
+    }
+
+    this.$emit('emit-btn', this.selectItem);
+  },
+};
+</script>
+
 <template>
   <div class="switchBtnGroup rounded-pill">
-    <button class="rounded-pill me-2 active">
+    <button
+      ref="startBtn"
+      type="button"
+      class="rounded-pill me-2"
+      :class="{ 'active': startBtn === selectItem }"
+      @click="clickItem(startBtn)"
+    >
       <slot name="start">start</slot>
     </button>
-    <button class="rounded-pill">
+    <button
+      ref="endBtn"
+      type="button"
+      class="rounded-pill"
+      :class="{ 'active': endBtn === selectItem }"
+      @click="clickItem(endBtn)"
+    >
       <slot name="end">end</slot>
     </button>
   </div>
@@ -16,11 +67,12 @@
 
   button {
     background-color: transparent;
-    border: none;
+    border: 1px solid transparent;
   }
 
   &-light {
     background-color: #fff;
+    background-color: 1px solid transparent;
 
     button {
       &:not(.active):hover {
@@ -54,6 +106,15 @@
     padding: 8px 12px;
     button {
       padding: 16px 28px;
+      font-size: $h5-font-size;
+    }
+  }
+
+  &-text-h100 {
+    padding: 8px 12px;
+    button {
+      padding: 0 28px;
+      height: 100%;
       font-size: $h5-font-size;
     }
   }

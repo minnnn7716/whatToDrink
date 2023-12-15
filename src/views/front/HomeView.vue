@@ -5,6 +5,11 @@ import SearchBar from '../../components/SearchBar.vue';
 import SwitchBtnGroup from '../../components/SwitchBtnGroup.vue';
 
 export default {
+  data() {
+    return {
+      searchType: '',
+    };
+  },
   components: {
     CommentDisplay,
     RateDisplay,
@@ -53,11 +58,18 @@ export default {
               </p>
             </h3>
             <div class="d-flex w-100">
-              <SwitchBtnGroup class="switchBtnGroup-light switchBtnGroup-text me-4">
-                <template v-slot:start>飲料</template>
-                <template v-slot:end>店家</template>
+              <SwitchBtnGroup
+                class="switchBtnGroup-light switchBtnGroup-text me-4"
+                @emit-btn="(i) => searchType = i"
+              >
+                <template v-slot:start>
+                  <span data-name="drinks">飲料</span>
+                </template>
+                <template v-slot:end>
+                  <span data-name="shops">店家</span>
+                </template>
               </SwitchBtnGroup>
-              <SearchBar />
+              <SearchBar :searchType="searchType" />
             </div>
           </div>
         </div>

@@ -38,6 +38,13 @@ $custom-utilities: map-merge(
         fill: 1 1 auto,
         fit: 1 1 fit-content
       )
+    ),
+    "transition": (
+      property: transition,
+      class: transition,
+      values: (
+        ease: all ease 0.3s
+      )
     )
   ),
   $custom-utilities

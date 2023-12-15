@@ -5,7 +5,7 @@ import FavoriteBtn from './FavoriteBtn.vue';
 export default {
   data() {
     return {
-      tableData: [
+      tableModeData: [
         {
           id: 0,
           shopId: 0,
@@ -20,6 +20,7 @@ export default {
           rate: '0.0',
           shop: {
             name: '',
+            code: '',
           },
         },
       ],
@@ -30,7 +31,7 @@ export default {
     FavoriteBtn,
   },
   props: {
-    data: {
+    propsData: {
       type: Array,
       default() {
         return [];
@@ -38,8 +39,13 @@ export default {
     },
   },
   watch: {
-    data() {
-      this.tableData = this.data;
+    propsData: {
+      handler() {
+        this.tableModeData = this.propsData;
+        console.log('tabel 資料變更');
+      },
+      deep: true,
+      immediate: true,
     },
   },
   methods: {
@@ -47,8 +53,9 @@ export default {
       const obj = {
         僅限冷飲: 'cold',
         店家推薦: 'recommend',
-        無咖啡因: 'noCaffeien',
-        僅限熱飲: 'fire',
+        無咖啡因: 'noCaffeine',
+        僅限熱飲: 'hot',
+        固定糖冰: 'fixed',
       };
 
       return obj[str];
@@ -72,8 +79,8 @@ export default {
       </thead>
       <tbody>
         <tr
-          v-for="item in tableData"
-          :key="`favoriteDrink ${item.id}`"
+          v-for="item in tableModeData"
+          :key="`tableMode ${item.id}`"
         >
           <td class="ps-6 py-6">
             <RouterLink
