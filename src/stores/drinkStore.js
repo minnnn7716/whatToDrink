@@ -42,6 +42,18 @@ export default defineStore('drinkStore', {
           console.log(err);
         });
     },
+    getDrinksShopComment() {
+      const api = `${import.meta.env.VITE_API}/drinks?_expand=shop&_embed=comments`;
+
+      axios.get(api)
+        .then((res) => {
+          console.log(res);
+          this.drinks = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     getSingleDrink(drinkId) {
       const api = `${import.meta.env.VITE_API}/drinks/${drinkId}?_expand=shop&_embed=comments`;
 
@@ -105,6 +117,36 @@ export default defineStore('drinkStore', {
         ary.sort((a, b) => (a[select].m || a[select].l) - (b[select].m || b[select].l));
       } else if (order === 'down') {
         ary.sort((a, b) => (b[select].m || b[select].l) - (a[select].m || a[select].l));
+      }
+
+      return ary;
+    },
+  },
+  getters: {
+    recommendDrinks() {
+      let ary = [
+        {
+          id: 0,
+          shopId: 0,
+          name: '',
+          imageUrl: '',
+          price: {
+            m: 0,
+            l: 0,
+          },
+          rate: '0.0',
+          shop: {
+            name: '',
+            code: '',
+          },
+          comments: [],
+        },
+      ];
+
+      if (this.drinks.length) {
+        ary = [...this.drinks];
+        ary.sort((a, b) => b.rate - a.rate);
+        ary = ary.slice(0, 5);
       }
 
       return ary;

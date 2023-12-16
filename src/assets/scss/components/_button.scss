@@ -105,10 +105,10 @@
 }
 
 .btn-arrow {
-  display: inline-block;
+  padding: 0 !important;
   background-color: $accent;
   border: 1px solid #000;
-  border-radius: 50%;
+  border-radius: 50% !important;
   cursor: pointer;
 
   &.disabled {
@@ -126,8 +126,9 @@
   display: inline-block;
   width: 15px;
   height: 15px;
-  border-radius: 50%;
+  border-radius: 50% !important;
   background-color: $gray;
+  border: none;
 
   &.active {
     background-color: $accent;

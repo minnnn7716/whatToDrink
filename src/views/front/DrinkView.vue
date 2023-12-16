@@ -181,7 +181,7 @@ export default {
             class="mb-15"
             v-for="item in sortComments"
             :key="`comments ${item.id}`"
-            :data="item"
+            :commentData="item"
           />
           <PaginationComponent
             v-if="pagination.total > 1"

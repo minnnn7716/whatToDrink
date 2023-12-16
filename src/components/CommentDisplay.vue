@@ -8,15 +8,11 @@ export default {
     RateDisplay,
   },
   props: {
-    data: {
+    commentData: {
       type: Object,
       default() {
         return {};
       },
-    },
-    commentNum: {
-      type: Number,
-      default: 0,
     },
   },
   methods: {
@@ -36,18 +32,18 @@ export default {
       </div>
       <div class="commentDisplay-header mb-4 d-flex justify-content-between">
         <div>
-          <h5 class="d-inline-block px-2 mb-1 bg-white">{{ data.userName }}</h5>
-          <p class="px-2 fs-normal2">{{ filterUserComment(data.userName).length }} 則評論</p>
-          <time class="px-2 fs-normal2">{{ getDate(data.date) }}</time>
+          <h5 class="d-inline-block px-2 mb-1 bg-white">{{ commentData.userName }}</h5>
+          <p class="px-2 fs-normal2">{{ filterUserComment(commentData.userName).length }} 則評論</p>
+          <time class="px-2 fs-normal2">{{ getDate(commentData.date) }}</time>
         </div>
         <div class="bg-white px-2">
-          <RateDisplay :rate="data.rate" class="rateDisplay-sm mb-1" />
-          <p class="fs-normal2 text-end">{{ data.sugar }} / {{ data.ice }}</p>
+          <RateDisplay :rate="commentData.rate" class="rateDisplay-sm mb-1" />
+          <p class="fs-normal2 text-end">{{ commentData.sugar }} / {{ commentData.ice }}</p>
         </div>
       </div>
       <p
         class="commentDisplay-content px-2"
-        v-html="data.content"
+        v-html="commentData.content"
       />
     </div>
   </div>
