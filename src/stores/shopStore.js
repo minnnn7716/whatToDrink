@@ -3,7 +3,11 @@ import axios from 'axios';
 
 export default defineStore('shopStore', {
   state: () => ({
-    shops: [],
+    shops: [
+      {
+        name: '',
+      },
+    ],
     singleShop: {
       drinks: [],
     },

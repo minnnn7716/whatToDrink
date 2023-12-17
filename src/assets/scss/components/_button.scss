@@ -54,7 +54,9 @@
 }
 
 .btn-circle {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80px;
   height: 80px;
   border: 2px solid $gray-900;
