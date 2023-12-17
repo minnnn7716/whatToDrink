@@ -101,7 +101,7 @@ export default {
             收藏清單</h2>
           <SearchTableMode
             v-if="favoriteDate.length"
-            :data="filterFavoriteDate"
+            :propsData="filterFavoriteDate"
           />
           <div v-else class="py-4 d-flex flex-column align-items-center">
             <p class="fs-4 fw-medium mb-4">尚無喜愛飲品</p>
