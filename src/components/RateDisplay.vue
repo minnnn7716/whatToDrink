@@ -6,6 +6,12 @@ export default {
     };
   },
   props: ['rate'],
+  methods: {
+    starImgUrl(item) {
+      const url = new URL(`../assets/images/icon-star-${item}.svg`, import.meta.url);
+      return url;
+    },
+  },
   computed: {
     judgeStarImg() {
       const imgStatus = [];
@@ -37,11 +43,11 @@ export default {
       <li
         class="d-flex align-items-center"
         v-for="(item, index) in judgeStarImg"
-        :key="`rateDiaplay ${index}`"
+        :key="`rateDisplay ${index}`"
       >
         <img
         class="img-full"
-        :src="`/src/assets/images/icon-star-${item}.svg`"
+        :src="starImgUrl(item)"
         :alt="`start ${index}`" />
       </li>
     </ul>

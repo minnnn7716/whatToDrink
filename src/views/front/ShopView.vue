@@ -32,6 +32,10 @@ export default {
 
       this.changeType('全部飲品');
     },
+    starImgUrl(item) {
+      const url = new URL(`../../assets/images/icon-star-${item}.svg`, import.meta.url);
+      return url;
+    },
   },
   computed: {
     ...mapState(shopStore, ['singleShop', 'selectType', 'filterCustomType', 'filterMenu', 'shopRateScore']),
@@ -106,8 +110,7 @@ export default {
                           <img
                             width="20"
                             class="me-2"
-                            :src="`/src/assets/images/icon-star-${ item.rate ?
-                            'full' : 'empty' }.svg`"
+                            :src="starImgUrl(item.rate ? 'full' : 'empty')"
                             alt="star"
                           />
 
