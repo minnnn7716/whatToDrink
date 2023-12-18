@@ -34,6 +34,11 @@ export default {
     sort() {
       this.sortAction(1);
     },
+    comments() {
+      this.getSingleDrink(this.id);
+      this.getRateGroupInfo(this.singleDrink.comments);
+      this.sortAction(1);
+    },
   },
   methods: {
     ...mapActions(drinkStore, ['getSingleDrink', 'joinIngredient']),
@@ -192,6 +197,9 @@ export default {
       </div>
     </div>
 
-    <AddCommentModal ref="addCommentModal" :data="singleDrink" />
+    <AddCommentModal
+      ref="addCommentModal"
+      :propsData="singleDrink"
+    />
   </div>
 </template>

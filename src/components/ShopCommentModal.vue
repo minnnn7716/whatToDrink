@@ -154,7 +154,7 @@ export default {
                   </a>
                 </div>
                 <div class="col-7 d-flex">
-                  <CommentDisplay :data="item"/>
+                  <CommentDisplay :commentData="item"/>
                 </div>
               </div>
             </div>

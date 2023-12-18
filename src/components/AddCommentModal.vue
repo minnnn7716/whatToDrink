@@ -20,7 +20,7 @@ export default {
     RateSelector,
   },
   props: {
-    data: {
+    propsData: {
       type: Object,
       default() {
         return {};
@@ -34,7 +34,19 @@ export default {
       this.addDate.rate = rate;
     },
     sendComment() {
-      const data = { ...this.data };
+      const data = { ...this.propsData };
+
+      const shop = {
+        id: data.shop.id,
+        rate: data.shop.rate,
+        rateNum: data.shop.rateNum,
+      };
+
+      const drink = {
+        id: data.id,
+        rate: data.rate,
+        rateNum: data.comments.length,
+      };
 
       this.addDate = {
         ...this.addDate,
@@ -43,11 +55,11 @@ export default {
         date: new Date() * 1,
       };
 
-      this.postComment(this.addDate);
+      this.postComment(this.addDate, drink, shop);
       this.modal.hide();
 
       this.addDate = {
-        rate: '0.0',
+        rate: '0',
         userName: '',
         sugar: '甜度',
         ice: '冰塊',
@@ -77,25 +89,27 @@ export default {
                   <img
                     class="img-full mb-3"
                     style="height: 200px;"
-                    :src="data.imageUrl"
-                    :alt="data.name" />
+                    :src="propsData.imageUrl"
+                    :alt="propsData.name" />
                   <h3
                     class="py-1 px-4 mb-3 d-inline-block fs-normal2 fw-normal
                     border border-gray-900 rounded-pill"
                   >
-                    {{ data.shop.name }}
+                    {{ propsData.shop.name }}
                   </h3>
-                  <h2 class="fs-5 mb-3">{{ data.name }}</h2>
+                  <h2 class="fs-5 mb-3">{{ propsData.name }}</h2>
                   <p class="fs-6 fw-medium">
-                    M <span class="ms-2">$ {{ data.price.m }}</span>
+                    M <span class="ms-2">$ {{ propsData.price.m }}</span>
                     <span class="mx-3">｜</span>
-                    L <span class="ms-2">$ {{ data.price.l }}</span>
+                    L <span class="ms-2">$ {{ propsData.price.l }}</span>
                   </p>
                 </div>
                 <div class="col-8">
                   <div class="d-flex align-items-center mb-6">
                     <h4 class="fs-5 me-3">評價星等</h4>
-                    <RateSelector :rate="addDate.rate" @emit-rate="getSelectRate" />
+                    <RateSelector
+                      :rate="addDate.rate" @emit-rate="getSelectRate"
+                    />
                   </div>
                   <div class="d-flex align-items-center mb-4">
                     <div class="me-3">

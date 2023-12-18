@@ -143,8 +143,8 @@ export default {
       this.filterDrinkData = filterDrinkData;
 
       if (filterDrinkData.length) {
-        this.randomData = this.randomIndex(filterDrinkData);
-        this.noResult = true;
+        this.randomData = { ...this.randomIndex(filterDrinkData) };
+        this.noResult = false;
       } else {
         this.randomData = {
           price: {
@@ -152,7 +152,7 @@ export default {
             l: 0,
           },
         };
-        this.noResult = false;
+        this.noResult = true;
       }
 
       this.$router.push('/wheel?=result');

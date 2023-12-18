@@ -3,7 +3,7 @@ export default {
   props: ['rate'],
   watch: {
     rate() {
-      if (this.rate === '0.0') {
+      if (this.rate === '0') {
         const radios = this.$refs.rateSelector;
         for (let i = 0; i < radios.length; i += 1) {
           radios[i].checked = false;
@@ -31,7 +31,7 @@ export default {
         type="radio"
         name="rating"
         :id="`rating-${item}`"
-        :value="`${item}.0`"
+        :value="`${item}`"
         @click="selectRate"
         ref="rateSelector"
       />

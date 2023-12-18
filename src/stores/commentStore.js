@@ -127,12 +127,17 @@ export default defineStore('commentStore', {
 
       this.sortComments = sliceAry;
     },
-    postComment(data) {
+    postComment(data, drink, shop) {
       const api = `${import.meta.env.VITE_API}/comments`;
+      const shopObj = this.rateAverage(shop, data.rate);
+      const drinkObj = this.rateAverage(drink, data.rate);
 
       axios.post(api, data)
         .then((res) => {
           console.log(res);
+          this.patchRate('shops', shopObj);
+          this.patchRate('drinks', drinkObj);
+          this.getComments();
         })
         .catch((err) => {
           console.log(err);
@@ -218,6 +223,33 @@ export default defineStore('commentStore', {
         prev: currentPage > 1,
         next: currentPage < totalPage,
       };
+    },
+    patchRate(path, obj) {
+      const api = `${import.meta.env.VITE_API}/${path}/${obj.id}`;
+      const data = {
+        rate: obj.rate,
+        rateNum: obj.rateNum,
+      };
+
+      axios.patch(api, data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    rateAverage(data, newRate) {
+      const average = (((Number(data.rate) * data.rateNum)
+      + Number(newRate)) / (data.rateNum + 1)).toFixed(1);
+
+      const obj = {
+        id: data.id,
+        rateNum: data.rateNum + 1,
+        rate: `${average}`,
+      };
+
+      return obj;
     },
   },
 });

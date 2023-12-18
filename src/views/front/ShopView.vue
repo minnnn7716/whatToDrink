@@ -38,7 +38,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(shopStore, ['singleShop', 'selectType', 'filterCustomType', 'filterMenu', 'shopRateScore']),
+    ...mapState(shopStore, ['singleShop', 'selectType', 'filterCustomType', 'filterMenu']),
   },
   created() {
     this.getSingleShop(this.id);
@@ -68,7 +68,7 @@ export default {
               @click="this.$refs.shopCommentModal.showModal"
             >
               <RateDisplay
-                :rate="shopRateScore"
+                :rate="singleShop.rate"
                 class="rateDisplay-md hasHandText strokeTitle mb-2" />
               <p class="text-end">
                 {{ singleShop.comments ? singleShop.comments.length : 0 }} 則評論
@@ -103,7 +103,9 @@ export default {
                       :key="`filterMenuItem ${item}`"
                     >
                       <th scope="row" class="fw-normal" width="30%">
-                        <RouterLink :to="`/drink/${item.id}`">{{ item.name }}</RouterLink>
+                        <RouterLink :to="`/drink/${item.id}`">
+                          {{ item.name }}
+                        </RouterLink>
                       </th>
                       <td width="60">
                         <div class="d-flex align-items-center">

@@ -84,11 +84,5 @@ export default defineStore('shopStore', {
 
       return menuObj;
     },
-    shopRateScore() {
-      const ary = this.drinks.map((item) => item.rate).filter((item) => item !== false);
-      const score = (ary.reduce((a, b) => Number(a) + Number(b), 0) / ary.length).toFixed(1);
-
-      return score;
-    },
   },
 });
