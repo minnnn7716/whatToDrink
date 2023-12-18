@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     imgUrl(item, fileName) {
-      const url = new URL(`../../assets/images/${fileName}${item}.svg`, import.meta.url);
+      const url = new URL(`../assets/images/${fileName}${item}.svg`, import.meta.url);
       return url;
     },
     judgeSpecialImg(str) {
