@@ -7,8 +7,9 @@ import modalMixin from '../mixims/modalMixin';
 export default {
   data() {
     return {
+      firstSend: false,
       addDate: {
-        rate: '0.0',
+        rate: '0',
         userName: '',
         sugar: '甜度',
         ice: '冰塊',
@@ -34,37 +35,71 @@ export default {
       this.addDate.rate = rate;
     },
     sendComment() {
-      const data = { ...this.propsData };
+      this.firstSend = true;
+      if (this.hasData) {
+        const data = { ...this.propsData };
 
-      const shop = {
-        id: data.shop.id,
-        rate: data.shop.rate,
-        rateNum: data.shop.rateNum,
-      };
+        const shop = {
+          id: data.shop.id,
+          rate: data.shop.rate,
+          rateNum: data.shop.rateNum,
+        };
 
-      const drink = {
-        id: data.id,
-        rate: data.rate,
-        rateNum: data.comments.length,
-      };
+        const drink = {
+          id: data.id,
+          rate: data.rate,
+          rateNum: data.comments.length,
+        };
 
-      this.addDate = {
-        ...this.addDate,
-        shopId: data.shop.id,
-        drinkId: data.id,
-        date: new Date() * 1,
-      };
+        this.addDate = {
+          ...this.addDate,
+          shopId: data.shop.id,
+          drinkId: data.id,
+          date: new Date() * 1,
+        };
 
-      this.postComment(this.addDate, drink, shop);
-      this.modal.hide();
+        this.postComment(this.addDate, drink, shop);
+        this.modal.hide();
 
-      this.addDate = {
-        rate: '0',
-        userName: '',
-        sugar: '甜度',
-        ice: '冰塊',
-        content: '',
-      };
+        this.addDate = {
+          rate: '0',
+          userName: '',
+          sugar: '甜度',
+          ice: '冰塊',
+          content: '',
+        };
+      }
+    },
+  },
+  computed: {
+    hasData() {
+      const data = { ...this.addDate };
+      const keys = Object.keys(data);
+      const ary = [];
+
+      for (let i = 0; i < keys.length; i += 1) {
+        if (data.rate === '0') {
+          ary.push(false);
+        }
+
+        if (data.userName === '') {
+          ary.push(false);
+        }
+
+        if (data.sugar === '甜度') {
+          ary.push(false);
+        }
+
+        if (data.ice === '冰塊') {
+          ary.push(false);
+        }
+
+        if (data.content === '') {
+          ary.push(false);
+        }
+      }
+
+      return !ary.length;
     },
   },
 };
@@ -104,12 +139,30 @@ export default {
                     L <span class="ms-2">$ {{ propsData.price.l }}</span>
                   </p>
                 </div>
-                <div class="col-8">
+                <form
+                  id="addCommentForm"
+                  class="col-8"
+                  @submit.prevent="sendComment"
+                >
                   <div class="d-flex align-items-center mb-6">
-                    <h4 class="fs-5 me-3">評價星等</h4>
+                    <h4
+                      class="fs-5 me-3 transition-ease"
+                      :class="{ 'text-accent-700': addDate.rate === '0' && firstSend }"
+                    >
+                      評價星等
+                    </h4>
                     <RateSelector
                       :rate="addDate.rate" @emit-rate="getSelectRate"
                     />
+                    <p
+                      class="ms-2 py-1 px-4 bg-light text-accent-700 fw-medium
+                      border border-3 border-accent-600 rounded-pill opacity-0 transition-ease"
+                      :class="{
+                        'opacity-100': addDate.rate === '0' && firstSend,
+                      }"
+                    >
+                      請選擇評價
+                    </p>
                   </div>
                   <div class="d-flex align-items-center mb-4">
                     <div class="me-3">
@@ -121,15 +174,21 @@ export default {
                       </label>
                       <input
                         type="text"
-                        class="form-control flex-fit py-2 px-4 border-black rounded-pill"
+                        class="form-item form-control flex-fit py-2 px-4 rounded-pill"
+                        :class="{
+                          'border-accent-600 bg-accent-100': addDate.userName === '' && firstSend
+                        }"
                         id="addCommentName"
                         placeholder="暱稱"
-                        v-model="addDate.userName"
+                        v-model.trim="addDate.userName"
                       >
                     </div>
                     <select
                         id="type"
-                        class="form-select py-2 px-4 border-black rounded-pill me-3"
+                        class="form-item form-select py-2 px-4 rounded-pill me-3"
+                        :class="{
+                          'border-accent-600 bg-accent-100': addDate.sugar === '甜度' && firstSend
+                        }"
                         style="max-width: 125px"
                         v-model="addDate.sugar"
                       >
@@ -145,7 +204,10 @@ export default {
                     </select>
                     <select
                       id="type"
-                      class="form-select py-2 px-4 border-black rounded-pill"
+                      class="form-item form-select py-2 px-4 rounded-pill"
+                      :class="{
+                        'border-accent-600 bg-accent-100': addDate.ice === '冰塊' && firstSend
+                      }"
                       style="max-width: 125px"
                       v-model="addDate.ice"
                     >
@@ -163,7 +225,10 @@ export default {
                   </div>
                   <textarea
                     rows="6"
-                    class="py-3 px-4 mb-4 w-100 border border-black rounded-4"
+                    class="form-item py-3 px-4 mb-4 w-100 rounded-4"
+                    :class="{
+                      'border-accent-600 bg-accent-100': addDate.content === '' && firstSend
+                    }"
                     placeholder="你覺得這杯飲料如何呢？"
                     v-model="addDate.content"
                   ></textarea>
@@ -176,14 +241,14 @@ export default {
                       取消評論
                     </button>
                     <button
-                      type="button"
+                      type="submit"
+                      form="addCommentForm"
                       class="btn-custom btn-custom-primary-sm fw-medium"
-                      @click="sendComment"
                     >
                       確定送出
                     </button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -191,3 +256,10 @@ export default {
       </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.form-item {
+  border: 2px solid #00000060;
+  transition: all ease .3s;
+}
+</style>

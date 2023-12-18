@@ -8,7 +8,8 @@ export default {
   data() {
     return {
       step: '',
-      randomType: 'shop',
+      firstSend: false,
+      randomType: '',
       resultIndex: 0,
       selectIngredient: {
         base: false,
@@ -37,11 +38,17 @@ export default {
   },
   methods: {
     ...mapActions(shopStore, ['getShops']),
-    ...mapActions(drinkStore, ['getDrinks', 'changeType', 'getWheelOption']),
+    ...mapActions(drinkStore, ['getDrinks', 'changeType', 'getWheelOption', 'changeFirstSelectType']),
     typeChange() {
       const type = this.selectType;
 
-      if (type === '純茶') {
+      if (type === '請選擇') {
+        this.selectIngredient = {
+          base: false,
+          mix: false,
+          material: false,
+        };
+      } else if (type === '純茶') {
         this.selectIngredient = {
           base: this.selectIngredient.base || '請選擇',
           mix: false,
@@ -124,7 +131,11 @@ export default {
       const selectKeys = Object.keys(select);
       let filterDrinkData = [];
 
-      filterDrinkData = this.drinks.filter((item) => item.type === type);
+      if (type === '隨機') {
+        filterDrinkData = [...this.drinks];
+      } else {
+        filterDrinkData = this.drinks.filter((item) => item.type === type);
+      }
 
       for (let i = 0; i < selectKeys.length; i += 1) {
         const key = selectKeys[i];
@@ -157,15 +168,61 @@ export default {
 
       this.$router.push('/wheel?=result');
     },
+    sendSelect() {
+      this.firstSend = true;
+
+      if (this.selectType !== '請選擇') {
+        this.changeFirstSelectType(true);
+      }
+
+      if (this.selectType === '請選擇'
+          || (!this.selectIngredient.base
+          || this.selectIngredient.base === '請選擇'
+          || this.selectIngredient.base === '')
+      ) {
+        return;
+      }
+
+      this.wheelDrink();
+    },
+    resetSelect() {
+      this.changeType('請選擇');
+      this.selectIngredient = {
+        base: false,
+        mix: false,
+        material: false,
+      };
+      this.firstSend = false;
+      this.changeFirstSelectType(false);
+    },
   },
   computed: {
     ...mapState(shopStore, ['shops']),
-    ...mapState(drinkStore, ['drinks', 'typeKind', 'wheelOptionData', 'selectType']),
+    ...mapState(drinkStore, ['drinks', 'typeKind', 'wheelOptionData', 'selectType', 'firstSelectType']),
+    isBaseTrue() {
+      let boolean = true;
+
+      if (!this.selectIngredient.base
+        || this.selectIngredient.base === '請選擇'
+        || this.selectIngredient.base === '') {
+        boolean = false;
+      }
+
+      return boolean;
+    },
   },
   created() {
     this.judgePath();
     this.getShops();
     this.getDrinks();
+
+    if (this.$route.query[''] === 'select') {
+      this.randomType = 'drink';
+    }
+
+    if (this.$route.query[''] === 'result' && this.randomType === '') {
+      this.$router.push('/wheel');
+    }
   },
 };
 </script>
@@ -240,7 +297,9 @@ export default {
               </div>
               <div class="col-6">
                 <form
+                  id="drinkSelectForm"
                   class="d-flex flex-column justify-content-between h-100"
+                  @submit.prevent="sendSelect"
                 >
                   <div>
                     <div class="d-flex align-items-center mb-6">
@@ -250,7 +309,11 @@ export default {
                       </label>
                       <select
                         id="type"
-                        class="form-select py-3 px-4 flex-fit border-black rounded-pill"
+                        class="form-select py-3 px-4 flex-fit rounded-pill"
+                        :class="{
+                          'bg-accent-100 border-2 border-accent-600': firstSend
+                          && selectType === '請選擇'
+                        }"
                         @change="changeType($refs.typeSelect.value)"
                         ref="typeSelect"
                       >
@@ -275,7 +338,12 @@ export default {
                       </label>
                       <select
                         id="base"
-                        class="form-select py-3 px-4 flex-fit border-black rounded-pill"
+                        class="form-select py-3 px-4 flex-fit rounded-pill"
+                        :class="{
+                          'bg-accent-100 border-2 border-accent-600': firstSend
+                          && !isBaseTrue
+                          && firstSelectType
+                        }"
                         v-model="selectIngredient.base"
                         :disabled="selectType === '請選擇'"
                       >
@@ -300,7 +368,7 @@ export default {
                       </label>
                       <select
                         id="mix"
-                        class="form-select py-3 px-4 flex-fit border-black rounded-pill"
+                        class="form-select py-3 px-4 flex-fit rounded-pill"
                         v-model="selectIngredient.mix"
                         :disabled="!selectIngredient.mix"
                       >
@@ -331,7 +399,7 @@ export default {
                       </label>
                       <select
                         id="material"
-                        class="form-select py-3 px-4 flex-fit border-black rounded-pill"
+                        class="form-select py-3 px-4 flex-fit rounded-pill"
                         v-model="selectIngredient.material"
                         :disabled="!selectIngredient.material"
                       >
@@ -363,8 +431,8 @@ export default {
                     </button>
                     <button
                       type="submit"
+                      form="drinkSelectForm"
                       class="btn-circle bg-accent fs-6 fw-medium"
-                      @click="wheelDrink()"
                     >
                       轉吧
                     </button>
@@ -407,7 +475,7 @@ export default {
               />
               <img
                 v-else
-                class="img-fluid transition-ease"
+                class="img-fluid"
                 :src="randomData.imageUrl"
                 :alt="randomData.name"
               />
@@ -453,6 +521,7 @@ export default {
                 to="/wheel"
                 type="button"
                 class="btn-circle bg-gray-700 text-white fs-6 fw-medium mb-4 lh-sm"
+                @click="resetSelect"
               >
                 重新<br />選擇
               </RouterLink>
@@ -536,6 +605,11 @@ export default {
       bottom: -8px;
       transform: translateX(100%);
     }
+  }
+
+  .form-select {
+    transition: all ease .3s;
+    border: 2px solid #00000060;
   }
 }
 </style>

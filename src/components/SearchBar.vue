@@ -3,13 +3,37 @@ export default {
   data() {
     return {
       searchWord: '',
+      alertShow: false,
+      firstSearch: false,
+      searchPage: false,
     };
+  },
+  watch: {
+    searchWord() {
+      if (this.searchWord === '') {
+        this.alertShow = true;
+      } else {
+        this.alertShow = false;
+      }
+    },
   },
   props: ['searchType'],
   methods: {
     searchFn() {
+      if (this.searchWord === '') {
+        this.firstSearch = true;
+        this.alertShow = true;
+        return;
+      }
+
+      this.firstSearch = false;
       this.$router.push(`/search?type=${this.searchType}&keyword=${this.searchWord}`);
     },
+  },
+  created() {
+    if (this.$route.path === '/search') {
+      this.searchPage = true;
+    }
   },
 };
 </script>
@@ -21,8 +45,9 @@ export default {
       type="text"
       id="search"
       class="form-control h-100 ps-8 rounded-pill fs-6"
+      :class="{ 'border-3 border-accent-700': firstSearch && alertShow }"
       placeholder="想喝什麼告訴我吧！"
-      v-model="searchWord"
+      v-model.trim="searchWord"
       @keyup.enter="searchFn"
     />
     <button
@@ -32,6 +57,16 @@ export default {
     >
       <img src="../assets/images/icon-search.svg" alt="搜尋" />
     </button>
+    <p
+      class="position-absolute mt-3 py-2 px-4 bg-light text-accent-700
+      border border-3 border-accent-700 fw-bold rounded-pill opacity-0 transition-ease"
+      :class="{
+        'opacity-75': firstSearch && alertShow,
+        'start-50 translate-middle-x': searchPage,
+      }"
+    >
+      輸入框空白是找不到的喲
+    </p>
   </div>
 </template>
 

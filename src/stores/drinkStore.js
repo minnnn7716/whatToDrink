@@ -29,6 +29,7 @@ export default defineStore('drinkStore', {
       comments: [],
     },
     selectType: '請選擇',
+    firstSelectType: false,
     wheelOptionData: {
       base: [],
       mix: [],
@@ -163,7 +164,16 @@ export default defineStore('drinkStore', {
     },
     getWheelOption() {
       const drinks = [...this.drinks];
-      let list = {};
+      let list = {
+        base: [],
+        mix: [],
+        material: [],
+      };
+
+      if (this.selectType === '請選擇') {
+        this.wheelOptionData = list;
+        return;
+      }
 
       if (drinks.length) {
         const typeAry = this.getDrinkType(drinks);
@@ -186,7 +196,14 @@ export default defineStore('drinkStore', {
       this.wheelOptionData = list;
     },
     changeType(type) {
+      if (this.selectType !== '請選擇') {
+        this.firstSelectType = true;
+      }
+
       this.selectType = type;
+    },
+    changeFirstSelectType(boolean) {
+      this.firstSelectType = boolean;
     },
   },
   getters: {
