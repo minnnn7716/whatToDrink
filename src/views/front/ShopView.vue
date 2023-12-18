@@ -32,9 +32,20 @@ export default {
 
       this.changeType('全部飲品');
     },
-    starImgUrl(item) {
-      const url = new URL(`../../assets/images/icon-star-${item}.svg`, import.meta.url);
+    imgUrl(item, fileName) {
+      const url = new URL(`../../assets/images/${fileName}${item}.svg`, import.meta.url);
       return url;
+    },
+    judgeSpecialImg(str) {
+      const obj = {
+        僅限冷飲: 'cold',
+        店家推薦: 'recommend',
+        無咖啡因: 'noCaffeine',
+        僅限熱飲: 'hot',
+        固定糖冰: 'fixed',
+      };
+
+      return this.imgUrl(obj[str], 'icon-special-');
     },
   },
   computed: {
@@ -112,7 +123,7 @@ export default {
                           <img
                             width="20"
                             class="me-2"
-                            :src="starImgUrl(item.rate ? 'full' : 'empty')"
+                            :src="imgUrl(item.rate ? 'full' : 'empty', 'icon-star-')"
                             alt="star"
                           />
 
@@ -123,37 +134,26 @@ export default {
                       </td>
                       <td>
                         <ul class="list-unstyled mb-0 d-flex justify-content-center">
-                          <li>
+                          <li
+                            v-for="(special, index) in item.special"
+                            :key="`${item.id} ${special}`"
+                          >
                             <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-cold.svg"
-                              alt="僅限冷飲"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
-                            />
-                          </li>
-                          <li>
-                            <img
-                              class="me-2"
-                              src="../../assets/images/icon-special-recommend.svg"
-                              alt="店家推薦"
+                            :class="{ 'me-2': index != item.special.length}"
+                              :src="judgeSpecialImg(special)"
+                              :alt="special"
                             />
                           </li>
                         </ul>
                       </td>
-                      <td width="120">
+                      <td width="130">
                         <p class="font-handwriting mb-minus1">
                           <span v-if="item.price.m">M $ {{ item.price.m }}</span>
                           <span v-if="item.price.m && item.price.l">｜</span>
                           <span v-if="item.price.l">L $ {{ item.price.l }}</span>
                           </p>
                       </td>
-                      <td>
+                      <td width="40" class="text-end">
                         <FavoriteBtn class="btn-favorite-sm" :id="item.id"/>
                       </td>
                     </tr>

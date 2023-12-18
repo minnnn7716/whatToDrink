@@ -47,6 +47,10 @@ export default {
     },
   },
   methods: {
+    imgUrl(item, fileName) {
+      const url = new URL(`../../assets/images/${fileName}${item}.svg`, import.meta.url);
+      return url;
+    },
     judgeSpecialImg(str) {
       const obj = {
         僅限冷飲: 'cold',
@@ -56,7 +60,7 @@ export default {
         固定糖冰: 'fixed',
       };
 
-      return obj[str];
+      return this.imgUrl(obj[str], 'icon-special-');
     },
   },
 };
@@ -94,7 +98,7 @@ export default {
                 >
                   <img
                     :class="{ 'me-2': index != item.special.length}"
-                    :src="`/src/assets/images/icon-special-${judgeSpecialImg(special)}.svg`"
+                    :src="judgeSpecialImg(special)"
                     :alt="special"
                   />
                 </li>
