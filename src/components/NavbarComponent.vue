@@ -125,6 +125,7 @@ export default {
 
 .nav-link {
   opacity: 0;
+  pointer-events: none;
   letter-spacing: 3px;
   transition: all ease 0.3s;
   &:hover {
@@ -154,6 +155,7 @@ export default {
   }
 
   .nav-link {
+    pointer-events: auto;
     opacity: 1;
   }
 }

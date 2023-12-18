@@ -21,6 +21,7 @@ export default {
         window.addEventListener('scroll', this.toggleNav);
       } else {
         window.removeEventListener('scroll', this.toggleNav);
+        this.navbarStatus = true;
       }
     },
     toggleNav() {
