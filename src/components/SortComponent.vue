@@ -9,8 +9,8 @@ export default {
         // 店家: 'shopId',
         價錢: 'price',
         總評價: 'rate',
-        熱量: 'calorie',
-        咖啡因: 'caffeine',
+        // 熱量: 'calorie',
+        // 咖啡因: 'caffeine',
       },
       order: '',
     };
