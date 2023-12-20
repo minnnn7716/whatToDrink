@@ -119,26 +119,26 @@ export default {
           <ul class="col-7 col-3xl-9 d-flex list-unstyled mb-0">
             <li class="btn-roundImgAndText me-10">
               <RouterLink to="/shops">
-                <img class="mb-5" src="@/assets/images/index-kind-all.png" alt="全部店面" />
+                <img class="mb-5" src="@/assets/images/index-kind-all.webp" alt="全部店面" />
                 <p class="fs-5 fw-medium text-black">全部店面</p>
               </RouterLink>
             </li>
             <li class="btn-roundImgAndText me-10">
               <RouterLink to="/search?type=drinks&keyword=純茶">
-                <img class="mb-5" src="@/assets/images/index-kind-tea.png" alt="純茶飲料" />
+                <img class="mb-5" src="@/assets/images/index-kind-tea.webp" alt="純茶飲料" />
 
                 <p class="fs-5 fw-medium text-black">純茶飲料</p>
               </RouterLink>
             </li>
             <li class="btn-roundImgAndText me-10">
               <RouterLink to="/search?type=drinks&keyword=特調">
-                <img class="mb-5" src="@/assets/images/index-kind-special.png" alt="特調飲料" />
+                <img class="mb-5" src="@/assets/images/index-kind-special.webp" alt="特調飲料" />
                 <p class="fs-5 fw-medium text-black">特調飲料</p>
               </RouterLink>
             </li>
             <li class="btn-roundImgAndText">
               <RouterLink to="/search?type=drinks&keyword=奶系列">
-                <img class="mb-5" src="@/assets/images/index-kind-milktea.png" alt="奶奶飲料" />
+                <img class="mb-5" src="@/assets/images/index-kind-milktea.webp" alt="奶奶飲料" />
                 <p class="fs-5 fw-medium text-black">奶奶飲料</p>
               </RouterLink>
             </li>
@@ -270,7 +270,7 @@ export default {
 @import '@/assets/scss/vendors/bootstrap';
 .index-header {
   min-height: calc(100vh);
-  background: center / cover no-repeat url('@/assets/images/index-banner.png');
+  background: center / cover no-repeat url('@/assets/images/index-banner.webp');
 
   &-title,
   &-title-container {

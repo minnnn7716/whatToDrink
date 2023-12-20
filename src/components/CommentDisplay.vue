@@ -1,6 +1,6 @@
 <script>
 import { mapActions } from 'pinia';
-import commentStore from '../stores/commentStore';
+import commentStore from '@/stores/commentStore';
 import RateDisplay from './RateDisplay.vue';
 
 export default {
@@ -28,7 +28,7 @@ export default {
   <div class="pt-6 flex-grow-1">
     <div class="commentDisplay h-100">
       <div class="commentDisplay-userPhoto">
-        <img class="img-fluid" src="../assets/images/userPhoto.png" alt="使用者頭像" />
+        <img class="img-fluid" src="@/assets/images/userPhoto.webp" alt="使用者頭像" />
       </div>
       <div class="commentDisplay-header mb-4 d-flex justify-content-between">
         <div>
@@ -50,7 +50,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
 .commentDisplay {
   position: relative;
   padding: 0 20px 8px 64px;

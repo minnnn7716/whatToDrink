@@ -74,7 +74,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
 .rateGroup {
   &-item {
     &.active {

@@ -148,10 +148,10 @@ export default {
             @emit-btn="(i) => display = i"
           >
             <template v-slot:start>
-              <img src="../../assets/images/icon-mode-list.svg" alt="列表模式" data-name="table" />
+              <img src="@/assets/images/icon-mode-list.svg" alt="列表模式" data-name="table" />
             </template>
             <template v-slot:end>
-              <img src="../../assets/images/icon-mode-block.svg" alt="圖表模式" data-name="image" />
+              <img src="@/assets/images/icon-mode-block.svg" alt="圖表模式" data-name="image" />
             </template>
           </SwitchBtnGroup>
           <SortComponent

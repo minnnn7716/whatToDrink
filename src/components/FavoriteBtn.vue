@@ -62,12 +62,12 @@ export default {
   >
     <img
       class="btn-favorite-default"
-      src="../assets/images/icon-favorite.svg"
+      src="@/assets/images/icon-favorite.svg"
       alt="喜愛清單"
     />
     <img
       class="btn-favorite-active"
-      src="../assets/images/icon-favorite-active.svg"
+      src="@/assets/images/icon-favorite-active.svg"
       alt="喜愛清單"
     />
   </button>

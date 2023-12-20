@@ -1,10 +1,10 @@
 <script>
 import { mapState, mapActions } from 'pinia';
+import commentStore from '@/stores/commentStore';
+import modalMixin from '@/mixins/modalMixin';
 import RateGroup from './RateGroup.vue';
 import CommentDisplay from './CommentDisplay.vue';
 import PaginationComponent from './PaginationComponent.vue';
-import commentStore from '../stores/commentStore';
-import modalMixin from '../mixims/modalMixin';
 
 export default {
   data() {

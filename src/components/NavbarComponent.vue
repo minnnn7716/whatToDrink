@@ -84,12 +84,12 @@ export default {
               to="/favorites" class="btn-custom btn-hoverSwitch">
               <img
                 class="btn-hoverSwitch-default"
-                src="../assets/images/icon-favorite.svg"
+                src="@/assets/images/icon-favorite.svg"
                 alt="喜愛清單"
               />
               <img
                 class="btn-hoverSwitch-active"
-                src="../assets/images/icon-favorite-active.svg"
+                src="@/assets/images/icon-favorite-active.svg"
                 alt="喜愛清單"
               />
             </RouterLink>
@@ -101,7 +101,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
 .navbar {
   background: transparent;
   transition: all ease .3s;

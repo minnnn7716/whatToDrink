@@ -44,7 +44,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
 .footer {
   position: relative;
 

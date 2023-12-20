@@ -17,7 +17,7 @@
             </div>
             <div>
               <div class="d-flex align-items-center mb-4">
-                <img class="me-10" src="../../assets/images/userPhoto.png" alt="" />
+                <img class="me-10" src="@/assets/images/userPhoto.webp" alt="評價系統" />
                 <div>
                   <h3 class="mb-4 py-2 px-6 d-inline-block bg-accent-300 rounded-pill fs-5">
                     評價系統
@@ -28,7 +28,7 @@
                 </div>
               </div>
               <div class="d-flex flex-row-reverse align-items-center">
-                <img class="ms-10" src="../../assets/images/userPhoto.png" alt="" />
+                <img class="ms-10" src="@/assets/images/userPhoto.webp" alt="評價系統" />
                 <div>
                   <h3 class="mb-4 py-2 px-6 d-inline-block bg-secondary-300 rounded-pill fs-5">
                     轉盤功能
@@ -60,12 +60,12 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
 
 .about {
   &-header {
     height: 350px;
-    background: center / cover no-repeat url('../../assets/images/about-banner.png');
+    background: center / cover no-repeat url('@/assets/images/about-banner.webp');
 
     @include media-breakpoint-up(3xl) {
       height: 410px;

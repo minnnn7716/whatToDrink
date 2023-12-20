@@ -58,8 +58,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/vendors/bootstrap';
-@import '../assets/scss/utilities/mixin';
+@import '@/assets/scss/vendors/bootstrap';
+@import '@/assets/scss/utilities/mixin';
 
 .rateDisplay {
   p {

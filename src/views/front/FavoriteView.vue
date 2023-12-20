@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
-import drinkStore from '../../stores/drinkStore';
-import SearchTableMode from '../../components/SearchTableMode.vue';
+import drinkStore from '@/stores/drinkStore';
+import SearchTableMode from '@/components/SearchTableMode.vue';
 
 export default {
   data() {
@@ -97,7 +97,7 @@ export default {
       <div class="col-10 col-3xl-12 mx-auto">
         <div class="menu px-6 py-8 border border-3 border-secondary-600 rounded-4">
           <h2 class="fs-3 fw-bold d-flex align-items-center text-accent mb-6">
-            <img class="me-2" src="../../assets/images/icon-favorite-active.svg">
+            <img class="me-2" src="@/assets/images/icon-favorite-active.svg">
             收藏清單</h2>
           <SearchTableMode
             v-if="favoriteDate.length"

@@ -55,7 +55,7 @@ export default {
       class="btn btn-hoverScale border-0 p-2 position-absolute top-50 end-0 translate-middle"
       @click="searchFn"
     >
-      <img src="../assets/images/icon-search.svg" alt="搜尋" />
+      <img src="@/assets/images/icon-search.svg" alt="搜尋" />
     </button>
     <p
       class="position-absolute mt-3 py-2 px-4 bg-light text-accent-700

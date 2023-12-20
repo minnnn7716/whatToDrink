@@ -61,7 +61,8 @@ export default {
 </template>
 
 <style lang="scss">
-@import '../assets/scss/vendors/bootstrap';
+@import '@/assets/scss/vendors/bootstrap';
+
 .switchBtnGroup {
   display: inline-block;
 

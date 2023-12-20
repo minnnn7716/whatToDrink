@@ -1,8 +1,8 @@
 <script>
 import { mapActions } from 'pinia';
-import commentStore from '../stores/commentStore';
+import commentStore from '@/stores/commentStore';
+import modalMixin from '@/mixins/modalMixin';
 import RateSelector from './RateSelector.vue';
-import modalMixin from '../mixims/modalMixin';
 
 export default {
   data() {

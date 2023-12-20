@@ -48,6 +48,10 @@ export default {
       this.listShow = false;
       this.$emit('sort-select', select);
     },
+    imgUrl(item, fileName) {
+      const url = new URL(`../assets/images/${fileName}${item}.svg`, import.meta.url);
+      return url;
+    },
   },
 };
 </script>
@@ -60,7 +64,7 @@ export default {
       @click="toggleList"
     >
     <img
-        :src="`/src/assets/images/icon-sort-${order}.svg`"
+        :src="imgUrl(order, 'icon-sort-')"
         :alt="order"
       />
     </button>

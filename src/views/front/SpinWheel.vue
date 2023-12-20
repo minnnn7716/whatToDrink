@@ -261,7 +261,7 @@ export default {
                   @click.prevent="randomFn('shop')">
                   <img
                     class="img-fluid"
-                    src="@/assets/images/wheel-shop.png"
+                    src="@/assets/images/wheel-shop.webp"
                     alt="隨機店家轉盤"
                   />
                 </a>
@@ -275,7 +275,7 @@ export default {
                   >
                     <img
                       class="img-fluid"
-                      src="@/assets/images/wheel-drink.png"
+                      src="@/assets/images/wheel-drink.webp"
                       alt="隨機飲品轉盤"
                     />
                   </RouterLink>
@@ -291,7 +291,7 @@ export default {
               <div class="col-6">
                 <img
                   class="img-fluid"
-                  src="@/assets/images/wheel-drink.png"
+                  src="@/assets/images/wheel-drink.webp"
                   alt="隨機飲品轉盤"
                 />
               </div>
