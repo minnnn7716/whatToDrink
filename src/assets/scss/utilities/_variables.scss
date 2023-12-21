@@ -1429,6 +1429,9 @@ $navbar-toggler-border-radius: $btn-border-radius !default;
 $navbar-toggler-focus-width: $btn-focus-width !default;
 $navbar-toggler-transition: box-shadow 0.15s ease-in-out !default;
 
+// custom * navbar-toggler
+$navbar-toggler-focus-width: 0;
+
 $navbar-light-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.65) !default;
 $navbar-light-hover-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.8) !default;
 $navbar-light-active-color: rgba(var(--#{$prefix}emphasis-color-rgb), 1) !default;

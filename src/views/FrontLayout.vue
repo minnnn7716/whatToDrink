@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-  <NavbarComponent :class="{ 'show': navbarStatus }" />
+  <NavbarComponent :class="{ 'showNav': navbarStatus }" />
   <RouterView class="view" />
   <FooterComponent />
 </template>

@@ -135,8 +135,12 @@ export default {
 
   &-lg {
     p {
-      font-size: $h2-font-size;
+      font-size: $h3-font-size;
       margin-right: 12px;
+
+      @include media-breakpoint-up(md) {
+        font-size: $h2-font-size;
+      }
     }
 
     ul {
@@ -144,8 +148,12 @@ export default {
     }
 
     li {
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
+
+      @include media-breakpoint-up(md) {
+        font-size: $h2-font-size;
+      }
     }
 
     &.hasSansText {

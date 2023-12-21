@@ -44,7 +44,7 @@ export default {
     <input
       type="text"
       id="search"
-      class="form-control h-100 ps-8 rounded-pill fs-6"
+      class="searchBar-input form-control h-100 rounded-pill fs-6"
       :class="{ 'border-3 border-accent-700': firstSearch && alertShow }"
       placeholder="想喝什麼告訴我吧！"
       v-model.trim="searchWord"
@@ -52,10 +52,10 @@ export default {
     />
     <button
       type="button"
-      class="btn btn-hoverScale border-0 p-2 position-absolute top-50 end-0 translate-middle"
+      class="searchBar-btn btn btn-hoverScale border-0 py-1 ps-1 pe-2 px-md-3 h-100"
       @click="searchFn"
     >
-      <img src="@/assets/images/icon-search.svg" alt="搜尋" />
+      <img class="img-fluid" src="@/assets/images/icon-search.svg" alt="搜尋" />
     </button>
     <p
       class="position-absolute mt-3 py-2 px-4 bg-light text-accent-700
@@ -71,10 +71,33 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/vendors/bootstrap';
+
 .searchBar {
   &-border {
     input {
       border: 1px solid #000;
+    }
+  }
+
+  &-input{
+    padding: 4px 56px 4px 16px;
+    min-height: 65px;
+
+    @include media-breakpoint-up(md) {
+      padding: 4px 72px 4px 24px;
+    }
+  }
+
+  &-btn {
+    width: 65px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    @include media-breakpoint-up(md) {
+      right: 8px;
     }
   }
 }

@@ -13,9 +13,10 @@ export default {
     <div class="container-fluid">
       <div class="row">
         <div
-          class="footer-content col-10 mx-auto py-12 d-flex align-items-end justify-content-between"
+          class="footer-content col-10 mx-auto py-12
+          d-flex flex-column flex-md-row align-items-end justify-content-between"
         >
-          <ul class="list-unstyled w-40 d-flex align-items-end mb-0">
+          <ul class="footer-side d-none d-md-flex list-unstyled align-items-end mb-0">
             <li class="footer-item">
               <RouterLink :to="{ name: 'Home', hash: '#index-type' }" class="footer-link"
                 >四大種類</RouterLink
@@ -35,7 +36,9 @@ export default {
             What <br />
             to Drink
           </RouterLink>
-          <p class="w-40 text-end fs-normal2">資料、圖片來源皆來自網路，僅用來做為學習用途</p>
+          <p class="footer-side text-center text-md-end fs-normal2">
+            資料、圖片來源皆來自網路，<br class="d-md-none">僅用來做為學習用途
+          </p>
           <button @click.prevent="ToTop" type="button" class="footer-toTop fs-6">TOP</button>
         </div>
       </div>
@@ -85,7 +88,16 @@ export default {
   }
 
   &-brand {
-    margin: -8px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 12px;
+
+    @include media-breakpoint-up(md) {
+      width: auto;
+      margin-bottom: -8px;
+      margin-left: 8px;
+    }
   }
 
   &-item {
@@ -100,6 +112,13 @@ export default {
     letter-spacing: 3px;
     &:hover {
       transform: scale(1.05);
+    }
+  }
+
+  &-side {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: 40%;
     }
   }
 

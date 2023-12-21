@@ -1,6 +1,7 @@
 .title {
   &-angleStar,
-  &-angleStar-dark {
+  &-angleStar-dark,
+  &-angleStar-sm-noImg {
     position: relative;
     display: inline-block;
     border-radius: 50px;
@@ -39,6 +40,7 @@
   }
 
   &-angleStar {
+    width: 90%;
     padding: 0.3em 1em;
     border: 2px solid #000;
     background-color: $primary;
@@ -46,11 +48,23 @@
 
     &::after {
       z-index: -1;
-      bottom: 0;
-      left: 0;
-      transform: translate(-45%, -5%);
+      top: 0;
+      right: 0;
+      transform: translate(45%, 0);
       width: 4.1em;
       height: 3.9em;
+    }
+
+    @include media-breakpoint-up(md) {
+      width: fit-content;
+
+      &::after {
+        left: 0;
+        bottom: 0;
+        top: unset;
+        right: unset;
+        transform: translate(-45%, -5%);
+      }
     }
   }
 
@@ -66,6 +80,22 @@
       transform: translate(-40%, -60%);
       width: 3em;
       height: 3em;
+    }
+  }
+
+  &-angleStar-sm-noImg {
+    width: fit-content;
+
+    &::after {
+      content: none;
+    }
+
+    @include media-breakpoint-up(md) {
+      &::after {
+        content: "";
+        position: absolute;
+        background: center / cover no-repeat url("../images/icon-deco-manyAngleStar.svg");
+      }
     }
   }
 

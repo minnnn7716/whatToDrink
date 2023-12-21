@@ -49,8 +49,8 @@ export default {
     <header class="index-header d-flex align-items-center justify-content-center">
       <div class="container">
         <div class="row">
-          <div class="col-8 mx-auto d-flex flex-column align-items-center">
-            <h2 class="index-header-title-container mb-6 fs-2 text-accent">
+          <div class="col-12 col-md-8 mx-auto d-flex flex-column align-items-center pt-15 pt-md-0">
+            <h2 class="index-header-title-container mb-6 text-accent">
               <div class="index-header-title-upper">
                 <span class="index-header-title">今</span>
                 <span class="index-header-title">天</span>
@@ -72,19 +72,19 @@ export default {
                 <span class="index-header-title">？</span>
               </div>
             </h2>
-            <h3 class="d-flex fs-4 fw-bold mb-12">
+            <h3 class="d-flex fs-6 fs-md-4 fw-bold mb-12">
               <p
-                class="py-2 px-6 me-minus4 bg-primary rounded-pill border border-3 border-gray-900"
+                class="index-header-subtitle me-minus4 bg-primary rounded-pill"
               >
                 給我一個支點
               </p>
-              <p class="py-2 px-6 bg-secondary rounded-pill border border-3 border-gray-900">
+              <p class="index-header-subtitle bg-secondary rounded-pill">
                 給你一杯飲料
               </p>
             </h3>
-            <div class="d-flex w-100">
+            <div class="index-header-searchContainer d-flex flex-column flex-md-row">
               <SwitchBtnGroup
-                class="switchBtnGroup-light switchBtnGroup-text me-4"
+                class="switchBtnGroup-light switchBtnGroup-text me-0 mb-3 me-md-4 mb-md-0"
                 @emit-btn="(i) => searchType = i"
               >
                 <template v-slot:start>
@@ -106,39 +106,53 @@ export default {
     <img class="position-absolute top-0 end-0"
     src="@/assets/images/index-bannerDeco-end.svg" /> -->
     </header>
-    <section class="py-25" id="index-type">
+    <section class="py-18 py-md-25 position-relative">
+      <div class="position-absolute top-0 translate-middle-y py-8" id="index-type"></div>
       <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-3">
-            <h4 class="title-angleStar fs-4 fw-bold mb-4">還是沒有想法嗎？</h4>
-            <p class="title-angleStar-content fs-5">
+        <div class="row flex-column flex-md-row align-items-center justify-content-center">
+          <div class="col-12 col-md-3 mb-8 mb-md-0">
+            <h4 class="title-angleStar fs-5 fs-md-4 fw-bold mb-4">還是沒有想法嗎？</h4>
+            <p class="title-angleStar-content fs-6 fs-md-5">
               通通給你，<br />
               慢慢挑～慢慢選～<br />
             </p>
           </div>
-          <ul class="col-7 col-3xl-9 d-flex list-unstyled mb-0">
-            <li class="btn-roundImgAndText me-10">
+          <ul class="col-12 col-md-7 col-3xl-9 d-flex flex-wrap flex-md-nowrap
+          row list-unstyled mb-0">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0 mb-6 me-0 me-md-10">
               <RouterLink to="/shops">
-                <img class="mb-5" src="@/assets/images/index-kind-all.webp" alt="全部店面" />
+                <img
+                  class="mb-2 mb-md-5"
+                  src="@/assets/images/index-kind-all.webp" alt="全部店面"
+                />
                 <p class="fs-5 fw-medium text-black">全部店面</p>
               </RouterLink>
             </li>
-            <li class="btn-roundImgAndText me-10">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0 mb-6 me-0 me-md-10">
               <RouterLink to="/search?type=drinks&keyword=純茶">
-                <img class="mb-5" src="@/assets/images/index-kind-tea.webp" alt="純茶飲料" />
+                <img
+                  class="mb-2 mb-md-5"
+                  src="@/assets/images/index-kind-tea.webp" alt="純茶飲料"
+                />
 
                 <p class="fs-5 fw-medium text-black">純茶飲料</p>
               </RouterLink>
             </li>
-            <li class="btn-roundImgAndText me-10">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0 me-0 me-md-10">
               <RouterLink to="/search?type=drinks&keyword=特調">
-                <img class="mb-5" src="@/assets/images/index-kind-special.webp" alt="特調飲料" />
+                <img
+                  class="mb-2 mb-md-5"
+                  src="@/assets/images/index-kind-special.webp" alt="特調飲料"
+                />
                 <p class="fs-5 fw-medium text-black">特調飲料</p>
               </RouterLink>
             </li>
-            <li class="btn-roundImgAndText">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0">
               <RouterLink to="/search?type=drinks&keyword=奶系列">
-                <img class="mb-5" src="@/assets/images/index-kind-milktea.webp" alt="奶奶飲料" />
+                <img
+                  class="mb-2 mb-md-5"
+                  src="@/assets/images/index-kind-milktea.webp" alt="奶奶飲料"
+                />
                 <p class="fs-5 fw-medium text-black">奶奶飲料</p>
               </RouterLink>
             </li>
@@ -146,49 +160,77 @@ export default {
         </div>
       </div>
     </section>
-    <section class="index-wheel">
+    <section class="index-wheel py-10 py-md-18">
       <div class="index-wheel-container">
         <div class="index-wheel-text text-center text-white lh-base">
-          <h4 class="mb-8 fs-3 fw-bold lh-base">阿姨，我不想努力了...<br />沒關係！</h4>
-          <p class="mb-8 fs-5">
+          <h4 class="mb-8 fs-4 fs-md-3 fw-bold lh-base">
+            阿姨，我不想努力了...<br />沒關係！
+          </h4>
+          <p class="mb-8 fs-6 fs-md-5">
             轉盤啊～轉盤～<br />
             世界上最適合我的飲料是哪一杯？
           </p>
-          <RouterLink to="/wheel" class="btn-custom btn-custom-primary fs-4 fs-xxl-5 fw-bold"
-            >請賜與我飲料</RouterLink
+          <RouterLink
+            to="/wheel"
+            class="btn-custom btn-custom-primary fs-6 fs-md-4 fs-xxl-5 fw-bold"
           >
+            請賜與我飲料
+          </RouterLink>
         </div>
-        <img class="index-wheel-img-person" src="@/assets/images/index-wheel-person.svg" />
-        <img class="index-wheel-img-drink" src="@/assets/images/index-wheel-drink.svg" />
-        <img class="index-wheel-img-wheel" src="@/assets/images/index-wheel-wheel.svg" />
+        <img
+          class="index-wheel-img-person d-none d-md-inline-block"
+          src="@/assets/images/index-wheel-person.svg"
+        />
+        <img
+          class="index-wheel-img-drink d-none d-md-inline-block"
+          src="@/assets/images/index-wheel-drink.svg"
+        />
+        <img
+          class="index-wheel-img-wheel d-none d-md-inline-block"
+          src="@/assets/images/index-wheel-wheel.svg"
+        />
+        <img
+          class="index-wheel-img-drink-sm d-md-none"
+          src="@/assets/images/index-wheel-drink-sm.svg"
+        />
+        <img
+          class="index-wheel-img-wheel-sm d-md-none"
+          src="@/assets/images/index-wheel-wheel-sm.svg"
+        />
       </div>
     </section>
-    <section class="py-25">
+    <section class="pt-10 pb-20 py-md-25">
       <div class="container">
         <div class="row">
-          <div class="col-10 col-3xl-12 mx-auto">
-            <div class="d-flex align-items-center mb-10">
-              <h4 class="title-angleStar fs-4 fw-bold me-5">好評飲品推推</h4>
-              <p class="font-handwriting fs-4 fw-bold me-5">
-                {{ translateNum(recommendSelect) }}｜{{ translateNum(recommendDrinks.length) }}
-              </p>
-              <ul class="list-unstyled mb-0 d-flex align-items-center">
-                <li
-                  v-for="item in recommendDrinks.length"
-                  :key="`recommend ${item}`"
-                >
-                  <button
-                    type="button"
-                    class="btn-carouselDot"
-                    :class="{
-                      'active': item === recommendSelect,
-                      'me-2': item !== recommendDrinks.length
-                    }"
-                    @click="recommendSelect = item"
-                  />
-                </li>
-              </ul>
-              <div class="divider flex-grow-1 mx-3"></div>
+          <div class="col-12 col-lg-10 col-3xl-12 mx-auto">
+            <div class="d-flex align-items-center justify-content-between mb-3 mb-md-10">
+              <h4
+                class="title-angleStar title-angleStar-sm-noImg fs-5 fs-md-4 fw-bold me-5"
+              >
+                好評飲品推推
+              </h4>
+              <div class="d-none d-md-flex flex-grow-1 d-flex align-items-center">
+                <p class="font-handwriting fs-5 fs-md-4 fw-bold me-5">
+                  {{ translateNum(recommendSelect) }}｜{{ translateNum(recommendDrinks.length) }}
+                </p>
+                <ul class="list-unstyled mb-0 d-flex align-items-center">
+                  <li
+                    v-for="item in recommendDrinks.length"
+                    :key="`recommend ${item}`"
+                  >
+                    <button
+                      type="button"
+                      class="btn-carouselDot"
+                      :class="{
+                        'active': item === recommendSelect,
+                        'me-2': item !== recommendDrinks.length
+                      }"
+                      @click="recommendSelect = item"
+                    />
+                  </li>
+                </ul>
+                <div class="divider flex-grow-1 mx-3"></div>
+              </div>
               <ul class="list-unstyled mb-0 d-flex align-items-center">
                 <li class="me-6">
                   <button
@@ -212,8 +254,30 @@ export default {
                 </li>
               </ul>
             </div>
-            <div class="row index-comment">
-              <div class="col-6 index-comment-start">
+            <div class="d-flex flex-row-reverse d-md-none align-items-center px-2 mb-6">
+              <p class="font-handwriting fs-4 fw-bold me-1">
+                {{ translateNum(recommendSelect) }}｜{{ translateNum(recommendDrinks.length) }}
+              </p>
+              <div class="divider flex-grow-1 mx-3"></div>
+              <ul class="list-unstyled mb-0 d-flex align-items-center">
+                <li
+                  v-for="item in recommendDrinks.length"
+                  :key="`recommend ${item}`"
+                >
+                  <button
+                    type="button"
+                    class="btn-carouselDot"
+                    :class="{
+                      'active': item === recommendSelect,
+                      'me-2': item !== recommendDrinks.length
+                    }"
+                    @click="recommendSelect = item"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div class="row index-comment ps-5 pe-2 px-md-0">
+              <div class="col-12 col-md-6 index-comment-start">
                   <RouterLink :to="`/drink/${recommendItem.id}`">
                     <img
                       class="img-full"
@@ -221,20 +285,21 @@ export default {
                       :alt="recommendItem.name" />
                   </RouterLink>
                   <div>
-                    <h5 class="index-comment-start-title title-stroke-2 fs-3 fw-bold">
+                    <h5 class="index-comment-start-title title-stroke-2 fs-4 fs-md-3 fw-bold">
                       <RouterLink :to="`/drink/${recommendItem.id}`">
                         {{ recommendItem.name }}
                       </RouterLink>
                       <RouterLink
                         :to="`/shops/${recommendItem.shop.code}`"
-                        class="index-comment-start-tag
-                        pt-3 pb-2 px-2 bg-white border border-gray-900 rounded-pill fs-6"
+                        class="index-comment-start-tag pt-3 pb-2 px-2
+                        bg-white border border-gray-900 rounded-pill fs-normal1 fs-md-6"
                       >
                         {{ recommendItem.shop.name }}
                       </RouterLink>
                     </h5>
                   </div>
-                  <p class="index-comment-start-info fs-4 title-stroke-2 font-handwriting fw-bold">
+                  <p class="index-comment-start-info fs-5 fs-md-4
+                  title-stroke-2 font-handwriting fw-bold">
                     <span v-if="recommendItem.price.m">
                       M <span class="ms-2">$ {{ recommendItem.price.m }}</span>
                       </span>
@@ -250,7 +315,7 @@ export default {
                     />
                   </RouterLink>
               </div>
-              <div class="col-6 overflow-auto">
+              <div class="d-none d-md-block col-6 overflow-auto">
                 <CommentDisplay
                   class="mb-12"
                   v-for="item in recommendItem.comments"
@@ -277,36 +342,72 @@ export default {
     position: relative;
   }
 
+  &-title-container {
+    width: 100%;
+    text-align: center;
+  }
+
   &-title {
+    font-size: 26px;
     display: inline-block;
     padding: 0.25em 0.4em 0.3em 0.4em;
     margin-right: -0.3em;
     border-radius: 50%;
-    font-weight: 700;
-    border-radius: 50%;
+    font-weight: 800;
     background-color: #fff;
+
+    @include media-breakpoint-up(md) {
+      font-size: $h2-font-size;
+    }
 
     &-upper {
       position: absolute;
+      width: 100%;
       top: 0;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 1;
     }
 
     &-lower .index-header-title {
-      box-shadow: 0 0 0 5px $accent;
+      box-shadow: 0 0 0 0.15em $accent;
+    }
+  }
+
+  &-subtitle {
+    border: 2px solid $gray-900;
+    padding: 8px 20px;
+
+    @include media-breakpoint-up(md) {
+      border: 3px solid $gray-900;
+      padding: 8px 24px;
+    }
+  }
+
+  &-searchContainer {
+    width: 80%;
+
+    @include media-breakpoint-up(md) {
+      width: 90%;
     }
   }
 }
 
 .index-wheel {
   overflow: hidden;
-  padding: 72px 0;
 
   &-container {
     position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 4.5vw 0;
     background-color: #6d6fc9;
+
+    @include media-breakpoint-up(md) {
+      height: fit-content;
+    }
 
     @include media-breakpoint-up(3xl) {
       padding: 6.2vw 0;
@@ -321,7 +422,9 @@ export default {
   &-img {
     &-person,
     &-drink,
-    &-wheel {
+    &-drink-sm,
+    &-wheel,
+    &-wheel-sm {
       position: absolute;
     }
 
@@ -344,11 +447,23 @@ export default {
       }
     }
 
+    &-drink-sm {
+      width: 100%;
+      top: 0;
+      transform: translateY(-15%);
+    }
+
     &-wheel {
       width: 28vw;
       right: 0;
       top: 0;
       transform: translate(28%, -10%);
+    }
+
+    &-wheel-sm {
+      width: 100%;
+      bottom: 0;
+      transform: translateY(5%);
     }
   }
 }
@@ -360,9 +475,9 @@ export default {
 
 .index-comment {
   > div {
-    height: 450px;
+    height: 350px;
 
-    @include media-breakpoint-up(3xl) {
+    @include media-breakpoint-up(md) {
       height: 500px;
     }
   }
@@ -378,10 +493,15 @@ export default {
 
     &-title {
       margin: 0;
-      top: -0.5em;
-      left: -0.2em;
+      top: -0.3em;
+      left: -0.1em;
       letter-spacing: 0.5em;
       writing-mode: vertical-lr;
+
+      @include media-breakpoint-up(md) {
+        top: -0.5em;
+        left: -0.2em;
+      }
     }
 
     &-tag {
@@ -395,11 +515,18 @@ export default {
     }
 
     &-info {
-      left: 0;
+      right: 8px;
+      transform: translateY(-65%);
+
+      @include media-breakpoint-up(md) {
+        right: unset;
+        left: 0;
+        transform: translateY(0);
+      }
     }
 
     &-rate {
-      right: 0;
+      right: 8px;
     }
   }
 }

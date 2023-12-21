@@ -38,11 +38,11 @@ export default {
 </script>
 
 <template>
-  <div class="switchBtnGroup rounded-pill">
+  <div class="switchBtnGroup rounded-pill d-flex">
     <button
       ref="startBtn"
       type="button"
-      class="rounded-pill me-2"
+      class="rounded-pill me-2 flex-grow-1"
       :class="{ 'active': startBtn === selectItem }"
       @click="clickItem(startBtn)"
     >
@@ -51,7 +51,7 @@ export default {
     <button
       ref="endBtn"
       type="button"
-      class="rounded-pill"
+      class="rounded-pill flex-grow-1"
       :class="{ 'active': endBtn === selectItem }"
       @click="clickItem(endBtn)"
     >
@@ -106,8 +106,13 @@ export default {
   &-text {
     padding: 8px 12px;
     button {
-      padding: 16px 28px;
-      font-size: $h5-font-size;
+      padding: 8px 28px;
+      font-size: $h6-font-size;
+
+      @include media-breakpoint-up(md) {
+        padding: 16px 28px;
+        font-size: $h5-font-size;
+      }
     }
   }
 
@@ -116,7 +121,11 @@ export default {
     button {
       padding: 0 28px;
       height: 100%;
-      font-size: $h5-font-size;
+      font-size: $h6-font-size;
+
+      @include media-breakpoint-up(md) {
+        font-size: $h5-font-size;
+      }
     }
   }
 

@@ -2,7 +2,11 @@
   min-height: calc(100vh - 231px);
 
   &:not(.index) {
-    margin-top: 57px;
+    margin-top: 55px;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 57px;
+    }
   }
 
   &.wheel,
