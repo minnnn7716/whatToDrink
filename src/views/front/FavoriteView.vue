@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
-import drinkStore from '../../stores/drinkStore';
-import SearchTableMode from '../../components/SearchTableMode.vue';
+import drinkStore from '@/stores/drinkStore';
+import SearchTableMode from '@/components/SearchTableMode.vue';
 
 export default {
   data() {
@@ -93,12 +93,22 @@ export default {
 </script>
 
 <template>
-  <div class="container pt-20 pb-15">
-    <div class="row">
-      <div class="col-10 col-3xl-12 mx-auto">
-        <div class="menu px-6 py-8 border border-3 border-secondary-600 rounded-4">
-          <h2 class="fs-3 fw-bold d-flex align-items-center text-accent mb-6">
-            <img class="me-2" src="../../assets/images/icon-favorite-active.svg">
+  <div class="container pt-10 pt-md-20 pb-10 pb-md-15">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-3xl-12">
+        <div class="menu px-2 px-md-6 py-4 py-md-10 border border-3 border-secondary-600 rounded-4">
+          <h2 class="fs-4 fs-md-3 fw-bold d-flex align-items-center text-accent mb-6">
+            <img
+              class="d-none d-md-block me-2"
+              src="@/assets/images/icon-favorite-active.svg"
+              alt="愛心"
+            >
+            <img
+              width="28"
+              class="d-md-none me-2"
+              src="@/assets/images/icon-favorite-active.svg"
+              alt="愛心"
+            >
             收藏清單
           </h2>
           <div v-if="filterFavoriteDate.length">
@@ -107,15 +117,17 @@ export default {
             />
           </div>
           <div v-else class="py-4 d-flex flex-column align-items-center">
-            <p class="fs-4 fw-medium mb-4">尚無喜愛飲品</p>
+            <p class="fs-5 fs-md-4 fw-medium mb-4">尚無喜愛飲品</p>
             <RouterLink
               to="/shops"
-              class="btn-custom btn-custom-primary-sm fs-6 fw-bold"
+              class="btn-custom btn-custom-primary-sm fs-normal1 fs-md-6 fw-bold"
             >
               來去逛逛
             </RouterLink>
           </div>
-          <ul v-if="list.length" class="menu-list list-unstyled mb-0">
+          <ul
+            v-if="list.length"
+            class="d-none d-md-block menu-list list-unstyled mb-0">
             <li
               v-for="item in filterCustomType"
               :key="`favoriteList ${item}`"
@@ -135,3 +147,7 @@ export default {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+
+</style>
