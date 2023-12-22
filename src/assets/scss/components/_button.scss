@@ -57,16 +57,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border: 2px solid $gray-900;
   border-radius: 50%;
-  box-shadow: 4px 4px 0 $gray-900;
+  box-shadow: 2px 2px 0 $gray-900;
   cursor: pointer;
 
-  &:hover {
-    margin: 4px -4px -4px 4px;
-    box-shadow: 0 0 0 $gray-900;
+  @include media-breakpoint-up(md) {
+    width: 80px;
+    height: 80px;
+    box-shadow: 4px 4px 0 $gray-900;
+    cursor: pointer;
+
+    &:hover {
+      margin: 4px -4px -4px 4px;
+      box-shadow: 0 0 0 $gray-900;
+    }
   }
 }
 

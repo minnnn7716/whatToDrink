@@ -291,8 +291,8 @@ export default {
                       </RouterLink>
                       <RouterLink
                         :to="`/shops/${recommendItem.shop.code}`"
-                        class="index-comment-start-tag pt-3 pb-2 px-2
-                        bg-white border border-gray-900 rounded-pill fs-normal1 fs-md-6"
+                        class="index-comment-start-tag pt-3 pb-2 px-1 px-md-2
+                        bg-white border border-gray-900 rounded-pill fs-normal2 fs-md-6"
                       >
                         {{ recommendItem.shop.name }}
                       </RouterLink>
@@ -521,7 +521,7 @@ export default {
       @include media-breakpoint-up(md) {
         right: unset;
         left: 0;
-        transform: translateY(0);
+        transform: translateY(60%);
       }
     }
 

@@ -10,7 +10,7 @@
     &::after {
       content: "";
       position: absolute;
-      background: center / cover no-repeat url("../images/icon-deco-manyAngleStar.svg");
+      background: center / cover no-repeat url("@/assets/images/icon-deco-manyAngleStar.svg");
     }
 
     &-content {
@@ -94,7 +94,7 @@
       &::after {
         content: "";
         position: absolute;
-        background: center / cover no-repeat url("../images/icon-deco-manyAngleStar.svg");
+        background: center / cover no-repeat url("@/assets/images/icon-deco-manyAngleStar.svg");
       }
     }
   }

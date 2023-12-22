@@ -233,13 +233,13 @@ export default {
       class="flex-grow-1 d-flex align-items-center"
       :class="{ 'wheel-result-bg': step === 'result' }"
     >
-      <div class="container">
+      <div class="container pb-12 py-md-0">
         <div class="row justify-content-center">
           <div
             v-if="step === 'wheelHome' || step === 'select'"
-            class="col-8 col-3xl-10"
+            class="col-10 col-md-8 col-3xl-10"
           >
-            <div class="mb-6 d-flex align-items-center justify-content-between">
+            <div class="d-none d-md-flex mb-6 d-flex align-items-center justify-content-between">
               <h2 class="title-angleStar-dark fs-4">轉轉轉，飲料跟著一起來～</h2>
               <RouterLink
                 to="/wheel"
@@ -253,9 +253,9 @@ export default {
             <!-- wheel-home -->
             <div
               v-if="step === 'wheelHome'"
-              class="row gx-12"
+              class="row gy-6 gy-md-0 gx-md-12 pt-10 pt-md-0"
             >
-              <div class="col-6 wheel-home-btn">
+              <div class="col-12 col-md-6 wheel-home-btn">
                 <a
                   href="#"
                   @click.prevent="randomFn('shop')">
@@ -266,7 +266,7 @@ export default {
                   />
                 </a>
               </div>
-              <div class="col-6 wheel-home-btn">
+              <div class="col-12 col-md-6 wheel-home-btn">
                 <a href="#">
                   <RouterLink
                     to="/wheel?=select"
@@ -288,14 +288,19 @@ export default {
               v-if="step === 'select'"
               class="row gx-8"
             >
-              <div class="col-6">
+              <div class="col-12 col-md-6 pt-10 pt-md-0">
                 <img
-                  class="img-fluid"
+                  class="img-fluid d-none d-md-block"
                   src="@/assets/images/wheel-drink.webp"
                   alt="隨機飲品轉盤"
                 />
+                <img
+                  class="img-fluid d-md-none mb-6"
+                  src="@/assets/images/wheel-drink-sm.webp"
+                  alt="隨機飲品轉盤"
+                />
               </div>
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <form
                   id="drinkSelectForm"
                   class="d-flex flex-column justify-content-between h-100"
@@ -303,13 +308,13 @@ export default {
                 >
                   <div>
                     <div class="d-flex align-items-center mb-6">
-                      <label for="type" class="me-4 fw-medium">
+                      <label for="type" class="me-2 me-md-4 fw-medium">
                         飲料種類
                         <span class="fs-5 text-accent-600">*</span>
                       </label>
                       <select
                         id="type"
-                        class="form-select py-3 px-4 flex-fit rounded-pill"
+                        class="form-select py-2 py-md-3 px-4 flex-fit rounded-pill"
                         :class="{
                           'bg-accent-100 border-2 border-accent-600': firstSend
                           && selectType === '請選擇'
@@ -332,13 +337,13 @@ export default {
                       class="d-flex align-items-center mb-6"
                       :class="{ 'opacity-50': selectType === '請選擇' }"
                     >
-                      <label for="base" class="me-4 fw-medium">
+                      <label for="base" class="me-2 me-md-4 fw-medium">
                         基底飲品
                         <span class="fs-5 text-accent-600">*</span>
                       </label>
                       <select
                         id="base"
-                        class="form-select py-3 px-4 flex-fit rounded-pill"
+                        class="form-select py-2 py-md-3 px-4 flex-fit rounded-pill"
                         :class="{
                           'bg-accent-100 border-2 border-accent-600': firstSend
                           && !isBaseTrue
@@ -362,13 +367,13 @@ export default {
                       class="d-flex align-items-center mb-6"
                       :class="{ 'opacity-50': !selectIngredient.mix }"
                     >
-                      <label for="mix" class="me-4 fw-medium">
+                      <label for="mix" class="me-2 me-md-4 fw-medium">
                         調和飲料
                         <span class="fs-5 invisible">*</span>
                       </label>
                       <select
                         id="mix"
-                        class="form-select py-3 px-4 flex-fit rounded-pill"
+                        class="form-select py-2 py-md-3 px-4 flex-fit rounded-pill"
                         v-model="selectIngredient.mix"
                         :disabled="!selectIngredient.mix"
                       >
@@ -393,13 +398,13 @@ export default {
                       class="d-flex align-items-center mb-6"
                       :class="{ 'opacity-50': !selectIngredient.material }"
                     >
-                      <label for="material" class="me-4 fw-medium">
+                      <label for="material" class="me-2 me-md-4 fw-medium">
                         各種好料
                         <span class="fs-5 invisible">*</span>
                       </label>
                       <select
                         id="material"
-                        class="form-select py-3 px-4 flex-fit rounded-pill"
+                        class="form-select py-2 py-md-3 px-4 flex-fit rounded-pill"
                         v-model="selectIngredient.material"
                         :disabled="!selectIngredient.material"
                       >
@@ -424,7 +429,8 @@ export default {
                   <div class="d-flex align-items-center justify-content-end">
                     <button
                       type="button"
-                      class="btn-circle bg-gray-700 text-white fs-6 fw-medium me-4 lh-sm"
+                      class="btn-circle bg-gray-700 text-white
+                      fs-normal2 fs-md-6 fw-medium me-4 lh-sm"
                       @click="randomFn('drink')"
                     >
                       全部<br />隨機
@@ -432,7 +438,7 @@ export default {
                     <button
                       type="submit"
                       form="drinkSelectForm"
-                      class="btn-circle bg-accent fs-6 fw-medium"
+                      class="btn-circle bg-accent fs-normal2 fs-md-6 fw-medium"
                     >
                       轉吧
                     </button>
@@ -445,7 +451,7 @@ export default {
           <!-- wheel-result -->
           <div
             v-if="step === 'result'"
-            class="wheel-result col-5 col-3xl-6"
+            class="wheel-result col-11 col-md-5 col-3xl-6 mb-20 mb-md-0"
           >
             <div v-if="noResult">
               <RouterLink
@@ -480,18 +486,20 @@ export default {
                 :alt="randomData.name"
               />
               <div>
-                <h5 class="wheel-result-content-title title-stroke-2 fs-3  fw-bold">
+                <h5 class="wheel-result-content-title title-stroke-2  fs-4 fs-md-3  fw-bold">
                   {{ randomData.name }}
                   <span
                     v-if="randomType === 'drink'"
-                    class="pt-3 pb-2 px-2 bg-white border border-gray-900 rounded-pill fs-normal1"
+                    class="pt-3 pb-2 px-1 px-md-2 bg-white border border-gray-900
+                    rounded-pill fs-normal2 fs-md-normal1"
                   >
                   {{ shops[randomData.shopId - 1 ] ? shops[randomData.shopId - 1].name : '' }}
                   </span>
                 </h5>
               </div>
               <p
-                class="wheel-result-content-info fs-4 font-handwriting fw-bold title-stroke-2"
+                class="wheel-result-content-info fs-5 fs-md-4
+                font-handwriting fw-bold title-stroke-2"
                 v-if="randomType === 'drink'"
               >
                 <span v-if="randomData.price.m">
@@ -508,11 +516,11 @@ export default {
               />
             </RouterLink>
             </div>
-            <div class="wheel-result-btnGroup d-flex flex-column">
+            <div class="wheel-result-btnGroup d-flex flex-md-column">
               <button
                 v-if="!noResult"
                 type="button"
-                class="mb-4 btn-circle bg-accent fs-6 fw-medium"
+                class="me-3 me-md-0 mb-md-4 btn-circle bg-accent fs-normal2 fs-md-6 fw-medium lh-sm"
                 @click="randomFn(randomType)"
               >
                 再轉<br />一次
@@ -520,7 +528,7 @@ export default {
               <RouterLink
                 to="/wheel"
                 type="button"
-                class="btn-circle bg-gray-700 text-white fs-6 fw-medium mb-4 lh-sm"
+                class="btn-circle bg-gray-700 text-white fs-normal2 fs-md-6 fw-medium mb-md-4 lh-sm"
                 @click="resetSelect"
               >
                 重新<br />選擇
@@ -534,6 +542,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/vendors/bootstrap';
+@import '@/assets/scss/utilities/mixin';
+@import '@/assets/scss/components/button';
+@import '@/assets/scss/components/title';
+
 .wheel {
   &-home-btn {
     display: inline-block;
@@ -555,7 +568,11 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 425px;
+      height: 320px;
+
+      @include media-breakpoint-up(md) {
+        height: 425px;
+      }
 
       &-title,
       &-info,
@@ -565,10 +582,15 @@ export default {
 
       &-title {
         margin: 0;
-        top: -0.5em;
-        left: -0.2em;
+        top: -0.3em;
+        left: -0.1em;
         letter-spacing: 0.5em;
         writing-mode: vertical-lr;
+
+        @include media-breakpoint-up(md) {
+          top: -0.5em;
+          left: -0.2em;
+        }
 
         span {
           letter-spacing: 0.3em;
@@ -579,15 +601,22 @@ export default {
       &-info,
       &-rate {
         bottom: 0;
-        transform: translateY(50%);
+        transform: translateY(60%);
       }
 
       &-info {
-        left: 0;
+        right: 8px;
+        transform: translateY(-65%);
+
+        @include media-breakpoint-up(md) {
+          right: unset;
+          left: 0;
+          transform: translateY(60%);
+        }
       }
 
       &-rate {
-        right: 0;
+        right: 8px;
       }
 
       img {
@@ -601,9 +630,15 @@ export default {
 
     &-btnGroup {
       position: absolute;
-      right: -16px;
-      bottom: -8px;
-      transform: translateX(100%);
+      right: 16px;
+      bottom: -28px;
+      transform: translate(0, 100%);
+
+      @include media-breakpoint-up(md) {
+        right: -16px;
+        bottom: -8px;
+        transform: translate(100%, 0);
+      }
     }
   }
 
