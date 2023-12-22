@@ -113,8 +113,13 @@ export default {
 
   &-md {
     p {
-      font-size: $h3-font-size;
-      margin-right: 12px;
+      font-size: 22px;
+      margin-right: 8px;
+
+      @include media-breakpoint-up(md) {
+        font-size: $h3-font-size;
+        margin-right: 12px;
+      }
     }
 
     ul {
@@ -122,8 +127,13 @@ export default {
     }
 
     li {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
+
+      @include media-breakpoint-up(md) {
+        width: 30px;
+        height: 30px;
+      }
     }
 
     &.hasSansText {

@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="pt-6 flex-grow-1">
+  <div class="pt-6 w-100 h-100">
     <div class="commentDisplay h-100">
       <div class="commentDisplay-userPhoto">
         <img class="img-fluid" src="@/assets/images/userPhoto.webp" alt="使用者頭像" />
@@ -53,8 +53,13 @@ export default {
 @import '@/assets/scss/vendors/bootstrap';
 .commentDisplay {
   position: relative;
-  padding: 0 20px 8px 64px;
-  margin: 16px 0 12px 32px;
+  padding: 0 16px 16px 16px;
+  margin-bottom: 12px;
+
+  @include media-breakpoint-up(md) {
+    padding: 0 20px 8px 64px;
+    margin: 16px 0 12px 32px;
+  }
 
   &::after {
     content: '';
@@ -83,6 +88,7 @@ export default {
   }
 
   &-userPhoto {
+    display: none;
     position: absolute;
     top: -16px;
     left: -32px;
@@ -92,6 +98,10 @@ export default {
     border-radius: 50%;
     box-shadow: 6px 8px 0 $primary;
     overflow: hidden;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
   }
 }
 </style>

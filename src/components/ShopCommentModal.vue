@@ -70,7 +70,7 @@ export default {
   <div class="modal fade" ref="modal">
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content rounded-4">
-      <div class="modal-header border-bottom-0">
+      <div class="modal-header border-bottom-0 pb-0 p-md-4">
         <h1 class="modal-title fs-5 invisible" id="addCommentModalLabel">店家評價</h1>
         <button
           type="button"
@@ -78,10 +78,10 @@ export default {
           @click="hideModal"
         ></button>
       </div>
-      <div class="modal-body pt-0 pb-10">
+      <div class="modal-body pt-0 ps-1 pe-1 px-md-10 py-md-4">
         <div class="container-fluid">
           <RateGroup
-            class="mb-10"
+            class="mb-6 mb-md-10"
             :data="rateGroup"
             @emit-pin="clickPinAction"
           />
@@ -102,45 +102,44 @@ export default {
               <option value="最少甜度">最少甜度</option>
             </select>
           </div>
-          <div class="px-5">
+          <div class="px-md-5">
             <div
               class="pb-10"
               :class="{ 'border-bottom border-gray mb-10': index !== sortComments.length - 1 }"
               v-for="(item, index) in sortComments"
               :key="`shopComment ${index}`"
             >
-              <div class="row">
-                <div class="col-5">
+              <div class="row flex-column flex-md-row">
+                <div class="col-12 col-md-5 mb-3 mb-md-0">
                   <a
                     class="d-flex"
                     href="#"
                     @click.prevent="pushAndHide(`/drink/${item.drinkId}`)"
                   >
                     <img
-                      class="img-full me-3"
-                      style="width: 170px; height: 170px;"
+                      class="drinkImg img-full me-3"
                       :src="filterDrink(item.drinkId).imageUrl"
                       :alt="filterDrink(item.drinkId).name"
                     />
-                    <div class="d-flex flex-column justify-content-between">
-                      <div>
-                        <p class="fs-5 fw-medium mb-2">
+                    <div class="d-flex flex-column justify-content-md-between flex-grow-1">
+                      <div class="d-flex flex-md-column justify-content-between">
+                        <p class="fs-6 fs-md-5 fw-medium mb-2">
                           {{ filterDrink(item.drinkId).name }}
                         </p>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-row-reverse flex-md-row">
                           <img
-                            width="20"
-                            class="me-1"
+                            width="21"
+                            class="ms-1 me-md-1"
                             src="@/assets/images/icon-star-full.svg"
                             alt="rate"
                           />
                           <p
-                            class="fs-6 font-handwriting fw-bold mb-minus1">
+                            class="fs-6 font-handwriting fw-bold mb-minus1 lh-1">
                             {{ filterDrink(item.drinkId).rate }}
                           </p>
                         </div>
                       </div>
-                      <p class="fs-6 font-handwriting lh-lg">
+                      <p class="fs-normal1 fs-md-6 font-handwriting lh-1">
                         M
                         <span class="ms-1">
                           $ {{ filterDrink(item.drinkId).price.m }}
@@ -153,7 +152,7 @@ export default {
                     </div>
                   </a>
                 </div>
-                <div class="col-7 d-flex">
+                <div class="col-12 col-md-7 d-flex">
                   <CommentDisplay :commentData="item"/>
                 </div>
               </div>
@@ -170,3 +169,17 @@ export default {
   </div>
 </div>
 </template>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/vendors/bootstrap';
+
+.drinkImg {
+  width: 65px;
+  height: 65px;
+
+  @include media-breakpoint-up(md) {
+    width: 170px;
+    height: 170px;
+  }
+}
+</style>

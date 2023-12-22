@@ -65,14 +65,15 @@ export default {
 <template>
   <div class="shopView pb-20">
     <header
-      class="shopView-header mb-20 py-4"
+      class="shopView-header mb-15 mb-md-20 py-4"
       :style="`background-color: ${singleShop.bgColor}`"
     >
       <img :src="singleShop.imageUrl" :alt="singleShop.name" />
       <div class="shopView-header-content container position-absolute start-50 bottom-0">
         <div class="row justify-content-center">
-          <div class="col-10 col-3xl-12 d-flex justify-content-between">
-            <h2 class="fs-3 fw-bold title-stroke-2">{{ singleShop.name }}</h2>
+          <div class="col-12 col-md-10 col-3xl-12
+          d-flex justify-content-between">
+            <h2 class="fs-5 fs-md-3 fw-bold title-stroke-2 mb-2 mb-md-0">{{ singleShop.name }}</h2>
             <button
               type="button"
               class="btn border-0 p-0"
@@ -80,8 +81,8 @@ export default {
             >
               <RateDisplay
                 :rate="singleShop.rate"
-                class="rateDisplay-md hasHandText strokeTitle mb-2" />
-              <p class="text-end">
+                class="rateDisplay-md hasHandText strokeTitle mb-1 mb-md-2 justify-content-end" />
+              <p class="text-end fs-normal2 fs-md-normal1">
                 {{ singleShop.comments ? singleShop.comments.length : 0 }} 則評論
                 </p>
             </button>
@@ -91,12 +92,13 @@ export default {
     </header>
     <section class="container">
       <div class="row justify-content-center">
-        <div class="col-10 col-3xl-12">
-          <div class="menu px-6 py-10 border border-3 border-secondary-600 rounded-4" ref="menu">
-            <div class="row gy-10 gx-10">
+        <div class="col-12 col-md-10 col-3xl-12">
+          <div class="menu px-2 px-md-6 py-4 py-md-10
+          border border-3 border-secondary-600 rounded-4" ref="menu">
+            <div class="row gy-6 gy-md-10 gx-10">
               <div
                 :class="{
-                  'col-6': selectType === '全部飲品',
+                  'col-12 col-md-6': selectType === '全部飲品',
                   'col-12': selectType !== '全部飲品',
                 }"
                 v-for="type in Object.keys(filterMenu)"
@@ -105,7 +107,11 @@ export default {
                 <table class="table align-middle">
                   <thead>
                     <tr>
-                      <th scope="col" colspan="4" class="fs-5 border-0">{{ type }}</th>
+                      <th
+                        scope="col" colspan="4"
+                        class="fs-6 fs-md-5 border-0 p-1 p-md-2">
+                        {{ type }}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -113,7 +119,7 @@ export default {
                       v-for="item in filterMenu[type]"
                       :key="`filterMenuItem ${item}`"
                     >
-                      <th scope="row" class="fw-normal" width="30%">
+                      <th scope="row" class="fw-normal px-1 px-md-2">
                         <RouterLink :to="`/drink/${item.id}`">
                           {{ item.name }}
                         </RouterLink>
@@ -121,18 +127,17 @@ export default {
                       <td width="60">
                         <div class="d-flex align-items-center">
                           <img
-                            width="20"
-                            class="me-2"
+                            class="menu-starImg me-1 me-md-2"
                             :src="imgUrl(item.rate ? 'full' : 'empty', 'icon-star-')"
                             alt="star"
                           />
 
-                          <p class="fs-6 font-handwriting mb-minus1">
+                          <p class="fs-normal1 fs-md-6 font-handwriting mb-minus1">
                             {{ item.rate ? item.rate : '0' }}
                           </p>
                         </div>
                       </td>
-                      <td>
+                      <td class="d-none d-md-table-cell">
                         <ul class="list-unstyled mb-0 d-flex justify-content-center">
                           <li
                             v-for="(special, index) in item.special"
@@ -146,14 +151,14 @@ export default {
                           </li>
                         </ul>
                       </td>
-                      <td width="130">
+                      <td class="menu-price">
                         <p class="font-handwriting mb-minus1">
                           <span v-if="item.price.m">M $ {{ item.price.m }}</span>
                           <span v-if="item.price.m && item.price.l">｜</span>
                           <span v-if="item.price.l">L $ {{ item.price.l }}</span>
                           </p>
                       </td>
-                      <td width="40" class="text-end">
+                      <td width="30" class="text-end">
                         <FavoriteBtn class="btn-favorite-sm" :id="item.id"/>
                       </td>
                     </tr>
@@ -161,7 +166,7 @@ export default {
                 </table>
               </div>
             </div>
-            <ul class="menu-list list-unstyled mb-0" ref="typeList">
+            <ul class="menu-list list-unstyled mb-0 d-none d-md-block" ref="typeList">
               <li
                 v-for="type in filterCustomType"
                 :key="`filterCustomType ${type}`"

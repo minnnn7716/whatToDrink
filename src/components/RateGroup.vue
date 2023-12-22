@@ -33,23 +33,26 @@ export default {
 </script>
 <template>
   <div class="row align-items-center">
-    <section class="col-3 d-flex flex-column align-items-center">
-      <h3 class="d-inline-block font-handwriting fs-display2 text-black mb-2">
+    <section class="col-12 col-md-3 d-flex flex-md-column align-items-center">
+      <h3 class="rateGroup-scoreTitle d-inline-block font-handwriting fs-display3 fs-md-display2
+      text-black lh-sm px-4 px-md-0 mb-md-2">
         {{ data.totalRateScore }}
       </h3>
-      <RateDisplay :rate="data.totalRateScore" class="rateDisplay-sm mb-3" />
-      <p class="d-inline-block">{{ data.commentsNum }} 則評論</p>
+      <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+        <RateDisplay :rate="data.totalRateScore" class="rateDisplay-sm mb-3" />
+        <p class="d-inline-block">{{ data.commentsNum }} 則評論</p>
+      </div>
     </section>
-    <section class="col-9">
-      <ul class="list-unstyled px-5 d-flex flex-column-reverse">
+    <section class="col-12 col-md-9">
+      <ul class="list-unstyled px-md-5 d-flex flex-column-reverse">
         <li
           class="rateGroup-item d-flex align-items-center"
-          :class="{ 'mb-3': index + 1 !== 1, 'active': pin === index + 1 }"
+          :class="{ 'mb-2 mb-md-3': index + 1 !== 1, 'active': pin === index + 1 }"
           v-for="(item, index) in data.eachRateNum"
           :key="`rateGroup ${index + 1}`"
         >
-          <RateDisplay :rate="`${index + 1}.0`" class="rateDisplay-xs" />
-          <div class="rateGroup-bar flex-grow-1 mx-3">
+          <RateDisplay :rate="`${index + 1}.0`" class="rateDisplay-xs d-none d-md-block" />
+          <div class="rateGroup-bar flex-grow-1 mx-md-3">
             <div
               :class="{
                 'rateGroup-bar-inside': item !== 0,
@@ -76,6 +79,15 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vendors/bootstrap';
 .rateGroup {
+  &-scoreTitle {
+    width: 50%;
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      width: 100%;
+    }
+  }
+
   &-item {
     &.active {
       .rateGroup-bar-inside,
@@ -91,6 +103,10 @@ export default {
     border: 1px solid #000;
     border-radius: 20px;
     overflow: hidden;
+
+    @include media-breakpoint-up(md) {
+      height: 12px;
+    }
 
     &-inside{
       position: absolute;
@@ -116,8 +132,10 @@ export default {
       height: 25px;
     }
 
-    &:not(.active):hover {
-      background-color: $accent-300;
+    @include media-breakpoint-up(md) {
+      &:not(.active):hover {
+        background-color: $accent-300;
+      }
     }
   }
 }

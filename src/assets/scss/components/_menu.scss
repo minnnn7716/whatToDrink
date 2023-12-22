@@ -1,8 +1,33 @@
 .menu {
   position: relative;
-  margin-right: 44px;
+  margin-right: 0;
+
+  @include media-breakpoint-up(md) {
+    margin-right: 44px;
+  }
+
   td {
     padding: 12px 4px;
+
+    @include media-breakpoint-up(md) {
+      padding: 8px 4px;
+    }
+  }
+
+  &-starImg {
+    width: 18px;
+
+    @include media-breakpoint-up(md) {
+      width: 20px;
+    }
+  }
+
+  &-price {
+    width: 110px;
+
+    @include media-breakpoint-up(md) {
+      width: 130px;
+    }
   }
 
   &-list {

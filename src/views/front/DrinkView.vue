@@ -68,22 +68,23 @@ export default {
   },
 };
 </script>
+
 <template>
-  <div class="container pt-15 pb-25">
+  <div class="container pt-8 pt-md-15 pb-8 pb-md-12">
     <div class="row justify-content-center">
-      <div class="col-9 col-3xl-10">
+      <div class="col-12 col-md-9 col-3xl-10">
         <section class="row">
-          <div class="col-4">
+          <div class="col-12 col-md-4 mb-3 mb-md-0 drinkImg">
             <img
               class="img-full"
               :src="singleDrink.imageUrl"
               :alt="singleDrink.name" />
           </div>
-          <div class="col-8 d-flex flex-column justify-content-between">
-            <div class="d-flex justify-content-between mb-8">
+          <div class="col-12 col-md-8 d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between mb-0 mb-md-8">
               <div>
                 <h3
-                  class="py-2 px-5 mb-3 d-inline-block fs-normal1 fw-normal
+                  class="py-2 px-5 mb-3 d-inline-block fs-normal2 fs-md-normal1 fw-normal
                   border border-gray-900 rounded-pill"
                 >
                   <RouterLink
@@ -91,10 +92,10 @@ export default {
                     {{ singleDrink.shop.name }}
                   </RouterLink>
                 </h3>
-                <h2 class="fs-3 mb-6">{{ singleDrink.name }}</h2>
-                <ul class="list-unstyled d-flex mb-5">
+                <h2 class="fs-4 fs-md-3 mb-3 mb-md-6">{{ singleDrink.name }}</h2>
+                <ul class="list-unstyled d-flex mb-0 mb-md-5">
                   <li class="pe-6 border-end border-black">
-                    <p class="mb-2 fs-6 fw-medium">
+                    <p class="mb-2 fs-normal1 fs-md-6 fw-medium">
                       M <span class="ms-4">$ {{ singleDrink.price.m }}</span>
                     </p>
                     <small class="d-block text-gray-700 mb-1">
@@ -105,7 +106,7 @@ export default {
                     </small>
                   </li>
                   <li class="ps-6">
-                    <p class="mb-2 fs-6 fw-medium">
+                    <p class="mb-2 fs-normal1 fs-md-6 fw-medium">
                       L <span class="ms-4">$ {{ singleDrink.price.l }}</span>
                     </p>
                     <small class="d-block text-gray-700 mb-1">
@@ -134,7 +135,7 @@ export default {
               </div>
               <div class="text-end">
                 <RateDisplay
-                  class="rateDisplay-md mb-3"
+                  class="rateDisplay-md mb-3 d-none d-md-block"
                   :rate="rateGroup.totalRateScore"
                 />
                 <FavoriteBtn
@@ -149,17 +150,17 @@ export default {
             </ul>
           </div>
         </section>
-        <section class="row justify-content-center pt-15" id="drink-rateGroup">
-          <div class="col-10">
+        <section class="row justify-content-center pt-10 pt-md-15" id="drink-rateGroup">
+          <div class="col-12 col-md-10">
             <RateGroup
               :data="rateGroup"
               @emit-pin="clickRateAction"
             />
           </div>
-          <div class="col-2 d-flex align-items-center justify-content-center">
+          <div class="col-6 col-md-2 d-flex align-items-center justify-content-center">
             <button
               type="button"
-              class="btn-custom btn-custom-primary fs-6 fw-bold px-0 w-100"
+              class="btn-custom btn-custom-primary fs-6 fw-bold px-0 w-100 py-3"
               @click="$refs.addCommentModal.showModal"
             >
               撰寫評論
@@ -203,3 +204,16 @@ export default {
     />
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/vendors/bootstrap';
+@import '@/assets/scss/components/button';
+
+  .drinkImg {
+    height: 250px;
+
+    @include media-breakpoint-up(md) {
+      height: auto;
+    }
+  }
+</style>
