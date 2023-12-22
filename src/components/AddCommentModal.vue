@@ -61,6 +61,7 @@ export default {
         this.postComment(this.addDate, drink, shop);
         this.modal.hide();
 
+        this.firstSend = false;
         this.addDate = {
           rate: '0',
           userName: '',
