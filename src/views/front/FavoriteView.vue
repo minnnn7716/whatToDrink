@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
-import drinkStore from '@/stores/drinkStore';
-import SearchTableMode from '@/components/SearchTableMode.vue';
+import drinkStore from '../../stores/drinkStore';
+import SearchTableMode from '../../components/SearchTableMode.vue';
 
 export default {
   data() {
@@ -35,7 +35,7 @@ export default {
       this.getFavoriteList();
       const data = [];
 
-      if (this.list.length) {
+      if (this.drinks.length) {
         for (let i = 0; i < this.list.length; i += 1) {
           const filterAry = this.drinks.filter((item) => item.id === this.list[i]);
           data.push(filterAry[0]);
@@ -64,6 +64,7 @@ export default {
         }
       }
 
+      console.log('filterTypeAry', filterTypeAry);
       return filterTypeAry;
     },
     filterCustomType() {
@@ -97,12 +98,14 @@ export default {
       <div class="col-10 col-3xl-12 mx-auto">
         <div class="menu px-6 py-8 border border-3 border-secondary-600 rounded-4">
           <h2 class="fs-3 fw-bold d-flex align-items-center text-accent mb-6">
-            <img class="me-2" src="@/assets/images/icon-favorite-active.svg">
-            收藏清單</h2>
-          <SearchTableMode
-            v-if="favoriteDate.length"
-            :propsData="filterFavoriteDate"
-          />
+            <img class="me-2" src="../../assets/images/icon-favorite-active.svg">
+            收藏清單
+          </h2>
+          <div v-if="filterFavoriteDate.length">
+            <SearchTableMode
+              :propsData="filterFavoriteDate"
+            />
+          </div>
           <div v-else class="py-4 d-flex flex-column align-items-center">
             <p class="fs-4 fw-medium mb-4">尚無喜愛飲品</p>
             <RouterLink
