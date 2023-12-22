@@ -123,49 +123,55 @@ export default {
 </script>
 
 <template>
-  <div class="container pt-20 pb-10">
+  <div class="container pt-10 pt-md-20 pb-10">
     <div class="row">
-      <div class="col-10 col-3xl-12 mx-auto">
-        <div class="d-flex mb-5">
+      <div class="col-12 col-md-10 col-3xl-12 mx-auto">
+        <div class="d-flex flex-column flex-md-row mb-8 mb-md-5 px-10 px-md-0">
           <SwitchBtnGroup
-            class="switchBtnGroup-light switchBtnGroup-text-h100 me-4 border border-black"
+            class="switchBtnGroup-light switchBtnGroup-text-h100
+            border border-black me-0 me-md-4 mb-3 mb-md-0"
             :defaultSelect="search.type"
             @emit-btn="(i) => search.type = i"
           >
             <template v-slot:start>
-              <span data-name="drinks">飲料</span>
+              <span class="fs-normal1 fs-md-6
+              d-inline-block py-2 py-md-0" data-name="drinks">飲料</span>
             </template>
             <template v-slot:end>
-              <span data-name="shops">店家</span>
+              <span class="fs-normal1 fs-md-6
+              d-inline-block py-2 py-md-0" data-name="shops">店家</span>
             </template>
           </SwitchBtnGroup>
-          <SearchBar
-            class="searchBar-border me-3"
-            :searchType="search.type"
-          />
-          <SwitchBtnGroup
-            class="switchBtnGroup-primary switchBtnGroup-icon me-3"
-            @emit-btn="(i) => display = i"
-          >
-            <template v-slot:start>
-              <img src="@/assets/images/icon-mode-list.svg" alt="列表模式" data-name="table" />
-            </template>
-            <template v-slot:end>
-              <img src="@/assets/images/icon-mode-block.svg" alt="圖表模式" data-name="image" />
-            </template>
-          </SwitchBtnGroup>
-          <SortComponent
-            :propsSortSelect="sort.select[0]"
-            @sort-select="(i) => sort.select = i"
-            @sort-order="(i) => sort.order = i"
-          />
+            <SearchBar
+              class="searchBar-border me-md-3"
+              :searchType="search.type"
+            />
+            <SwitchBtnGroup
+              class="d-none d-md-flex switchBtnGroup-primary switchBtnGroup-icon me-3"
+              @emit-btn="(i) => display = i"
+            >
+              <template v-slot:start>
+                <img src="@/assets/images/icon-mode-list.svg" alt="列表模式" data-name="table" />
+              </template>
+              <template v-slot:end>
+                <img src="@/assets/images/icon-mode-block.svg" alt="圖表模式" data-name="image" />
+              </template>
+            </SwitchBtnGroup>
+            <div class="d-none d-md-block">
+              <SortComponent
+                :propsSortSelect="sort.select[0]"
+                @sort-select="(i) => sort.select = i"
+                @sort-order="(i) => sort.order = i"
+              />
+            </div>
         </div>
-        <div class="d-flex align-items-center justify-content-between mb-10">
-          <p class="fs-5 fw-bold">
+        <div class="d-flex flex-column flex-md-row
+        align-items-md-center justify-content-between ms-1 ms-md-1 mb-3 mb-md-10">
+          <p class="fs-normal1 fs-md-5 fw-bold">
             找到 {{ resultNum }} 個符合「{{ search.keyword }}」的飲料
           </p>
           <div
-            class="w-fit d-flex align-items-center py-1 ps-6 pe-2 bg-accent-300
+            class="w-fit d-none d-md-flex align-items-center py-1 ps-6 pe-2 bg-accent-300
             border border-black rounded-pill transition-ease"
             :class="{ 'opacity-0': !sort.select }"
           >

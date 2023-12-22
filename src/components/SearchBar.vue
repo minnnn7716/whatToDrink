@@ -44,7 +44,7 @@ export default {
     <input
       type="text"
       id="search"
-      class="searchBar-input form-control h-100 rounded-pill fs-6"
+      class="searchBar-input form-control h-100 rounded-pill fs-normal-1 fs-md-6"
       :class="{ 'border-3 border-accent-700': firstSearch && alertShow }"
       placeholder="想喝什麼告訴我吧！"
       v-model.trim="searchWord"
@@ -82,7 +82,7 @@ export default {
 
   &-input{
     padding: 4px 56px 4px 16px;
-    min-height: 65px;
+    min-height: 60px;
 
     @include media-breakpoint-up(md) {
       padding: 4px 72px 4px 24px;

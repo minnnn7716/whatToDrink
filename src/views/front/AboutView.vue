@@ -3,10 +3,10 @@
     <header class="about-header"></header>
     <div class="container">
       <div class="row">
-        <div class="col-8 mx-auto py-15">
+        <div class="col-10 col-md-8 mx-auto pt-15 pt-md-18 pb-20 p-md-25">
           <section class="mb-12">
             <div class="mb-10">
-              <h2 class="about-title mb-4 fs-3 fw-bold">關於 What to Drink</h2>
+              <h2 class="about-title mb-4 fs-4 fs-md-3 fw-bold">關於 What to Drink</h2>
               <p>
                 它朱風波去固手波葉錯苦記家米、各想辛科訴路至子間包早音杯主也婆子下住：
                 一半色戶平進訴大黑借還士久習言兌采、尾校兄造收植下「出牛各七何」。
@@ -16,8 +16,12 @@
               </p>
             </div>
             <div>
-              <div class="d-flex align-items-center mb-4">
-                <img class="me-10" src="@/assets/images/userPhoto.webp" alt="評價系統" />
+              <div class="d-flex flex-column flex-md-row align-items-center mb-10 mb-md-4">
+                <img
+                  class="mb-6 mb-md-0 me-md-10"
+                  src="@/assets/images/userPhoto.webp"
+                  alt="評價系統"
+                />
                 <div>
                   <h3 class="mb-4 py-2 px-6 d-inline-block bg-accent-300 rounded-pill fs-5">
                     評價系統
@@ -27,8 +31,12 @@
                   </p>
                 </div>
               </div>
-              <div class="d-flex flex-row-reverse align-items-center">
-                <img class="ms-10" src="@/assets/images/userPhoto.webp" alt="評價系統" />
+              <div class="d-flex flex-column flex-md-row-reverse align-items-center">
+                <img
+                  class="mb-6 mb-md-0 ms-md-10"
+                  src="@/assets/images/userPhoto.webp"
+                  alt="轉盤功能"
+                />
                 <div>
                   <h3 class="mb-4 py-2 px-6 d-inline-block bg-secondary-300 rounded-pill fs-5">
                     轉盤功能
@@ -47,7 +55,7 @@
               <span></span>
               <span></span>
             </div>
-            <h3 class="about-title mb-4 fs-3 fw-bold">聯絡</h3>
+            <h3 class="about-title mb-4 fs-4 fs-md-3 fw-bold">聯絡</h3>
             <p class="fs-6">
               有任何問題或建議都歡迎寄信至：
               <a href="mailto:polaris.map.1618@gmail.com">polaris.map.1618@gmail.com</a>
@@ -64,8 +72,14 @@
 
 .about {
   &-header {
-    height: 350px;
-    background: center / cover no-repeat url('@/assets/images/about-banner.webp');
+    height: 280px;
+    background: center / cover no-repeat;
+    background-image: url('@/assets/images/about-banner-sm.webp');
+
+    @include media-breakpoint-up(md) {
+      height: 350px;
+      background-image: url('@/assets/images/about-banner.webp');
+    }
 
     @include media-breakpoint-up(3xl) {
       height: 410px;

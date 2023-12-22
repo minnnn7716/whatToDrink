@@ -72,13 +72,13 @@ export default {
     <table class="table align-middle table-hover mb-0">
       <thead>
         <tr>
-          <th class="ps-6 py-4 bg-primary">品名</th>
-          <th class="py-4 bg-primary text-center">店家</th>
-          <th class="py-4 bg-primary text-center">價錢</th>
-          <th class="py-4 bg-primary text-center" width="180">評價</th>
-          <th class="py-4 bg-primary text-center">咖啡因</th>
-          <th class="py-4 bg-primary" width="150"><span class="invisible">特點</span></th>
-          <th class="py-4 bg-primary" width="60"><span class="invisible">喜愛</span></th>
+          <th class="ps-6 py-3 py-md-4 bg-primary">品名</th>
+          <th class="py-3 py-md-4 bg-primary text-center">店家</th>
+          <th class="py-3 py-md-4 bg-primary text-center">價錢</th>
+          <th class="th-rate py-3 py-md-4 bg-primary text-center">評價</th>
+          <th class="py-3 py-md-4 bg-primary text-center d-none d-md-table-cell">咖啡因</th>
+          <th class="th-special py-3 py-md-4 bg-primary"><span class="invisible">特點</span></th>
+          <th class="py-3 py-md-4 bg-primary" width="60"><span class="invisible">喜愛</span></th>
         </tr>
       </thead>
       <tbody>
@@ -113,13 +113,26 @@ export default {
                 :to="{ path: `/drink/${item.id}`, hash: '#drink-comments' }"
               >
                 <RateDisplay
-                  class="rateDisplay-sm hasSansText"
+                  class="d-none d-md-flex rateDisplay-sm hasSansText"
                   :rate="item.rate"
                 />
+                <div class="d-flex d-md-none align-items-center">
+                  <img
+                    class="menu-starImg me-1 me-md-2"
+                    :src="imgUrl(item.rate ? 'full' : 'empty', 'icon-star-')"
+                    alt="star"
+                  />
+
+                  <p class="fs-normal1 fs-md-6 font-handwriting mb-minus1">
+                    {{ item.rate ? item.rate : '0' }}
+                  </p>
+                </div>
               </RouterLink>
             </div>
           </td>
-          <td class="py-6 text-center">{{ !item.caffeine ? '無咖啡因' : item.caffeine }}</td>
+          <td class="py-6 text-center d-none d-md-table-cell">
+            {{ !item.caffeine ? '無咖啡因' : item.caffeine }}
+          </td>
           <td class="py-6">
             <ul class="list-unstyled mb-0 d-flex justify-content-center">
               <li
@@ -127,7 +140,7 @@ export default {
                 :key="`${item.id} ${special}`"
               >
                 <img
-                  :class="{ 'me-2': index != item.special.length}"
+                  :class="{ 'me-2': index != item.special.length - 1}"
                   :src="judgeSpecialImg(special)"
                   :alt="special"
                 />
@@ -163,4 +176,28 @@ th {
 td {
   border-bottom: 1px solid $gray-custom-300;
 }
+
+.th{
+  &-rate {
+    width: auto;
+
+    @include media-breakpoint-up(md) {
+      width: 180px;
+    }
+  }
+
+  &-special{
+    @include media-breakpoint-up(md) {
+      width: 150px;
+    }
+  }
+}
+
+.table {
+    width: max-content;
+
+    @include media-breakpoint-up(md) {
+      width: 100%;
+    }
+  }
 </style>

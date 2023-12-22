@@ -122,6 +122,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
     border: 1px solid #000;
     border-radius: 50%;
     background-color: $primary;
