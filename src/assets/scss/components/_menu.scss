@@ -22,12 +22,28 @@
     }
   }
 
-  &-price {
-    width: 110px;
+  &-rate {
+    width: 50px;
 
     @include media-breakpoint-up(md) {
-      width: 130px;
+      width: 70px;
     }
+  }
+
+  &-price {
+    width: 100px;
+
+    @include media-breakpoint-up(md) {
+      width: 120px;
+    }
+  }
+
+  &-favorite {
+    width: 40px;
+  }
+
+  &-special {
+    width: 110px;
   }
 
   &-list {

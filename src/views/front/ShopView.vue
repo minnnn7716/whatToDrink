@@ -10,7 +10,7 @@ import ShopCommentModal from '@/components/ShopCommentModal.vue';
 export default {
   data() {
     return {
-      drinks: {},
+      resizeObj: {},
     };
   },
   components: {
@@ -20,29 +20,30 @@ export default {
   },
   props: ['id'],
   watch: {
-    id: 'init',
+    $route() {
+      this.resizeObj.unobserve(this.$refs.typeList);
+    },
   },
   methods: {
     ...mapActions(shopStore, ['getSingleShop', 'changeType']),
     ...mapActions(commentStore, ['getComments', 'sortComments']),
-    init() {
-      const listHeight = this.$refs.typeList.offsetHeight + 64;
-      console.log('listHeight', listHeight);
-      this.$refs.menu.style.minHeight = `${listHeight}px`;
-
-      this.changeType('全部飲品');
-    },
     imgUrl(item, fileName) {
       const url = new URL(`../../assets/images/${fileName}${item}.svg`, import.meta.url);
       return url;
     },
     judgeSpecialImg(str) {
       const obj = {
-        僅限冷飲: 'cold',
         店家推薦: 'recommend',
-        無咖啡因: 'noCaffeine',
+        僅限冷飲: 'cold',
         僅限熱飲: 'hot',
+        無咖啡因: 'noCaffeine',
         固定糖冰: 'fixed',
+        固定微冰: 'fixed',
+        固定三分糖: 'fixed',
+        固定少冰: 'fixed',
+        固定無糖: 'fixed',
+        期間限定: 'limited',
+        季節限定: 'limited',
       };
 
       return this.imgUrl(obj[str], 'icon-special-');
@@ -56,8 +57,13 @@ export default {
     this.getComments();
   },
   mounted() {
-    this.init();
-    console.log('mounted');
+    this.resizeObj = new ResizeObserver((entries) => {
+      const rect = entries[0].contentRect;
+      const { height } = rect;
+      this.$refs.menu.style.minHeight = `${height + 64}px`;
+    });
+
+    this.resizeObj.observe(this.$refs.typeList);
   },
 };
 </script>
@@ -94,7 +100,7 @@ export default {
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-3xl-12">
           <div class="menu px-2 px-md-6 py-4 py-md-10
-          border border-3 border-secondary-600 rounded-4" ref="menu">
+          border border-3 border-secondary-600 rounded-4" ref="menu"  id="menu">
             <div class="row gy-6 gy-md-10 gx-10">
               <div
                 :class="{
@@ -119,12 +125,12 @@ export default {
                       v-for="item in filterMenu[type]"
                       :key="`filterMenuItem ${item}`"
                     >
-                      <th scope="row" class="fw-normal px-1 px-md-2">
+                      <th scope="row" class="tableTitle fw-normal px-1 px-md-2">
                         <RouterLink :to="`/drink/${item.id}`">
                           {{ item.name }}
                         </RouterLink>
                       </th>
-                      <td width="60">
+                      <td class="menu-rate">
                         <div class="d-flex align-items-center">
                           <img
                             class="menu-starImg me-1 me-md-2"
@@ -137,8 +143,8 @@ export default {
                           </p>
                         </div>
                       </td>
-                      <td class="d-none d-md-table-cell">
-                        <ul class="list-unstyled mb-0 d-flex justify-content-center">
+                      <td class="menu-special d-none d-md-table-cell">
+                        <ul class="list-unstyled mb-0 d-flex">
                           <li
                             v-for="(special, index) in item.special"
                             :key="`${item.id} ${special}`"
@@ -152,13 +158,13 @@ export default {
                         </ul>
                       </td>
                       <td class="menu-price">
-                        <p class="font-handwriting mb-minus1">
+                        <p class="font-handwriting mb-minus1 fs-normal2 fs-md-normal1">
                           <span v-if="item.price.m">M $ {{ item.price.m }}</span>
                           <span v-if="item.price.m && item.price.l">｜</span>
                           <span v-if="item.price.l">L $ {{ item.price.l }}</span>
                           </p>
                       </td>
-                      <td width="30" class="text-end">
+                      <td class="menu-favorite text-end">
                         <FavoriteBtn class="btn-favorite-sm" :id="item.id"/>
                       </td>
                     </tr>
@@ -172,7 +178,6 @@ export default {
                 :key="`filterCustomType ${type}`"
               >
                 <button
-                  type="button"
                   class="menu-btn"
                   :class="{ 'active': selectType === type }"
                   @click="changeType(type)"

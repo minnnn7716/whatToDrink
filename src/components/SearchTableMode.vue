@@ -55,11 +55,17 @@ export default {
     },
     judgeSpecialImg(str) {
       const obj = {
-        僅限冷飲: 'cold',
         店家推薦: 'recommend',
-        無咖啡因: 'noCaffeine',
+        僅限冷飲: 'cold',
         僅限熱飲: 'hot',
+        無咖啡因: 'noCaffeine',
         固定糖冰: 'fixed',
+        固定微冰: 'fixed',
+        固定三分糖: 'fixed',
+        固定少冰: 'fixed',
+        固定無糖: 'fixed',
+        期間限定: 'limited',
+        季節限定: 'limited',
       };
 
       return this.imgUrl(obj[str], 'icon-special-');
