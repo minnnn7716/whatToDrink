@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import emitter from '@/methods/emitter';
 
 export default defineStore('shopStore', {
   state: () => ({
@@ -19,11 +20,14 @@ export default defineStore('shopStore', {
 
       axios.get(api)
         .then((res) => {
-          console.log(res);
           this.shops = res.data;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得資料失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     getSingleShop(shopCode) {
@@ -40,11 +44,14 @@ export default defineStore('shopStore', {
 
       axios.get(api)
         .then((res) => {
-          console.log(res);
           this.shops = res.data;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得資料失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     changeType(type) {

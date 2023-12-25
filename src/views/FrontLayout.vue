@@ -1,6 +1,7 @@
 <script>
 import NavbarComponent from '@/components/NavbarComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import ToastMessages from '@/components/ToastMessages.vue';
 
 export default {
   data() {
@@ -11,6 +12,7 @@ export default {
   components: {
     NavbarComponent,
     FooterComponent,
+    ToastMessages,
   },
   watch: {
     $route: 'listenerScroll',
@@ -45,4 +47,5 @@ export default {
   <NavbarComponent :class="{ 'showNav': navbarStatus }" />
   <RouterView class="view" />
   <FooterComponent />
+  <ToastMessages />
 </template>

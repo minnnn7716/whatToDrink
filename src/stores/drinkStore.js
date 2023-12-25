@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import emitter from '@/methods/emitter';
 
 export default defineStore('drinkStore', {
   state: () => ({
@@ -42,11 +43,14 @@ export default defineStore('drinkStore', {
 
       axios.get(api)
         .then((res) => {
-          console.log(res);
           this.drinks = res.data;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得資料失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     getDrinksShopComment() {
@@ -54,11 +58,14 @@ export default defineStore('drinkStore', {
 
       axios.get(api)
         .then((res) => {
-          console.log(res);
           this.drinks = res.data;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得店家評論失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     getSingleDrink(drinkId) {
@@ -66,11 +73,14 @@ export default defineStore('drinkStore', {
 
       axios.get(api)
         .then((res) => {
-          console.log(res);
           this.singleDrink = res.data;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得資料失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     getSearchDrink(type, keyword) {
@@ -83,12 +93,15 @@ export default defineStore('drinkStore', {
 
       axios.get(`${api}${path}`)
         .then((res) => {
-          console.log(res);
           this.drinks = res.data;
           this.sortData();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得資料失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     joinIngredient(ingredient) {
@@ -105,7 +118,6 @@ export default defineStore('drinkStore', {
       }
     },
     sortFn(order, select) {
-      console.log('sortFn');
       const ary = [...this.drinks];
 
       if (order === 'up') {
@@ -117,7 +129,6 @@ export default defineStore('drinkStore', {
       return ary;
     },
     sortTwoSizeFn(order, select) {
-      console.log('sortTwoSizeFn');
       const ary = [...this.drinks];
 
       if (order === 'up') {

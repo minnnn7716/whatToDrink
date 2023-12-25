@@ -64,7 +64,6 @@ export default {
         }
       }
 
-      console.log('filterTypeAry', filterTypeAry);
       return filterTypeAry;
     },
     filterCustomType() {

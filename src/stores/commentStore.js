@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import emitter from '@/methods/emitter';
 
 export default defineStore('commentStore', {
   state: () => ({
@@ -15,11 +16,14 @@ export default defineStore('commentStore', {
 
       axios.get(api)
         .then((res) => {
-          console.log(res);
           this.comments = res.data;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '取得評論失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     clickPin(rate) {
@@ -134,13 +138,23 @@ export default defineStore('commentStore', {
 
       axios.post(api, data)
         .then((res) => {
-          console.log(res);
-          this.patchRate('shops', shopObj);
-          this.patchRate('drinks', drinkObj);
-          this.getComments();
+          if (res.status === 201) {
+            emitter.emit('push-message', {
+              style: 'success',
+              title: '評論成功',
+            });
+
+            this.patchRate('shops', shopObj);
+            this.patchRate('drinks', drinkObj);
+            this.getComments();
+          }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '評論失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     slicePage(data, currentPage = 1) {
@@ -232,11 +246,14 @@ export default defineStore('commentStore', {
       };
 
       axios.patch(api, data)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          emitter.emit('push-message', {
+            style: 'danger',
+            title: '評論更新失敗',
+            content: '出現系統問題，請聯絡管理員，謝謝！',
+          });
         });
     },
     rateAverage(data, newRate) {

@@ -70,11 +70,9 @@ export default {
 
       if (this.search.type === 'shops') {
         this.getSearchShops(this.search.keyword);
-        console.log('搜尋店家!');
         return;
       }
 
-      console.log('搜尋飲料!');
       this.isGetUrlData = true;
     },
     joinShopIdPath() {
