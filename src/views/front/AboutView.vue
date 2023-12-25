@@ -3,46 +3,64 @@
     <header class="about-header"></header>
     <div class="container">
       <div class="row">
-        <div class="col-10 col-md-8 mx-auto pt-15 pt-md-18 pb-20 p-md-25">
+        <div class="col-10 col-md-9 mx-auto pt-15 pt-md-18 pb-20 p-md-25">
           <section class="mb-12">
             <div class="mb-10">
-              <h2 class="about-title mb-4 fs-4 fs-md-3 fw-bold">關於 What to Drink</h2>
+              <h2 class="about-title mb-6 fs-4 fs-md-3 fw-bold">關於 What to Drink</h2>
               <p>
-                它朱風波去固手波葉錯苦記家米、各想辛科訴路至子間包早音杯主也婆子下住：
-                一半色戶平進訴大黑借還士久習言兌采、尾校兄造收植下「出牛各七何」。
-                現怕條自姊斤弓上視頭「去天」路尺種消什「訴」片比高玩禾食司長頭年菜停遠
-                明天，國即蛋哪人音目首樹千丁公寸飛奶起成造下升、拍尺麼神可肖園夏丟朱己
-                內抓別時別法春，左福房一。細午辛造能肖苦兌平。
+                嗨，大家好！你今天想喝什麼呢？身為手搖飲大國一員的各位，是不是經常為了這個問題苦惱，還沒想好要喝什麼，但總之今天至少來個一杯、兩杯或三杯！你有以下困擾嗎？
+
+                <ul class="my-6">
+                  <li>想老半天還是猶豫不決到底要點什麼（但是就是想喝一杯啊！）</li>
+                  <li>嘴癢想多喝但又有點擔心熱量超標</li>
+                  <li>超過二十五歲開始在意起咖啡因含量</li>
+                  <li>新品那麼多，看名字根本不知道內容物啦</li>
+                </ul>
+
+                基於以上天天困擾我微小卻重大的問題，催生了這裡！目前仍在起步中，資料與功能還不完善，未來會逐步規畫進行。
+                <br><br>
+                這裡目前蒐羅五家飲料店菜單，分別是「可不可熟成紅茶」、「五十嵐」、「一沐日」、「清心福全」與「約翰紅茶」，
+                並盡力收集相關資訊，包含價錢、內容物、熱量、咖啡因，讓你可以從中挑選更符合你心意的飲料。
               </p>
             </div>
             <div>
-              <div class="d-flex flex-column flex-md-row align-items-center mb-10 mb-md-4">
-                <img
-                  class="mb-6 mb-md-0 me-md-10"
-                  src="@/assets/images/userPhoto.webp"
-                  alt="評價系統"
-                />
-                <div>
-                  <h3 class="mb-4 py-2 px-6 d-inline-block bg-accent-300 rounded-pill fs-5">
-                    評價系統
-                  </h3>
-                  <p>
-                    它朱風波去固手波葉錯苦記家米、各想辛科訴路至子間包早音杯主也婆子下住：一半色戶平進訴大黑借還士久習言兌采、尾校兄造收植下「出牛各七何」。
-                  </p>
+              <div class="row flex-column flex-md-row align-items-center mb-10 mb-md-10">
+                <div class="col-12 col-md-5">
+                  <img
+                    class="img-fluid mb-6 mb-md-0 me-md-6"
+                    src="@/assets/images/about-wheel.svg"
+                    alt="評價系統"
+                  />
                 </div>
-              </div>
-              <div class="d-flex flex-column flex-md-row-reverse align-items-center">
-                <img
-                  class="mb-6 mb-md-0 ms-md-10"
-                  src="@/assets/images/userPhoto.webp"
-                  alt="轉盤功能"
-                />
-                <div>
-                  <h3 class="mb-4 py-2 px-6 d-inline-block bg-secondary-300 rounded-pill fs-5">
+                <div class="col-12 col-md-7">
+                  <h3 class="mb-4 py-2 px-6 d-inline-block bg-accent-300 rounded-pill fs-6">
                     轉盤功能
                   </h3>
                   <p>
-                    它朱風波去固手波葉錯苦記家米、各想辛科訴路至子間包早音杯主也婆子下住：一半色戶平進訴大黑借還士久習言兌采、尾校兄造收植下「出牛各七何」。
+                    看了那麼多杯飲料資訊，反而讓你更加選擇困難嗎？
+                    <br>
+                    不要緊，那麼讓我們隨機給你一杯飲料。
+                    即使是隨機飲料仍可以挑選大方向的偏好，如果你是純茶派，不要擔心，我們就給你只有茶的選項。
+                  </p>
+                </div>
+              </div>
+              <div class="row flex-column flex-md-row-reverse align-items-center">
+                <div class="col-12 col-md-5">
+                  <img
+                    class="img-fluid mb-6 mb-md-0 ms-md-6"
+                    src="@/assets/images/about-message.svg"
+                    alt="轉盤功能"
+                  />
+                </div>
+                <div class="col-12 col-md-7">
+                  <h3 class="mb-4 py-2 px-6 d-inline-block bg-secondary-300 rounded-pill fs-6">
+                    評價系統
+                  </h3>
+                  <p>
+                    「受不了！太好喝了！怎麼可以只有我知道！」
+                    <br>
+                    在世界中心大聲呼喊你推的飲料！
+                    他的風味、他的美好，告訴大家他有多讚！（當然或...「太ㄋㄏ」也可以讓大家避雷，好人一生平安）
                   </p>
                 </div>
               </div>
