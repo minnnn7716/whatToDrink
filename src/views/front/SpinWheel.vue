@@ -237,7 +237,7 @@ export default {
         <div class="row justify-content-center">
           <div
             v-if="step === 'wheelHome' || step === 'select'"
-            class="col-10 col-md-8 col-3xl-10"
+            class="col-10 col-md-12 col-lg-8 col-3xl-10"
           >
             <div class="d-none d-md-flex mb-6 d-flex align-items-center justify-content-between">
               <h2 class="title-angleStar-dark fs-4">轉轉轉，飲料跟著一起來～</h2>
@@ -253,7 +253,7 @@ export default {
             <!-- wheel-home -->
             <div
               v-if="step === 'wheelHome'"
-              class="row gy-6 gy-md-0 gx-md-12 pt-10 pt-md-0"
+              class="row gy-6 gy-md-0 gx-lg-12 pt-10 pt-md-0"
             >
               <div class="col-12 col-md-6 wheel-home-btn">
                 <a
@@ -451,7 +451,7 @@ export default {
           <!-- wheel-result -->
           <div
             v-if="step === 'result'"
-            class="wheel-result col-11 col-md-5 col-3xl-6 mb-20 mb-md-0"
+            class="wheel-result col-11 col-md-8 col-lg-5 col-3xl-6 mb-20 mb-md-0"
           >
             <div v-if="noResult">
               <RouterLink

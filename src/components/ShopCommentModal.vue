@@ -88,10 +88,10 @@ export default {
           @click="hideModal"
         ></button>
       </div>
-      <div class="modal-body pt-0 ps-1 pe-1 px-md-10 py-md-4">
+      <div class="modal-body pt-0 ps-1 pe-1 px-lg-10 py-lg-4">
         <div class="container-fluid">
           <RateGroup
-            class="mb-6 mb-md-10"
+            class="mb-6 mb-lg-10"
             :data="rateGroup"
             @emit-pin="clickPinAction"
           />
@@ -112,15 +112,15 @@ export default {
               <option value="最少甜度">最少甜度</option>
             </select>
           </div>
-          <div class="px-md-5">
+          <div class="px-lg-5">
             <div
               class="pb-10"
               :class="{ 'border-bottom border-gray mb-10': index !== sortComments.length - 1 }"
               v-for="(item, index) in sortComments"
               :key="`shopComment ${index}`"
             >
-              <div class="row flex-column flex-md-row">
-                <div class="col-12 col-md-5 mb-3 mb-md-0">
+              <div class="row flex-column flex-lg-row">
+                <div class="col-12 col-lg-5 mb-3 mb-lg-0">
                   <a
                     class="d-flex"
                     href="#"
@@ -131,15 +131,15 @@ export default {
                       :src="filterDrink(item.drinkId).imageUrl"
                       :alt="filterDrink(item.drinkId).name"
                     />
-                    <div class="d-flex flex-column justify-content-md-between flex-grow-1">
-                      <div class="d-flex flex-md-column justify-content-between">
-                        <p class="fs-6 fs-md-5 fw-medium mb-2">
+                    <div class="d-flex flex-column justify-content-lg-between flex-grow-1">
+                      <div class="d-flex flex-lg-column justify-content-between">
+                        <p class="fs-6 fs-lg-5 fw-medium mb-2">
                           {{ filterDrink(item.drinkId).name }}
                         </p>
-                        <div class="d-flex align-items-center flex-row-reverse flex-md-row">
+                        <div class="d-flex align-items-center flex-row-reverse flex-lg-row">
                           <img
                             width="21"
-                            class="ms-1 me-md-1"
+                            class="ms-1 me-lg-1"
                             src="@/assets/images/icon-star-full.svg"
                             alt="rate"
                           />
@@ -149,7 +149,7 @@ export default {
                           </p>
                         </div>
                       </div>
-                      <p class="fs-normal1 fs-md-6 font-handwriting lh-1">
+                      <p class="fs-normal1 fs-lg-6 font-handwriting lh-1">
                         M
                         <span class="ms-1">
                           $ {{ filterDrink(item.drinkId).price.m }}
@@ -162,7 +162,7 @@ export default {
                     </div>
                   </a>
                 </div>
-                <div class="col-12 col-md-7 d-flex">
+                <div class="col-12 col-lg-7 d-flex">
                   <CommentDisplay :commentData="item"/>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default {
   width: 65px;
   height: 65px;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     width: 170px;
     height: 170px;
   }

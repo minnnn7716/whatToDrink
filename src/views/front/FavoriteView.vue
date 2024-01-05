@@ -94,7 +94,7 @@ export default {
 <template>
   <div class="container pt-10 pt-md-20 pb-10 pb-md-15">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-3xl-12">
+      <div class="col-12 col-lg-10 col-3xl-12">
         <div class="menu px-2 px-md-6 py-4 py-md-10 border border-3 border-secondary-600 rounded-4">
           <h2 class="fs-4 fs-md-3 fw-bold d-flex align-items-center text-accent mb-6">
             <img

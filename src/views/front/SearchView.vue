@@ -123,7 +123,7 @@ export default {
 <template>
   <div class="container pt-10 pt-md-20 pb-10">
     <div class="row">
-      <div class="col-12 col-md-10 col-3xl-12 mx-auto">
+      <div class="col-12 col-lg-10 col-3xl-12 mx-auto">
         <div class="d-flex flex-column flex-md-row mb-8 mb-md-5 px-10 px-md-0">
           <SwitchBtnGroup
             class="switchBtnGroup-light switchBtnGroup-text-h100
@@ -145,7 +145,7 @@ export default {
               :searchType="search.type"
             />
             <SwitchBtnGroup
-              class="d-none d-md-flex switchBtnGroup-primary switchBtnGroup-icon me-3"
+              class="d-none d-lg-flex switchBtnGroup-primary switchBtnGroup-icon me-3"
               @emit-btn="(i) => display = i"
             >
               <template v-slot:start>
@@ -155,7 +155,7 @@ export default {
                 <img src="@/assets/images/icon-mode-block.svg" alt="圖表模式" data-name="image" />
               </template>
             </SwitchBtnGroup>
-            <div class="d-none d-md-block">
+            <div class="d-none d-lg-block">
               <SortComponent
                 :propsSortSelect="sort.select[0]"
                 @sort-select="(i) => sort.select = i"
@@ -163,13 +163,13 @@ export default {
               />
             </div>
         </div>
-        <div class="d-flex flex-column flex-md-row
-        align-items-md-center justify-content-between ms-1 ms-md-1 mb-3 mb-md-10">
-          <p class="fs-normal1 fs-md-5 fw-bold">
+        <div class="d-flex flex-column flex-lg-row
+        align-items-lg-center justify-content-between ms-1 ms-lg-1 mb-3 mb-lg-10">
+          <p class="fs-normal1 fs-lg-5 fw-bold">
             找到 {{ resultNum }} 個符合「{{ search.keyword }}」的飲料
           </p>
           <div
-            class="w-fit d-none d-md-flex align-items-center py-1 ps-6 pe-2 bg-accent-300
+            class="w-fit d-none d-lg-flex align-items-center py-1 ps-6 pe-2 bg-accent-300
             border border-black rounded-pill transition-ease"
             :class="{ 'opacity-0': !sort.select }"
           >

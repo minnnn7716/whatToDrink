@@ -37,7 +37,7 @@ export default {
             to Drink
           </RouterLink>
           <p class="footer-side text-center text-md-end fs-normal2">
-            資料、圖片來源皆來自網路，<br class="d-md-none">僅用來做為學習用途
+            資料、圖片來源皆來自網路，<br class="d-lg-none">僅用來做為學習用途
           </p>
           <button @click.prevent="ToTop" type="button" class="footer-toTop fs-6">TOP</button>
         </div>

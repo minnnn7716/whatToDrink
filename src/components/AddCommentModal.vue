@@ -110,7 +110,7 @@ export default {
   <div class="modal fade" id="addCommentModal" ref="modal">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content rounded-4">
-          <div class="modal-header border-bottom-0 pb-2 p-md-4">
+          <div class="modal-header border-bottom-0 pb-2 p-lg-4">
             <h1 class="modal-title fs-5 invisible" id="addCommentModalLabel">撰寫評論</h1>
             <button
               type="button"
@@ -120,10 +120,10 @@ export default {
           </div>
           <div class="modal-body pt-0 pb-10">
             <div class="container-fluid">
-              <div class="row flex-column flex-md-row gx-md-10 justify-content-center">
-                <div class="col-12 col-md-4">
+              <div class="row flex-column flex-lg-row gx-lg-10 justify-content-center">
+                <div class="col-12 col-lg-4">
                   <img
-                    class="img-full mb-3 d-none d-md-block"
+                    class="img-full mb-3 d-none d-lg-block"
                     style="height: 200px;"
                     :src="propsData.imageUrl"
                     :alt="propsData.name" />
@@ -133,9 +133,9 @@ export default {
                   >
                     {{ propsData.shop.name }}
                   </h3>
-                  <div class="drinkInfo pb-4 pb-md-0 mb-4 mb-md-0">
-                    <h2 class="fs-5 mb-0 mb-md-3">{{ propsData.name }}</h2>
-                    <p class="fs-normal2 fs-md-6 fw-medium">
+                  <div class="drinkInfo pb-4 pb-lg-0 mb-4 mb-lg-0">
+                    <h2 class="fs-5 mb-0 mb-lg-3">{{ propsData.name }}</h2>
+                    <p class="fs-normal2 fs-lg-6 fw-medium">
                       <span v-if="propsData.price.m">
                         M <span class="ms-2">$ {{ propsData.price.m }}</span>
                       </span>
@@ -148,10 +148,10 @@ export default {
                 </div>
                 <form
                   id="addCommentForm"
-                  class="col-12 col-md-8"
+                  class="col-12 col-lg-8"
                   @submit.prevent="sendComment"
                 >
-                  <div class="d-flex flex-column flex-md-row align-items-md-center mb-6">
+                  <div class="d-flex flex-column flex-lg-row align-items-lg-center mb-6">
                     <div class="d-flex align-items-center">
                       <h4
                         class="fs-5 me-3 transition-ease"
@@ -170,14 +170,14 @@ export default {
                       }"
                     >
                       <p
-                        class="mt-2 mt-md-0 ms-md-2 py-1 px-4 rounded-pill"
+                        class="mt-2 mt-lg-0 ms-lg-2 py-1 px-4 rounded-pill"
                       >
                         請選擇評價
                       </p>
                     </div>
                   </div>
                   <div class="row gx-3 align-items-center mb-4">
-                    <div class="col-12 col-md-4 mb-4 mb-md-0">
+                    <div class="col-12 col-lg-4 mb-4 mb-lg-0">
                       <label
                         for="addCommentName"
                         class="form-label fs-5 mb-0 me-3 fw-medium d-none"
@@ -195,7 +195,7 @@ export default {
                         v-model.trim="addDate.userName"
                       >
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-lg-4">
                       <select
                           id="type"
                           class="form-item form-select py-2 px-4 rounded-pill"
@@ -216,7 +216,7 @@ export default {
                           <option value="不記得">不記得</option>
                       </select>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-lg-4">
                       <select
                         id="type"
                         class="form-item form-select py-2 px-4 rounded-pill"
@@ -287,7 +287,7 @@ export default {
   justify-content: space-between;
   border-bottom: 1px solid $gray;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     flex-direction: column;
     align-items: start;
     border-bottom: none
@@ -310,7 +310,7 @@ export default {
     max-height: 48px;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     max-height: fit-content;
     opacity: 0;
 

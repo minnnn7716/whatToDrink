@@ -69,7 +69,9 @@
     height: 80px;
     box-shadow: 4px 4px 0 $gray-900;
     cursor: pointer;
+  }
 
+  @include media-breakpoint-up(lg) {
     &:hover {
       margin: 4px -4px -4px 4px;
       box-shadow: 0 0 0 $gray-900;

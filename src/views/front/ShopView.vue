@@ -71,15 +71,15 @@ export default {
 <template>
   <div class="shopView pb-20">
     <header
-      class="shopView-header mb-15 mb-md-20 py-4"
+      class="shopView-header mb-15 mb-lg-20 py-4"
       :style="`background-color: ${singleShop.bgColor}`"
     >
       <img :src="singleShop.imageUrl" :alt="singleShop.name" />
       <div class="shopView-header-content container position-absolute start-50 bottom-0">
         <div class="row justify-content-center">
-          <div class="col-12 col-md-10 col-3xl-12
+          <div class="col-12 col-lg-10 col-3xl-12
           d-flex justify-content-between">
-            <h2 class="fs-5 fs-md-3 fw-bold title-stroke-2 mb-2 mb-md-0">{{ singleShop.name }}</h2>
+            <h2 class="fs-5 fs-lg-3 fw-bold title-stroke-2 mb-2 mb-lg-0">{{ singleShop.name }}</h2>
             <button
               type="button"
               class="btn border-0 p-0"
@@ -87,8 +87,8 @@ export default {
             >
               <RateDisplay
                 :rate="singleShop.rate"
-                class="rateDisplay-md hasHandText strokeTitle mb-1 mb-md-2 justify-content-end" />
-              <p class="text-end fs-normal2 fs-md-normal1">
+                class="rateDisplay-lg hasHandText strokeTitle mb-1 mb-lg-2 justify-content-end" />
+              <p class="text-end fs-normal2 fs-lg-normal1">
                 {{ singleShop.comments ? singleShop.comments.length : 0 }} 則評論
                 </p>
             </button>
@@ -98,13 +98,13 @@ export default {
     </header>
     <section class="container">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-3xl-12">
-          <div class="menu px-2 px-md-6 py-4 py-md-10
+        <div class="col-12 col-lg-10 col-3xl-12">
+          <div class="menu px-2 px-md-6 py-4 py-lg-10
           border border-3 border-secondary-600 rounded-4" ref="menu"  id="menu">
-            <div class="row gy-6 gy-md-10 gx-10">
+            <div class="row gy-6 gy-lg-10 gx-10">
               <div
                 :class="{
-                  'col-12 col-md-6': selectType === '全部飲品',
+                  'col-12 col-lg-6': selectType === '全部飲品',
                   'col-12': selectType !== '全部飲品',
                 }"
                 v-for="type in Object.keys(filterMenu)"

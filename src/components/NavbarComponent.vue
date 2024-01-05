@@ -66,18 +66,18 @@ export default {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" ref="collapse">
-        <ul class="navbar-nav ms-auto me-0 me-md-8 mb-0 mb-md-2 mb-lg-0 justify-content-center">
-          <li class="nav-item my-5 my-md-0">
+        <ul class="navbar-nav ms-auto me-0 me-lg-8 mb-0 mb-lg-2 mb-lg-0 justify-content-center">
+          <li class="nav-item my-5 my-lg-0">
             <RouterLink
               to="/shops"
-              class="nav-link px-4 d-none d-md-inline-block"
+              class="nav-link px-4 d-none d-lg-inline-block"
               :class="{ 'active': active === '/shops' }"
             >
               全部店家
             </RouterLink>
             <a
               href="#"
-              class="nav-link-sm d-md-none text-secondary-700"
+              class="nav-link-sm d-lg-none text-secondary-700"
               :class="{
                 'active': active === '/shops',
                 'others': active && active !== '/shops',
@@ -88,17 +88,17 @@ export default {
               <p>全部店家</p>
             </a>
           </li>
-          <li class="nav-item my-5 my-md-0">
+          <li class="nav-item my-5 my-lg-0">
             <RouterLink
               to="/#index-type"
-              class="nav-link px-4 d-none d-md-inline-block"
+              class="nav-link px-4 d-none d-lg-inline-block"
               :class="{ 'active': active === '/#index-type' }"
             >
               四大種類
             </RouterLink>
             <a
               href="#"
-              class="nav-link-sm d-md-none text-secondary-700"
+              class="nav-link-sm d-lg-none text-secondary-700"
               :class="{
                 'active': active === '/#index-type',
                 'others': active && active !== '/#index-type',
@@ -109,17 +109,17 @@ export default {
               <p>四大種類</p>
             </a>
           </li>
-          <li class="nav-item my-5 my-md-0">
+          <li class="nav-item my-5 my-lg-0">
             <RouterLink
               to="/wheel"
-              class="nav-link px-4 d-none d-md-inline-block"
+              class="nav-link px-4 d-none d-lg-inline-block"
               :class="{ 'active': active === '/wheel' }"
             >
               轉吧轉吧
             </RouterLink>
             <a
               href="#"
-              class="nav-link-sm d-md-none text-secondary-700"
+              class="nav-link-sm d-lg-none text-secondary-700"
               :class="{
                 'active': active === '/wheel',
                 'others': active && active !== '/wheel',
@@ -130,17 +130,17 @@ export default {
               <p>轉吧轉吧</p>
             </a>
           </li>
-          <li class="nav-item my-5 my-md-0">
+          <li class="nav-item my-5 my-lg-0">
             <RouterLink
               to="/about"
-              class="nav-link px-4 d-none d-md-inline-block"
+              class="nav-link px-4 d-none d-lg-inline-block"
               :class="{ 'active': active === '/about' }"
             >
               關於我們
             </RouterLink>
             <a
               href="#"
-              class="nav-link-sm d-md-none text-secondary-700"
+              class="nav-link-sm d-lg-none text-secondary-700"
               :class="{
                 'active': active === '/about',
                 'others': active && active !== '/about',
@@ -152,10 +152,10 @@ export default {
             </a>
           </li>
           <li class="d-flex align-items-center  justify-content-end
-          justify-content-md-center ms-md-3 my-5 my-md-0">
+          justify-content-lg-center ms-lg-3 my-5 my-lg-0">
             <RouterLink
               to="/favorites"
-              class="btn-custom btn-hoverSwitch d-none d-md-inline-block">
+              class="btn-custom btn-hoverSwitch d-none d-lg-inline-block">
               <img
                 class="btn-hoverSwitch-default"
                 src="@/assets/images/icon-favorite.svg"
@@ -169,7 +169,7 @@ export default {
             </RouterLink>
             <a
               href="#"
-              class="nav-link-sm nav-item d-md-none text-accent-700 flex-grow-1"
+              class="nav-link-sm nav-item d-lg-none text-accent-700 flex-grow-1"
               :class="{
                 'active': active === '/favorites',
                 'others': active && active !== '/favorites',
@@ -204,12 +204,10 @@ export default {
     font-weight: 600;
     transition: all ease .5s;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       left: 48px;
       transform: translateX(0);
-    }
 
-    @include media-breakpoint-up(lg) {
       &:hover {
         border: 1px solid #000;
         box-shadow: 4px 4px 0 $gray-900;
@@ -224,7 +222,7 @@ export default {
 
   &-collapse {
     margin: 6px -20px -20px -20px;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       margin: 0;
     }
   }
@@ -291,9 +289,14 @@ export default {
       box-shadow: 3px 3px 0 $gray-900;
 
       @include media-breakpoint-up(md) {
+        left: 32px;
+        padding: 32px 20px 12px 20px;
+        font-size: $h3-font-size;
+      }
+
+      @include media-breakpoint-up(lg) {
         left: 48px;
         padding: 44px 24px 16px 24px;
-        font-size: $h3-font-size;
         box-shadow: 4px 4px 0 $gray-900;
 
         &:hover {
@@ -320,10 +323,16 @@ export default {
 
       @include media-breakpoint-up(md) {
         height: fit-content;
+        border-bottom: 1px solid #000;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: fit-content;
         padding: 0;
         background: transparent;
         text-align: center;
         border-top: none;
+        border-bottom: none;
         box-shadow: none;
       }
     }

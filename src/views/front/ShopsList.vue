@@ -17,7 +17,7 @@ export default {
 
 <template>
   <div class="allShop d-flex flex-column overflow-hidden">
-    <ul class="allShop-list list-unstyled mb-3 mb-md-0 d-flex flex-column flex-md-row flex-grow-1">
+    <ul class="allShop-list list-unstyled mb-3 mb-lg-0 d-flex flex-column flex-lg-row flex-grow-1">
       <li
         class="allShop-item"
         v-for="item in shops"
@@ -53,7 +53,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     display: block;
     &:first-child a::after,
     &:last-child a::after {
@@ -86,7 +86,7 @@ export default {
   justify-content: center;
   transition: all ease 0.5s;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     padding: 0;
     flex-direction: column;
     transform: skewX(4deg);
@@ -96,7 +96,7 @@ export default {
   &-tag {
     transition: all ease 0.5s;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       transform: skewX(-4deg);
     }
   }
@@ -105,6 +105,10 @@ export default {
     width: 120px;
 
     @include media-breakpoint-up(md) {
+      width: 150px;
+    }
+
+    @include media-breakpoint-up(lg) {
       width: 210px;
     }
   }
@@ -118,7 +122,7 @@ export default {
     font-weight: 500;
     border-radius: 50px;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       border: 2px solid;
       margin-top: 16px;
       text-align: center;
@@ -126,7 +130,7 @@ export default {
   }
 }
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
   .allShop-list:hover {
     .allShop-link {
       transform: skewX(0);

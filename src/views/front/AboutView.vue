@@ -3,7 +3,7 @@
     <header class="about-header"></header>
     <div class="container">
       <div class="row">
-        <div class="col-10 col-md-9 mx-auto pt-15 pt-md-18 pb-20 p-md-25">
+        <div class="col-10 col-md-11 col-lg-9 mx-auto pt-15 pt-md-18 pb-20 p-lg-25">
           <section class="mb-12">
             <div class="mb-10">
               <h2 class="about-title mb-6 fs-4 fs-md-3 fw-bold">關於 What to Drink</h2>
@@ -27,7 +27,7 @@
               <div class="row flex-column flex-md-row align-items-center mb-10 mb-md-10">
                 <div class="col-12 col-md-5">
                   <img
-                    class="img-fluid mb-6 mb-md-0 me-md-6"
+                    class="img-fluid mb-6 mb-md-0 me-lg-6"
                     src="@/assets/images/about-wheel.svg"
                     alt="評價系統"
                   />
@@ -47,7 +47,7 @@
               <div class="row flex-column flex-md-row-reverse align-items-center">
                 <div class="col-12 col-md-5">
                   <img
-                    class="img-fluid mb-6 mb-md-0 ms-md-6"
+                    class="img-fluid mb-6 mb-md-0 ms-lg-6"
                     src="@/assets/images/about-message.svg"
                     alt="轉盤功能"
                   />
@@ -94,7 +94,7 @@
     background: center / cover no-repeat;
     background-image: url('@/assets/images/about-banner-sm.webp');
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       height: 350px;
       background-image: url('@/assets/images/about-banner.webp');
     }

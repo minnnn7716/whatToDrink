@@ -72,16 +72,16 @@ export default {
 <template>
   <div class="container pt-8 pt-md-15 pb-8 pb-md-12">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-9 col-3xl-10">
+      <div class="col-12 col-lg-9 col-3xl-10">
         <section class="row">
-          <div class="col-12 col-md-4 mb-3 mb-md-0 drinkImg">
+          <div class="col-12 col-lg-4 mb-3 mb-lg-0 drinkImg">
             <img
               class="img-full"
               :src="singleDrink.imageUrl"
               :alt="singleDrink.name" />
           </div>
-          <div class="col-12 col-md-8 d-flex flex-column justify-content-between">
-            <div class="d-flex justify-content-between mb-0 mb-md-8">
+          <div class="col-12 col-lg-8 d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between mb-0 mb-lg-8">
               <div>
                 <h3
                   class="py-2 px-5 mb-3 d-inline-block fs-normal2 fs-md-normal1 fw-normal
@@ -93,7 +93,7 @@ export default {
                   </RouterLink>
                 </h3>
                 <h2 class="fs-4 fs-md-3 mb-3 mb-md-6">{{ singleDrink.name }}</h2>
-                <ul class="list-unstyled d-flex mb-0 mb-md-5">
+                <ul class="list-unstyled d-flex mb-5">
                   <li class="pe-6 border-end border-black">
                     <p class="mb-2 fs-normal1 fs-md-6 fw-medium">
                       M <span class="ms-4">$ {{ singleDrink.price.m }}</span>
@@ -152,13 +152,13 @@ export default {
           </div>
         </section>
         <section class="row justify-content-center pt-10 pt-md-15" id="drink-rateGroup">
-          <div class="col-12 col-md-10">
+          <div class="col-12 col-md-9 col-lg-10">
             <RateGroup
               :data="rateGroup"
               @emit-pin="clickRateAction"
             />
           </div>
-          <div class="col-6 col-md-2 d-flex align-items-center justify-content-center">
+          <div class="col-6 col-md-3 col-lg-2 d-flex align-items-center justify-content-center">
             <button
               type="button"
               class="btn-custom btn-custom-primary fs-6 fw-bold px-0 w-100 py-3"
@@ -214,6 +214,10 @@ export default {
     height: 250px;
 
     @include media-breakpoint-up(md) {
+      height: 350px;
+    }
+
+    @include media-breakpoint-up(lg) {
       height: auto;
     }
   }

@@ -49,7 +49,7 @@ export default {
     <header class="index-header d-flex align-items-center justify-content-center">
       <div class="container">
         <div class="row">
-          <div class="col-12 col-md-8 mx-auto d-flex flex-column align-items-center pt-15 pt-md-0">
+          <div class="col-12 col-lg-8 mx-auto d-flex flex-column align-items-center pt-15 pt-md-0">
             <h2 class="index-header-title-container mb-6 text-accent">
               <div class="index-header-title-upper">
                 <span class="index-header-title">今</span>
@@ -99,27 +99,21 @@ export default {
           </div>
         </div>
       </div>
-      <!-- <img
-      class="position-absolute start-0 bottom-0"
-      src="@/assets/images/index-bannerDeco-start.svg"
-    />
-    <img class="position-absolute top-0 end-0"
-    src="@/assets/images/index-bannerDeco-end.svg" /> -->
     </header>
-    <section class="py-18 py-md-25 position-relative">
+    <section class="py-18 pb-md-0 py-lg-25 position-relative">
       <div class="position-absolute top-0 translate-middle-y py-8" id="index-type"></div>
       <div class="container">
-        <div class="row flex-column flex-md-row align-items-center justify-content-center">
-          <div class="col-12 col-md-3 mb-8 mb-md-0">
+        <div class="row flex-column flex-lg-row align-items-center justify-content-center">
+          <div class="col-12 col-lg-3 mb-8 mb-lg-0">
             <h4 class="title-angleStar fs-5 fs-md-4 fw-bold mb-4">還是沒有想法嗎？</h4>
             <p class="title-angleStar-content fs-6 fs-md-5">
               通通給你，<br />
               慢慢挑～慢慢選～<br />
             </p>
           </div>
-          <ul class="col-12 col-md-7 col-3xl-9 d-flex flex-wrap flex-md-nowrap
+          <ul class="col-12 col-lg-7 col-3xl-9 d-flex flex-wrap flex-md-nowrap
           row list-unstyled mb-0">
-            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0 mb-6 me-0 me-md-10">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-lg-0 mb-6 me-0 me-lg-10">
               <RouterLink to="/shops">
                 <img
                   class="mb-2 mb-md-5"
@@ -128,7 +122,7 @@ export default {
                 <p class="fs-5 fw-medium text-black">全部店面</p>
               </RouterLink>
             </li>
-            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0 mb-6 me-0 me-md-10">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-lg-0 mb-6 me-0 me-lg-10">
               <RouterLink to="/search?type=drinks&keyword=純茶">
                 <img
                   class="mb-2 mb-md-5"
@@ -138,7 +132,7 @@ export default {
                 <p class="fs-5 fw-medium text-black">純茶飲料</p>
               </RouterLink>
             </li>
-            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0 me-0 me-md-10">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-lg-0 me-0 me-lg-10">
               <RouterLink to="/search?type=drinks&keyword=特調">
                 <img
                   class="mb-2 mb-md-5"
@@ -147,7 +141,7 @@ export default {
                 <p class="fs-5 fw-medium text-black">特調飲料</p>
               </RouterLink>
             </li>
-            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-md-0">
+            <li class="col-6 col-md-3 btn-roundImgAndText px-4 px-lg-0">
               <RouterLink to="/search?type=drinks&keyword=奶系列">
                 <img
                   class="mb-2 mb-md-5"
@@ -163,16 +157,16 @@ export default {
     <section class="index-wheel py-10 py-md-18">
       <div class="index-wheel-container">
         <div class="index-wheel-text text-center text-white lh-base">
-          <h4 class="mb-8 fs-4 fs-md-3 fw-bold lh-base">
+          <h4 class="mb-8 fs-4 fs-lg-3 fw-bold lh-base">
             阿姨，我不想努力了...<br />沒關係！
           </h4>
-          <p class="mb-8 fs-6 fs-md-5">
+          <p class="mb-8 fs-6 fs-lg-5">
             轉盤啊～轉盤～<br />
             世界上最適合我的飲料是哪一杯？
           </p>
           <RouterLink
             to="/wheel"
-            class="btn-custom btn-custom-primary fs-6 fs-md-4 fs-xxl-5 fw-bold"
+            class="btn-custom btn-custom-primary fs-6 fs-lg-4 fs-xxl-5 fw-bold"
           >
             請賜與我飲料
           </RouterLink>
@@ -182,7 +176,7 @@ export default {
           src="@/assets/images/index-wheel-person.svg"
         />
         <img
-          class="index-wheel-img-drink d-none d-md-inline-block"
+          class="index-wheel-img-drink d-none d-lg-inline-block"
           src="@/assets/images/index-wheel-drink.svg"
         />
         <img
@@ -199,7 +193,7 @@ export default {
         />
       </div>
     </section>
-    <section class="pt-10 pb-20 py-md-25">
+    <section class="pt-10 pb-20 py-lg-25">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-10 col-3xl-12 mx-auto">
@@ -277,7 +271,7 @@ export default {
               </ul>
             </div>
             <div class="row index-comment ps-5 pe-2 px-md-0">
-              <div class="col-12 col-md-6 index-comment-start">
+              <div class="index-comment-start col-12 col-lg-6 mb-md-10 mb-lg-0">
                   <RouterLink :to="`/drink/${recommendItem.id}`">
                     <img
                       class="img-full"
@@ -316,7 +310,7 @@ export default {
                     />
                   </RouterLink>
               </div>
-              <div class="d-none d-md-block col-6 overflow-auto">
+              <div class="d-none d-md-block col-12 col-lg-6 overflow-auto">
                 <CommentDisplay
                   class="mb-12 h-auto"
                   v-for="item in recommendItem.comments"
@@ -479,6 +473,10 @@ export default {
     height: 350px;
 
     @include media-breakpoint-up(md) {
+      height: 400px;
+    }
+
+    @include media-breakpoint-up(lg) {
       height: 500px;
     }
   }

@@ -33,7 +33,7 @@ export default {
 </script>
 <template>
   <div class="row align-items-center">
-    <section class="col-12 col-md-3 d-flex flex-md-column align-items-center">
+    <section class="col-12 col-md-4 col-lg-3 d-flex flex-md-column align-items-center">
       <h3 class="rateGroup-scoreTitle d-inline-block font-handwriting fs-display3 fs-md-display2
       text-black lh-sm px-4 px-md-0 mb-md-2">
         {{ data.totalRateScore }}
@@ -43,8 +43,8 @@ export default {
         <p class="d-inline-block">{{ data.commentsNum }} 則評論</p>
       </div>
     </section>
-    <section class="col-12 col-md-9">
-      <ul class="list-unstyled px-md-5 d-flex flex-column-reverse">
+    <section class="col-12 col-md-8 col-lg-9">
+      <ul class="list-unstyled px-lg-5 d-flex flex-column-reverse">
         <li
           class="rateGroup-item d-flex align-items-center"
           :class="{ 'mb-2 mb-md-3': index + 1 !== 1, 'active': pin === index + 1 }"
@@ -122,6 +122,10 @@ export default {
 
   &-number {
     width: 40px;
+
+    @include media-breakpoint-up(md) {
+      width: 35px;
+    }
   }
 
   &-pinBtn {
