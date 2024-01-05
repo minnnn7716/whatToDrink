@@ -19,7 +19,6 @@ export default {
       if (this.rate) {
         const rate = this.rate.length === 1 ? `${this.rate}.0` : this.rate;
         const [first, second] = rate.split('.').map((item) => Number(item));
-        console.log(rate);
 
         for (let i = 1; i <= 5; i += 1) {
           if (first === 0) {

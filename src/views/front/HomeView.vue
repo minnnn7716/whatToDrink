@@ -285,7 +285,8 @@ export default {
                       :alt="recommendItem.name" />
                   </RouterLink>
                   <div>
-                    <h5 class="index-comment-start-title title-stroke-2 fs-4 fs-md-3 fw-bold">
+                    <h5 class="index-comment-start-title title-stroke-2
+                    fs-4 fs-md-3 fw-bold lh-base">
                       <RouterLink :to="`/drink/${recommendItem.id}`">
                         {{ recommendItem.name }}
                       </RouterLink>
@@ -317,7 +318,7 @@ export default {
               </div>
               <div class="d-none d-md-block col-6 overflow-auto">
                 <CommentDisplay
-                  class="mb-12"
+                  class="mb-12 h-auto"
                   v-for="item in recommendItem.comments"
                   :key="`index-comment ${item.id}`"
                   :commentData="item"
