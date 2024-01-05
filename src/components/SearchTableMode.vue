@@ -42,7 +42,6 @@ export default {
     propsData: {
       handler() {
         this.tableModeData = this.propsData;
-        console.log('tabel 資料變更');
       },
       deep: true,
       immediate: true,

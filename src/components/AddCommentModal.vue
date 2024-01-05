@@ -136,9 +136,13 @@ export default {
                   <div class="drinkInfo pb-4 pb-md-0 mb-4 mb-md-0">
                     <h2 class="fs-5 mb-0 mb-md-3">{{ propsData.name }}</h2>
                     <p class="fs-normal2 fs-md-6 fw-medium">
-                      M <span class="ms-2">$ {{ propsData.price.m }}</span>
-                      <span class="mx-3">｜</span>
-                      L <span class="ms-2">$ {{ propsData.price.l }}</span>
+                      <span v-if="propsData.price.m">
+                        M <span class="ms-2">$ {{ propsData.price.m }}</span>
+                      </span>
+                      <span v-if="propsData.price.m && propsData.price.l" class="mx-3">｜</span>
+                      <span v-if="propsData.price.l">
+                        L <span class="ms-2">$ {{ propsData.price.l }}</span>
+                      </span>
                     </p>
                   </div>
                 </div>

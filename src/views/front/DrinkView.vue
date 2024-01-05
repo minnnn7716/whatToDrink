@@ -124,7 +124,8 @@ export default {
                       'bg-primary-300': item === '期間限定',
                       'bg-secondary-300': item === '僅限冷飲',
                       'bg-accent-300': item === '店家推薦',
-                      'bg-gray-100 border border-gray-500': item === '固定糖冰',
+                      'bg-gray-100 border border-gray-500': item !== '期間限定' &&
+                      item !== '僅限冷飲' && item !== '店家推薦',
                     }"
                     v-for="item in singleDrink.special"
                     :key="`drinkSpecial ${item}`"
@@ -145,7 +146,7 @@ export default {
               </div>
             </div>
             <ul class="list-unstyled mb-0">
-              <li>咖啡因：{{ singleDrink.caffeine }}</li>
+              <li>咖啡因：{{ singleDrink.caffeine ? singleDrink.caffeine : "無咖啡因" }}</li>
               <li>內容物：{{ joinIngredient(singleDrink.ingredient) }}</li>
             </ul>
           </div>

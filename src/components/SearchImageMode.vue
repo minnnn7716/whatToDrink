@@ -40,7 +40,6 @@ export default {
     propsData: {
       handler() {
         this.imageModeData = this.propsData;
-        console.log('資料變更');
       },
       deep: true,
       immediate: true,

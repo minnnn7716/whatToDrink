@@ -126,8 +126,10 @@
     pointer-events: none;
   }
 
-  &:not(.disable):hover {
-    background-color: $secondary;
+  @include media-breakpoint-up(md) {
+    &:not(.disable):hover {
+      background-color: $secondary;
+    }
   }
 }
 

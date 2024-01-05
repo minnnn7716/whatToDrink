@@ -44,7 +44,17 @@ export default {
   methods: {
     ...mapActions(commentStore, ['clickPin', 'clickPage', 'getRateGroupInfo', 'sortCommentsFn']),
     filterDrink(drinkId) {
-      const drink = this.shopData.drinks.filter((item) => item.id === drinkId);
+      let drink = [{
+        name: '',
+        imageUrl: '',
+        price: {
+          m: '',
+          l: '',
+        },
+        rate: '',
+      }];
+
+      drink = this.shopData.drinks.filter((item) => item.id === drinkId);
       return drink[0];
     },
     sortAction(page) {
