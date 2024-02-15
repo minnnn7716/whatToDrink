@@ -1,4 +1,5 @@
-# digisalad_recruitment
+# 今天你要喝什麼？
+### 飲料檢索網站
 ### [DEMO 頁面](https://minnnn7716.github.io/whatToDrink/#/)
 模擬電商網站，使用者可以瀏覽商品、最新消息，將喜愛的商品加入清單或購買。後台則提供增改商品、消息、折價券的功能。
 
